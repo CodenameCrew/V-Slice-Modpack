@@ -9,6 +9,9 @@ varying vec2 screenCoord;
 // equals (camera.viewLeft, camera.viewTop, camera.viewRight, camera.viewBottom)
 uniform vec4 uCameraBounds;
 
+// equals (frame.left, frame.top, frame.right, frame.bottom)
+uniform vec4 uFrameBounds;
+
 // screen coord -> world coord conversion
 // returns world coord in px
 vec2 screenToWorld(vec2 screenCoord) {
@@ -31,6 +34,25 @@ vec2 worldToScreen(vec2 worldCoord) {
 	vec2 scale = vec2(right - left, bottom - top);
 	vec2 offset = vec2(left, top);
 	return (worldCoord - offset) / scale;
+}
+
+// screen coord -> frame coord conversion
+// returns normalized frame coord
+vec2 screenToFrame(vec2 screenCoord) {
+	float left = uFrameBounds.x;
+	float top = uFrameBounds.y;
+	float right = uFrameBounds.z;
+	float bottom = uFrameBounds.w;
+	float width = right - left;
+	float height = bottom - top;
+
+	float clampedX = clamp(screenCoord.x, left, right);
+	float clampedY = clamp(screenCoord.y, top, bottom);
+
+	return vec2(
+		(clampedX - left) / (width),
+		(clampedY - top) / (height)
+	);
 }
 
 // internally used to get the maximum `openfl_TextureCoordv`

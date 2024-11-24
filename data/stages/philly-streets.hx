@@ -71,7 +71,6 @@ function create()
 	// carSndAmbience = FunkinSound.load(Paths.sound("carAmbience", "weekend1"), true, false, true);
 	// carSndAmbience.volume = 0;
 	// carSndAmbience.play(false, FlxG.random.float(0, carSndAmbience.length));
-	importScript("data/scripts/rain-effect");
 	switch (PlayState.instance.curSongID)
 	{
 		case "darnell":
@@ -81,6 +80,8 @@ function create()
 			rainShaderStartIntensity = 0.2;
 			rainShaderEndIntensity = 0.4;
 	}
+
+	rainColor = 0xFFa8adb5;
 
 	resetCar(true, true);
 	resetStageValues();

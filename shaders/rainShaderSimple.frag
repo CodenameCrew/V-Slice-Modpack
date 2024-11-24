@@ -6,6 +6,10 @@ uniform float uScale;
 uniform float uIntensity;
 uniform float uTime;
 
+uniform bool uSpriteMode;
+
+uniform vec3 uRainColor;
+
 float rand(vec2 a) {
 	return fract(sin(dot(mod(a, vec2(1000.0)).xy, vec2(12.9898, 78.233))) * 43758.5453);
 }
@@ -36,22 +40,27 @@ float rainDist(vec2 p, float scale, float intensity) {
 	return empty ? 1.0 : res;
 }
 
+#define NUM_LAYERS 4
+
 void main() {
-	vec2 wpos = screenToWorld(screenCoord);
+	vec2 wpos;
+	if (uSpriteMode)
+		wpos = screenToWorld(screenToFrame(openfl_TextureCoordv));
+	else
+		wpos = screenToWorld(screenCoord);
 	vec2 origWpos = wpos;
 	float intensity = uIntensity;
 
 	vec3 add = vec3(0);
 	float rainSum = 0.0;
 
-	const int numLayers = 4;
-	float scales[4];
+	float scales[NUM_LAYERS];
 	scales[0] = 1.0;
 	scales[1] = 1.8;
 	scales[2] = 2.6;
 	scales[3] = 4.8;
 
-	for (int i = 0; i < numLayers; i++) {
+	for (int i = 0; i < NUM_LAYERS; i++) {
 		float scale = scales[i];
 		float r = rainDist(wpos * scale / uScale + 500.0 * float(i), scale, intensity);
 		if (r < 0.0) {
@@ -63,10 +72,21 @@ void main() {
 		}
 	}
 
-	vec3 color = sampleBitmapWorld(wpos).xyz;
+	vec3 color;
+	float alpha;
+	if (uSpriteMode) {
+		vec2 rwpos = worldToScreen(wpos - origWpos);
+		vec4 data = flixel_texture2D(bitmap, openfl_TextureCoordv + rwpos);
+		color = data.xyz;
+		alpha = data.w;
+	} else {
+		vec4 data = sampleBitmapWorld(wpos);
+		color = data.xyz;
+		alpha = data.w;
+	}
 
-	vec3 rainColor = vec3(0.4, 0.5, 0.8);
-	color = mix(color + add, rainColor, 0.1 * rainSum);
+	color += add;
+	color = mix(color, uRainColor, 0.1 * rainSum);
 
-	gl_FragColor = vec4(color, 1);
+	gl_FragColor = vec4(color, alpha);
 }

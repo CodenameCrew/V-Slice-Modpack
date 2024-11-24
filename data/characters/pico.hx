@@ -37,7 +37,7 @@ function gamePostCreate() {
 }
 
 function loadCasingFrames() {
-	casingFrames = Paths.getFrames('characters/PicoBullet');
+	casingFrames = Paths.getFrames('characters/picoStuff/PicoBullet');
 }
 
 function onGameOver(event) {

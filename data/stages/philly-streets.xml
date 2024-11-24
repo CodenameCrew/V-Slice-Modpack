@@ -1,5 +1,7 @@
 <!DOCTYPE codename-engine-stage>
 <stage zoom="0.77" name="philly-streets" folder="stages/philly-streets/" startCamPosX="1800" startCamPosY="700">
+	<use-extension script="rain-effect"/>
+
 	<sprite name="bg" x="-545" y="-273" sprite="phillySkyline" scroll="0.2"/>
 
 	<high-memory>
@@ -47,4 +49,6 @@
 	<high-memory>
 		<sprite name="cans" x="920" y="1045" sprite="spraycanPile"/>
 	</high-memory>
+
+	<ratings x="1700" y="800"/>
 </stage>

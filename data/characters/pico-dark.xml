@@ -1,0 +1,15 @@
+<!DOCTYPE codename-engine-character>
+<character x="100" icon="pico" camx="100" y="300" isGF="false" color="#B7D855" flipX="true" isPlayer="false" gameOverChar="pico-stabbed" sprite="dark/pico">
+	<anim x="0" loop="false" y="0" fps="24" anim="Pico Idle Dance" name="idle"/>
+	<anim x="65" loop="false" y="9" fps="24" anim="Pico Note Right0" name="singLEFT"/>
+	<anim x="200" loop="false" y="-70" fps="24" anim="Pico Down Note0" name="singDOWN"/>
+	<anim x="-29" loop="false" y="27" fps="24" anim="pico Up note0" name="singUP"/>
+	<anim x="-68" loop="false" y="-7" fps="24" anim="Pico NOTE LEFT0" name="singRIGHT"/>
+	<anim x="62" loop="false" y="64" fps="24" anim="Pico Note Right Miss" name="singLEFTmiss"/>
+	<anim x="210" loop="false" y="-28" fps="24" anim="Pico Down Note MISS" name="singDOWNmiss"/>
+	<anim x="-19" loop="false" y="67" fps="24" anim="pico Up note miss" name="singUPmiss"/>
+	<anim x="-60" loop="false" y="41" fps="24" anim="Pico NOTE LEFT miss" name="singRIGHTmiss"/>
+	<anim x="26" loop="false" y="2" fps="24" anim="Pico YEAH cheer" name="hey"/>
+	<anim x="33" loop="false" y="-3" fps="24" anim="burpshit" name="burpShit"/>
+	<anim x="33" loop="false" y="-3" fps="24" anim="shit" name="shit"/>
+</character>

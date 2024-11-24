@@ -3,7 +3,7 @@ import funkin.Constants;
 
 function postCreate() {
 	var game = GameOverSubstate.instance;
-	deathSpriteRetry = new FunkinSprite(0, 0, Paths.image("characters/picoGameover/Pico_Death_Retry"));
+	deathSpriteRetry = new FunkinSprite(0, 0, Paths.image("characters/picoStuff/picoGameover/Pico_Death_Retry"));
 	deathSpriteRetry.animation.addByPrefix('idle', "Retry Text Loop0", 24, true);
 	deathSpriteRetry.animation.addByPrefix('confirm', "Retry Text Confirm0", 24, false);
 	//FlxG.debugger.track(deathSpriteRetry);
@@ -27,7 +27,7 @@ function postCreate() {
 
 	var gf = PlayState.instance.gf;
 	if(gf.curCharacter != "nene") return;
-	var deathSpriteNene = new FunkinSprite(0, 0, Paths.image("characters/picoGameover/NeneKnifeToss"));
+	var deathSpriteNene = new FunkinSprite(0, 0, Paths.image("characters/picoStuff/picoGameover/NeneKnifeToss"));
 	deathSpriteNene.x = gf.x + gf.globalOffset.x + 280;
 	deathSpriteNene.y = gf.y + gf.globalOffset.y + 70;
 	deathSpriteNene.antialiasing = gf.antialiasing;

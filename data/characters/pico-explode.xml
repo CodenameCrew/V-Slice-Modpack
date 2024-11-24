@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="550" y="600" sprite="picoGameover/picoExplosionDeath" flipX="true" camx="-250" camy="-100" isPlayer="true" icon="pico-dead" color="#B9D855" isGF="false">
+<character x="550" y="600" sprite="picoStuff/picoGameover/picoExplosionDeath" flipX="true" camx="-250" camy="-100" isPlayer="true" icon="pico-dead" color="#B9D855" isGF="false">
 	<anim name="firstDeath" anim="Pico Explode Death" x="0" y="0" fps="24" loop="false" indices="1..93"/>
 	<anim name="deathLoop" anim="Pico Explode Death" x="0" y="0" fps="24" loop="true" indices="94..119"/>
 	<anim name="deathConfirm" anim="Pico Explosion Death" x="280" y="153" fps="24" loop="false" indices="120..172"/>

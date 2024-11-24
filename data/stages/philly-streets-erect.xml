@@ -1,0 +1,64 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.77" name="philly-streets-erect" folder="stages/philly-streets/" startCamPosX="1800" startCamPosY="700">
+	<use-extension folder="data/stages" script="philly-streets" importStageSprites="true"/>
+	<use-extension script="erect-effect"/>
+
+	<sprite name="bg" x="-545" y="-273" sprite="erect/phillySkyline" scroll="0.2"/>
+	<high-memory>
+		<sprite name="city" x="625" y="94" sprite="erect/phillyForegroundCity" scroll="0.3"/>
+		<sprite name="construction" x="1800" y="364" sprite="erect/phillyConstruction" scrollx="0.7"/>
+
+		<sprite name="highwayLights" x="284" y="305" sprite="erect/phillyHighwayLights"/>
+		<sprite name="highwayLightsMap" x="284" y="305" sprite="phillyHighwayLights_lightmap">
+			<property name="alpha" type="float" value="0.6" />
+			<property name="blend" type="float" value="0" />
+		</sprite>
+		<sprite name="highway" x="139" y="209" sprite="erect/phillyHighway"/>
+
+		<sprite name="smog" x="-6" y="245" sprite="phillySmog"/>
+
+		<sprite name="cars1" x="1748" y="818" sprite="erect/phillyCars" type="none">
+			<anim name="car1" anim="car1" loop="false" />
+			<anim name="car2" anim="car2" loop="false" />
+			<anim name="car3" anim="car3" loop="false" />
+			<anim name="car4" anim="car4" loop="false" />
+		</sprite>
+		<sprite name="cars2" x="1748" y="818" sprite="erect/phillyCars" type="none" flipX="true">
+			<anim name="car1" anim="car1" loop="false" />
+			<anim name="car2" anim="car2" loop="false" />
+			<anim name="car3" anim="car3" loop="false" />
+			<anim name="car4" anim="car4" loop="false" />
+		</sprite>
+
+		<sprite name="trafficLights" x="1840" y="608" sprite="erect/phillyTraffic" type="none" scrollx="0.9">
+			<anim name="togreen" anim="redtogreen" loop="false" />
+			<anim name="tored" anim="greentored" loop="false" />
+		</sprite>
+		<sprite name="trafficLightsMap" x="1840" y="608" sprite="erect/phillyTraffic_lightmap" type="none" scrollx="0.9">
+			<property name="alpha" type="float" value="0.6" />
+			<property name="blend" type="float" value="0" />
+		</sprite>
+
+		<sprite name="grey1" x="88" y="317" sprite="erect/greyGradient">
+			<property name="alpha" type="float" value="0.3" />
+		</sprite>
+		<sprite name="grey2" x="88" y="317" sprite="erect/greyGradient">
+			<property name="alpha" type="float" value="0.8" />
+		</sprite>
+	</high-memory>
+
+	<sprite name="fg" x="88" y="317" sprite="erect/phillyForeground"/>
+
+	<girlfriend x="1203" y="454" scroll="1" brightness="-20" hue="-5" saturation="-40" contrast="-25" />
+	<dad x="640" y="410" camxoffset="470" brightness="-20" hue="-5" saturation="-40" contrast="-25" />
+	<boyfriend x="1970" y="450" camxoffset="-300" brightness="-20" hue="-5" saturation="-40" contrast="-25" />
+
+	<high-memory>
+		<sprite name="paper" x="308" y="608" sprite="erect/paper" scroll="1.1" type="none">
+			<property name="alpha" type="float" value="0" />
+			<anim name="paperBlow" anim="Paper Blowing" loop="false" />
+		</sprite>
+	</high-memory>
+
+	<ratings x="1700" y="800"/>
+</stage>

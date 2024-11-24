@@ -1,0 +1,18 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="1.1" name="philly-erect" folder="stages/philly/" startCamPosY="510" startCamPosX="950">
+	<use-extension folder="data/stages" script="philly" importStageSprites="true"/>
+	<use-extension script="erect-effect"/>
+
+	<sprite name="bg" x="-100" sprite="erect/sky" scroll="0.1"/>
+	<sprite name="city" x="-10" y="0" sprite="erect/city" scroll="0.3" scale="0.85" updateHitbox="true"/>
+
+	<sprite name="light" x="-10" y="0" sprite="win" scroll="0.3" scale="0.85" updateHitbox="true"/>
+
+	<sprite name="streetBehind" x="-40" y="50" sprite="erect/behindTrain" zoomfactor="1" />
+	<sprite name="phillyTrain" x="2000" y="360" sprite="train" zoomfactor="1" />
+	<sprite name="street" x="-40" y="50" sprite="erect/street" zoomfactor="1" />
+
+	<girlfriend brightness="-5" hue="-26" saturation="-16" />
+	<boyfriend brightness="-5" hue="-26" saturation="-16" />
+	<dad brightness="-5" hue="-26" saturation="-16" />
+</stage>
