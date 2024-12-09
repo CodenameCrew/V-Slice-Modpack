@@ -73,7 +73,6 @@ class BGScrollingText extends FlxObject
 			  if (txt.x < -txt.frameWidth)
 			  {
 			    txt.x = grpTexts[grpTexts.length - 1].x + grpTexts[grpTexts.length - 1].frameWidth + placementOffset;
-
 			    sortTextShit();
 			  }
 			}
@@ -82,7 +81,6 @@ class BGScrollingText extends FlxObject
 			  if (txt.x > txt.frameWidth * 2)
 			  {
 			    txt.x = grpTexts[0].x - grpTexts[0].frameWidth - placementOffset;
-
 			    sortTextShit();
 			  }
 			}

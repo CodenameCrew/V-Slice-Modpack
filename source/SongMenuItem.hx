@@ -21,9 +21,9 @@ class SongMenuItem extends FlxObject
 
     function initText(songTitle, size:Float):FlxText
     {
-      var text:FlxText = new FlxText(0, 0, 0, songTitle, Std.int(size));
-      text.font = Paths.font("5by7.ttf");
-      return text;
+        var text:FlxText = new FlxText(0, 0, 0, songTitle, Std.int(size));
+        text.font = Paths.font("5by7.ttf");
+        return text;
     }
 
     var capsuleScale:Float = 0.8;
@@ -34,7 +34,7 @@ class SongMenuItem extends FlxObject
 
     function intendedY(index:Int):Float
     {
-      return (index * ((capsule.height * capsuleScale) + 10)) + 120;
+        return (index * ((capsule.height * capsuleScale) + 10)) + 120;
     }
 
     function makeCoolNumber(x, y, num, small)

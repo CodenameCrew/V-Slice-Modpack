@@ -1,6 +1,5 @@
 import haxe.io.Path;
 import flxanimate.frames.FlxAnimateFrames;
-import funkin.menus.FreeplayState.FreeplaySonglist;
 
 function onSelectItem(e)
 {

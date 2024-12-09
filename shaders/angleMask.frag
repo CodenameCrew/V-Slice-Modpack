@@ -35,9 +35,9 @@ vec4 mainPass(vec2 fragCoord) {
 	float uvA = atan(uv.y, uv.x);
 
 	if (uvA < angle)
-	  return base;
+		return base;
 	else
-	  return vec4(0.0);
+		return vec4(0.0);
 }
 
 vec4 antialias(vec2 fragCoord) {
