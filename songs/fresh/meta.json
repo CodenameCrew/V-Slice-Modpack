@@ -1,0 +1,12 @@
+{
+	"difficulty": 1,
+	"weekNum": 1,
+	"isWeekEnd": false,
+
+	"displayName": "Fresh",
+	"bpm": 120.0,
+	"icon": "dad",
+	"color": "#9271FD",
+	"coopAllowed": true,
+	"opponentModeAllowed": true
+}

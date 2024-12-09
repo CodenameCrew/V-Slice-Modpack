@@ -1,0 +1,12 @@
+{
+	"difficulty": 2,
+	"weekNum": 2,
+	"isWeekEnd": false,
+
+	"displayName": "South",
+	"bpm": 165.0,
+	"icon": "spooky",
+	"color": "#223344",
+	"coopAllowed": true,
+	"opponentModeAllowed": true
+}

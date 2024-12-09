@@ -1,0 +1,12 @@
+{
+	"difficulty": 5,
+	"weekNum": 7,
+	"isWeekEnd": false,
+
+	"displayName": "Guns",
+	"bpm": 185.0,
+	"icon": "tankman",
+	"color": "#F6B604",
+	"coopAllowed": true,
+	"opponentModeAllowed": true
+}

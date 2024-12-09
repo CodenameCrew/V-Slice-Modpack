@@ -1,0 +1,12 @@
+{
+	"difficulty": 2,
+	"weekNum": 5,
+	"isWeekEnd": false,
+
+	"displayName": "Cocoa",
+	"bpm": 100.0,
+	"icon": "parents-christmas",
+	"color": "#A0D1FF",
+	"coopAllowed": true,
+	"opponentModeAllowed": true
+}

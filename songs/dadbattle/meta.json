@@ -1,0 +1,12 @@
+{
+	"difficulty": 2,
+	"weekNum": 1,
+	"isWeekEnd": false,
+
+	"displayName": "DadBattle",
+	"bpm": 180.0,
+	"icon": "dad",
+	"color": "#9271FD",
+	"coopAllowed": true,
+	"opponentModeAllowed": true
+}

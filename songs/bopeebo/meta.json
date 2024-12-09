@@ -1,0 +1,12 @@
+{
+	"difficulty": 1,
+	"weekNum": 1,
+	"isWeekEnd": false,
+
+	"displayName": "Bopeebo",
+	"bpm": 100.0,
+	"icon": "dad",
+	"color": "#9271FD",
+	"coopAllowed": true,
+	"opponentModeAllowed": true
+}

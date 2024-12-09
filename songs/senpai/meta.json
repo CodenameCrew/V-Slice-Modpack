@@ -1,0 +1,12 @@
+{
+	"difficulty": 3,
+	"weekNum": 6,
+	"isWeekEnd": false,
+
+	"displayName": "Senpai",
+	"bpm": 144.0,
+	"icon": "senpai",
+	"color": "#FF78BF",
+	"coopAllowed": true,
+	"opponentModeAllowed": true
+}
