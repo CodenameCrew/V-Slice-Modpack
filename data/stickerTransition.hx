@@ -1,8 +1,11 @@
 import flixel.util.FlxTimerManager;
 import funkin.backend.MusicBeatTransition;
 import haxe.io.Path;
+import StickerPack;
 
-public static var lastStickers:Array<{
+public static var stickerPackID:String = "standard-pico";
+
+static var lastStickers:Array<{
 	var stickerPath:String;
 	var position:FlxPoint;
 	var scale:FlxPoint;
@@ -11,27 +14,7 @@ public static var lastStickers:Array<{
 	var showedInRegen:Bool;
 }> = [];
 
-// stolen straight from standard-bf, make this easier to change pleas!
-static var stickerPack:Array<String> = [
-	"transitionSwag/stickers-set-1/bfSticker1",
-    "transitionSwag/stickers-set-1/bfSticker2",
-    "transitionSwag/stickers-set-1/bfSticker3",
-    "transitionSwag/stickers-set-1/dadSticker1",
-    "transitionSwag/stickers-set-1/dadSticker2",
-    "transitionSwag/stickers-set-1/dadSticker3",
-    "transitionSwag/stickers-set-1/picoSticker1",
-    "transitionSwag/stickers-set-1/picoSticker2",
-    "transitionSwag/stickers-set-1/picoSticker3",
-    "transitionSwag/stickers-set-1/momSticker1",
-    "transitionSwag/stickers-set-1/momSticker2",
-    "transitionSwag/stickers-set-1/momSticker3",
-    "transitionSwag/stickers-set-1/monsterSticker1",
-    "transitionSwag/stickers-set-1/monsterSticker2",
-    "transitionSwag/stickers-set-1/monsterSticker3",
-    "transitionSwag/stickers-set-1/gfSticker1",
-    "transitionSwag/stickers-set-1/gfSticker2",
-    "transitionSwag/stickers-set-1/gfSticker3"
-];
+var stickerPack:StickerPack = null;
 
 var soundSelections:Array<String> = [];
 var soundSelection:String = "";
@@ -41,6 +24,8 @@ var grpStickers:FlxGroup;
 var timerManager:FlxTimerManager;
 
 function create(event) {
+	stickerPack = new StickerPack(stickerPackID);
+
 	grpStickers = new FlxGroup();
 	add(grpStickers);
 
@@ -71,7 +56,7 @@ function regenStickers()
     var yPos:Float = -100;
 	while(xPos <= FlxG.width)
 	{
-		var stickerPath:String = getRandomString(stickerPack);
+		var stickerPath:String = stickerPack.getRandomStickerPath(false);
 		var sticky:FlxSprite = new FlxSprite(0, 0);
 		CoolUtil.loadAnimatedGraphic(sticky, Paths.image(stickerPath));
 		sticky.visible = false;
@@ -104,7 +89,7 @@ function regenStickers()
 
 	grpStickers.members = shuffleStickers(grpStickers.members);
 
-	var lastStickerPath:String = getRandomString(stickerPack);
+	var lastStickerPath:String = stickerPack.getRandomStickerPath(true);
     var lastSticker:FlxSprite = new FlxSprite(0, 0);
 	CoolUtil.loadAnimatedGraphic(lastSticker, Paths.image(lastStickerPath));
     lastSticker.visible = false;
