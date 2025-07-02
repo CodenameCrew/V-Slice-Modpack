@@ -1,5 +1,6 @@
 import flixel.util.FlxTimerManager;
 import funkin.backend.MusicBeatTransition;
+import haxe.io.Path;
 
 public static var lastStickers:Array<{
 	var stickerPath:String;
@@ -32,17 +33,9 @@ static var stickerPack:Array<String> = [
     "transitionSwag/stickers-set-1/gfSticker3"
 ];
 
-static var sounds:Array<String> = [
-	'stickersounds/keys/keyClick1',
-	'stickersounds/keys/keyClick2',
-	'stickersounds/keys/keyClick3',
-	'stickersounds/keys/keyClick4',
-	'stickersounds/keys/keyClick5',
-	// where did keyClick6 go?
-	'stickersounds/keys/keyClick7',
-	'stickersounds/keys/keyClick8',
-	'stickersounds/keys/keyClick9'
-];
+var soundSelections:Array<String> = [];
+var soundSelection:String = "";
+var sounds:Array<String> = [];
 
 var grpStickers:FlxGroup;
 var timerManager:FlxTimerManager;
@@ -53,6 +46,14 @@ function create(event) {
 
 	timerManager = new FlxTimerManager();
 	add(timerManager);
+
+	soundSelections = Paths.getFolderDirectories('sounds/stickersounds/', true);
+	soundSelection = getRandomString(soundSelections);
+
+	for (file in Paths.getFolderContent(soundSelection, true))
+	{
+		sounds.push(Path.withoutExtension(file.substring('sounds/'.length)));
+	}
 
 	if(event.transOut)
 		regenStickers();
