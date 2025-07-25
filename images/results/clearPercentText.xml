@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="clearPercentText.png" width="397" height="367">
+	<SubTexture name="numbers0000" x="255" y="1" width="80" height="89" frameX="-0" frameY="-0" frameWidth="81" frameHeight="89"/>
+	<SubTexture name="numbers0001" x="322" y="186" width="62" height="87" frameX="-0" frameY="-0" frameWidth="62" frameHeight="88"/>
+	<SubTexture name="numbers0002" x="1" y="255" width="75" height="87" frameX="-0" frameY="-0" frameWidth="75" frameHeight="88"/>
+	<SubTexture name="numbers0003" x="164" y="162" width="78" height="87" frameX="-0" frameY="-0" frameWidth="78" frameHeight="88"/>
+	<SubTexture name="numbers0004" x="82" y="162" width="79" height="86" frameX="-0" frameY="-0" frameWidth="79" frameHeight="86"/>
+	<SubTexture name="numbers0005" x="255" y="93" width="79" height="90" frameX="-0" frameY="-0" frameWidth="79" frameHeight="90"/>
+	<SubTexture name="numbers0006" x="245" y="186" width="74" height="88" frameX="-0" frameY="-0" frameWidth="74" frameHeight="88"/>
+	<SubTexture name="numbers0007" x="163" y="252" width="75" height="86" frameX="-0" frameY="-0" frameWidth="75" frameHeight="86"/>
+	<SubTexture name="numbers0008" x="1" y="162" width="78" height="90" frameX="-0" frameY="-0" frameWidth="78" frameHeight="90"/>
+	<SubTexture name="numbers0009" x="82" y="251" width="78" height="87" frameX="-0" frameY="-0" frameWidth="78" frameHeight="87"/>
+	
+	<SubTexture name="clearPercentText" x="1" y="1" width="251" height="158" frameX="-0" frameY="-0" frameWidth="251" frameHeight="158"/>
+	
+	<SubTexture name="numbers small0000" x="361" y="276" width="35" height="44" frameX="-2" frameY="-1" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="numbers small0001" x="316" y="322" width="25" height="42" frameX="-11" frameY="-1" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="numbers small0002" x="337" y="142" width="45" height="38" rotated="true" frameX="-0" frameY="-0" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="numbers small0003" x="337" y="93" width="38" height="46" frameX="-0" frameY="-0" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="numbers small0004" x="322" y="276" width="36" height="43" frameX="-2" frameY="-0" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="numbers small0005" x="338" y="1" width="37" height="44" frameX="-0" frameY="-1" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="numbers small0006" x="279" y="315" width="34" height="42" frameX="-0" frameY="-3" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="numbers small0007" x="241" y="322" width="35" height="44" frameX="-4" frameY="-0" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="numbers small0008" x="338" y="48" width="45" height="36" rotated="true" frameX="-1" frameY="-0" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="numbers small0009" x="241" y="277" width="44" height="35" rotated="true" frameX="-3" frameY="-0" frameWidth="39" frameHeight="46"/>
+	<SubTexture name="numbers small0010" x="288" y="277" width="28" height="33" frameX="-0" frameY="-0" frameWidth="28" frameHeight="33"/>
+</TextureAtlas>
