@@ -1,0 +1,18 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"bpm": 155,
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"needsVoices": false,
+	"parsedColor": -10394881,
+	"displayName": "Darnell",
+	"icon": "darnell",
+	"name": "darnell",
+	"color": "#6162FF"
+}
