@@ -1,14 +1,14 @@
 <!DOCTYPE codename-engine-character>
 <character x="-20" icon="darnell" camx="-100" y="230" isGF="false" color="#715EAE" isPlayer="false" holdTime="8" sprite="darnell">
 	<anim x="0" loop="false" y="0" fps="24" anim="Idle0" name="idle"/>
-	<anim x="2" loop="false" y="3" fps="24" anim="Pose Right0" name="singLEFT"/>
-	<anim x="2" loop="false" y="3" fps="24" anim="Right Flame Loop0" name="singLEFT-loop"/>
+	<anim x="2" loop="false" y="3" fps="24" anim="Pose Right0" name="singRIGHT"/>
+	<anim x="2" loop="false" y="3" fps="24" anim="Right Flame Loop0" name="singRIGHT-loop"/>
 	<anim x="10" loop="false" y="5" fps="24" anim="Pose Up0" name="singUP"/>
 	<anim x="10" loop="false" y="5" fps="24" anim="Up Flame Loop0" name="singUp-loop"/>
 	<anim x="-6" loop="false" y="-10" fps="24" anim="Pose Down0" name="singDOWN"/>
 	<anim x="-6" loop="false" y="-10" fps="24" anim="Down Flame Loop0" name="singDOWN-loop"/>
-	<anim x="2" loop="false" y="0" fps="24" anim="Pose Left0" name="singRIGHT"/>
-	<anim x="2" loop="false" y="0" fps="24" anim="Left Flame Loop0" name="singRIGHT-loop"/>
+	<anim x="2" loop="false" y="0" fps="24" anim="Pose Left0" name="singLEFT"/>
+	<anim x="2" loop="false" y="0" fps="24" anim="Left Flame Loop0" name="singLEFT-loop"/>
 	<anim x="1" loop="false" y="2" fps="24" anim="Laugh0" name="laugh"/>
 	<anim x="1" loop="false" y="2" fps="24" anim="Laugh0" indices="0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5" name="laughCutscene"/>
 	<anim x="13" loop="false" y="18" fps="24" anim="Light Can0" name="lightCan"/>
