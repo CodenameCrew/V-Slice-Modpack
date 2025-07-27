@@ -1,0 +1,17 @@
+{
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"icon": "darnell",
+	"coopAllowed": true,
+	"name": "2hot",
+	"color": -10394881,
+	"stepsPerBeat": 4,
+	"displayName": "2Hot",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 182
+}
