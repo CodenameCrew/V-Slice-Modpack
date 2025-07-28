@@ -2,16 +2,16 @@
 <stage zoom="0.85" name="stage-erect" folder="stages/default/erect/" startCamPosY="600" startCamPosX="1000">
 	<use-extension script="erect-effect"/>
 
-	<box name="backDark" x="729" y="-170" color="#222026" width="1009" height="865"/>
-	<sprite name="crowd" x="560" y="290" sprite="crowd" anim="idle" scroll="0.8">
-		<anim name="idle" anim="Symbol 2" type="loop" loop="true" fps="12"/>
+	<box name="backDark" x="-500" y="-1000" color="#222026" width="1009" height="865"/>
+	<sprite name="crowd" x="682" y="290" sprite="crowd" anim="idle" scroll="0.8">
+		<anim name="idle" anim="idle0" type="loop" loop="true" fps="12"/>
 	</sprite>
 
 	<!-- LIGHTS -->
 	<sprite name="brightLightSmall" x="967" y="-103" sprite="brightLightSmall" scroll="1.2" >
 		<property name="blend" type="float" value="0" />
 	</sprite>
-	<sprite name="orangeLight" x="189" y="-195" sprite="orangeLight" >
+	<sprite name="orangeLight" x="189" y="-500" sprite="orangeLight" >
 		<property name="blend" type="float" value="0" />
 	</sprite>
 	<sprite name="lightgreen" x="-171" y="242" sprite="lightgreen" >
@@ -21,16 +21,16 @@
 		<property name="blend" type="float" value="0" />
 	</sprite>
 
-	<sprite name="bg" x="-603" y="-187" sprite="bg" />
-	<sprite name="server" x="-361" y="205" sprite="server" />
+	<sprite name="bg" x="-765" y="-247" sprite="bg" />
+	<sprite name="server" x="-991" y="205" sprite="server" />
 
-	<girlfriend x="181.5" y="197" brightness="-30" hue="-9" contrast="-4"/>
+	<girlfriend x="181.5" y="197" scroll="1" brightness="-30" hue="-9" contrast="-4"/>
 	<dad x="-170.5" y="86" camxoffset="100" camyoffset="10" brightness="-33" hue="-32" contrast="-23"/>
 	<boyfriend x="757.5" y="100" camxoffset="-50" camyoffset="-30" brightness="-23" hue="12" contrast="7"/>
 
 	<!-- MORE LIGHTS -->
-	<sprite name="lights" x="-601" y="-147" sprite="lights" scroll="1.2" />
-	<sprite name="lightAbove" x="804" y="117" sprite="lightAbove" >
+	<sprite name="lights" x="-847" y="-245" sprite="lights" scroll="1.2" />
+	<sprite name="lightAbove" x="804" y="-117" sprite="lightAbove" >
 		<property name="blend" type="float" value="0" />
 	</sprite>
 </stage>
