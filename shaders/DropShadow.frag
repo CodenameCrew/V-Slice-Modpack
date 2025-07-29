@@ -114,6 +114,10 @@ float intensityPass(vec2 fragCoord, float curThreshold, bool useMask) {
 // essentially just stole this from the AngleMask shader but repurposed it to smooth
 // the threshold because without any sort of smoothing it produces horrible edges
 float antialias(vec2 fragCoord, float curThreshold, bool useMask) {
+  float color = intensityPass(fragCoord, curThreshold, useMask);
+  if (AA_STAGES < 1.0) {
+    return color;
+  }
 
   // In GLSL 100, we need to use constant loop bounds
   // Well assume a reasonable maximum for AA_STAGES and use a fixed loop
@@ -122,9 +126,7 @@ float antialias(vec2 fragCoord, float curThreshold, bool useMask) {
 
   float AA_TOTAL_PASSES = AA_STAGES * AA_STAGES + 1.0;
   const float AA_JITTER = 0.5;
-
   // Run the shader multiple times with a random subpixel offset each time and average the results
-  float color = intensityPass(fragCoord, curThreshold, useMask);
   for (int i = 0; i < MAX_AA * MAX_AA; i++) {
     // Calculate x and y from i
     int x = i / MAX_AA;
