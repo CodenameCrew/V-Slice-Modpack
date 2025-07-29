@@ -43,8 +43,8 @@
 	<!-- MORE LIMO STUFF !-->
 	<girlfriend brightness="-30" hue="-30" saturation="-20"/>
 	<sprite name="limo" x="-120" y="550" sprite="erect/limoDrive" />
-	<dad brightness="-30" hue="-30" saturation="-20"/>
-	<boyfriend x="1030" y="-120" camxoffset="-300" brightness="-30" hue="-30" saturation="-20"/>
+	<dad camyoffset="50" brightness="-30" hue="-30" saturation="-20"/>
+	<boyfriend x="1030" y="-120" camxoffset="-300" camyoffset="50" brightness="-30" hue="-30" saturation="-20"/>
 
 	<high-memory>
 		<sprite name="overlayShit" x="-500" y="480" sprite="limoOverlay" scroll="0">
