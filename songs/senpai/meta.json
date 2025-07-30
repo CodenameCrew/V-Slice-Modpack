@@ -1,0 +1,19 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "senpai",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard",
+		"erect",
+		"nightmare"
+	],
+	"color": -34625,
+	"coopAllowed": true,
+	"name": "senpai",
+	"stepsPerBeat": 4,
+	"displayName": "Senpai",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"bpm": 144
+}
