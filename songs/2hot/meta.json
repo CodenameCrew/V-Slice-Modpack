@@ -13,5 +13,8 @@
 	"displayName": "2Hot",
 	"needsVoices": true,
 	"beatsPerMeasure": 4,
-	"bpm": 182
+	"bpm": 182,
+	"customValues": {
+		"album": "volume4"
+	}
 }

@@ -13,5 +13,8 @@
 	"displayName": "Blazin'",
 	"needsVoices": true,
 	"beatsPerMeasure": 4,
-	"bpm": 180
+	"bpm": 180,
+	"customValues": {
+		"album": "volume4"
+	}
 }

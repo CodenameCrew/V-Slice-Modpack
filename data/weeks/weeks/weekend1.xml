@@ -1,7 +1,7 @@
 <!DOCTYPE codename-engine-week>
 <week name="DUE DEBTS" chars="darnell,pico-player,nene" sprite="weekend1" bgColor="#413cae">
 	<song>Darnell</song>
-	<song>Lit-Up</song>
+	<song>Lit Up</song>
 	<song>2Hot</song>
 	<song hide="true">Blazin</song>
 </week>

@@ -14,5 +14,8 @@
 	"displayName": "Darnell",
 	"icon": "darnell",
 	"name": "darnell",
-	"color": "#6162FF"
+	"color": "#6162FF",
+	"customValues": {
+		"album": "volume4"
+	}
 }

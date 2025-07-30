@@ -13,5 +13,8 @@
 	"displayName": "Lit Up",
 	"needsVoices": true,
 	"beatsPerMeasure": 4,
-	"bpm": 176
+	"bpm": 176,
+	"customValues": {
+		"album": "volume4"
+	}
 }
