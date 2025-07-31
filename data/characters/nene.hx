@@ -1,5 +1,5 @@
 // Took the one inside the BaseGame source as a base  - Nex
-import funkin.vis.dsp.SpectralAnalyzer;
+import funkin.backend.utils.AudioAnalyzer;
 import Lambda;
 
 var pupilState:Int = 0;
@@ -13,7 +13,8 @@ var eyeWhites:FunkinSprite;
 var pupil:FunkinSprite;
 
 var abotViz:FlxSpriteGroup;
-var analyzer:SpectralAnalyzer;
+var analyzer:AudioAnalyzer;
+var analyzerLevelsCache:Array<Float>;
 
 var animationFinished:Bool = false;
 
@@ -202,8 +203,6 @@ function onNoteHit(event) moveByNoteKind(event.noteType);
 function onNoteMiss(event) moveByNoteKind(event.noteType);
 
 function draw(_) {
-	if(analyzer != null) drawFFT();
-
 	stereoBG.draw();
 	abotViz.draw();
 	eyeWhites.draw();
@@ -211,18 +210,10 @@ function draw(_) {
 	abot.draw();
 }
 
-/**
- * TJW funkin.vis based visualizer! updateFFT() is the old nasty shit that dont worky!
- */
-function drawFFT()
-{
-	var levels = analyzer.getLevels(false, FlxG.elapsed);
-
-	var grp = abotViz.group.members.length;
-	var lvls = levels.length;
-	for (i in 0...(grp > lvls ? lvls : grp))
-	{
-		var animFrame:Int = Math.round(levels[i].value * 5);
+function updateFFT() {
+	var levels = analyzer.getLevels(FlxG.sound.music.time, abotViz.group.members.length, analyzerLevelsCache, FlxG.elapsed);
+	for (i in 0...levels.length) {
+		var animFrame:Int = Math.round(levels[i]);
 
 		animFrame = Math.floor(Math.min(5, animFrame));
 		animFrame = Math.floor(Math.max(0, animFrame));
@@ -273,6 +264,7 @@ function update(elapsed) {
 
 	abotViz.update(elapsed);
 	abotViz.setPosition(abot.x + 200, abot.y + 90);
+	if (analyzer != null) updateFFT();
 
 	eyeWhites.update(elapsed);
 	eyeWhites.setPosition(abot.x + 40, abot.y + 250);
@@ -289,9 +281,7 @@ function update(elapsed) {
 }
 
 function onStartSong() {
-	analyzer = new SpectralAnalyzer(FlxG.sound.music._channel.__source, 7, 0.01, 30);
-	// analyzer.maxDb = -35;
-	// analyzer.fftN = 2048;
+	analyzer = new AudioAnalyzer(FlxG.sound.music);
 }
 
 function shouldTransitionState():Bool
