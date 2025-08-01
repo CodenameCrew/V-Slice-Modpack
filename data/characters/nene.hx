@@ -211,16 +211,19 @@ function draw(_) {
 }
 
 function updateFFT() {
-	var levels = analyzer.getLevels(FlxG.sound.music.time, abotViz.group.members.length, analyzerLevelsCache, FlxG.elapsed);
-	for (i in 0...levels.length) {
-		var animFrame:Int = Math.round(levels[i]);
+	if (analyzer != null && FlxG.sound.music.playing)
+		analyzerLevelsCache = analyzer.getLevels(FlxG.sound.music.time, abotViz.group.members.length, analyzerLevelsCache, FlxG.elapsed * 15, -60, -10, 50, 20000);
+	else {
+		if (analyzerLevelsCache == null) analyzerLevelsCache = [];
+		analyzerLevelsCache.resize(abotViz.group.members.length);
+		for (i in 0...analyzerLevelsCache.length) analyzerLevelsCache[i] = 0;
+	}
 
-		animFrame = Math.floor(Math.min(5, animFrame));
-		animFrame = Math.floor(Math.max(0, animFrame));
-
-		animFrame = Std.int(Math.abs(animFrame - 5)); // shitty dumbass flip, cuz dave got da shit backwards lol!
-
-		abotViz.group.members[i].animation.curAnim.curFrame = animFrame;
+	for (i in 0...analyzerLevelsCache.length) {
+		var animFrame:Int = CoolUtil.bound(Math.round(analyzerLevelsCache[i] * 6), 0, 6);
+		if (abotViz.group.members[i].visible = animFrame > 0) {
+			abotViz.group.members[i].animation.curAnim.curFrame = 5 - (animFrame - 1);
+		}
 	}
 }
 
@@ -262,9 +265,9 @@ function update(elapsed) {
 	abot.update(elapsed);
 	abot.setPosition(globalOffset.x + this.x - 100, globalOffset.y + this.y + 316);
 
+	updateFFT();
 	abotViz.update(elapsed);
 	abotViz.setPosition(abot.x + 200, abot.y + 90);
-	if (analyzer != null) updateFFT();
 
 	eyeWhites.update(elapsed);
 	eyeWhites.setPosition(abot.x + 40, abot.y + 250);
@@ -281,7 +284,7 @@ function update(elapsed) {
 }
 
 function onStartSong() {
-	analyzer = new AudioAnalyzer(FlxG.sound.music);
+	analyzer = new AudioAnalyzer(FlxG.sound.music, 512);
 }
 
 function shouldTransitionState():Bool
