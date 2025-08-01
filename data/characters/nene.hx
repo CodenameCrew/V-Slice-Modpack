@@ -15,6 +15,7 @@ var pupil:FunkinSprite;
 var abotViz:FlxSpriteGroup;
 var analyzer:AudioAnalyzer;
 var analyzerLevelsCache:Array<Float>;
+var analyzerTimeCache:Float;
 
 var animationFinished:Bool = false;
 
@@ -211,8 +212,11 @@ function draw(_) {
 }
 
 function updateFFT() {
-	if (analyzer != null && FlxG.sound.music.playing)
-		analyzerLevelsCache = analyzer.getLevels(FlxG.sound.music.time, abotViz.group.members.length, analyzerLevelsCache, FlxG.elapsed * 15, -60, -10, 50, 20000);
+	if (analyzer != null) {
+		var time = FlxG.sound.music.time;
+		if (analyzerTimeCache != time)
+			analyzerLevelsCache = analyzer.getLevels(analyzerTimeCache = time, abotViz.group.members.length, analyzerLevelsCache, FlxG.elapsed * 15, -40, -10, 1000, 22000);
+	}
 	else {
 		if (analyzerLevelsCache == null) analyzerLevelsCache = [];
 		analyzerLevelsCache.resize(abotViz.group.members.length);
