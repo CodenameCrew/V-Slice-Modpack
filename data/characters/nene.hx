@@ -212,15 +212,15 @@ function draw(_) {
 }
 
 function updateFFT() {
-	if (analyzer != null) {
+	if (analyzer != null && FlxG.sound.music.playing) {
 		var time = FlxG.sound.music.time;
 		if (analyzerTimeCache != time)
-			analyzerLevelsCache = analyzer.getLevels(analyzerTimeCache = time, abotViz.group.members.length, analyzerLevelsCache, FlxG.elapsed * 15, -40, -10, 1000, 22000);
+			analyzerLevelsCache = analyzer.getLevels(analyzerTimeCache = time, abotViz.group.members.length, analyzerLevelsCache, CoolUtil.getFPSRatio(0.4), -65, -20, 500, 22000);
 	}
 	else {
 		if (analyzerLevelsCache == null) analyzerLevelsCache = [];
 		analyzerLevelsCache.resize(abotViz.group.members.length);
-		for (i in 0...analyzerLevelsCache.length) analyzerLevelsCache[i] = 0;
+		//for (i in 0...analyzerLevelsCache.length) analyzerLevelsCache[i] = 0;
 	}
 
 	for (i in 0...analyzerLevelsCache.length) {
@@ -288,7 +288,7 @@ function update(elapsed) {
 }
 
 function onStartSong() {
-	analyzer = new AudioAnalyzer(FlxG.sound.music, 512);
+	analyzer = new AudioAnalyzer(FlxG.sound.music, 256);
 }
 
 function shouldTransitionState():Bool
