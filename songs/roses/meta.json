@@ -15,5 +15,8 @@
 	"displayName": "Roses",
 	"beatsPerMeasure": 4,
 	"needsVoices": true,
-	"bpm": 120
+	"bpm": 120,
+	"customValues": {
+		"stickerPack": "standard-bf"
+	}
 }

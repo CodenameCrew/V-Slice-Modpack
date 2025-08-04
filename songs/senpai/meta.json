@@ -15,5 +15,8 @@
 	"displayName": "Senpai",
 	"beatsPerMeasure": 4,
 	"needsVoices": true,
-	"bpm": 144
+	"bpm": 144,
+	"customValues": {
+		"stickerPack": "standard-bf"
+	}
 }
