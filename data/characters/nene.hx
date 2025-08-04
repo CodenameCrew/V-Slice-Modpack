@@ -215,7 +215,7 @@ function updateFFT() {
 	if (analyzer != null && FlxG.sound.music.playing) {
 		var time = FlxG.sound.music.time;
 		if (analyzerTimeCache != time)
-			analyzerLevelsCache = analyzer.getLevels(analyzerTimeCache = time, abotViz.group.members.length, analyzerLevelsCache, CoolUtil.getFPSRatio(0.4), -65, -20, 500, 22000);
+			analyzerLevelsCache = analyzer.getLevels(analyzerTimeCache = time, FlxG.sound.music.calcTransformVolume(), abotViz.group.members.length, analyzerLevelsCache, CoolUtil.getFPSRatio(0.4), -65, -10, 500, 20000);
 	}
 	else {
 		if (analyzerLevelsCache == null) analyzerLevelsCache = [];
