@@ -1,126 +1,83 @@
 // Took the one inside the BaseGame source as a base  - Nex
 
 // TO FINISH the can stuff once FlxAnimate gets updated (pls neeoooooo)  - Nex
-var canSprite:FunkinSprite = null;
+public var canSprite:FunkinSprite;
+
+var game = PlayState.instance;
 
 function onNoteHit(event)
 {
 	if (event.character == this) {
 		// Override the hit note animation.
 		switch(event.noteType) {
-			case "lightcan":
+			case "Light Can":
 				event.animCancelled = true;
 				playLightCanAnim();
-			case "kickcan":
+			case "Kick Can":
 				event.animCancelled = true;
 				playKickCanAnim();
-			case "kneecan":
+			case "Knee Can":
 				event.animCancelled = true;
 				playKneeCanAnim();
 		}
 	}
+	if (event.character.curCharacter == 'pico'){
+		switch(event.noteType) {
+			case "Fire Gun":
+				playCanAnim('Can Shot');
+		}
+	}
 }
 
-function gamePostCreate() {
-	// Precaching  - Nex
-	var arr = PlayState.instance.SONG.noteTypes;
-	if(arr.contains("lightcan")) FlxG.sound.load(Paths.sound('pico/Darnell_Lighter'));
-	if(arr.contains("kickcan")) FlxG.sound.load(Paths.sound('pico/Kick_Can_UP'));
-	if(arr.contains("kneecan")) {
-		loadCanSprite();
-		FlxG.sound.load(Paths.sound('pico/Kick_Can_FORWARD'));
+function onPlayerMiss(event)
+{
+	// Override the miss note animation.
+	if(!event.cancelled && event.character.curCharacter == 'pico') switch(event.noteType) {
+		case "Fire Gun":
+			playCanAnim('Hit Pico');
 	}
 }
 
 function loadCanSprite() {
 	canSprite?.destroy();
-	canSprite = new FunkinSprite(0, 0, Paths.image("characters/spraycanAtlas"));
+	canSprite = new FunkinSprite(this.x + 830, this.y + 300);
+	canSprite.loadSprite(Paths.image("characters/spraycanAtlas"));
+	canSprite.animateAtlas.anim.addBySymbolIndices('Can Start', 'Can with Labels', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18], 0, false);
+	canSprite.animateAtlas.anim.addBySymbolIndices('Hit Pico', 'Can with Labels', [19,20,21,22,23,24,25], 0, false);
+	canSprite.animateAtlas.anim.addBySymbolIndices('Can Shot', 'Can with Labels', [26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42], 0, false);
+	canSprite.visible = false;
+	FlxG.state.insert(game.members.indexOf(this), canSprite);
 }
 
-/*function onNoteIncoming(event:NoteScriptEvent) {
-	if (!event.note.noteData.getMustHitNote() && characterType == CharacterType.DAD) {
-		// Get how long until it's time to strum the note.
-		var msTilStrum = event.note.strumTime - Conductor.instance.songPosition;
-
-		switch(event.note.kind) {
-			case "weekend-1-lightcan":
-				scheduleLightCanSound(msTilStrum - 65);
-			case "weekend-1-kickcan":
-				scheduleKickCanSound(msTilStrum - 50);
-			case "weekend-1-kneecan":
-				scheduleKneeCanSound(msTilStrum - 22);
-			default:
-				super.onNoteIncoming(event);
-		}
+function gamePostCreate() {
+	// Precaching  - Nex
+	var arr = PlayState.instance.SONG.noteTypes;
+	if(arr.contains("Light Can")) FlxG.sound.load(Paths.sound('pico/Darnell_Lighter'));
+	if(arr.contains("Kick Can")) FlxG.sound.load(Paths.sound('pico/Kick_Can_UP'));
+	if(arr.contains("Knee Can")) {
+		loadCanSprite();
+		FlxG.sound.load(Paths.sound('pico/Kick_Can_FORWARD'));
 	}
-}*/
+}
 
-/**
- * Play the animation where Darnell kneels down to light the can.
- */
 function playLightCanAnim() {
-	this.playAnim('lightCan', true, "LOCK");
+	this.playAnim("lightCan", true, "LOCK");
 	FlxG.sound.play(Paths.sound('pico/Darnell_Lighter'));
 }
 
-// var lightCanSound:FunkinSound;
-// var loadedLightCanSound:Bool = false;
-/**
- * Schedule the can-lighting sound to play in X ms
- */
-/*function scheduleLightCanSound(timeToPlay:Float) {
-	if (!loadedLightCanSound) {
-		lightCanSound = FunkinSound.load(Paths.sound('Darnell_Lighter'), 1.0);
-		loadedLightCanSound = true;
-	}
-
-	lightCanSound.play(true, -timeToPlay);
-}*/
-
-/**
- * Play the animation where Darnell kicks the can into the air.
- */
 function playKickCanAnim() {
-	this.playAnim('kickCan', true);
+	this.playAnim("kickCan", true, "LOCK");
 	FlxG.sound.play(Paths.sound('pico/Kick_Can_UP'));
-
-	if(canSprite == null) loadCanSprite();
+	playCanAnim('Can Start');
 }
 
-// var kickCanSound:FunkinSound;
-// var loadedKickCanSound:Bool = false;
-/**
- * Schedule the can-kicking sound to play in X ms
- */
-/*function scheduleKickCanSound(timeToPlay:Float) {
-	if (!loadedKickCanSound) {
-		kickCanSound = FunkinSound.load(Paths.sound('Kick_Can_UP'), 1.0);
-		loadedKickCanSound = true;
-	}
-
-	kickCanSound.play(true, -timeToPlay);
-}*/
-
-/**
- * Play the animation where Darnell knees the can in Pico's direction.
- */
-function playKneeCanAnim() {
-	this.playAnim('kneeCan', true);
+function playKneeCanAnim(){
+	this.playAnim("kneeCan", true, "LOCK");
 	FlxG.sound.play(Paths.sound('pico/Kick_Can_FORWARD'));
-
-	if(canSprite == null) loadCanSprite();
 }
 
-// var kneeCanSound:FunkinSound;
-// var loadedKneeCanSound:Bool = false;
-/**
- * Schedule the can-kneeing sound to play in X ms
- */
-/*function scheduleKneeCanSound(timeToPlay:Float) {
-	if (!loadedKneeCanSound) {
-		kneeCanSound = FunkinSound.load(Paths.sound('Kick_Can_FORWARD'), 1.0);
-		loadedKneeCanSound = true;
-	}
+function playCanAnim(pluh:String){
+	canSprite.visible = true;
+	canSprite.playAnim(pluh, true);
+}
 
-	kneeCanSound.play(true, -timeToPlay);
-}*/

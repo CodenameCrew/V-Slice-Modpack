@@ -44,7 +44,7 @@
 
 	<girlfriend x="1203" y="454" scroll="1" />
 	<dad x="640" y="410" camxoffset="470" />
-	<boyfriend x="1970" y="450" camxoffset="-530" camyoffset="55" />
+	<boyfriend x="1970" y="450" camxoffset="-530"/>
 
 	<high-memory>
 		<sprite name="cans" x="920" y="1045" sprite="spraycanPile"/>
