@@ -64,10 +64,10 @@ function onNoteHit(event)
 	if (event.character == this) {
 		// Override the hit note animation.
 		switch(event.noteType) {
-			case "cockgun": // HE'S PULLING HIS COCK OUT
+			case "Cock Gun": // HE'S PULLING HIS COCK OUT
 				event.animCancelled = true;
 				playCockGunAnim();
-			case "firegun":
+			case "Fire Gun":
 				event.animCancelled = true;
 				playFireGunAnim();
 		}
@@ -78,10 +78,10 @@ function onPlayerMiss(event)
 {
 	// Override the miss note animation.
 	if(!event.cancelled && event.character == this) switch(event.noteType) {
-		case "cockgun":
+		case "Cock Gun":
 			//event.animCancelled = true;
 			//playCockMissAnim();
-		case "firegun":
+		case "Fire Gun":
 			event.animCancelled = true;
 			playCanExplodeAnim();
 	}

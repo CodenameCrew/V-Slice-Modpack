@@ -4,7 +4,7 @@
 	<anim x="2" loop="false" y="3" fps="24" anim="Pose Right0" name="singRIGHT"/>
 	<anim x="2" loop="false" y="3" fps="24" anim="Right Flame Loop0" name="singRIGHT-loop"/>
 	<anim x="10" loop="false" y="5" fps="24" anim="Pose Up0" name="singUP"/>
-	<anim x="10" loop="false" y="5" fps="24" anim="Up Flame Loop0" name="singUp-loop"/>
+	<anim x="10" loop="false" y="5" fps="24" anim="Up Flame Loop0" name="singUP-loop"/>
 	<anim x="-6" loop="false" y="-10" fps="24" anim="Pose Down0" name="singDOWN"/>
 	<anim x="-6" loop="false" y="-10" fps="24" anim="Down Flame Loop0" name="singDOWN-loop"/>
 	<anim x="2" loop="false" y="0" fps="24" anim="Pose Left0" name="singLEFT"/>

@@ -63,6 +63,7 @@ function regenStickers()
 
 		sticky.x = xPos;
 		sticky.y = yPos;
+		sticky.antialiasing = true;
 		xPos += sticky.frameWidth * 0.5;
 
 		if (xPos >= FlxG.width)
@@ -144,6 +145,7 @@ function degenStickers()
 		CoolUtil.loadAnimatedGraphic(sticky, Paths.image(prop.stickerPath));
 		sticky.updateHitbox();
 		sticky.scale.set(prop.scale.x, prop.scale.y);
+		sticky.antialiasing = true;
 		sticky.angle = prop.angle;
 		grpStickers.add(sticky);
 	}
