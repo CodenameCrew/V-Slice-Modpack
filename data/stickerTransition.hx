@@ -3,7 +3,7 @@ import funkin.backend.MusicBeatTransition;
 import haxe.io.Path;
 import StickerPack;
 
-public static var stickerPackID:String = "standard-pico";
+public static var defaultStickerPackID:String = "default";
 
 static var lastStickers:Array<{
 	var stickerPath:String;
@@ -24,7 +24,7 @@ var grpStickers:FlxGroup;
 var timerManager:FlxTimerManager;
 
 function create(event) {
-	stickerPack = new StickerPack(stickerPackID);
+	stickerPack = new StickerPack(PlayState.SONG.meta.customValues?.stickerPack ?? defaultStickerPackID);
 
 	grpStickers = new FlxGroup();
 	add(grpStickers);

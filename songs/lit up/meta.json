@@ -15,6 +15,7 @@
 	"beatsPerMeasure": 4,
 	"bpm": 176,
 	"customValues": {
+		"stickerPack": "bonus-weekend1",
 		"album": "volume4"
 	}
 }
