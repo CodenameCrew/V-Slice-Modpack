@@ -3,9 +3,11 @@ import funkin.backend.system.Flags;
 
 var timers:Array<FlxTimer> = [];
 
-var canSprite, blackThing:FunkinSprite;
+var canSprite, blackThing, startFade:FunkinSprite;
 
 var camera = FlxG.camera;
+
+var cutsceneCam:FlxCamera = new FlxCamera(0, 0, 0, 0);
 
 var music:FlxSound;
 
@@ -19,12 +21,14 @@ function create() {
 }
 
 function startInGameCut(){
-    
     var darnellCamPos = game.dad.getCameraPosition();
     var picoCamPos = game.boyfriend.getCameraPosition();
     var neneCamPos = game.gf.getCameraPosition();
 
     var cutsceneDelay:Float = 2;
+
+    FlxG.cameras.add(cutsceneCam, false);
+    cutsceneCam.bgColor = 0x00000000;
 
     game.camHUD.visible = false;
     this.exists = true;
@@ -41,6 +45,10 @@ function startInGameCut(){
     blackThing.visible = false;
     FlxG.state.insert(game.members.indexOf(game.gf), blackThing);
 
+    startFade = new FunkinSprite(0,0).makeGraphic(4000,4000, FlxColor.BLACK);
+    startFade.cameras = [cutsceneCam];
+    FlxG.state.add(startFade);
+
     //loading sounds there probably a better way to do this
     FlxG.sound.load(Paths.sound('pico/Darnell_Lighter'));
     FlxG.sound.load(Paths.sound('pico/Kick_Can_UP'));
@@ -53,15 +61,20 @@ function startInGameCut(){
 
     music = FlxG.sound.load(Paths.music('pico/darnellCanCutscene'));
 	music.volume = 1;
-	music.play();
 
-    camera.flash(FlxColor.BLACK, 2.3);
     camera.followEnabled = false;
     camera.scroll.set(picoCamPos.x - 385, picoCamPos.y - 350);
     camera.zoom = 1.3;
     game.boyfriend.playAnim('intro1', true, "LOCK");
 
     // the timers :DDDDDD
+
+    timer(0.7,function(){
+        music.play();
+        FlxTween.tween(startFade, {alpha: 0}, 2, {startDelay: 0.3}, function() {
+            startFade.destroy();
+        });
+    });
 
     timer(cutsceneDelay, function(){
         FlxTween.tween(camera, {"scroll.x": darnellCamPos.x - 565, "scroll.y": darnellCamPos.y - 350, zoom: 0.66}, 2.5, {ease: FlxEase.quadInOut});
@@ -85,7 +98,7 @@ function startInGameCut(){
         canSprite.playAnim('Can Start', true);
     });
 
-    timer(cutsceneDelay + 4.8, function(){
+    timer(cutsceneDelay + 4.9, function(){
         game.dad.playAnim('kneeCan', true);
         FlxG.sound.play(Paths.sound('pico/Kick_Can_FORWARD'));
         canSprite.playAnim('Can Knee', true);
