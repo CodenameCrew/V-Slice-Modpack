@@ -141,10 +141,18 @@ function timer(duration:Float, callBack:Void->Void) {
 function destroy() {
 	game.camHUD.visible = true;
     camera.followEnabled = true;
+    camera.zoom = game.defaultCamZoom;
+    startFade?.destroy();
     canSprite.destroy();
-    blackThing.destroy();
+    blackThing?.destroy();
     game.dad.playAnim('idle', true);
     if(game.boyfriend.animation.name != 'intro2') game.boyfriend.playAnim('idle', true);
-    music.stop();
+    music.destroy();
 	for(timer in timers) timer.cancel();
+}
+
+function beatHit() { //for some reason doesnt work. probably something in source???
+	game.dad.dance();
+	game.boyfriend.dance();
+    game.gf.dance();
 }
