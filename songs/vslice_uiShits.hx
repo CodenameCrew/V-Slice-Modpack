@@ -1,10 +1,12 @@
-//
 public var ratingScaleDiff:Float = 0.1;
 
-function create() {
-    comboGroup.x = 560;
-    comboGroup.y = 290;
-}
+var lerpHealth:Float = 1;
+
+function create()
+    comboGroup.setPosition(560, 290);
+
+function postCreate() 
+    healthBar.numDivisions = 1000;
 
 function onPostCountdown(event) {
     var spr = event.sprite;
@@ -24,5 +26,10 @@ function onNoteHit(event) {
     event.ratingScale -= ratingScaleDiff;
 }
 
-function update()
+function update() 
     comboGroup.forEachAlive(function(spr) if (spr.camera != camHUD) spr.camera = camHUD);
+
+function postUpdate(elapsed:Float) {
+    lerpHealth = lerp(lerpHealth, health, 0.15);
+    healthBar.value = FlxMath.roundDecimal(lerpHealth, 3);
+}

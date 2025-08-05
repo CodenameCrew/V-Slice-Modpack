@@ -101,7 +101,7 @@ function postCreate() {
     songName.text = 'example';
 
     if (PlayState.SONG != null) {
-        songName.text = (PlayState.SONG.meta.displayName ?? 'Unknown') + ' by ' + (PlayState.SONG.meta.customValues?.composer ?? 'Unknown (edit this with custom song property named \'composer\' !!!)');
+        songName.text = (PlayState.SONG.meta.displayName ?? 'Unknown') + ' by ' + (PlayState.SONG.meta.customValues?.artist ?? 'Unknown (edit this with custom song property named \'artist\' !!!)');
         if (PlayState.isStoryMode && PlayState.storyWeek != null) {
             songName.text = PlayState.storyWeek.name;
         }
