@@ -9,13 +9,13 @@
 	"coopAllowed": true,
 	"name": "blazin",
 	"color": -10394881,
+	"customValues": {
+		"stickerPack": "bonus-weekend1",
+		"album": "volume4"
+	},
 	"stepsPerBeat": 4,
 	"displayName": "Blazin'",
 	"needsVoices": true,
 	"beatsPerMeasure": 4,
-	"bpm": 180,
-	"customValues": {
-		"stickerPack": "bonus-weekend1",
-		"album": "volume4"
-	}
+	"bpm": 180
 }

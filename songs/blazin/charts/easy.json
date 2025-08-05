@@ -1,13 +1,4 @@
 {
-	"events": [
-		{
-			"params": [
-				1
-			],
-			"time": 0,
-			"name": "Camera Movement"
-		}
-	],
 	"strumLines": [
 		{
 			"keyCount": 4,
@@ -337,20 +328,20 @@
 					"type": 7
 				}
 			],
-			"visible": false,
+			"position": "dad",
+			"strumScale": 1,
 			"strumSpacing": 1,
+			"visible": false,
+			"type": 0,
+			"characters": [
+				"darnell-blazin"
+			],
 			"strumPos": [
 				0,
 				50
 			],
-			"position": "dad",
-			"strumScale": 1,
 			"vocalsSuffix": "",
-			"strumLinePos": 0.25,
-			"type": 0,
-			"characters": [
-				"darnell-blazin"
-			]
+			"strumLinePos": 0.25
 		},
 		{
 			"keyCount": 4,
@@ -2564,36 +2555,36 @@
 					"type": 13
 				}
 			],
-			"visible": true,
+			"position": "boyfriend",
+			"strumScale": 1,
 			"strumSpacing": 1,
+			"visible": true,
+			"type": 1,
+			"characters": [
+				"pico-blazin"
+			],
 			"strumPos": [
 				0,
 				50
 			],
-			"position": "boyfriend",
-			"strumScale": 1,
 			"vocalsSuffix": "",
-			"strumLinePos": 0.5,
-			"type": 1,
-			"characters": [
-				"pico-blazin"
-			]
+			"strumLinePos": 0.5
 		},
 		{
 			"keyCount": 4,
 			"notes": [],
-			"visible": false,
 			"position": "girlfriend",
+			"visible": false,
 			"type": 2,
 			"characters": [
 				"nene"
 			]
 		}
 	],
-	"codenameChart": true,
 	"scrollSpeed": 2,
 	"chartVersion": "1.6.0",
-	"stage": "streetsBlazin",
+	"stage": "philly-blazin",
+	"codenameChart": true,
 	"noteTypes": [
 		"Block High",
 		"Punch Low Dodged",

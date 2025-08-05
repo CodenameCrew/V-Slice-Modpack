@@ -1,0 +1,15 @@
+{
+	"events": [
+		{
+			"params": [
+				0,
+				false,
+				4,
+				"CLASSIC",
+				"In"
+			],
+			"time": 0,
+			"name": "Camera Movement"
+		}
+	]
+}
