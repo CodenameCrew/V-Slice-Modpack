@@ -1,7 +1,7 @@
 // Took the one inside the BaseGame source as a base  - Nex
 
 // TO FINISH the can stuff once FlxAnimate gets updated (pls neeoooooo)  - Nex
-public var canSprite:FunkinSprite;
+var canSprite:FunkinSprite;
 
 var game = PlayState.instance;
 
