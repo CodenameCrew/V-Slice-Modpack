@@ -21,6 +21,9 @@ function move2attract() {
 }
 
 function update(elapsed:Float) {
+    if (controls.BACK)
+        window.close();
+
     if (FlxG.keys.justPressed.Y) {
         FlxTween.cancelTweensOf(window, ["x", "y"]);
         FlxTween.tween(window, {x: window.x + 300}, 1.4, {ease: FlxEase.quadInOut, type: FlxTweenType.PINGPONG, startDelay: 0.35});
