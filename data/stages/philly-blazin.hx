@@ -51,7 +51,7 @@ function postCreate()
 	for(char in strumLines.members[2].characters)
 	{
 		gf.color = 0xFF888888;
-		for(stuff in [gf.scripts.get('abot'), gf.scripts.get('stereoBG'), gf.scripts.get('eyeWhites'), gf.scripts.get('pupil'), gf.scripts.get('abotViz')]){
+		for(stuff in [gf.scripts.get('abot'), gf.scripts.get('stereoBG'), gf.scripts.get('abotViz')]){
 			if(stuff != null)
 				stuff.color = 0xFF888888;
 		}

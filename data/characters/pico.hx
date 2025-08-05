@@ -171,6 +171,16 @@ function playCockGunAnim() {
 function playFireGunAnim() {
 	this.playAnim('shoot', true);
 	FlxG.sound.play(Paths.soundRandom('pico/shot', 1, 4));
+
+	var blackThing = new FlxSprite(0,0).makeGraphic(4000,4000, FlxColor.BLACK);
+	blackThing.alpha = 0.7;
+
+	FlxTween.tween(blackThing, {alpha: 0}, 1.4, {onComplete: function(){
+		blackThing.destroy();
+	}});
+
+	var game = PlayState.instance;
+	game.insert(game.members.indexOf(game.gf), blackThing);
 }
 /**
  * Play the animation where Pico is hit by the exploding can.

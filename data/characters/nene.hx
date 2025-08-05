@@ -186,16 +186,10 @@ function movePupilsRight() {
 function moveByNoteKind(kind:String) {
 	// Force ABot to look where the action is happening.
 	switch(kind) {
-		case "lightcan":
+		case "Light Can":
 			movePupilsLeft();
-		case "kickcan":
-			// movePupilsLeft();
-		case "kneecan":
-			// movePupilsLeft();
-		case "cockgun":
+		case "Cock Gun":
 			movePupilsRight();
-		case "firegun":
-			// movePupilsRight();
 		default: // Nothing
 	}
 }
