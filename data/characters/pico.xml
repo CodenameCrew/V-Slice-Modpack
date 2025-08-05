@@ -1,19 +1,19 @@
 <!DOCTYPE codename-engine-character>
-<character x="100" icon="pico" camx="100" y="300" isGF="false" color="#B7D855" flipX="true" isPlayer="false" sprite="pico" gameOverChar="pico-stabbed">
-	<anim x="0" loop="false" y="0" fps="24" anim="Pico Idle Dance" name="idle"/>
-	<anim x="65" loop="false" y="9" fps="24" anim="Pico Note Right0" name="singLEFT"/>
-	<anim x="200" loop="false" y="-70" fps="24" anim="Pico Down Note0" name="singDOWN"/>
-	<anim x="-29" loop="false" y="27" fps="24" anim="pico Up note0" name="singUP"/>
-	<anim x="-68" loop="false" y="-7" fps="24" anim="Pico NOTE LEFT0" name="singRIGHT"/>
-	<anim x="62" loop="false" y="64" fps="24" anim="Pico Note Right Miss" name="singLEFTmiss"/>
-	<anim x="210" loop="false" y="-28" fps="24" anim="Pico Down Note MISS" name="singDOWNmiss"/>
-	<anim x="-19" loop="false" y="67" fps="24" anim="pico Up note miss" name="singUPmiss"/>
-	<anim x="-60" loop="false" y="41" fps="24" anim="Pico NOTE LEFT miss" name="singRIGHTmiss"/>
-	<anim x="26" loop="false" y="2" fps="24" anim="Pico HEY!!" name="hey"/>
-	<anim x="110" loop="false" y="-10" fps="24" anim="Pico Hit Can" name="shootMISS"/>
-	<anim x="44" loop="false" y="-9" fps="24" anim="Pico Reload" name="cock"/>
-	<anim x="60" loop="false" y="232" fps="24" anim="Pico Shoot Hip Full" name="shoot"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Pico Gets Pissed0" name="intro1"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="cutscene cock0" name="cockCutscene"/>
-	<anim x="61" loop="false" y="231" fps="24" anim="shoot and return0" name="intro2"/>
+<character x="100" y="300" flipX="true" camx="100" color="#B7D855" gameOverChar="pico-stabbed" isGF="false">
+	<anim name="idle" anim="Pico Idle Dance"/>
+	<anim name="singLEFT" anim="Pico Note Right0" x="55" y="2"/>
+	<anim name="singDOWN" anim="Pico Down Note0" x="177" y="-85"/>
+	<anim name="singUP" anim="pico Up note0" x="-33" y="23"/>
+	<anim name="singRIGHT" anim="Pico NOTE LEFT0" x="-82" y="-9"/>
+	<anim name="singLEFTmiss" anim="Pico Note Right Miss" x="56" y="46"/>
+	<anim name="singDOWNmiss" anim="Pico Down Note MISS" x="183" y="-43"/>
+	<anim name="singUPmiss" anim="pico Up note miss" x="-18" y="58"/>
+	<anim name="singRIGHTmiss" anim="Pico NOTE LEFT miss" x="-72" y="30"/>
+	<anim name="hey" anim="Pico HEY!!" x="26" y="2"/>
+	<anim name="shootMISS" anim="Pico Hit Can" x="117" y="-8"/>
+	<anim name="cock" anim="Pico Reload" x="34" y="-7"/>
+	<anim name="shoot" anim="Pico Shoot Hip Full" x="60" y="232"/>
+	<anim name="intro1" anim="Pico Gets Pissed0"/>
+	<anim name="cockCutscene" anim="cutscene cock0"/>
+	<anim name="intro2" anim="shoot and return0" x="63" y="231"/>
 </character>
