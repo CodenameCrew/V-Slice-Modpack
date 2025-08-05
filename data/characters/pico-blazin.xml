@@ -1,0 +1,20 @@
+<!DOCTYPE codename-engine-character>
+<character sprite="picoBlazin" flipX="true" isPlayer="true" icon="pico" color="#B7D855" holdTime="999" isGF="false" gameOverChar="pico-blazin-dead" >
+	<anim name="idle" anim="Pico Fighting ALL ANIMS" loop="true" indices="0..13"/>
+	<anim name="block" anim="Pico Fighting ALL ANIMS" indices="14..18"/>
+	<anim name="dodge" anim="Pico Fighting ALL ANIMS" indices="19..23"/>
+	<anim name="fakeout" anim="Pico Fighting ALL ANIMS" indices="57..61"/>
+	<anim name="taunt" anim="Pico Fighting ALL ANIMS" indices="62..67"/>
+	<anim name="taunt-loop" anim="Pico Fighting ALL ANIMS" loop="true" indices="64..67"/>
+	<anim name="punchHigh1" anim="Pico Fighting ALL ANIMS" indices="24..27"/>
+	<anim name="punchHigh2" anim="Pico Fighting ALL ANIMS" indices="28..31"/>
+	<anim name="punchLow1" anim="Pico Fighting ALL ANIMS" indices="36..39"/>
+	<anim name="punchLow2" anim="Pico Fighting ALL ANIMS" indices="32..35"/>
+	<anim name="hitHigh" anim="Pico Fighting ALL ANIMS" indices="44..47"/>
+	<anim name="hitLow" anim="Pico Fighting ALL ANIMS" indices="40..43"/>
+	<anim name="hitSpin" anim="Pico Fighting ALL ANIMS" loop="true" indices="78..80"/>
+	<anim name="uppercutPrep" anim="Pico Fighting ALL ANIMS" indices="68..72"/>
+	<anim name="uppercut" anim="Pico Fighting ALL ANIMS" indices="73..77"/>
+	<anim name="uppercutHit" anim="Pico Fighting ALL ANIMS" indices="48..56"/>
+	<anim name="uppercut-loop" anim="Pico Fighting ALL ANIMS" loop="true" indices="75..77"/>
+</character>

@@ -1,0 +1,11 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="stages/philly-blazin/" name="philly-blazin" zoom="0.75">
+	<sprite x="-600" scroll="0" sprite="skyBlur" y="-175" type="none" scale="1.75" name="skyAdditive" updateHitbox="true"/>
+	<sprite x="50" scroll="0" sprite="lightning" y="-300" type="none" scale="1.75" name="lightning" updateHitbox="true"/>
+	<sprite x="-600" scroll="0" sprite="streetBlur" y="-175" type="none" scale="1.75" name="phillyForegroundCity" updateHitbox="true"/>
+	<sprite x="-600" scroll="0" sprite="streetBlur" y="-175" type="none" scale="1.75" name="foregroundMultiply" updateHitbox="true"/>
+	<solid x="-600" y="-175" name="additionalLighten" color="#FFFFFF" width="2500" height="2000" scroll="0" />
+	<girlfriend x="-612.9319854736" scroll="1" camyoffset="20" y="-1055.8362959879"/>
+	<dad camxoffset="-150" x="-332.431985473633" camyoffset="-450" y="-337.836295987852" scale="1.75"/>
+	<boyfriend camxoffset="-350" x="-424.822087053792" camyoffset="-100" y="-370.611902062036" scale="1.75"/>
+</stage>

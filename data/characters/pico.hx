@@ -49,7 +49,7 @@ function onGameOver(event) {
 			event.lossSFX = "pico/fnf_loss_sfx-pico-explode";
 		} else {
 			event.gameOverSong = "pico/gameOver";
-			event.lossSFX = "pico/fnf_loss_sfx-pico-gutpunch";
+			event.lossSFX = "pico/fnf_loss_sfx-pico";
 		}
 	}
 }
