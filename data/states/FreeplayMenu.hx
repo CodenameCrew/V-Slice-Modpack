@@ -5,6 +5,7 @@ import flxanimate.frames.FlxAnimateFrames;
 import flixel.tweens.FlxTween.FlxTweenType;
 import funkin.menus.FreeplayState.FreeplaySonglist;
 import funkin.backend.system.framerate.Framerate;
+import funkin.backend.MusicBeatState;
 
 var freeplayCam = new FlxCamera();
 
@@ -100,7 +101,7 @@ function createBackingcard(style:String)
 
 			for (txt in [backingCard.funnyScroll, backingCard.funnyScroll2, backingCard.moreWays,
 								backingCard.moreWays2, backingCard.txtNuts, backingCard.funnyScroll3, backingCard.orangeBackShit])
-				txt.visible = false;
+				txt.visible = true;
     }
 }
 
@@ -132,7 +133,7 @@ var freeplaySelectorRight:FlxSprite;
 function changeDifficulty(change, force = false) {
 	if (change == null) change = 0;
 
-	var hasErect = Assets.exists(Paths.inst(songs[curSelected][1], "", "-erect"));
+	var hasErect = Assets.exists(Paths.file("songs/" + songs[curSelected].name + "/charts/erect.json"));
 	var oldDiff = curDifficulty;
 	curDifficulty = FlxMath.wrap(curDifficulty + change, 0, (hasErect ? difficulties : difficultiesNoErect).length - 1);
 
@@ -277,6 +278,8 @@ function update(elapsed) {
 			loadSong = capsules[FlxG.random.int(1, capsules.length - 1)].song;
 
 	    new FlxTimer().start(0.75, (_) -> {
+			MusicBeatState.skipTransOut = true;
+    		MusicBeatState.skipTransIn = true;  
 			PlayState.loadSong(loadSong, difficulties[curDifficulty], false, false);
 			FlxG.switchState(new PlayState());
 	    });

@@ -8,5 +8,6 @@
 	"icon": "dad",
 	"color": "#9271FD",
 	"coopAllowed": true,
+	"needsVoices": false,
 	"opponentModeAllowed": true
 }
