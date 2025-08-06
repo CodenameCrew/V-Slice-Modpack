@@ -1,0 +1,16 @@
+{
+	"displayName": "Dadbattle",
+	"bpm": 180.0,
+	"icon": "dad",
+	"color": "#9271FD",
+	"coopAllowed": true,
+	"opponentModeAllowed": true,
+	"needsVoices": false,
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard",
+		"erect",
+		"nightmare"
+	]
+}
