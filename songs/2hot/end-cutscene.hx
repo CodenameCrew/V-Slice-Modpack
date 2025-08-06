@@ -74,7 +74,7 @@ function destroy() {
 	game.camHUD.visible = true;
 }
 
-function beatHit() { //for some reason doesnt work. probably something in source???
+function beatHit() {
 	game.dad.dance();
 	game.boyfriend.dance();
     game.gf.dance();

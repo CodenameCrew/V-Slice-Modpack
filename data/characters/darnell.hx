@@ -29,6 +29,13 @@ function onNoteHit(event)
 	}
 }
 
+function update(elapsed:Float) {
+	if(canSprite != null && canSprite.isAnimFinished() && canSprite.getAnimName() == 'Can Shot') 
+		canSprite.visible = false;
+	else if(canSprite.getAnimName() != null)
+		canSprite.visible = true;
+}
+
 function onPlayerMiss(event)
 {
 	// Override the miss note animation.
@@ -40,7 +47,7 @@ function onPlayerMiss(event)
 
 function loadCanSprite() {
 	canSprite?.destroy();
-	canSprite = new FunkinSprite(this.x + 830, this.y + 300);
+	canSprite = new FunkinSprite(this.x + 880, this.y + 300);
 	canSprite.loadSprite(Paths.image("characters/spraycanAtlas"));
 	canSprite.animateAtlas.anim.addBySymbolIndices('Can Start', 'Can with Labels', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18], 0, false);
 	canSprite.animateAtlas.anim.addBySymbolIndices('Hit Pico', 'Can with Labels', [19,20,21,22,23,24,25], 0, false);
@@ -77,7 +84,6 @@ function playKneeCanAnim(){
 }
 
 function playCanAnim(pluh:String){
-	canSprite.visible = true;
 	canSprite.playAnim(pluh, true);
 }
 
