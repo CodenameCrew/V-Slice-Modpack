@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="1" name="school-evil-erect" folder="stages/school/erect/evil/" startCamPosY="550" startCamPosX="600">
+	<use-extension script="pixel"/>
+    
+    <sprite name="backspikes" x="-842" y="-180" sprite="weebBackSpikes" antialiasing="false" scale="6" scroll="0.5" updateHitbox="true"/>
+	<sprite name="school" x="-816" y="-38" sprite="weebSchool" antialiasing="false" scale="6" scroll="0.75" updateHitbox="true"/>
+    <sprite name="backspike" x="1416" y="464" sprite="backSpike" antialiasing="false" scale="6" scroll="0.85" updateHitbox="true"/>
+    <sprite name="street" x="-662" y="6" sprite="weebStreet" antialiasing="false" scale="6" updateHitbox="true"/>
+
+    <girlfriend x="524" y="125" scroll="1"/>
+    <dad x="100" y="125" camxoffset="-50" camyoffset="50"/>
+    <boyfriend x="968" y="50" camxoffset="-100"/>
+</stage>

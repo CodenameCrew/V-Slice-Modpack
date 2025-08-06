@@ -1,0 +1,20 @@
+<!DOCTYPE codename-engine-character>
+<character sprite="darnellBlazin" icon="darnell" color="#715EAE" holdTime="999" isGF="false">
+	<anim name="idle" anim="Darnell Fighting ALL ANIMS" loop="true" indices="0..13"/>
+	<anim name="pissed" anim="Darnell Fighting ALL ANIMS" indices="74..78"/>
+	<anim name="cringe" anim="Darnell Fighting ALL ANIMS" indices="67..70"/>
+	<anim name="fakeout" anim="Darnell Fighting ALL ANIMS" indices="24..28"/>
+	<anim name="block" anim="Darnell Fighting ALL ANIMS" indices="29..32"/>
+	<anim name="dodge" anim="Darnell Fighting ALL ANIMS" indices="53..57"/>
+	<anim name="uppercutPrep" anim="Darnell Fighting ALL ANIMS" indices="14..18"/>
+	<anim name="uppercut" anim="Darnell Fighting ALL ANIMS" indices="19..23"/>
+	<anim name="uppercutHit" anim="Darnell Fighting ALL ANIMS" indices="79..88"/>
+	<anim name="uppercut-loop" anim="Darnell Fighting ALL ANIMS" loop="true" indices="21..23"/>
+	<anim name="punchHigh1" anim="Darnell Fighting ALL ANIMS" indices="33..37"/>
+	<anim name="punchHigh2" anim="Darnell Fighting ALL ANIMS" indices="38..42"/>
+	<anim name="punchLow1" anim="Darnell Fighting ALL ANIMS" indices="48..52"/>
+	<anim name="punchLow2" anim="Darnell Fighting ALL ANIMS" indices="43..47"/>
+	<anim name="hitHigh" anim="Darnell Fighting ALL ANIMS" indices="58..62"/>
+	<anim name="hitLow" anim="Darnell Fighting ALL ANIMS" indices="63..66"/>
+	<anim name="hitSpin" anim="Darnell Fighting ALL ANIMS" loop="true" indices="71..73"/>
+</character>

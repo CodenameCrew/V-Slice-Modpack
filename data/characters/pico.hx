@@ -49,7 +49,7 @@ function onGameOver(event) {
 			event.lossSFX = "pico/fnf_loss_sfx-pico-explode";
 		} else {
 			event.gameOverSong = "pico/gameOver";
-			event.lossSFX = "pico/fnf_loss_sfx-pico-gutpunch";
+			event.lossSFX = "pico/fnf_loss_sfx-pico";
 		}
 	}
 }
@@ -64,10 +64,10 @@ function onNoteHit(event)
 	if (event.character == this) {
 		// Override the hit note animation.
 		switch(event.noteType) {
-			case "cockgun": // HE'S PULLING HIS COCK OUT
+			case "Cock Gun": // HE'S PULLING HIS COCK OUT
 				event.animCancelled = true;
 				playCockGunAnim();
-			case "firegun":
+			case "Fire Gun":
 				event.animCancelled = true;
 				playFireGunAnim();
 		}
@@ -78,10 +78,10 @@ function onPlayerMiss(event)
 {
 	// Override the miss note animation.
 	if(!event.cancelled && event.character == this) switch(event.noteType) {
-		case "cockgun":
+		case "Cock Gun":
 			//event.animCancelled = true;
 			//playCockMissAnim();
-		case "firegun":
+		case "Fire Gun":
 			event.animCancelled = true;
 			playCanExplodeAnim();
 	}
@@ -171,6 +171,16 @@ function playCockGunAnim() {
 function playFireGunAnim() {
 	this.playAnim('shoot', true);
 	FlxG.sound.play(Paths.soundRandom('pico/shot', 1, 4));
+
+	var blackThing = new FlxSprite(0,0).makeGraphic(4000,4000, FlxColor.BLACK);
+	blackThing.alpha = 0.7;
+
+	FlxTween.tween(blackThing, {alpha: 0}, 1.4, {onComplete: function(){
+		blackThing.destroy();
+	}});
+
+	var game = PlayState.instance;
+	game.insert(game.members.indexOf(game.gf), blackThing);
 }
 /**
  * Play the animation where Pico is hit by the exploding can.

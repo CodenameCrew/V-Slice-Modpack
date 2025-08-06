@@ -1,0 +1,23 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.7" name="tank-erect" folder="stages/tank/erect/" startCamPosY="400" startCamPosX="300">
+    <use-extension script="dropshadow-effect" />
+
+    <sprite name="bg" sprite="bg" x="-985" y="-805" scale="1.15" updateHitbox="true"/>
+
+    <sprite name="sniper" sprite="sniper" x="-127" y="349" scale="1.15" updateHitbox="true" beatInterval="1">
+        <anim name="idle" anim="Tankmanidlebaked instance 1" type="onbeat"/>
+        <anim name="sip" anim="tanksippingBaked instance 1" type="none"/>
+    </sprite>
+    <sprite name="guy" sprite="guy" x="1398" y="349" scale="1.15" updateHitbox="true" beatInterval="1">
+        <anim name="idle" anim="BLTank2 instance 1" type="onbeat"/>
+    </sprite>
+
+    <!--No rim lighting for now since texture atlases currently don't support it.-->
+	<girlfriend scroll="1" x="350" y="135"
+        ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20"/>
+	<dad x="-50" y="125" camxoffset="150"
+        ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20" ds_color="#DFEF3C" ds_angle="135" ds_threshold="0.3"
+        ds_altMask="stages/tank/erect/masks/tankmanCaptainBloody_mask"/>
+	<boyfriend x="1125" y="125" camxoffset="-150"
+        ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20" ds_color="#DFEF3C" ds_angle="90"/>
+</stage>

@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-character>
+<character sprite="picoBlazin" flipX="true" camx="175" camy="140" isPlayer="true" icon="pico" holdTime="999" isGF="false">
+	<anim name="firstDeath" anim="Pico Fighting ALL ANIMS" indices="85..128"/>
+	<anim name="deathLoop" anim="Pico Fighting ALL ANIMS" loop="true" indices="129..276"/>
+	<anim name="deathConfirm" anim="Pico Fighting ALL ANIMS" indices="277..378"/>
+</character>

@@ -5,25 +5,25 @@
 	<sprite name="bg" x="-545" y="-273" sprite="phillySkyline" scroll="0.2"/>
 
 	<high-memory>
-		<sprite name="city" x="625" y="94" sprite="phillyForegroundCity" scroll="0.3"/>
+		<sprite name="city" x="1865" y="220" sprite="phillyForegroundCity" scroll="0.3"/>
 		<sprite name="construction" x="1800" y="364" sprite="phillyConstruction" scrollx="0.7"/>
 
-		<sprite name="highwayLights" x="284" y="305" sprite="phillyHighwayLights"/>
-		<sprite name="highwayLightsMap" x="284" y="305" sprite="phillyHighwayLights_lightmap">
+		<sprite name="highwayLights" x="122" y="201" sprite="phillyHighwayLights" scroll="0.8"/>
+		<sprite name="highwayLightsMap" x="122" y="201" sprite="phillyHighwayLights_lightmap" scroll="0.8">
 			<property name="alpha" type="float" value="0.6" />
 			<property name="blend" type="float" value="0" />
 		</sprite>
-		<sprite name="highway" x="139" y="209" sprite="phillyHighway"/>
+		<sprite name="highway" x="-23" y="105" sprite="phillyHighway" scroll="0.8"/>
 
-		<sprite name="smog" x="-6" y="245" sprite="phillySmog"/>
+		<sprite name="smog" x="-6" y="305" sprite="phillySmog" scroll="0.8"/>
 
-		<sprite name="cars1" x="1748" y="818" sprite="phillyCars" type="none">
+		<sprite name="cars1" x="1200" y="818" sprite="phillyCars" type="none" scrollx="0.9">
 			<anim name="car1" anim="car1" loop="false" />
 			<anim name="car2" anim="car2" loop="false" />
 			<anim name="car3" anim="car3" loop="false" />
 			<anim name="car4" anim="car4" loop="false" />
 		</sprite>
-		<sprite name="cars2" x="1748" y="818" sprite="phillyCars" type="none" flipX="true">
+		<sprite name="cars2" x="1200" y="818" sprite="phillyCars" type="none" flipX="true" scrollx="0.9">
 			<anim name="car1" anim="car1" loop="false" />
 			<anim name="car2" anim="car2" loop="false" />
 			<anim name="car3" anim="car3" loop="false" />
@@ -44,7 +44,7 @@
 
 	<girlfriend x="1203" y="454" scroll="1" />
 	<dad x="640" y="410" camxoffset="470" />
-	<boyfriend x="1970" y="450" camxoffset="-530" camyoffset="55" />
+	<boyfriend x="1970" y="450" camxoffset="-530"/>
 
 	<high-memory>
 		<sprite name="cans" x="920" y="1045" sprite="spraycanPile"/>

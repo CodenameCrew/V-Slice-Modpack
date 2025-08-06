@@ -1,5 +1,5 @@
 // Took the one inside the BaseGame source as a base  - Nex
-import funkin.vis.dsp.SpectralAnalyzer;
+import funkin.backend.utils.AudioAnalyzer;
 import Lambda;
 
 var pupilState:Int = 0;
@@ -13,7 +13,9 @@ var eyeWhites:FunkinSprite;
 var pupil:FunkinSprite;
 
 var abotViz:FlxSpriteGroup;
-var analyzer:SpectralAnalyzer;
+var analyzer:AudioAnalyzer;
+var analyzerLevelsCache:Array<Float>;
+var analyzerTimeCache:Float;
 
 var animationFinished:Bool = false;
 
@@ -184,16 +186,10 @@ function movePupilsRight() {
 function moveByNoteKind(kind:String) {
 	// Force ABot to look where the action is happening.
 	switch(kind) {
-		case "lightcan":
+		case "Light Can":
 			movePupilsLeft();
-		case "kickcan":
-			// movePupilsLeft();
-		case "kneecan":
-			// movePupilsLeft();
-		case "cockgun":
+		case "Cock Gun":
 			movePupilsRight();
-		case "firegun":
-			// movePupilsRight();
 		default: // Nothing
 	}
 }
@@ -202,8 +198,6 @@ function onNoteHit(event) moveByNoteKind(event.noteType);
 function onNoteMiss(event) moveByNoteKind(event.noteType);
 
 function draw(_) {
-	if(analyzer != null) drawFFT();
-
 	stereoBG.draw();
 	abotViz.draw();
 	eyeWhites.draw();
@@ -211,25 +205,23 @@ function draw(_) {
 	abot.draw();
 }
 
-/**
- * TJW funkin.vis based visualizer! updateFFT() is the old nasty shit that dont worky!
- */
-function drawFFT()
-{
-	var levels = analyzer.getLevels(false, FlxG.elapsed);
+function updateFFT() {
+	if (analyzer != null && FlxG.sound.music.playing) {
+		var time = FlxG.sound.music.time;
+		if (analyzerTimeCache != time)
+			analyzerLevelsCache = analyzer.getLevels(analyzerTimeCache = time, FlxG.sound.music.calcTransformVolume(), abotViz.group.members.length, analyzerLevelsCache, CoolUtil.getFPSRatio(0.4), -65, -10, 500, 20000);
+	}
+	else {
+		if (analyzerLevelsCache == null) analyzerLevelsCache = [];
+		analyzerLevelsCache.resize(abotViz.group.members.length);
+		//for (i in 0...analyzerLevelsCache.length) analyzerLevelsCache[i] = 0;
+	}
 
-	var grp = abotViz.group.members.length;
-	var lvls = levels.length;
-	for (i in 0...(grp > lvls ? lvls : grp))
-	{
-		var animFrame:Int = Math.round(levels[i].value * 5);
-
-		animFrame = Math.floor(Math.min(5, animFrame));
-		animFrame = Math.floor(Math.max(0, animFrame));
-
-		animFrame = Std.int(Math.abs(animFrame - 5)); // shitty dumbass flip, cuz dave got da shit backwards lol!
-
-		abotViz.group.members[i].animation.curAnim.curFrame = animFrame;
+	for (i in 0...analyzerLevelsCache.length) {
+		var animFrame:Int = CoolUtil.bound(Math.round(analyzerLevelsCache[i] * 6), 0, 6);
+		if (abotViz.group.members[i].visible = animFrame > 0) {
+			abotViz.group.members[i].animation.curAnim.curFrame = 5 - (animFrame - 1);
+		}
 	}
 }
 
@@ -271,6 +263,7 @@ function update(elapsed) {
 	abot.update(elapsed);
 	abot.setPosition(globalOffset.x + this.x - 100, globalOffset.y + this.y + 316);
 
+	updateFFT();
 	abotViz.update(elapsed);
 	abotViz.setPosition(abot.x + 200, abot.y + 90);
 
@@ -289,9 +282,7 @@ function update(elapsed) {
 }
 
 function onStartSong() {
-	analyzer = new SpectralAnalyzer(FlxG.sound.music._channel.__source, 7, 0.01, 30);
-	// analyzer.maxDb = -35;
-	// analyzer.fftN = 2048;
+	analyzer = new AudioAnalyzer(FlxG.sound.music, 256);
 }
 
 function shouldTransitionState():Bool
