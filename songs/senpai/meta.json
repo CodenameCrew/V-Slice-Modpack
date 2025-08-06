@@ -11,12 +11,12 @@
 	"color": -34625,
 	"coopAllowed": true,
 	"name": "senpai",
+	"customValues": {
+		"stickerPack": "standard-bf"
+	},
 	"stepsPerBeat": 4,
 	"displayName": "Senpai",
 	"beatsPerMeasure": 4,
-	"needsVoices": true,
-	"bpm": 144,
-	"customValues": {
-		"stickerPack": "standard-bf"
-	}
+	"needsVoices": false,
+	"bpm": 144
 }

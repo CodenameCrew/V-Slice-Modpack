@@ -30,10 +30,12 @@ function onNoteHit(event)
 }
 
 function update(elapsed:Float) {
-	if(canSprite != null && canSprite.isAnimFinished() && canSprite.getAnimName() == 'Can Shot') 
-		canSprite.visible = false;
-	else if(canSprite.getAnimName() != null)
-		canSprite.visible = true;
+	if(canSprite != null){
+		if(canSprite.isAnimFinished() && canSprite.getAnimName() == 'Can Shot') 
+			canSprite.visible = false;
+		else if(canSprite.getAnimName() != null)
+			canSprite.visible = true;
+	}
 }
 
 function onPlayerMiss(event)

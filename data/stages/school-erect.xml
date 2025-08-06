@@ -13,15 +13,15 @@
 		<sprite name="treeLeaves" x="-20" y="-40" sprite="erect/petals" antialiasing="false" scale="6" scroll="0.85" updateHitbox="true" type="loop"/>
 	</high-memory>
 
-    <girlfriend x="524" scroll="1" ds_applyShader="true" ds_brightness="-42" ds_hue="-10" ds_contrast="5" ds_saturation="-25"
+    <girlfriend x="524" y="90" scroll="1" ds_applyShader="true" ds_brightness="-42" ds_hue="-10" ds_contrast="5" ds_saturation="-25"
 		ds_color="#52351D" ds_antialiasAmt="0" ds_pixelPerfect="true" ds_distance="5" ds_angle="90"
 		ds_applyAltMask="true" ds_altMask="stages/school/erect/masks/gfPixel_mask" ds_maskThreshold="1"/>
 
-	<dad x="160" ds_applyShader="true" ds_brightness="-66" ds_hue="-10" ds_contrast="24" ds_saturation="-23"
+	<dad x="90" y="50" ds_applyShader="true" ds_brightness="-66" ds_hue="-10" ds_contrast="24" ds_saturation="-23"
 		ds_color="#52351D" ds_antialiasAmt="0" ds_pixelPerfect="true" ds_distance="5" ds_angle="90"
 		ds_applyAltMask="true" ds_altMask="stages/school/erect/masks/senpai_mask" ds_maskThreshold="1"/>
 
-	<boyfriend x="964" camxoffset="-125" ds_applyShader="true" ds_brightness="-66" ds_hue="-10" ds_contrast="24" ds_saturation="-23"
+	<boyfriend x="964" y="80" camxoffset="-125" ds_applyShader="true" ds_brightness="-66" ds_hue="-10" ds_contrast="24" ds_saturation="-23"
 		ds_color="#52351D" ds_antialiasAmt="0" ds_pixelPerfect="true" ds_distance="5" ds_angle="90"
 		ds_applyAltMask="true" ds_altMask="stages/school/erect/masks/bfPixel_mask" ds_maskThreshold="1"/>
 </stage>
