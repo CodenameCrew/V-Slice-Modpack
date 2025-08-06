@@ -4,21 +4,23 @@
 	"difficulties": [
 		"easy",
 		"normal",
-		"hard"
+		"hard",
+		"erect",
+		"nightmare"
 	],
 	"customValues": {
 		"ratings": "{ easy => 1, normal => 1, hard => 2 }",
+		"album": "volume1",
 		"noteStyle": "funkin",
 		"charter": "ninjamuffin99 + MtH",
-		"artist": "Kawai Sprite",
-		"album": "volume1"
+		"artist": "Kawai Sprite"
 	},
 	"color": -5347634,
 	"name": "bopeebo",
 	"coopAllowed": true,
-	"needsVoices": false,
 	"stepsPerBeat": 4,
 	"displayName": "Bopeebo",
+	"needsVoices": false,
 	"beatsPerMeasure": 4,
 	"bpm": 100
 }

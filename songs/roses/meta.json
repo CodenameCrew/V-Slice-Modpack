@@ -1,6 +1,6 @@
 {
 	"opponentModeAllowed": true,
-	"icon": "senpai",
+	"icon": "senpai-angry",
 	"difficulties": [
 		"easy",
 		"normal",
@@ -8,15 +8,14 @@
 		"erect",
 		"nightmare"
 	],
+	"customValues": {
+		"stickerPack": "standard-bf"
+	},
 	"color": -34625,
-	"coopAllowed": true,
 	"name": "roses",
+	"coopAllowed": true,
 	"stepsPerBeat": 4,
 	"displayName": "Roses",
 	"beatsPerMeasure": 4,
-	"needsVoices": true,
-	"bpm": 120,
-	"customValues": {
-		"stickerPack": "standard-bf"
-	}
+	"bpm": 120
 }
