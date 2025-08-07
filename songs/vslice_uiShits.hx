@@ -26,7 +26,7 @@ function onNoteHit(event) {
     event.ratingScale -= ratingScaleDiff;
 }
 
-function update() 
+function postUpdate() 
     comboGroup.forEachAlive(function(spr) if (spr.camera != camHUD) spr.camera = camHUD);
 
 function postUpdate(elapsed:Float) {
