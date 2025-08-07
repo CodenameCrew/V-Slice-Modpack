@@ -734,8 +734,8 @@
 			"time": 109397
 		}
 	],
-	"stage": "school-erect",
 	"codenameChart": true,
+	"stage": "school-erect",
 	"scrollSpeed": 2.2,
 	"chartVersion": "1.6.0",
 	"strumLines": [
@@ -834,7 +834,7 @@
 				},
 				{
 					"id": 0,
-					"sLen": 284.810126582273,
+					"sLen": 284.810126582272,
 					"time": 8164.55696202532,
 					"type": 0
 				},
@@ -996,7 +996,7 @@
 				},
 				{
 					"id": 3,
-					"sLen": 569.620253164563,
+					"sLen": 569.620253164565,
 					"time": 13481.0126582278,
 					"type": 0
 				},
@@ -1026,7 +1026,7 @@
 				},
 				{
 					"id": 3,
-					"sLen": 284.810126582275,
+					"sLen": 284.810126582272,
 					"time": 15189.8734177215,
 					"type": 0
 				},
@@ -1470,7 +1470,7 @@
 				},
 				{
 					"id": 2,
-					"sLen": 237.341772151922,
+					"sLen": 237.341772151936,
 					"time": 49414.5569620253,
 					"type": 0
 				},
@@ -2183,13 +2183,20 @@
 					"type": 0
 				}
 			],
+			"visible": true,
+			"strumSpacing": 1,
+			"strumPos": [
+				0,
+				50
+			],
 			"position": "dad",
+			"strumScale": 1,
+			"vocalsSuffix": "-senpai-erect",
+			"strumLinePos": 0.2,
 			"type": 0,
 			"characters": [
 				"senpai"
-			],
-			"visible": true,
-			"vocalsSuffix": "-senpai-erect"
+			]
 		},
 		{
 			"keyCount": 4,
@@ -2658,19 +2665,19 @@
 				},
 				{
 					"id": 1,
-					"sLen": 664.556962025323,
+					"sLen": 664.55696202533,
 					"time": 27341.7974683544,
 					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": 664.556962025305,
+					"sLen": 664.556962025297,
 					"time": 28101.2911392405,
 					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": 664.556962025323,
+					"sLen": 664.55696202533,
 					"time": 28860.7594936709,
 					"type": 0
 				},
@@ -3054,7 +3061,7 @@
 				},
 				{
 					"id": 3,
-					"sLen": 284.810126582292,
+					"sLen": 284.810126582306,
 					"time": 48607.5949367089,
 					"type": 0
 				},
@@ -4212,7 +4219,7 @@
 				},
 				{
 					"id": 1,
-					"sLen": 94.9367088607105,
+					"sLen": 94.9367088606959,
 					"time": 104620.253164557,
 					"type": 0
 				},
@@ -4332,7 +4339,7 @@
 				},
 				{
 					"id": 2,
-					"sLen": 284.810126582306,
+					"sLen": 284.810126582335,
 					"time": 108987.341772152,
 					"type": 0
 				},
@@ -4343,20 +4350,35 @@
 					"type": 0
 				}
 			],
+			"visible": true,
+			"strumSpacing": 1,
+			"strumPos": [
+				0,
+				50
+			],
 			"position": "boyfriend",
+			"strumScale": 1,
+			"vocalsSuffix": "-bf-erect",
+			"strumLinePos": 0.7,
 			"type": 1,
 			"characters": [
 				"bf-pixel"
-			],
-			"visible": true,
-			"vocalsSuffix": "-bf-erect"
+			]
 		},
 		{
 			"keyCount": 4,
 			"notes": [],
-			"position": "girlfriend",
-			"type": 2,
 			"visible": false,
+			"strumSpacing": 1,
+			"strumPos": [
+				0,
+				50
+			],
+			"position": "girlfriend",
+			"strumScale": 1,
+			"vocalsSuffix": "",
+			"strumLinePos": 0.25,
+			"type": 2,
 			"characters": [
 				"gf-pixel"
 			]

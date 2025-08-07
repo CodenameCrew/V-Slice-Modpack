@@ -190,6 +190,7 @@
 			"name": "Camera Movement"
 		}
 	],
+	"codenameChart": true,
 	"strumLines": [
 		{
 			"keyCount": 4,
@@ -2340,7 +2341,7 @@
 			"position": "dad",
 			"strumScale": 1,
 			"vocalsSuffix": "-darnell",
-			"strumLinePos": 0.25,
+			"strumLinePos": 0.2,
 			"type": 0,
 			"characters": [
 				"darnell"
@@ -5167,7 +5168,7 @@
 			"position": "boyfriend",
 			"strumScale": 1,
 			"vocalsSuffix": "-pico",
-			"strumLinePos": 0.75,
+			"strumLinePos": 0.7,
 			"type": 1,
 			"characters": [
 				"pico"
@@ -5175,24 +5176,23 @@
 		},
 		{
 			"keyCount": 4,
+			"strumScale": 1,
+			"position": "girlfriend",
 			"notes": [],
+			"characters": [
+				"nene"
+			],
+			"type": 2,
 			"visible": false,
 			"strumSpacing": 1,
 			"strumPos": [
 				0,
 				50
 			],
-			"position": "girlfriend",
-			"strumScale": 1,
-			"vocalsSuffix": "",
 			"strumLinePos": 0.25,
-			"type": 2,
-			"characters": [
-				"nene"
-			]
+			"vocalsSuffix": ""
 		}
 	],
-	"codenameChart": true,
 	"scrollSpeed": 2.2,
 	"chartVersion": "1.6.0",
 	"stage": "philly-streets",

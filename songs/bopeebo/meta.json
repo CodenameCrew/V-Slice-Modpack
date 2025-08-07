@@ -10,10 +10,10 @@
 	],
 	"customValues": {
 		"ratings": "{ easy => 1, normal => 1, hard => 2 }",
+		"artist": "Kawai Sprite",
 		"album": "volume1",
 		"noteStyle": "funkin",
-		"charter": "ninjamuffin99 + MtH",
-		"artist": "Kawai Sprite"
+		"charter": "ninjamuffin99 + MtH"
 	},
 	"color": -5347634,
 	"name": "bopeebo",

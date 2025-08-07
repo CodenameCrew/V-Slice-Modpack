@@ -1,16 +1,19 @@
 {
-	"displayName": "Dadbattle",
-	"bpm": 180.0,
-	"icon": "dad",
-	"color": "#9271FD",
-	"coopAllowed": true,
 	"opponentModeAllowed": true,
-	"needsVoices": false,
+	"icon": "dad",
 	"difficulties": [
 		"easy",
 		"normal",
 		"hard",
 		"erect",
 		"nightmare"
-	]
+	],
+	"color": -7179779,
+	"coopAllowed": true,
+	"name": "dadbattle",
+	"stepsPerBeat": 4,
+	"displayName": "Dadbattle",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 180
 }

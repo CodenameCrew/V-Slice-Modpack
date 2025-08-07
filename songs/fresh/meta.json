@@ -1,16 +1,19 @@
 {
-	"displayName": "Fresh",
-	"bpm": 120.0,
-	"icon": "dad",
-	"color": "#9271FD",
-	"coopAllowed": true,
 	"opponentModeAllowed": true,
-	"needsVoices": false,
+	"icon": "dad",
 	"difficulties": [
 		"easy",
 		"normal",
 		"hard",
 		"erect",
 		"nightmare"
-	]
+	],
+	"color": -7179779,
+	"coopAllowed": true,
+	"name": "fresh",
+	"stepsPerBeat": 4,
+	"displayName": "Fresh",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 120
 }

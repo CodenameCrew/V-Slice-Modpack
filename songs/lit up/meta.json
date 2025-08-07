@@ -9,13 +9,13 @@
 	"coopAllowed": true,
 	"name": "lit up",
 	"color": -10394881,
+	"customValues": {
+		"stickerPack": "bonus-weekend1",
+		"album": "volume4"
+	},
 	"stepsPerBeat": 4,
 	"displayName": "Lit Up",
 	"needsVoices": true,
 	"beatsPerMeasure": 4,
-	"bpm": 176,
-	"customValues": {
-		"stickerPack": "bonus-weekend1",
-		"album": "volume4"
-	}
+	"bpm": 176
 }

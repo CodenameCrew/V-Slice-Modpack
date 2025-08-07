@@ -666,8 +666,8 @@
 			"time": 109392.341772152
 		}
 	],
-	"stage": "school-erect",
 	"codenameChart": true,
+	"stage": "school-erect",
 	"scrollSpeed": 2.8,
 	"chartVersion": "1.6.0",
 	"strumLines": [
@@ -976,7 +976,7 @@
 				},
 				{
 					"id": 3,
-					"sLen": 284.81012658227,
+					"sLen": 284.810126582266,
 					"time": 15189.8734177215,
 					"type": 0
 				},
@@ -1444,7 +1444,7 @@
 				},
 				{
 					"id": 2,
-					"sLen": 237.341772151944,
+					"sLen": 237.341772151958,
 					"time": 49414.5569620253,
 					"type": 0
 				},
@@ -2169,13 +2169,20 @@
 					"type": 0
 				}
 			],
+			"visible": true,
+			"strumSpacing": 1,
+			"strumPos": [
+				0,
+				50
+			],
 			"position": "dad",
+			"strumScale": 1,
+			"vocalsSuffix": "-senpai-erect",
+			"strumLinePos": 0.2,
 			"type": 0,
 			"characters": [
 				"senpai"
-			],
-			"visible": true,
-			"vocalsSuffix": "-senpai-erect"
+			]
 		},
 		{
 			"keyCount": 4,
@@ -2710,19 +2717,19 @@
 				},
 				{
 					"id": 1,
-					"sLen": 664.556962025334,
+					"sLen": 664.556962025341,
 					"time": 27341.7974683544,
 					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": 664.556962025294,
+					"sLen": 664.556962025286,
 					"time": 28101.2911392405,
 					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": 664.556962025334,
+					"sLen": 664.556962025341,
 					"time": 28860.7594936709,
 					"type": 0
 				},
@@ -3196,7 +3203,7 @@
 				},
 				{
 					"id": 3,
-					"sLen": 284.810126582313,
+					"sLen": 284.810126582328,
 					"time": 48607.5949367089,
 					"type": 0
 				},
@@ -4636,7 +4643,7 @@
 				},
 				{
 					"id": 2,
-					"sLen": 284.81012658235,
+					"sLen": 284.810126582364,
 					"time": 108987.341772152,
 					"type": 0
 				},
@@ -4653,23 +4660,30 @@
 					"type": 0
 				}
 			],
+			"visible": true,
+			"strumSpacing": 1,
+			"strumPos": [
+				0,
+				50
+			],
 			"position": "boyfriend",
+			"strumScale": 1,
+			"vocalsSuffix": "-bf-erect",
+			"strumLinePos": 0.7,
 			"type": 1,
 			"characters": [
 				"bf-pixel"
-			],
-			"visible": true,
-			"vocalsSuffix": "-bf-erect"
+			]
 		},
 		{
 			"keyCount": 4,
-			"notes": [],
 			"position": "girlfriend",
-			"type": 2,
-			"visible": false,
+			"notes": [],
 			"characters": [
 				"gf-pixel"
-			]
+			],
+			"visible": false,
+			"type": 2
 		}
 	],
 	"noteTypes": []

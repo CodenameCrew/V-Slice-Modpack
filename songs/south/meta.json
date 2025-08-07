@@ -15,6 +15,6 @@
 	"stepsPerBeat": 4,
 	"displayName": "South",
 	"beatsPerMeasure": 4,
-	"needsVoices": false,
+	"needsVoices": true,
 	"bpm": 165
 }

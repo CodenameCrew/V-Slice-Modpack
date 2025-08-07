@@ -1,4 +1,5 @@
-{"events": [
+{
+	"events": [
 		{
 			"params": [
 				1
@@ -378,4 +379,588 @@
 			"name": "Play Animation",
 			"time": 76200
 		}
-	],"codenameChart":true,"scrollSpeed":1.2,"chartVersion":"1.6.0","strumLines":[{"keyCount":4,"position":"dad","notes":[{"id":2,"sLen":0,"time":0,"type":0},{"id":3,"sLen":1050,"time":600,"type":0},{"id":1,"sLen":300,"time":4800,"type":0},{"id":0,"sLen":300,"time":5400,"type":0},{"id":3,"sLen":600,"time":6000,"type":0},{"id":1,"sLen":574.999999999996,"time":9600,"type":0},{"id":0,"sLen":0,"time":10500,"type":0},{"id":1,"sLen":600,"time":10800,"type":0},{"id":3,"sLen":474.999999999998,"time":14400,"type":0},{"id":0,"sLen":0,"time":15300,"type":0},{"id":2,"sLen":600,"time":15600,"type":0},{"id":0,"sLen":300,"time":19200,"type":0},{"id":1,"sLen":900,"time":19800,"type":0},{"id":1,"sLen":300,"time":24000,"type":0},{"id":0,"sLen":900,"time":24600,"type":0},{"id":2,"sLen":300,"time":28800,"type":0},{"id":0,"sLen":1200,"time":29400,"type":0},{"id":2,"sLen":0,"time":33300,"type":0},{"id":0,"sLen":300,"time":33600,"type":0},{"id":2,"sLen":0,"time":34500,"type":0},{"id":1,"sLen":600,"time":34800,"type":0},{"id":2,"sLen":450,"time":38400,"type":0},{"id":3,"sLen":300,"time":39000,"type":0},{"id":0,"sLen":600,"time":39600,"type":0},{"id":1,"sLen":0,"time":43200,"type":0},{"id":2,"sLen":0,"time":43800,"type":0},{"id":1,"sLen":300,"time":44400,"type":0},{"id":2,"sLen":0,"time":45000,"type":0},{"id":2,"sLen":450,"time":48000,"type":0},{"id":3,"sLen":300,"time":48600,"type":0},{"id":0,"sLen":450,"time":49200,"type":0},{"id":3,"sLen":1800,"time":52800,"type":0},{"id":2,"sLen":324.999999999993,"time":57600,"type":0},{"id":0,"sLen":1200,"time":58200,"type":0},{"id":0,"sLen":300,"time":62400,"type":0},{"id":2,"sLen":0,"time":63300,"type":0},{"id":1,"sLen":600,"time":63600,"type":0},{"id":2,"sLen":300,"time":67200,"type":0},{"id":0,"sLen":300,"time":67800,"type":0},{"id":1,"sLen":600,"time":68400,"type":0},{"id":2,"sLen":0,"time":71700,"type":0},{"id":0,"sLen":300,"time":72000,"type":0},{"id":2,"sLen":0,"time":72900,"type":0},{"id":1,"sLen":600,"time":73200,"type":0}],"visible":true,"characters":["dad"],"type":0,"vocalsSuffix":"-dad"},{"keyCount":4,"position":"boyfriend","notes":[{"id":2,"sLen":0,"time":2400,"type":0},{"id":3,"sLen":1050,"time":3000,"type":0},{"id":1,"sLen":300,"time":7200,"type":0},{"id":0,"sLen":300,"time":7800,"type":0},{"id":3,"sLen":600,"time":8400,"type":0},{"id":1,"sLen":600,"time":12000,"type":0},{"id":0,"sLen":0,"time":12900,"type":0},{"id":1,"sLen":600,"time":13200,"type":0},{"id":3,"sLen":450,"time":16800,"type":0},{"id":0,"sLen":0,"time":17700,"type":0},{"id":2,"sLen":600,"time":18000,"type":0},{"id":0,"sLen":300,"time":21600,"type":0},{"id":1,"sLen":900,"time":22200,"type":0},{"id":1,"sLen":300,"time":26400,"type":0},{"id":0,"sLen":900,"time":27000,"type":0},{"id":2,"sLen":274.999999999996,"time":31200,"type":0},{"id":0,"sLen":1200,"time":31800,"type":0},{"id":2,"sLen":0,"time":35700,"type":0},{"id":0,"sLen":300,"time":36000,"type":0},{"id":2,"sLen":0,"time":36900,"type":0},{"id":1,"sLen":600,"time":37200,"type":0},{"id":2,"sLen":450,"time":40800,"type":0},{"id":3,"sLen":300,"time":41400,"type":0},{"id":0,"sLen":600,"time":42000,"type":0},{"id":1,"sLen":0,"time":45600,"type":0},{"id":2,"sLen":0,"time":46200,"type":0},{"id":1,"sLen":300,"time":46800,"type":0},{"id":2,"sLen":0,"time":47400,"type":0},{"id":2,"sLen":450,"time":50400,"type":0},{"id":3,"sLen":300,"time":51000,"type":0},{"id":0,"sLen":450,"time":51600,"type":0},{"id":3,"sLen":1800,"time":55200,"type":0},{"id":2,"sLen":300,"time":60000,"type":0},{"id":0,"sLen":1200,"time":60600,"type":0},{"id":0,"sLen":300,"time":64800,"type":0},{"id":2,"sLen":0,"time":65700,"type":0},{"id":1,"sLen":600,"time":66000,"type":0},{"id":2,"sLen":300,"time":69600,"type":0},{"id":0,"sLen":300,"time":70200,"type":0},{"id":1,"sLen":600,"time":70800,"type":0},{"id":2,"sLen":0,"time":74100,"type":0},{"id":0,"sLen":300,"time":74400,"type":0},{"id":2,"sLen":0,"time":75300,"type":0},{"id":1,"sLen":600,"time":75600,"type":0}],"visible":true,"characters":["bf"],"type":1,"vocalsSuffix":"-bf"},{"keyCount":4,"position":"girlfriend","notes":[],"characters":["gf"],"visible":false,"type":2}],"stage":"stage","noteTypes":[]}
+	],
+	"codenameChart": true,
+	"stage": "stage",
+	"chartVersion": "1.6.0",
+	"scrollSpeed": 1.2,
+	"strumLines": [
+		{
+			"keyCount": 4,
+			"notes": [
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 0,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 1050,
+					"time": 600,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 4800,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 5400,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 600,
+					"time": 6000,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 574.999999999996,
+					"time": 9600,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 0,
+					"time": 10500,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 10800,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 474.999999999998,
+					"time": 14400,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 0,
+					"time": 15300,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 600,
+					"time": 15600,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 19200,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 900,
+					"time": 19800,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 24000,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 900,
+					"time": 24600,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 300,
+					"time": 28800,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 1200,
+					"time": 29400,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 33300,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 33600,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 34500,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 34800,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 450,
+					"time": 38400,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 300,
+					"time": 39000,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 600,
+					"time": 39600,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 43200,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 43800,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 44400,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 45000,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 450,
+					"time": 48000,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 300,
+					"time": 48600,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 450,
+					"time": 49200,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 1800,
+					"time": 52800,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 324.999999999993,
+					"time": 57600,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 1200,
+					"time": 58200,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 62400,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 63300,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 63600,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 300,
+					"time": 67200,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 67800,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 68400,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 71700,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 72000,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 72900,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 73200,
+					"type": 0
+				}
+			],
+			"visible": true,
+			"strumSpacing": 1,
+			"strumPos": [
+				0,
+				50
+			],
+			"position": "dad",
+			"strumScale": 1,
+			"vocalsSuffix": "-dad",
+			"strumLinePos": 0.2,
+			"type": 0,
+			"characters": [
+				"dad"
+			]
+		},
+		{
+			"keyCount": 4,
+			"notes": [
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 2400,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 1050,
+					"time": 3000,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 7200,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 7800,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 600,
+					"time": 8400,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 12000,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 0,
+					"time": 12900,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 13200,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 450,
+					"time": 16800,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 0,
+					"time": 17700,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 600,
+					"time": 18000,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 21600,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 900,
+					"time": 22200,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 26400,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 900,
+					"time": 27000,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 274.999999999996,
+					"time": 31200,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 1200,
+					"time": 31800,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 35700,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 36000,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 36900,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 37200,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 450,
+					"time": 40800,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 300,
+					"time": 41400,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 600,
+					"time": 42000,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 45600,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 46200,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 46800,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 47400,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 450,
+					"time": 50400,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 300,
+					"time": 51000,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 450,
+					"time": 51600,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 1800,
+					"time": 55200,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 300,
+					"time": 60000,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 1200,
+					"time": 60600,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 64800,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 65700,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 66000,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 300,
+					"time": 69600,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 70200,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 70800,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 74100,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 74400,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 75300,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 75600,
+					"type": 0
+				}
+			],
+			"visible": true,
+			"strumSpacing": 1,
+			"strumPos": [
+				0,
+				50
+			],
+			"position": "boyfriend",
+			"strumScale": 1,
+			"vocalsSuffix": "-bf",
+			"strumLinePos": 0.7,
+			"type": 1,
+			"characters": [
+				"bf"
+			]
+		},
+		{
+			"keyCount": 4,
+			"notes": [],
+			"position": "girlfriend",
+			"type": 2,
+			"visible": false,
+			"characters": [
+				"gf"
+			]
+		}
+	],
+	"noteTypes": []
+}

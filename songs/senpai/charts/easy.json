@@ -183,6 +183,7 @@
 			"name": "Camera Movement"
 		}
 	],
+	"codenameChart": true,
 	"strumLines": [
 		{
 			"keyCount": 4,
@@ -1006,8 +1007,8 @@
 			],
 			"position": "dad",
 			"strumScale": 1,
-			"vocalsSuffix": "Senpai (Normal)",
-			"strumLinePos": 0.25,
+			"vocalsSuffix": "-senpai",
+			"strumLinePos": 0.2,
 			"type": 0,
 			"characters": [
 				"senpai"
@@ -1931,8 +1932,8 @@
 			],
 			"position": "boyfriend",
 			"strumScale": 1,
-			"vocalsSuffix": "BF Pixel (Normal)",
-			"strumLinePos": 0.75,
+			"vocalsSuffix": "-bf",
+			"strumLinePos": 0.7,
 			"type": 1,
 			"characters": [
 				"bf-pixel"
@@ -1949,7 +1950,7 @@
 			],
 			"position": "girlfriend",
 			"strumScale": 1,
-			"vocalsSuffix": "Inst (Normal)",
+			"vocalsSuffix": "",
 			"strumLinePos": 0.25,
 			"type": 2,
 			"characters": [
@@ -1957,7 +1958,6 @@
 			]
 		}
 	],
-	"codenameChart": true,
 	"scrollSpeed": 1,
 	"chartVersion": "1.6.0",
 	"stage": "school",

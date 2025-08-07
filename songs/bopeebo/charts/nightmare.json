@@ -604,14 +604,13 @@
 			"time": 101463.414634146
 		}
 	],
-	"codenameChart": true,
 	"stage": "stage-erect",
+	"codenameChart": true,
 	"scrollSpeed": 2.2,
 	"chartVersion": "1.6.0",
 	"strumLines": [
 		{
 			"keyCount": 4,
-			"position": "dad",
 			"notes": [
 				{
 					"id": 2,
@@ -1353,15 +1352,22 @@
 				}
 			],
 			"visible": true,
+			"strumSpacing": 1,
+			"strumPos": [
+				0,
+				50
+			],
+			"position": "dad",
+			"strumScale": 1,
+			"vocalsSuffix": "-dad-erect",
+			"strumLinePos": 0.2,
+			"type": 0,
 			"characters": [
 				"dad"
-			],
-			"type": 0,
-			"vocalsSuffix": "-dad-erect"
+			]
 		},
 		{
 			"keyCount": 4,
-			"position": "boyfriend",
 			"notes": [
 				{
 					"id": 1,
@@ -3981,21 +3987,29 @@
 				}
 			],
 			"visible": true,
+			"strumSpacing": 1,
+			"strumPos": [
+				0,
+				50
+			],
+			"position": "boyfriend",
+			"strumScale": 1,
+			"vocalsSuffix": "-bf-erect",
+			"strumLinePos": 0.7,
+			"type": 1,
 			"characters": [
 				"bf"
-			],
-			"type": 1,
-			"vocalsSuffix": "-bf-erect"
+			]
 		},
 		{
 			"keyCount": 4,
-			"position": "girlfriend",
 			"notes": [],
+			"position": "girlfriend",
+			"type": 2,
+			"visible": false,
 			"characters": [
 				"gf"
-			],
-			"visible": false,
-			"type": 2
+			]
 		}
 	],
 	"noteTypes": []
