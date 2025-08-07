@@ -15,5 +15,6 @@
 	"stepsPerBeat": 4,
 	"displayName": "Philly Nice",
 	"beatsPerMeasure": 4,
+	"needsVoices": false,
 	"bpm": 175
 }

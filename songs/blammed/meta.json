@@ -15,5 +15,6 @@
 	"stepsPerBeat": 4,
 	"displayName": "Blammed",
 	"beatsPerMeasure": 4,
-	"bpm": 170
+	"needsVoices": false,
+	"bpm": 165
 }

@@ -15,6 +15,6 @@
 	"stepsPerBeat": 4,
 	"displayName": "Spookeez",
 	"beatsPerMeasure": 4,
-	"needsVoices": true,
-	"bpm": 166
+	"needsVoices": false,
+	"bpm": 150
 }

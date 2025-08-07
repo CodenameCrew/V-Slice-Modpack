@@ -9,11 +9,12 @@
 		"nightmare"
 	],
 	"customValues": {},
-	"color": -223531,
+	"color": -223530,
 	"name": "high",
 	"coopAllowed": true,
 	"stepsPerBeat": 4,
 	"displayName": "High",
 	"beatsPerMeasure": 4,
+	"needsVoices": false,
 	"bpm": 125
 }
