@@ -1,19 +1,12 @@
 {
 	"opponentModeAllowed": true,
 	"icon": "spooky",
-	"difficulties": [
-		"easy",
-		"normal",
-		"hard",
-		"erect",
-		"nightmare"
-	],
 	"customValues": {},
 	"color": -14535868,
 	"name": "south",
 	"coopAllowed": true,
 	"stepsPerBeat": 4,
-	"displayName": "South",
+	"displayName": "South (Erect)",
 	"beatsPerMeasure": 4,
-	"bpm": 165
+	"bpm": 177
 }

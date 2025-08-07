@@ -5,7 +5,7 @@
 	"name": "roses",
 	"coopAllowed": true,
 	"stepsPerBeat": 4,
-	"displayName": "Roses Erect",
+	"displayName": "Roses (Erect)",
 	"beatsPerMeasure": 4,
 	"needsVoices": true,
 	"bpm": 128,

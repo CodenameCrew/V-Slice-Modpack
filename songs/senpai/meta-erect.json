@@ -1,0 +1,15 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "senpai",
+	"color": -34625,
+	"coopAllowed": true,
+	"name": "senpai",
+	"customValues": {
+		"stickerPack": "standard-bf"
+	},
+	"stepsPerBeat": 4,
+	"displayName": "Senpai (Erect)",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 158
+}
