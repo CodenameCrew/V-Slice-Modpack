@@ -2,8 +2,7 @@ function onNoteHit(e){
     if(e.note.isSustainNote){
         e.preventAnim();
         e.character.lastAnimContext = 'LOCK';
-        e.character.danceOnBeat = false;
-        if(!e.note.nextNote.isSustainNote)
+        if(e.note.nextNote == null || !e.note.nextNote.isSustainNote)
             e.character.lastAnimContext = 'SING';
     }
 }
@@ -11,8 +10,8 @@ function onNoteHit(e){
 function onPlayerMiss(e){
     if(e.note.isSustainNote){
         e.character.lastAnimContext = 'LOCK';
-        e.character.danceOnBeat = false;
-        if(!e.note.nextNote.isSustainNote)
+        trace(e.note.nextNote);
+        if(e.note.nextNote == null || !e.note.nextNote.isSustainNote)
             e.character.lastAnimContext = 'MISS';
         e.preventAnim();
         e.preventVocalsUnmute();
