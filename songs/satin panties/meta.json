@@ -9,12 +9,12 @@
 		"nightmare"
 	],
 	"customValues": {},
-	"color": -223530,
+	"color": -223531,
 	"name": "satin panties",
 	"coopAllowed": true,
 	"stepsPerBeat": 4,
 	"displayName": "Satin Panties",
 	"beatsPerMeasure": 4,
-	"needsVoices": false,
-	"bpm": 110
+	"needsVoices": true,
+	"bpm": 135
 }

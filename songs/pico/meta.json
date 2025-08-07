@@ -15,6 +15,5 @@
 	"stepsPerBeat": 4,
 	"displayName": "Pico",
 	"beatsPerMeasure": 4,
-	"needsVoices": false,
-	"bpm": 150
+	"bpm": 162
 }
