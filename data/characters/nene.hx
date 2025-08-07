@@ -209,7 +209,7 @@ function updateFFT() {
 	if (analyzer != null && FlxG.sound.music.playing) {
 		var time = FlxG.sound.music.time;
 		if (analyzerTimeCache != time)
-			analyzerLevelsCache = analyzer.getLevels(analyzerTimeCache = time, FlxG.sound.music.calcTransformVolume(), abotViz.group.members.length, analyzerLevelsCache, CoolUtil.getFPSRatio(0.2), -30, 0, 100, 24000););
+			analyzerLevelsCache = analyzer.getLevels(analyzerTimeCache = time, FlxG.sound.music.calcTransformVolume(), abotViz.group.members.length, analyzerLevelsCache, CoolUtil.getFPSRatio(0.2), -30, 0, 100, 24000);
 	}
 	else {
 		if (analyzerLevelsCache == null) analyzerLevelsCache = [];
