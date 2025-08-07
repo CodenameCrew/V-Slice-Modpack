@@ -15,13 +15,13 @@ function postCreate() {
 	var index:Int = getChildIndex(background);
 	removeChild(background); background.bitmapData.dispose();
 	addChildAt(background = new Bitmap(Assets.getBitmapData(Paths.image("soundTray/volumebox"))), index);
-	_defaultScale = 0.8;
+	_defaultScale = 0.6;
 	screenCenter();
 }
 
 function postUpdate(elapsed:Float) {
-	y = trueY = coolLerp(trueY, lerpYPos, 0.1);
-	alpha = coolLerp(alpha, alphaTarget, 0.25);
+	y = trueY = CoolUtil.fpsLerp(trueY, lerpYPos, 0.1);
+	alpha = CoolUtil.fpsLerp(alpha, alphaTarget, 0.25);
 
 	if (_timer > 0) alphaTarget = 1;
 	else if (y >= -height) {
@@ -51,8 +51,4 @@ function regenerateBars(event) {
 		daX += bar.width;
 		_bars.push(bar);
 	}
-}
-
-function coolLerp(base:Float, target:Float, ratio:Float) {
-    return base + ((ratio * 60) * FlxG.elapsed) * (target - base);
 }
