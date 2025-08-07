@@ -4,7 +4,7 @@ function onNoteHit(e){
         e.character.lastAnimContext = 'LOCK';
         if(e.note.nextNote == null || !e.note.nextNote.isSustainNote){
             var event = e;
-            new FlxTimer().start(0.1, function(timer) {
+            new FlxTimer().start(0.05, function(timer) {
                 event.character.lastAnimContext = 'SING';
             });
         }
@@ -13,11 +13,10 @@ function onNoteHit(e){
 
 function onPlayerMiss(e){
     if(e.note.isSustainNote){
-        var e = e;
         e.character.lastAnimContext = 'LOCK';
         if(e.note.nextNote == null || !e.note.nextNote.isSustainNote){
             var event = e;
-            new FlxTimer().start(0.1, function(timer) {
+            new FlxTimer().start(0.05, function(timer) {
                 event.character.lastAnimContext = 'MISS';
             });
         }
