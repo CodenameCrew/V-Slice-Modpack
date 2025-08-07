@@ -1,0 +1,13 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "senpai-angry",
+	"color": -34625,
+	"name": "roses",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Roses Erect",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"bpm": 128,
+	"instSuffix": "-erect"
+}
