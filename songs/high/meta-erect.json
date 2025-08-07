@@ -1,0 +1,14 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "mom",
+	"customValues": {},
+	"color": -223530,
+	"name": "high",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "High (Erect)",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 125,
+	"instSuffix": "-erect"
+}

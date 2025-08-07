@@ -1,0 +1,14 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "pico",
+	"customValues": {},
+	"color": -7072173,
+	"name": "pico",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Pico (Erect)",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 162,
+	"instSuffix": "-erect"
+}
