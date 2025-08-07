@@ -13,13 +13,6 @@
 		},
 		{
 			"params": [
-				177
-			],
-			"time": 0.634146341499218,
-			"name": "BPM Change"
-		},
-		{
-			"params": [
 				1
 			],
 			"name": "Camera Movement",

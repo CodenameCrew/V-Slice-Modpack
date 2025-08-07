@@ -13,13 +13,6 @@
 		},
 		{
 			"params": [
-				128
-			],
-			"time": 0,
-			"name": "BPM Change"
-		},
-		{
-			"params": [
 				1,
 				1
 			],
