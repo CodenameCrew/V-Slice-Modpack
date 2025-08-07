@@ -1,0 +1,20 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "pico",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard",
+		"erect",
+		"nightmare"
+	],
+	"customValues": {},
+	"color": -7072173,
+	"name": "pico",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Pico",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 150
+}
