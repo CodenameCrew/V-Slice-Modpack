@@ -12,5 +12,6 @@
 	"displayName": "Darnell (Erect)",
 	"beatsPerMeasure": 4,
 	"bpm": 155,
-	"instSuffix": "-erect"
+	"instSuffix": "-erect",
+	"needsVoices": false
 }
