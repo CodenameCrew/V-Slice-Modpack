@@ -8,5 +8,6 @@
 	"displayName": "Fresh (Erect)",
 	"beatsPerMeasure": 4,
 	"bpm": 125,
+	"needsVoices": false,
 	"instSuffix": "-erect"
 }

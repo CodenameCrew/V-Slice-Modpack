@@ -13,7 +13,7 @@
 	"name": "fresh",
 	"stepsPerBeat": 4,
 	"displayName": "Fresh",
-	"needsVoices": true,
 	"beatsPerMeasure": 4,
+	"needsVoices": false,
 	"bpm": 120
 }
