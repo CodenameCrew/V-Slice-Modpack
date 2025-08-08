@@ -7,7 +7,7 @@
 	"stepsPerBeat": 4,
 	"displayName": "Roses (Erect)",
 	"beatsPerMeasure": 4,
-	"needsVoices": true,
+	"needsVoices": false,
 	"bpm": 128,
 	"instSuffix": "-erect"
 }

@@ -17,6 +17,6 @@
 	"stepsPerBeat": 4,
 	"displayName": "Roses",
 	"beatsPerMeasure": 4,
-	"needsVoices": true,
+	"needsVoices": false,
 	"bpm": 128
 }

@@ -7,10 +7,11 @@
 	"difficulties": [
 		"easy",
 		"normal",
-		"hard"
+		"hard",
+		"erect",
+		"nightmare"
 	],
 	"needsVoices": false,
-	"parsedColor": -10394881,
 	"displayName": "Darnell",
 	"icon": "darnell",
 	"name": "darnell",
