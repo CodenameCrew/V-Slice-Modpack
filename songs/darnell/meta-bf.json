@@ -4,14 +4,18 @@
 	"name": "darnell",
 	"color": "#6162FF",
 	"coopAllowed": true,
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
 	"customValues": {
-		"stickerPack": "bonus-weekend1",
-		"album": "expansion2"
+		"album": "volume4"
 	},
 	"stepsPerBeat": 4,
-	"displayName": "Darnell (Erect)",
+	"displayName": "Darnell (BF Mix)",
 	"beatsPerMeasure": 4,
 	"bpm": 155,
-	"instSuffix": "-erect",
+	"instSuffix": "-bf",
 	"needsVoices": false
 }

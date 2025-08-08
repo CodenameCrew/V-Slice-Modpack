@@ -7,9 +7,11 @@
 	"difficulties": [
 		"easy",
 		"normal",
-		"hard",
+		"hard"
+	],
+	"variants": [
 		"erect",
-		"nightmare"
+		"bf"	
 	],
 	"needsVoices": false,
 	"displayName": "Darnell",
