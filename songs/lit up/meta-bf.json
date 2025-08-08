@@ -5,20 +5,17 @@
 		"normal",
 		"hard"
 	],
-	"variants": [
-		"bf"
-	],
 	"icon": "darnell",
 	"coopAllowed": true,
 	"name": "lit up",
 	"color": -10394881,
 	"customValues": {
-		"stickerPack": "bonus-weekend1",
-		"album": "volume4"
+		"album": "expansion2"
 	},
 	"stepsPerBeat": 4,
-	"displayName": "Lit Up",
+	"displayName": "Lit Up (BF Mix)",
 	"needsVoices": false,
 	"beatsPerMeasure": 4,
-	"bpm": 176
+	"bpm": 176,
+	"instSuffix": "-bf"
 }
