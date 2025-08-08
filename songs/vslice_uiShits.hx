@@ -26,10 +26,9 @@ function onNoteHit(event) {
     event.ratingScale -= ratingScaleDiff;
 }
 
-function postUpdate() 
+function postUpdate(elapsed:Float) {
     comboGroup.forEachAlive(function(spr) if (spr.camera != camHUD) spr.camera = camHUD);
 
-function postUpdate(elapsed:Float) {
     lerpHealth = lerp(lerpHealth, health, 0.15);
     healthBar.value = FlxMath.roundDecimal(lerpHealth, 3);
 }
