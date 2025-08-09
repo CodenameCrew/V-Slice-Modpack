@@ -1,0 +1,30 @@
+{
+	"opponentModeAllowed": false,
+	"icon": "face",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"coopAllowed": false,
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"easy": 2,
+			"hard": 4,
+			"normal": 3
+		},
+		"noteStyle": "funkin",
+		"album": "expansion2",
+		"previewEnd": 15000,
+		"artist": "Metaroom (ft. Saster)",
+		"charter": "fabs"
+	},
+	"stepsPerBeat": 4,
+	"displayName": "Pico (Pico Mix)",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"bpm": 150,
+	"instSuffix": "-pico",
+	"vocalsSuffix": "-pico"
+}
