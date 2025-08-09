@@ -5,6 +5,9 @@
 		"normal",
 		"hard"
 	],
+	"variants": [
+		"bf"
+	],
 	"icon": "darnell",
 	"coopAllowed": true,
 	"name": "lit up",
@@ -15,7 +18,7 @@
 	},
 	"stepsPerBeat": 4,
 	"displayName": "Lit Up",
-	"needsVoices": true,
+	"needsVoices": false,
 	"beatsPerMeasure": 4,
 	"bpm": 176
 }
