@@ -1,6 +1,10 @@
 {
 	"opponentModeAllowed": true,
 	"icon": "pico",
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
 	"customValues": {},
 	"color": -7072173,
 	"name": "pico",

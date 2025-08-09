@@ -1,5 +1,5 @@
 // Took the one inside the BaseGame source as a base  - Nex
-import funkin.Constants;
+import funkin.backend.system.Flags;
 
 function postCreate() {
 	var game = GameOverSubstate.instance;
@@ -12,7 +12,7 @@ function postCreate() {
 			game.add(deathSpriteRetry);
 			deathSpriteRetry.animation.play('idle');
 			deathSpriteRetry.visible = true;
-			if(!game.isEnding) CoolUtil.playMusic(Paths.music(game?.gameOverSong), false, 1, true, Constants.DEFAULT_BPM);
+			if(!game.isEnding) CoolUtil.playMusic(Paths.music(game?.gameOverSong), false, 1, true, Flags.DEFAULT_BPM);
 			// force the deathloop to play in here, since we are starting the music early it
 			// doesn't check this in gameover substate !
 			// also no animation suffix 🤔

@@ -4,9 +4,11 @@
 	"difficulties": [
 		"easy",
 		"normal",
-		"hard",
+		"hard"
+	],
+	"variants": [
 		"erect",
-		"nightmare"
+		"pico"
 	],
 	"customValues": {},
 	"color": -14535868,
