@@ -632,7 +632,7 @@
 			"time": 93750
 		}
 	],
-	"stage": "schoolErect",
+	"stage": "school-erect",
 	"codenameChart": true,
 	"scrollSpeed": 2.6,
 	"chartVersion": "1.6.0",
