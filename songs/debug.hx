@@ -67,7 +67,7 @@ function update(elapsed:Float) {
 
 	if (FlxG.keys.justPressed.LBRACKET) setPlayback(playback - 0.25);
 	else if (FlxG.keys.justPressed.RBRACKET) setPlayback(playback + 0.25);
-	else if (FlxG.keys.justPressed.SEVEN) FlxG.switchState(new Charter(PlayState.SONG.meta.name, PlayState.difficulty));
+	else if (FlxG.keys.justPressed.SEVEN) FlxG.switchState(new Charter(PlayState.SONG.meta.name, PlayState.difficulty, PlayState.variation));
 
 	if (FlxG.keys.pressed.L) {
 		if (!toggleFast) {
