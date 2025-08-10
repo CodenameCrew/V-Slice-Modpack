@@ -1,20 +1,33 @@
 {
+	"customValues": {
+		"ratings": {
+			"easy": 1,
+			"normal": 2,
+			"hard": 3
+		},
+		"previewStart": 0,
+		"previewEnd": 15000,
+		"charter": "ninjamuffin99 + MtH",
+		"artist": "Kawai Sprite",
+		"album": "volume1",
+		"noteStyle": "funkin"
+	},
+	"color": "#941653",
 	"opponentModeAllowed": true,
 	"icon": "pico",
 	"difficulties": [
 		"easy",
 		"normal",
-		"hard",
-		"erect",
-		"nightmare"
+		"hard"
 	],
-	"customValues": {},
-	"color": -7072173,
-	"name": "blammed",
 	"coopAllowed": true,
 	"stepsPerBeat": 4,
 	"displayName": "Blammed",
-	"beatsPerMeasure": 4,
 	"needsVoices": false,
+	"beatsPerMeasure": 4,
+	"variants": [
+		"erect",
+		"pico"
+	],
 	"bpm": 165
 }
