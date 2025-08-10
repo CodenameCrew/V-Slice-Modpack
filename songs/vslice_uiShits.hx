@@ -22,7 +22,7 @@ function onNoteHit(e) if (e.ratingPrefix == 'game/score/') {
 	e.numScale *= 0.9;
 	e.ratingScale *= 0.9;
 }
-//function onPostNoteHit(e) comboGroup.cameras = [camHUD];
+function onPostNoteHit(e) comboGroup.cameras = [camHUD];
 
 function postUpdate(elapsed:Float) {
 	lerpHealth = lerp(lerpHealth, health, 0.15);
