@@ -1,15 +1,28 @@
 {
 	"opponentModeAllowed": true,
 	"icon": "senpai",
-	"color": -34625,
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
 	"coopAllowed": true,
-	"name": "senpai",
 	"customValues": {
-		"stickerPack": "standard-bf"
+		"previewStart": 0,
+		"ratings": {
+			"nightmare": 7,
+			"erect": 6
+		},
+		"noteStyle": "pixel",
+		"album": "volume3",
+		"previewEnd": 15000,
+		"artist": "Kawai Sprite",
+		"charter": "Jenny Crowe + fabs"
 	},
 	"stepsPerBeat": 4,
 	"displayName": "Senpai (Erect)",
-	"beatsPerMeasure": 4,
 	"needsVoices": false,
-	"bpm": 158
+	"beatsPerMeasure": 4,
+	"bpm": 158,
+	"instSuffix": "-erect",
+	"vocalsSuffix": "-erect"
 }

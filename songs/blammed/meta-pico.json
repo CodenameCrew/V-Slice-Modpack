@@ -1,0 +1,31 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "pico",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"color": "#941653",
+	"coopAllowed": true,
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"easy": 3,
+			"hard": 5,
+			"normal": 4
+		},
+		"noteStyle": "funkin",
+		"album": "volume4",
+		"previewEnd": 15000,
+		"artist": "Metaroom (feat. Saruky)",
+		"charter": "fabs + Spazkid"
+	},
+	"stepsPerBeat": 4,
+	"displayName": "Blammed (Pico Mix)",
+	"needsVoices": false,
+	"beatsPerMeasure": 4,
+	"bpm": 165,
+	"instSuffix": "-pico",
+	"vocalsSuffix": "-pico"
+}
