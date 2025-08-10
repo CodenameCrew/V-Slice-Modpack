@@ -6,7 +6,6 @@
 		"normal",
 		"hard"
 	],
-	"variants": ["erect", "pico"],
 	"coopAllowed": true,
 	"customValues": {
 		"ratings": {
@@ -15,15 +14,15 @@
 			"normal": 3
 		},
 		"previewStart": 0,
-		"album": "volume2",
-		"artist": "Kawai Sprite",
-		"charter": "ninjamuffin99 + MtH + Spazkid",
+		"album": "expansion2",
+		"artist": "Xploshi (ft. Saruky)",
+		"charter": "fabs + Spazkid",
 		"previewEnd": 15000
 	},
-	"color": "#FF78BF",
 	"stepsPerBeat": 4,
-	"displayName": "Roses",
+	"displayName": "Roses (Pico Mix)",
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
+	"instSuffix": "-pico",
 	"bpm": 120
 }

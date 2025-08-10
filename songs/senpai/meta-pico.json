@@ -2,27 +2,29 @@
 	"opponentModeAllowed": true,
 	"icon": "senpai",
 	"difficulties": [
-		"erect",
-		"nightmare"
+		"easy",
+		"normal",
+		"hard"
 	],
 	"coopAllowed": true,
 	"customValues": {
 		"previewStart": 0,
 		"ratings": {
-			"nightmare": 7,
-			"erect": 6
+			"easy": 1,
+			"hard": 3,
+			"normal": 2
 		},
 		"noteStyle": "pixel",
-		"album": "volume3",
+		"album": "expansion2",
 		"previewEnd": 15000,
-		"artist": "Kawai Sprite",
-		"charter": "Jenny Crowe + fabs"
+		"artist": "Tee Lopes (Feat. Saruky)",
+		"charter": "fabs + Spazkid"
 	},
 	"stepsPerBeat": 4,
-	"displayName": "Senpai Erect",
+	"displayName": "Senpai (Pico Mix)",
 	"needsVoices": true,
 	"beatsPerMeasure": 4,
-	"bpm": 158,
-	"instSuffix": "-erect",
-	"vocalsSuffix": "-erect"
+	"bpm": 144,
+	"instSuffix": "-pico",
+	"vocalsSuffix": "-pico"
 }
