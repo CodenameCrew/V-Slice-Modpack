@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="pico-2hot.png" width="3033" height="3016">
+	<SubTexture name="Pico Hit Can0000" x="643" y="1168" width="453" height="543" rotated="true" frameX="-5" frameY="-15" frameWidth="548" frameHeight="469"/>
+	<SubTexture name="Pico Hit Can0001" x="0" y="1299" width="543" height="452" frameX="-5" frameY="-16" frameWidth="548" frameHeight="469"/>
+	<SubTexture name="Pico Hit Can0002" x="643" y="697" width="537" height="469" frameX="-0" frameY="-0" frameWidth="548" frameHeight="469"/>
+	<SubTexture name="Pico Hit Can0003" x="767" y="0" width="469" height="537" rotated="true" frameX="-0" frameY="-0" frameWidth="548" frameHeight="469"/>
+	<SubTexture name="Pico Hit Can0004" x="1182" y="539" width="469" height="537" rotated="true" frameX="-0" frameY="-0" frameWidth="548" frameHeight="469"/>
+	<SubTexture name="Pico Hit Can0005" x="1238" y="0" width="469" height="537" rotated="true" frameX="-0" frameY="-0" frameWidth="548" frameHeight="469"/>
+	<SubTexture name="Pico Hit Can0006" x="1182" y="1078" width="469" height="537" rotated="true" frameX="-0" frameY="-0" frameWidth="548" frameHeight="469"/>
+	<SubTexture name="Pico Reload0000" x="1653" y="539" width="451" height="468" frameX="-0" frameY="-1" frameWidth="451" frameHeight="471"/>
+	<SubTexture name="Pico Reload0001" x="1653" y="539" width="451" height="468" frameX="-0" frameY="-1" frameWidth="451" frameHeight="471"/>
+	<SubTexture name="Pico Reload0002" x="0" y="2198" width="471" height="436" rotated="true" frameX="-4" frameY="-0" frameWidth="451" frameHeight="471"/>
+	<SubTexture name="Pico Reload0003" x="2551" y="477" width="436" height="471" frameX="-4" frameY="-0" frameWidth="451" frameHeight="471"/>
+	<SubTexture name="Pico Reload0004" x="2551" y="477" width="436" height="471" frameX="-4" frameY="-0" frameWidth="451" frameHeight="471"/>
+	<SubTexture name="Pico Reload0005" x="2551" y="477" width="436" height="471" frameX="-4" frameY="-0" frameWidth="451" frameHeight="471"/>
+	<SubTexture name="shoot and return0000" x="0" y="697" width="641" height="600" frameX="-124" frameY="-95" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0001" x="0" y="0" width="765" height="695" frameX="-0" frameY="-0" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0002" x="477" y="2190" width="481" height="433" frameX="-281" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0003" x="2543" y="954" width="476" height="433" frameX="-286" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0004" x="2543" y="1868" width="472" height="433" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0005" x="2543" y="1868" width="472" height="433" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0006" x="2543" y="1868" width="472" height="433" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0007" x="2543" y="1868" width="472" height="433" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0008" x="2543" y="1868" width="472" height="433" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0009" x="2543" y="1868" width="472" height="433" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0010" x="2543" y="1868" width="472" height="433" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0011" x="2543" y="1868" width="472" height="433" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0012" x="2543" y="1868" width="472" height="433" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0013" x="2543" y="1868" width="472" height="433" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0014" x="2600" y="0" width="433" height="473" rotated="true" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0015" x="2600" y="0" width="433" height="473" rotated="true" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0016" x="2600" y="0" width="433" height="473" rotated="true" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0017" x="2600" y="0" width="433" height="473" rotated="true" frameX="-290" frameY="-262" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0018" x="2543" y="2303" width="469" height="432" frameX="-294" frameY="-263" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0019" x="2543" y="2303" width="469" height="432" frameX="-294" frameY="-263" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0020" x="2543" y="2303" width="469" height="432" frameX="-294" frameY="-263" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0021" x="2543" y="2303" width="469" height="432" frameX="-294" frameY="-263" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0022" x="1987" y="2440" width="460" height="431" frameX="-297" frameY="-264" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0023" x="1987" y="2440" width="460" height="431" frameX="-297" frameY="-264" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0024" x="1987" y="2440" width="460" height="431" frameX="-297" frameY="-264" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0025" x="1430" y="2441" width="436" height="435" frameX="-301" frameY="-261" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0026" x="1430" y="2441" width="436" height="435" frameX="-301" frameY="-261" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0027" x="960" y="2572" width="406" height="444" frameX="-293" frameY="-256" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0028" x="960" y="2572" width="406" height="444" frameX="-293" frameY="-256" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0029" x="2543" y="1389" width="429" height="477" frameX="-252" frameY="-229" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0030" x="2543" y="1389" width="429" height="477" frameX="-252" frameY="-229" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0031" x="990" y="2094" width="438" height="476" frameX="-252" frameY="-230" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0032" x="990" y="2094" width="438" height="476" frameX="-252" frameY="-230" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0033" x="1543" y="1964" width="442" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0034" x="1543" y="1964" width="442" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0035" x="1543" y="1964" width="442" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0036" x="1653" y="1009" width="443" height="476" frameX="-252" frameY="-230" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0037" x="1653" y="1009" width="443" height="476" frameX="-252" frameY="-230" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0038" x="1653" y="1009" width="443" height="476" frameX="-252" frameY="-230" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0039" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0040" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0041" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0042" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0043" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0044" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0045" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0046" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0047" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0048" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0049" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0050" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0051" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0052" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0053" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0054" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0055" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0056" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0057" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0058" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0059" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0060" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0061" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0062" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0063" x="1098" y="1617" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0064" x="1098" y="1617" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0065" x="1098" y="1617" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0066" x="1709" y="0" width="444" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0067" x="1709" y="0" width="444" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0068" x="545" y="1713" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0069" x="545" y="1713" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0070" x="0" y="1753" width="475" height="443" rotated="true" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0071" x="0" y="1753" width="475" height="443" rotated="true" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0072" x="0" y="1753" width="475" height="443" rotated="true" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0073" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0074" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0075" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0076" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0077" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0078" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0079" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0080" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0081" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0082" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0083" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0084" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0085" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0086" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0087" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0088" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0089" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0090" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0091" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0092" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0093" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0094" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0095" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0096" x="1653" y="1487" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0097" x="1098" y="1617" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0098" x="1098" y="1617" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0099" x="1098" y="1617" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0100" x="2098" y="1009" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0101" x="2098" y="1009" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0102" x="2106" y="477" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0103" x="2106" y="477" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0104" x="2155" y="0" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0105" x="2155" y="0" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0106" x="2098" y="1486" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0107" x="2098" y="1486" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0108" x="2098" y="1486" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0109" x="2098" y="1963" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0110" x="2098" y="1963" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+	<SubTexture name="shoot and return0111" x="2098" y="1963" width="443" height="475" frameX="-252" frameY="-231" frameWidth="766" frameHeight="707"/>
+</TextureAtlas>
