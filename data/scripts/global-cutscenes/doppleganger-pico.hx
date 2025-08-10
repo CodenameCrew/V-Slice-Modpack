@@ -24,9 +24,6 @@ function create()
     playerShoots = FlxG.random.bool(50);
     explode = FlxG.random.bool(8);
 
-	playerShoots = true;
-	explode = true;
-
     game.insert(game.members.indexOf(playerShoots ? game.boyfriend : game.dad) + 1, picoOpponent = new FunkinSprite(game.dad.x + game.dad.globalOffset.x + 87, game.dad.y + game.dad.globalOffset.y + 395));
     game.insert(game.members.indexOf(playerShoots ? game.dad : game.boyfriend) + 1, picoPlayer = new FunkinSprite(game.boyfriend.x + game.boyfriend.globalOffset.x + 244, game.boyfriend.y + game.boyfriend.globalOffset.y + 395));
 
