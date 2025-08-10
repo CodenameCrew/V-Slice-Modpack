@@ -22,7 +22,7 @@
 	},
 	"stepsPerBeat": 4,
 	"displayName": "Senpai (Pico Mix)",
-	"needsVoices": true,
+	"needsVoices": false,
 	"beatsPerMeasure": 4,
 	"bpm": 144,
 	"instSuffix": "-pico",

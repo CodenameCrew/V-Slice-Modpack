@@ -22,7 +22,7 @@
 	"coopAllowed": true,
 	"stepsPerBeat": 4,
 	"displayName": "Senpai",
-	"needsVoices": true,
+	"needsVoices": false,
 	"beatsPerMeasure": 4,
 	"variants": [
 		"erect",

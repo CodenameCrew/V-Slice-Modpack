@@ -20,7 +20,7 @@
 	},
 	"stepsPerBeat": 4,
 	"displayName": "Senpai (Erect)",
-	"needsVoices": true,
+	"needsVoices": false,
 	"beatsPerMeasure": 4,
 	"bpm": 158,
 	"instSuffix": "-erect",
