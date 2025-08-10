@@ -69,7 +69,8 @@ function update(elapsed:Float) {
 	else if (FlxG.keys.justPressed.RBRACKET) setPlayback(playback + 0.25);
 	else if (FlxG.keys.justPressed.SEVEN) FlxG.switchState(new Charter(PlayState.SONG.meta.name, PlayState.difficulty, PlayState.variation));
 
-	if (FlxG.keys.pressed.L) {
+	// i use askl ;-;
+	if (FlxG.keys.pressed.SHIFT && FlxG.keys.pressed.L) {
 		if (!toggleFast) {
 			toggleFast = true;
 			setPlayback(10);

@@ -1,0 +1,31 @@
+{
+	"color": "#9271FD",
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"easy": 2,
+			"normal": 3,
+			"hard": 4
+		},
+		"charter": "fabs + Spazkid",
+		"artist": "Six Impala (feat. Saster)",
+		"previewEnd": 15000,
+		"noteStyle": "funkin",
+		"album": "volume4"
+	},
+	"instSuffix": "-pico",
+	"opponentModeAllowed": false,
+	"icon": "face",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "South (Pico Mix)",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"vocalsSuffix": "-pico",
+	"bpm": 165
+}
