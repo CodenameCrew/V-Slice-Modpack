@@ -1,13 +1,29 @@
 {
+	"color": "#9271FD",
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"nightmare": 7,
+			"erect": 6
+		},
+		"noteStyle": "funkin",
+		"album": "volume3",
+		"previewEnd": 15000,
+		"artist": "Kohta Takahashi (feat. Saruky)",
+		"charter": "fabs"
+	},
+	"instSuffix": "-erect",
 	"opponentModeAllowed": true,
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
 	"icon": "dad",
-	"color": -7179779,
 	"coopAllowed": true,
-	"name": "fresh",
 	"stepsPerBeat": 4,
 	"displayName": "Fresh (Erect)",
 	"beatsPerMeasure": 4,
-	"bpm": 125,
 	"needsVoices": false,
-	"instSuffix": "-erect"
+	"vocalsSuffix": "-erect",
+	"bpm": 125
 }

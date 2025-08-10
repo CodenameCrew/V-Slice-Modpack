@@ -1,0 +1,31 @@
+{
+	"color": "#9271FD",
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"easy": 3,
+			"hard": 5,
+			"normal": 4
+		},
+		"noteStyle": "funkin",
+		"album": "volume4",
+		"previewEnd": 15000,
+		"artist": "TeraVex (ft. Saruky)",
+		"charter": "fabs + Spazkid"
+	},
+	"instSuffix": "-pico",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"icon": "dad",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "DadBattle (Pico Mix)",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"vocalsSuffix": "-pico",
+	"bpm": 180
+}
