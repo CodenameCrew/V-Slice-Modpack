@@ -1,15 +1,9 @@
-var curNote;
-
-var curNoteMissed;
-
-var sustainLength;
-
 function onPlayerHit(e){
     e.healthGain = e.score = e.accuracy = 0; //cancelling normal stuff
 
-    var noteDiff = Math.abs(Conductor.songPosition - e.note.strumTime);
-
-    curNote = e.note;
+    var noteDiff = Math.abs(Conductor.songPosition - e.note.strumTime);  
+    
+    var curNote;
 
     if(!e.note.isSustainNote){
         e.score = scoreNote(noteDiff);
@@ -24,17 +18,41 @@ function onPlayerHit(e){
                 e.healthGain = 0.0 / 100.0 * maxHealth; 
             case 'shit':
                 e.healthGain = -1.0 / 100.0 * maxHealth; 
+            case 'miss':
+                e.misses = true;
+                e.showRating = false;
         }
+    } else if(curNote == null) {
+    curNote = e.note;
+    FlxG.signals.postUpdate.add(function() {
+        trace(FlxG.elapsed);
+        if(curNote != null && curNote.isSustainNote && curNote.nextNote != null && curNote.nextNote.isSustainNote){
+            songScore += 250.0 * FlxG.elapsed;
+            health += (6.0 / 100.0 * maxHealth) * FlxG.elapsed;
+        }
+
+        if(curNote.nextNote == null || !curNote.nextNote.isSustainNote){
+            curNote = null;
+            FlxG.signals.postUpdate.removeAll();
+        }
+    });
     }
 }
 
-// function onPlayerMiss(e){
-//     curNoteMissed = e.note;
+function onPlayerMiss(e){
+    curNoteMissed = e.note;
 
-//     trace(e.note.sustainLength);
-//     while()
-//         sustainLength +=
-// }
+    if(e.note.isSustainNote){
+    var nextNote = e.note;
+    var length:Float = e.note.sustainLength;
+
+    while(nextNote.nextNote.isSustainNote){
+        length += nextNote.nextNote.sustainLength;
+        nextNote = nextNote.nextNote;
+    }
+    missedSustainLength = length;
+}
+}
 
 function scoreNote(timing:Float):Int
   {
@@ -70,14 +88,3 @@ function judgeNote(timing:Float):String
         'miss';
     }
   }
-
-  function handleNoteStuff(elapsed:Float){
-    if(curNote != null && curNote.isSustainNote && curNote.nextNote != null && curNote.nextNote.isSustainNote){
-        songScore += 250.0 * elapsed;
-        health += (6.0 / 100.0 * maxHealth) * elapsed;
-    }
-       
-  }
-
-  function postUpdate(elapsed:Float)
-    handleNoteStuff(elapsed);
