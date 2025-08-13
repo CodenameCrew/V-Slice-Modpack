@@ -1,22 +1,40 @@
+var curNote;
+
+var curNoteMissed;
+
+var sustainLength;
+
 function onPlayerHit(e){
     e.healthGain = e.score = e.accuracy = 0; //cancelling normal stuff
 
     var noteDiff = Math.abs(Conductor.songPosition - e.note.strumTime);
 
-    e.score = scoreNote(noteDiff);
-    e.rating = judgeNote(noteDiff);
+    curNote = e.note;
 
-    switch(e.rating){
-        case 'sick':
-            e.healthGain = 1.5 / 100.0 * maxHealth;
-        case 'good':
-            e.healthGain = 0.75 / 100.0 * maxHealth; 
-        case 'bad':
-            e.healthGain = 0.0 / 100.0 * maxHealth; 
-        case 'shit':
-            e.healthGain = -1.0 / 100.0 * maxHealth; 
+    if(!e.note.isSustainNote){
+        e.score = scoreNote(noteDiff);
+        e.rating = judgeNote(noteDiff);
+
+        switch(e.rating){
+            case 'sick':
+                e.healthGain = 1.5 / 100.0 * maxHealth;
+            case 'good':
+                e.healthGain = 0.75 / 100.0 * maxHealth; 
+            case 'bad':
+                e.healthGain = 0.0 / 100.0 * maxHealth; 
+            case 'shit':
+                e.healthGain = -1.0 / 100.0 * maxHealth; 
+        }
     }
 }
+
+// function onPlayerMiss(e){
+//     curNoteMissed = e.note;
+
+//     trace(e.note.sustainLength);
+//     while()
+//         sustainLength +=
+// }
 
 function scoreNote(timing:Float):Int
   {
@@ -52,3 +70,14 @@ function judgeNote(timing:Float):String
         'miss';
     }
   }
+
+  function handleNoteStuff(elapsed:Float){
+    if(curNote != null && curNote.isSustainNote && curNote.nextNote != null && curNote.nextNote.isSustainNote){
+        songScore += 250.0 * elapsed;
+        health += (6.0 / 100.0 * maxHealth) * elapsed;
+    }
+       
+  }
+
+  function postUpdate(elapsed:Float)
+    handleNoteStuff(elapsed);
