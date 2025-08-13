@@ -26,7 +26,6 @@ function onPlayerMiss(e){
         }
             e.preventAnim();
             e.preventVocalsUnmute();
-            e.healthGain = e.misses = e.score = e.accuracy = 0;
             e.preventMissSound();
     }
 }
