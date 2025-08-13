@@ -2,8 +2,6 @@ function onPlayerHit(e){
     e.healthGain = e.score = e.accuracy = 0; //cancelling normal stuff
 
     var noteDiff = Math.abs(Conductor.songPosition - e.note.strumTime);  
-    
-    var curNote;
 
     if(!e.note.isSustainNote){
         e.score = scoreNote(noteDiff);
@@ -22,20 +20,22 @@ function onPlayerHit(e){
                 e.misses = true;
                 e.showRating = false;
         }
-    } else if(curNote == null) {
-    curNote = e.note;
+    } else {
+    var curNote = e.note;
+    if(curNote != null){
+    FlxG.signals.postUpdate?.removeAll();
     FlxG.signals.postUpdate.add(function() {
-        trace(FlxG.elapsed);
         if(curNote != null && curNote.isSustainNote && curNote.nextNote != null && curNote.nextNote.isSustainNote){
             songScore += 250.0 * FlxG.elapsed;
             health += (6.0 / 100.0 * maxHealth) * FlxG.elapsed;
         }
 
-        if(curNote.nextNote == null || !curNote.nextNote.isSustainNote){
+        if(curNote != null && (curNote.nextNote == null || !curNote.nextNote.isSustainNote)){
             curNote = null;
-            FlxG.signals.postUpdate.removeAll();
+            FlxG.signals.postUpdate?.removeAll();
         }
     });
+    }
     }
 }
 

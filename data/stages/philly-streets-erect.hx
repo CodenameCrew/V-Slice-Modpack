@@ -19,6 +19,10 @@ var mistData:Array<Dynamic> = [
 function create()
 	initMist();
 
+function postCreate()
+	if(boyfriend.curCharacter != 'pico')
+		boyfriend.cameraOffset.x = -120;
+
 var mists:Array<FlxBackdrop> = [];
 function initMist()
 {

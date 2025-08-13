@@ -81,6 +81,8 @@ function create()
 			rainShaderEndIntensity = 0.4;
 	}
 
+	
+
 	rainColor = 0xFFa8adb5;
 
 	resetCar(true, true);
