@@ -1,0 +1,29 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "pico",
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"color": "#941653",
+	"coopAllowed": true,
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"nightmare": 12,
+			"erect": 11
+		},
+		"noteStyle": "funkin",
+		"album": "volume3",
+		"previewEnd": 15000,
+		"artist": "Kawai Sprite",
+		"charter": "fabs + Spazkid"
+	},
+	"stepsPerBeat": 4,
+	"displayName": "Blammed Erect",
+	"needsVoices": false,
+	"beatsPerMeasure": 4,
+	"bpm": 170,
+	"instSuffix": "-erect",
+	"vocalsSuffix": "-erect"
+}

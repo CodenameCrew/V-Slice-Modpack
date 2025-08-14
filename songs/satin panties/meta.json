@@ -1,12 +1,20 @@
 {
-	"difficulty": 3,
-	"weekNum": 4,
-	"isWeekEnd": false,
-
-	"displayName": "Satin Panties",
-	"bpm": 110.0,
+	"opponentModeAllowed": true,
 	"icon": "mom",
-	"color": "#FC96D7",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard",
+		"erect",
+		"nightmare"
+	],
+	"customValues": {},
+	"color": -223530,
+	"name": "satin panties",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"stepsPerBeat": 4,
+	"displayName": "Satin Panties",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 110
 }

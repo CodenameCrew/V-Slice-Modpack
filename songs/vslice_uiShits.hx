@@ -1,35 +1,30 @@
-public var ratingScaleDiff:Float = 0.1;
-
 var lerpHealth:Float = 1;
 
-function create()
-    comboGroup.setPosition(560, 290);
-
-function postCreate() 
-    healthBar.numDivisions = 1000;
-
-function onPostCountdown(event) {
-    var spr = event.sprite;
-    if (spr != null) {
-        spr.camera = camHUD;
-        spr.scale.set(1, 1);
-    }
-
-    // prevents tweening the y  - Nex
-    var props = event.spriteTween?._propertyInfos;
-    if (props != null) for (info in props)
-        if (info.field == "y") event.spriteTween._propertyInfos.remove(info);
+function postCreate() {
+	comboGroup.setPosition(560, 290);
+	healthBar.numDivisions = 1000;
+	comboGroup.cameras = [camHUD];
 }
 
-function onNoteHit(event) {
-    event.numScale -= ratingScaleDiff;
-    event.ratingScale -= ratingScaleDiff;
+function onCountdown(e) if (e.scale == 0.6) e.scale = 1;
+
+function onPostCountdown(e) {
+	var spr = e.sprite;
+	if (spr != null) spr.camera = camHUD;
+
+	// prevents tweening the y  - Nex
+	var props = e.spriteTween?._propertyInfos;
+	if (props != null) for (info in props)
+		if (info.field == "y") e.spriteTween._propertyInfos.remove(info);
 }
 
-function update() 
-    comboGroup.forEachAlive(function(spr) if (spr.camera != camHUD) spr.camera = camHUD);
+function onNoteHit(e) if (e.ratingPrefix == 'game/score/') {
+	e.numScale *= 0.9;
+	e.ratingScale *= 0.9;
+}
+function onPostNoteHit(e) comboGroup.cameras = [camHUD];
 
 function postUpdate(elapsed:Float) {
-    lerpHealth = lerp(lerpHealth, health, 0.15);
-    healthBar.value = FlxMath.roundDecimal(lerpHealth, 3);
+	lerpHealth = lerp(lerpHealth, health, 0.15);
+	healthBar.value = FlxMath.roundDecimal(lerpHealth, 3);
 }

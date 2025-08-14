@@ -1,12 +1,20 @@
 {
-	"difficulty": 4,
-	"weekNum": 6,
-	"isWeekEnd": false,
-
-	"displayName": "Thorns",
-	"bpm": 190.0,
-	"icon": "spirit",
+	"customValues": {},
 	"color": "#FF78BF",
+	"opponentModeAllowed": true,
+	"icon": "spirit",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"stepsPerBeat": 4,
+	"displayName": "Thorns",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"variants": [
+		"erect"
+	],
+	"bpm": 190
 }

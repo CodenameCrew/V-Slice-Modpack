@@ -1,12 +1,21 @@
 {
-	"difficulty": 2,
-	"weekNum": 2,
-	"isWeekEnd": false,
-
-	"displayName": "South",
-	"bpm": 165.0,
+	"opponentModeAllowed": true,
 	"icon": "spooky",
-	"color": "#223344",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"variants": [
+		"erect",
+		"pico"
+	],
+	"customValues": {},
+	"color": -14535868,
+	"name": "south",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"stepsPerBeat": 4,
+	"displayName": "South",
+	"beatsPerMeasure": 4,
+	"bpm": 165
 }

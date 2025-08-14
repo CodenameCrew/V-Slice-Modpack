@@ -1,0 +1,29 @@
+{
+	"color": "#A0D1FF",
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"nightmare": 8,
+			"erect": 7
+		},
+		"album": "volume4",
+		"noteStyle": "funkin",
+		"previewEnd": 15000,
+		"charter": "fabs + Spazkid",
+		"artist": "Saster"
+	},
+	"instSuffix": "-erect",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"icon": "parents-christmas",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Cocoa Erect",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"vocalsSuffix": "-erect",
+	"bpm": 174
+}

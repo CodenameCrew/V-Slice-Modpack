@@ -1,12 +1,20 @@
 {
-	"difficulty": 4,
-	"weekNum": 7,
-	"isWeekEnd": false,
-
-	"displayName": "Ugh",
-	"bpm": 160.0,
-	"icon": "tankman",
+	"customValues": {},
 	"color": "#F6B604",
+	"opponentModeAllowed": true,
+	"icon": "tankman",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"stepsPerBeat": 4,
+	"displayName": "Ugh",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"variants": [
+		"erect"
+	],
+	"bpm": 160
 }

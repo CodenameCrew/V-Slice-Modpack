@@ -1,13 +1,29 @@
 {
-	"difficulty": 1,
-	"weekNum": 1,
-	"isWeekEnd": false,
-
-	"displayName": "Bopeebo",
-	"bpm": 100.0,
+	"opponentModeAllowed": true,
 	"icon": "dad",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"variants": ["erect", "pico"],
 	"color": "#9271FD",
 	"coopAllowed": true,
 	"needsVoices": false,
-	"opponentModeAllowed": true
+	"customValues": {
+		"ratings": {
+			"easy": 1,
+			"hard": 2,
+			"normal": 1
+		},
+		"previewStart": 0,
+		"album": "volume1",
+		"artist": "Kawai Sprite",
+		"charter": "ninjamuffin99 + MtH",
+		"previewEnd": 15000
+	},
+	"stepsPerBeat": 4,
+	"displayName": "Bopeebo",
+	"beatsPerMeasure": 4,
+	"bpm": 100
 }

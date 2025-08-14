@@ -209,7 +209,7 @@ function updateFFT() {
 	if (analyzer != null && FlxG.sound.music.playing) {
 		var time = FlxG.sound.music.time;
 		if (analyzerTimeCache != time)
-			analyzerLevelsCache = analyzer.getLevels(analyzerTimeCache = time, FlxG.sound.music.calcTransformVolume(), abotViz.group.members.length, analyzerLevelsCache, CoolUtil.getFPSRatio(0.4), -65, -10, 500, 20000);
+			analyzerLevelsCache = analyzer.getLevels(analyzerTimeCache = time, 1, abotViz.group.members.length, analyzerLevelsCache, CoolUtil.getFPSRatio(0.2), -30, 0, 100, 24000);
 	}
 	else {
 		if (analyzerLevelsCache == null) analyzerLevelsCache = [];
@@ -282,7 +282,7 @@ function update(elapsed) {
 }
 
 function onStartSong() {
-	analyzer = new AudioAnalyzer(FlxG.sound.music, 256);
+	analyzer = new AudioAnalyzer(FlxG.sound.music, 512);
 }
 
 function shouldTransitionState():Bool

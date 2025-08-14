@@ -2,9 +2,9 @@
 <stage zoom="0.8" name="mall-erect" folder="stages/mall/" startCamPosY="450" startCamPosX="500">
 	<use-extension script="erect-effect"/>
 
-	<sprite name="bg" x="-726" y="-566" sprite="erect/bgWalls" scale="0.9" scroll="0.2"/>
+	<sprite name="bg" x="-826" y="-666" sprite="erect/bgWalls" scale="0.9" scroll="0.2"/>
 	<high-memory>
-		<sprite name="upperBoppers" x="-534" y="-98" sprite="erect/upperBop" scale="0.85" scroll="0.28" type="onbeat" beatInterval="1"/>
+		<sprite name="upperBoppers" x="-564" y="-128" sprite="erect/upperBop" scale="0.85" scroll="0.28" type="onbeat" beatInterval="1"/>
 	</high-memory>
 	<sprite name="bgEscalator" x="-1100" y="-540" sprite="erect/bgEscalator" scroll="0.3" scale="0.9" updateHitbox="true"/>
 	<sprite name="tree" x="370" y="-250" sprite="erect/christmasTree" scroll="0.4"/>

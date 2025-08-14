@@ -1,0 +1,186 @@
+{
+	"events": [
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 0
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 3333
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 6666
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 8333
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 10000
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 11666
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 13750
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 20000
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 26666
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 28333
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 30000
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 31666
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 40000
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 46666
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 53333
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 56666
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 60000
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 61666
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 63333
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 65000
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 66666
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 70000
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 73333
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 76666
+		},
+		{
+			"params": [
+				0
+			],
+			"name": "Camera Movement",
+			"time": 80000
+		},
+		{
+			"params": [
+				1
+			],
+			"name": "Camera Movement",
+			"time": 86666
+		}
+	]
+}

@@ -9,8 +9,11 @@
 		"normal",
 		"hard"
 	],
+	"variants": [
+		"erect",
+		"bf"	
+	],
 	"needsVoices": false,
-	"parsedColor": -10394881,
 	"displayName": "Darnell",
 	"icon": "darnell",
 	"name": "darnell",

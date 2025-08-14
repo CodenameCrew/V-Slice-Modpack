@@ -1,381 +1,571 @@
-{"events": [
+{
+	"stage": "stage",
+	"events": [],
+	"scrollSpeed": 1.2,
+	"codenameChart": true,
+	"strumLines": [
 		{
-			"params": [
-				1
+			"notes": [
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 0,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 1050,
+					"time": 600,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 4800,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 5400,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 600,
+					"time": 6000,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 574.999999999999,
+					"time": 9600,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": null,
+					"time": 10500,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 10800,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 474.999999999999,
+					"time": 14400,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": null,
+					"time": 15300,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 600,
+					"time": 15600,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 19200,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 900,
+					"time": 19800,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 24000,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 900,
+					"time": 24600,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 300,
+					"time": 28800,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 1200,
+					"time": 29400,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 33300,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 33600,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 34500,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 34800,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 450,
+					"time": 38400,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 300,
+					"time": 39000,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 600,
+					"time": 39600,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": null,
+					"time": 43200,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 43800,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 44400,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 45000,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 450,
+					"time": 48000,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 300,
+					"time": 48600,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 450,
+					"time": 49200,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 1800,
+					"time": 52800,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 324.999999999994,
+					"time": 57600,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 1200,
+					"time": 58200,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 62400,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 63300,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 63600,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 300,
+					"time": 67200,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 67800,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 68400,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 71700,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 72000,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 72900,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 73200,
+					"type": null
+				}
 			],
-			"time": 2400,
-			"name": "Camera Movement"
+			"position": "dad",
+			"vocalsSuffix": "-dad",
+			"type": 0,
+			"characters": [
+				"dad"
+			]
 		},
 		{
-			"params": [
-				1,
-				"hey",
-				true
+			"notes": [
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 2400,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 1050,
+					"time": 3000,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 7200,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 7800,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 600,
+					"time": 8400,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 12000,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": null,
+					"time": 12900,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 13200,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 450,
+					"time": 16800,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": null,
+					"time": 17700,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 600,
+					"time": 18000,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 21600,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 900,
+					"time": 22200,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 26400,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 900,
+					"time": 27000,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 274.999999999997,
+					"time": 31200,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 1200,
+					"time": 31800,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 35700,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 36000,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 36900,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 37200,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 450,
+					"time": 40800,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 300,
+					"time": 41400,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 600,
+					"time": 42000,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": null,
+					"time": 45600,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 46200,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 300,
+					"time": 46800,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 47400,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 450,
+					"time": 50400,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 300,
+					"time": 51000,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 450,
+					"time": 51600,
+					"type": null
+				},
+				{
+					"id": 3,
+					"sLen": 1800,
+					"time": 55200,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 300,
+					"time": 60000,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 1200,
+					"time": 60600,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 64800,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 65700,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 66000,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": 300,
+					"time": 69600,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 70200,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 70800,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 74100,
+					"type": null
+				},
+				{
+					"id": 0,
+					"sLen": 300,
+					"time": 74400,
+					"type": null
+				},
+				{
+					"id": 2,
+					"sLen": null,
+					"time": 75300,
+					"type": null
+				},
+				{
+					"id": 1,
+					"sLen": 600,
+					"time": 75600,
+					"type": null
+				}
 			],
-			"time": 4200,
-			"name": "Play Animation"
+			"position": "boyfriend",
+			"vocalsSuffix": "-bf",
+			"type": 1,
+			"characters": [
+				"bf"
+			]
 		},
 		{
-			"params": [
-				0
-			],
-			"time": 4800,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 7200,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"name": "Play Animation",
-			"time": 9000
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 9600,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 12000,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"time": 13800,
-			"name": "Play Animation"
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 14400,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 16800,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"name": "Play Animation",
-			"time": 18600
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 19200,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 21600,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"time": 23400,
-			"name": "Play Animation"
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 24000,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 26400,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"name": "Play Animation",
-			"time": 28200
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"time": 28500,
-			"name": "Play Animation"
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 28800,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 31200,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"name": "Play Animation",
-			"time": 33000
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 33600,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 36000,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"time": 37800,
-			"name": "Play Animation"
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 38400,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 40800,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"name": "Play Animation",
-			"time": 42600
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 43200,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 45600,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"time": 47400,
-			"name": "Play Animation"
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 48000,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 50400,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"name": "Play Animation",
-			"time": 52200
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 52800,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 55200,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"time": 57000,
-			"name": "Play Animation"
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 57600,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 60000,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"name": "Play Animation",
-			"time": 61800
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 62400,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 64800,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"time": 66600,
-			"name": "Play Animation"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"name": "Play Animation",
-			"time": 66900
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 67200,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 69600,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"time": 71400,
-			"name": "Play Animation"
-		},
-		{
-			"params": [
-				0
-			],
-			"time": 72000,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1
-			],
-			"time": 74400,
-			"name": "Camera Movement"
-		},
-		{
-			"params": [
-				1,
-				"hey",
-				true
-			],
-			"name": "Play Animation",
-			"time": 76200
+			"notes": [],
+			"visible": false,
+			"position": "girlfriend",
+			"type": 2,
+			"characters": [
+				"gf"
+			]
 		}
-	],"codenameChart":true,"scrollSpeed":1.2,"chartVersion":"1.6.0","strumLines":[{"keyCount":4,"position":"dad","notes":[{"id":2,"sLen":0,"time":0,"type":0},{"id":3,"sLen":1050,"time":600,"type":0},{"id":1,"sLen":300,"time":4800,"type":0},{"id":0,"sLen":300,"time":5400,"type":0},{"id":3,"sLen":600,"time":6000,"type":0},{"id":1,"sLen":574.999999999996,"time":9600,"type":0},{"id":0,"sLen":0,"time":10500,"type":0},{"id":1,"sLen":600,"time":10800,"type":0},{"id":3,"sLen":474.999999999998,"time":14400,"type":0},{"id":0,"sLen":0,"time":15300,"type":0},{"id":2,"sLen":600,"time":15600,"type":0},{"id":0,"sLen":300,"time":19200,"type":0},{"id":1,"sLen":900,"time":19800,"type":0},{"id":1,"sLen":300,"time":24000,"type":0},{"id":0,"sLen":900,"time":24600,"type":0},{"id":2,"sLen":300,"time":28800,"type":0},{"id":0,"sLen":1200,"time":29400,"type":0},{"id":2,"sLen":0,"time":33300,"type":0},{"id":0,"sLen":300,"time":33600,"type":0},{"id":2,"sLen":0,"time":34500,"type":0},{"id":1,"sLen":600,"time":34800,"type":0},{"id":2,"sLen":450,"time":38400,"type":0},{"id":3,"sLen":300,"time":39000,"type":0},{"id":0,"sLen":600,"time":39600,"type":0},{"id":1,"sLen":0,"time":43200,"type":0},{"id":2,"sLen":0,"time":43800,"type":0},{"id":1,"sLen":300,"time":44400,"type":0},{"id":2,"sLen":0,"time":45000,"type":0},{"id":2,"sLen":450,"time":48000,"type":0},{"id":3,"sLen":300,"time":48600,"type":0},{"id":0,"sLen":450,"time":49200,"type":0},{"id":3,"sLen":1800,"time":52800,"type":0},{"id":2,"sLen":324.999999999993,"time":57600,"type":0},{"id":0,"sLen":1200,"time":58200,"type":0},{"id":0,"sLen":300,"time":62400,"type":0},{"id":2,"sLen":0,"time":63300,"type":0},{"id":1,"sLen":600,"time":63600,"type":0},{"id":2,"sLen":300,"time":67200,"type":0},{"id":0,"sLen":300,"time":67800,"type":0},{"id":1,"sLen":600,"time":68400,"type":0},{"id":2,"sLen":0,"time":71700,"type":0},{"id":0,"sLen":300,"time":72000,"type":0},{"id":2,"sLen":0,"time":72900,"type":0},{"id":1,"sLen":600,"time":73200,"type":0}],"visible":true,"characters":["dad"],"type":0,"vocalsSuffix":"-dad"},{"keyCount":4,"position":"boyfriend","notes":[{"id":2,"sLen":0,"time":2400,"type":0},{"id":3,"sLen":1050,"time":3000,"type":0},{"id":1,"sLen":300,"time":7200,"type":0},{"id":0,"sLen":300,"time":7800,"type":0},{"id":3,"sLen":600,"time":8400,"type":0},{"id":1,"sLen":600,"time":12000,"type":0},{"id":0,"sLen":0,"time":12900,"type":0},{"id":1,"sLen":600,"time":13200,"type":0},{"id":3,"sLen":450,"time":16800,"type":0},{"id":0,"sLen":0,"time":17700,"type":0},{"id":2,"sLen":600,"time":18000,"type":0},{"id":0,"sLen":300,"time":21600,"type":0},{"id":1,"sLen":900,"time":22200,"type":0},{"id":1,"sLen":300,"time":26400,"type":0},{"id":0,"sLen":900,"time":27000,"type":0},{"id":2,"sLen":274.999999999996,"time":31200,"type":0},{"id":0,"sLen":1200,"time":31800,"type":0},{"id":2,"sLen":0,"time":35700,"type":0},{"id":0,"sLen":300,"time":36000,"type":0},{"id":2,"sLen":0,"time":36900,"type":0},{"id":1,"sLen":600,"time":37200,"type":0},{"id":2,"sLen":450,"time":40800,"type":0},{"id":3,"sLen":300,"time":41400,"type":0},{"id":0,"sLen":600,"time":42000,"type":0},{"id":1,"sLen":0,"time":45600,"type":0},{"id":2,"sLen":0,"time":46200,"type":0},{"id":1,"sLen":300,"time":46800,"type":0},{"id":2,"sLen":0,"time":47400,"type":0},{"id":2,"sLen":450,"time":50400,"type":0},{"id":3,"sLen":300,"time":51000,"type":0},{"id":0,"sLen":450,"time":51600,"type":0},{"id":3,"sLen":1800,"time":55200,"type":0},{"id":2,"sLen":300,"time":60000,"type":0},{"id":0,"sLen":1200,"time":60600,"type":0},{"id":0,"sLen":300,"time":64800,"type":0},{"id":2,"sLen":0,"time":65700,"type":0},{"id":1,"sLen":600,"time":66000,"type":0},{"id":2,"sLen":300,"time":69600,"type":0},{"id":0,"sLen":300,"time":70200,"type":0},{"id":1,"sLen":600,"time":70800,"type":0},{"id":2,"sLen":0,"time":74100,"type":0},{"id":0,"sLen":300,"time":74400,"type":0},{"id":2,"sLen":0,"time":75300,"type":0},{"id":1,"sLen":600,"time":75600,"type":0}],"visible":true,"characters":["bf"],"type":1,"vocalsSuffix":"-bf"},{"keyCount":4,"position":"girlfriend","notes":[],"characters":["gf"],"visible":false,"type":2}],"stage":"stage","noteTypes":[]}
+	],
+	"meta": {
+		"needsVoices": false,
+		"bpm": 100,
+		"name": null
+	},
+	"noteTypes": []
+}

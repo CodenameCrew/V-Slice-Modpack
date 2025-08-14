@@ -1,0 +1,21 @@
+{
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"icon": "darnell",
+	"coopAllowed": true,
+	"name": "lit up",
+	"color": -10394881,
+	"customValues": {
+		"album": "expansion2"
+	},
+	"stepsPerBeat": 4,
+	"displayName": "Lit Up (BF Mix)",
+	"needsVoices": false,
+	"beatsPerMeasure": 4,
+	"bpm": 176,
+	"instSuffix": "-bf"
+}

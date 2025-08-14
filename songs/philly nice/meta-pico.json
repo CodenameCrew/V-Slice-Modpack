@@ -1,0 +1,31 @@
+{
+	"color": "#9271FD",
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"easy": 2,
+			"hard": 4,
+			"normal": 3
+		},
+		"noteStyle": "funkin",
+		"album": "volume4",
+		"previewEnd": 15000,
+		"artist": "tsuyunoshi (ft. Saruky)",
+		"charter": "Spazkid"
+	},
+	"instSuffix": "-pico",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"icon": "pico",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Philly Nice (Pico Mix)",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"vocalsSuffix": "-pico",
+	"bpm": 175
+}

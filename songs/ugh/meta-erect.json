@@ -1,0 +1,29 @@
+{
+	"color": "#F6B604",
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"nightmare": 9,
+			"erect": 8
+		},
+		"noteStyle": "funkin",
+		"album": "volume4",
+		"previewEnd": 15000,
+		"artist": "Kawai Sprite",
+		"charter": "fabs + Spazkid"
+	},
+	"instSuffix": "-erect",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"icon": "tankman",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Ugh Erect",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"vocalsSuffix": "-erect",
+	"bpm": 170
+}

@@ -1,12 +1,19 @@
 {
-	"difficulty": 3,
-	"weekNum": 5,
-	"isWeekEnd": false,
-
-	"displayName": "Eggnog",
-	"bpm": 150.0,
+	"opponentModeAllowed": true,
 	"icon": "parents-christmas",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
 	"color": "#A0D1FF",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"stepsPerBeat": 4,
+	"displayName": "Eggnog",
+	"beatsPerMeasure": 4,
+	"needsVoices": true,
+	"variants": [
+		"erect"
+	],
+	"bpm": 150
 }

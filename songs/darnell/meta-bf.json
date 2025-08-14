@@ -1,0 +1,21 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "darnell",
+	"name": "darnell",
+	"color": "#6162FF",
+	"coopAllowed": true,
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"customValues": {
+		"album": "volume4"
+	},
+	"stepsPerBeat": 4,
+	"displayName": "Darnell (BF Mix)",
+	"beatsPerMeasure": 4,
+	"bpm": 155,
+	"instSuffix": "-bf",
+	"needsVoices": false
+}

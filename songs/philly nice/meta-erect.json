@@ -1,0 +1,29 @@
+{
+	"color": "#9271FD",
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"nightmare": 9,
+			"erect": 8
+		},
+		"noteStyle": "funkin",
+		"album": "volume3",
+		"previewEnd": 15000,
+		"artist": "Kawai Sprite (feat. Saruky)",
+		"charter": "Spazkid + fabs"
+	},
+	"instSuffix": "-erect",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"icon": "pico",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Philly Nice Erect",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"vocalsSuffix": "-erect",
+	"bpm": 175
+}

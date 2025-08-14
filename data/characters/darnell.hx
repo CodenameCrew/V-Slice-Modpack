@@ -1,6 +1,5 @@
 // Took the one inside the BaseGame source as a base  - Nex
 
-// TO FINISH the can stuff once FlxAnimate gets updated (pls neeoooooo)  - Nex
 var canSprite:FunkinSprite;
 
 var game = PlayState.instance;
@@ -81,7 +80,7 @@ function playKickCanAnim() {
 }
 
 function playKneeCanAnim(){
-	this.playAnim("kneeCan", true, "LOCK");
+	this.playAnim("kneeCan", true);
 	FlxG.sound.play(Paths.sound('pico/Kick_Can_FORWARD'));
 }
 

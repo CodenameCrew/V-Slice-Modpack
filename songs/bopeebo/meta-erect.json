@@ -1,0 +1,27 @@
+{
+	"opponentModeAllowed": true,
+	"icon": "dad",
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"color": "#9271FD",
+	"coopAllowed": true,
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"nightmare": 8,
+			"erect": 7
+		},
+		"album": "volume3",
+		"previewEnd": 15000,
+		"artist": "Kawai Sprite (feat. Saruky)",
+		"charter": "Jenny Crowe + fabs"
+	},
+	"stepsPerBeat": 4,
+	"displayName": "Bopeebo Erect",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 123,
+	"instSuffix": "-erect"
+}

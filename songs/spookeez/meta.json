@@ -1,12 +1,20 @@
 {
-	"difficulty": 2,
-	"weekNum": 2,
-	"isWeekEnd": false,
-
-	"displayName": "Spookeez",
-	"bpm": 150.0,
+	"opponentModeAllowed": true,
 	"icon": "spooky",
-	"color": "#223344",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard",
+		"erect",
+		"nightmare"
+	],
+	"customValues": {},
+	"color": -14535868,
+	"name": "spookeez",
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"stepsPerBeat": 4,
+	"displayName": "Spookeez",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 150
 }

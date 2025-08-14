@@ -11,21 +11,29 @@ var explode:Bool;
 
 function create()
 {
-    game.dad.visible = game.boyfriend.visible = game.camHUD.visible = false;
+    game.camHUD.visible = false;
 	game.persistentUpdate = true;
+
+	for (o in [0, 1]) {
+		for (i in game.strumLines.members[o].characters) {
+			i.alpha = 0;
+		}
+	}
 
     // 50/50 chance for who shoots
     playerShoots = FlxG.random.bool(50);
     explode = FlxG.random.bool(8);
 
     game.insert(game.members.indexOf(playerShoots ? game.boyfriend : game.dad) + 1, picoOpponent = new FunkinSprite(game.dad.x + game.dad.globalOffset.x + 87, game.dad.y + game.dad.globalOffset.y + 395));
-    game.insert(game.members.indexOf(playerShoots ? game.dad : game.boyfriend) + 1, picoPlayer = new FunkinSprite(game.boyfriend.x + game.boyfriend.globalOffset.x + 227, game.boyfriend.y + game.boyfriend.globalOffset.y + 395));
+    game.insert(game.members.indexOf(playerShoots ? game.dad : game.boyfriend) + 1, picoPlayer = new FunkinSprite(game.boyfriend.x + game.boyfriend.globalOffset.x + 244, game.boyfriend.y + game.boyfriend.globalOffset.y + 395));
 
     picoOpponent.scrollFactor.set(game.dad.scrollFactor.x, game.dad.scrollFactor.y); picoPlayer.scrollFactor.set(game.boyfriend.scrollFactor.x, game.boyfriend.scrollFactor.y);
     picoOpponent.scale.set(game.dad.scale.x, game.dad.scale.y); picoPlayer.scale.set(game.boyfriend.scale.x, game.boyfriend.scale.y);
     picoOpponent.shader = game.dad.shader; picoPlayer.shader = game.boyfriend.shader;
-    picoPlayer.flipX = true;
 
+	var awesomeOffset = (a) -> {
+		return (a ? -210 : 378);
+	}
     for (char in [picoOpponent, picoPlayer])
     {
         char.loadSprite(Paths.image("game/cutscenes/pico/pico_doppleganger"));
@@ -33,144 +41,156 @@ function create()
 
 		// all offsets for each animation are fucked
 		
-		char.animateAtlas.anim.addBySymbol('shoot', 'compressed/picoShoot', 24, false);
+		char.addAnim('shoot', 'compressed/picoShoot', 24, false, true, null, awesomeOffset(!playerShoots), 205);
 
 		// i think these 2 are flipped?
-		char.animateAtlas.anim.addBySymbol('explode', 'compressed/picoExplode', 24, false);
-		char.animateAtlas.anim.addBySymbol('cigarette', 'compressed/picoCigarette', 24, false);
+		char.addAnim('explode', 'compressed/picoExplode', 24, false, true, null, awesomeOffset(playerShoots), 205);
+		char.addAnim('explode-loop', 'compressed/picoExplode', 12, true, true, [268, 270, 272, 274], awesomeOffset(playerShoots), 205);
+		char.addAnim('cigarette', 'compressed/picoCigarette', 24, false, true, null, awesomeOffset(playerShoots), 205);
+		char.flipX = playerShoots; // ???
+
+		char.x += 170 * (!playerShoots ? 1 : 0);
     }
 
-    cutsceneMusic = FlxG.sound.load(Paths.music("pico/" + (!explode ? "cutscene" : "cutscene2")), 1, true);
+	var pico1 = playerShoots ? picoPlayer : picoOpponent;
+	var pico2 = !playerShoots ? picoPlayer : picoOpponent;
+
+	pico2.playAnim(explode ? 'explode' : 'cigarette');
+	pico1.playAnim('shoot');
+	var off = 222 * (playerShoots ? 1 : -1);
+	pico1.x -= off;
+	pico2.x += off;
+
+	//trace(playerShoots);
+
+    cutsceneMusic = FlxG.sound.load(Paths.music("pico/" + (!explode ? "cutscene" : "cutscene2")), 1, false);
     cutsceneMusic.play(false);
 
-    /*if (playerShoots)
-    {
-        picoOpponent.zIndex = picoPlayer.zIndex - 1;
-        bloodPool.zIndex = picoOpponent.zIndex - 1;
-        cigarette.zIndex = PlayState.instance.currentStage.getBoyfriend().zIndex - 2;
-        cigarette.flipX = true;
+	var oppPos = game.getStrumlineCamPos(playerShoots ? 0 : 1, null, false);
+	var plrPos = game.getStrumlineCamPos(playerShoots ? 1 : 0, null, false);
 
-        cigarette.setPosition(PlayState.instance.currentStage.getBoyfriend().x - 143.5, PlayState.instance.currentStage.getBoyfriend().y + 210);
-        bloodPool.setPosition(PlayState.instance.currentStage.getDad().x - 1487, PlayState.instance.currentStage.getDad().y - 173);
+	game.camFollow.setPosition(FlxMath.lerp(oppPos.pos.x, plrPos.pos.x, 0.5), FlxMath.lerp(oppPos.pos.y, plrPos.pos.y, 0.5));
 
-        shooterPos = [PlayState.instance.currentStage.getBoyfriend().cameraFocusPoint.x, PlayState.instance.currentStage.getBoyfriend().cameraFocusPoint.y];
-        cigarettePos = [PlayState.instance.currentStage.getDad().cameraFocusPoint.x, PlayState.instance.currentStage.getDad().cameraFocusPoint.y];
-    }
-    else
-    {
-        picoOpponent.zIndex = picoPlayer.zIndex + 1;
-        bloodPool.zIndex = picoPlayer.zIndex - 1;
-        cigarette.zIndex = PlayState.instance.currentStage.getDad().zIndex - 2;
+	if (explode) {
+		bloodPool = new FunkinSprite();
+		bloodPool.loadSprite(Paths.image("game/cutscenes/pico/bloodPool"));
+        bloodPool.antialiasing = true;
+		bloodPool.addAnim('loop', 'bloodPool', 24, false, true, null, 1290, 600);
+		bloodPool.playAnim('loop');
+		bloodPool.scrollFactor.set(pico2.scrollFactor.x, pico2.scrollFactor.y);
+		bloodPool.y = pico2.y + 35;
+		bloodPool.x = pico2.x - 60;
+		bloodPool.x += playerShoots ? -445 : 250;
+		bloodPool.active = bloodPool.visible = false;
+		bloodPool.shader = pico2.shader;
 
-        bloodPool.setPosition(PlayState.instance.currentStage.getBoyfriend().x - 788.5, PlayState.instance.currentStage.getBoyfriend().y - 173);
-        cigarette.setPosition(PlayState.instance.currentStage.getBoyfriend().x - 478.5, PlayState.instance.currentStage.getBoyfriend().y + 205);
-
-        cigarettePos = [PlayState.instance.currentStage.getBoyfriend().cameraFocusPoint.x, PlayState.instance.currentStage.getBoyfriend().cameraFocusPoint.y];
-        shooterPos = [PlayState.instance.currentStage.getDad().cameraFocusPoint.x, PlayState.instance.currentStage.getDad().cameraFocusPoint.y];
-    }
-
-    var midPoint:Array<Float> = [(shooterPos[0] + cigarettePos[0])/2, (shooterPos[1] + cigarettePos[1])/2];
-
-		cigarette.frames = Paths.getSparrowAtlas('philly/erect/cigarette');
-    cigarette.animation.addByPrefix('cigarette spit', 'cigarette spit', 24, false);
-		cigarette.visible = false;
-
-		PlayState.instance.currentStage.add(cigarette);
-		PlayState.instance.currentStage.add(picoPlayer);
-    PlayState.instance.currentStage.add(picoOpponent);
-		PlayState.instance.currentStage.add(bloodPool);
-		PlayState.instance.currentStage.refresh();
-
-		picoPlayer.shader = colorShader;
-		picoOpponent.shader = colorShader;
-		bloodPool.shader = colorShader;
-
-		PlayState.instance.currentStage.getBoyfriend().visible = false;
-		PlayState.instance.currentStage.getDad().visible = false;
-
-		picoPlayer.scriptCall('doAnim', ['Player', playerShoots, explode, cutsceneTimerManager]);
-		picoOpponent.scriptCall('doAnim', ['Opponent', !playerShoots, explode, cutsceneTimerManager]);
-
-		FunkinSound.playOnce(Paths.sound('cutscene/picoGasp'), 1);
-
-		PlayState.instance.resetCamera(false, true);
-    PlayState.instance.cameraFollowPoint.setPosition(midPoint[0], midPoint[1]);
-
-		new FlxTimer(cutsceneTimerManager).start(4, _ -> {
-
-			PlayState.instance.cameraFollowPoint.setPosition(cigarettePos[0], cigarettePos[1]);
-		});
-
-		new FlxTimer(cutsceneTimerManager).start(6.3, _ -> {
-			PlayState.instance.cameraFollowPoint.setPosition(shooterPos[0], shooterPos[1]);
-		});
-
-		new FlxTimer(cutsceneTimerManager).start(8.75, _ -> {
-			cutsceneSkipped = true;
-			canSkipCutscene = false;
-			FlxTween.tween(skipText, {alpha: 0}, 0.5, {ease: FlxEase.quadIn, onComplete: _ -> {skipText.visible = false;}});
-			// cutting off skipping here. really dont think its needed after this point and it saves problems from happening
-			PlayState.instance.cameraFollowPoint.setPosition(cigarettePos[0], cigarettePos[1]);
-			if(explode == true)
-				PlayState.instance.currentStage.getGirlfriend().playAnimation('drop70', true);
-		});
-
-		new FlxTimer(cutsceneTimerManager).start(11.2, _ -> {
-			if(explode == true)
-				bloodPool.scriptCall('doAnim');
-		});
-
-		new FlxTimer(cutsceneTimerManager).start(11.5, _ -> {
-			if(explode == false){
-				cigarette.visible = true;
-				cigarette.animation.play('cigarette spit');
-			}
-		});
-
-		new FlxTimer(cutsceneTimerManager).start(13, _ -> {
-
-			if(explode == false || playerShoots == true){
-				PlayState.instance.startCountdown();
-			}
-
-			if(explode == true){
-				if(playerShoots == true){
-					picoPlayer.visible = false;
-					PlayState.instance.currentStage.getBoyfriend().visible = true;
-				}else{
-					picoOpponent.visible = false;
-					PlayState.instance.disableKeys = true;
-					PlayState.instance.currentStage.getDad().visible = true;
-
-					new FlxTimer().start(1, function(tmr)
-					{
-						PlayState.instance.camCutscene.fade(0xFF000000, 1, false, null, true);
-					});
-
-					new FlxTimer().start(2, function(tmr)
-					{
-						PlayState.instance.camCutscene.fade(0xFF000000, 0.5, true, null, true);
-						PlayState.instance.endSong(true);
-					});
+		bloodPoolHelperCusAtlasSucks = new FunkinSprite();
+		bloodPoolHelperCusAtlasSucks.makeSolid(1, 1, 0x00000000);
+		bloodPoolHelperCusAtlasSucks.screenCenter();
+		bloodPoolHelperCusAtlasSucks.scrollFactor.set();
+		bloodPoolHelperCusAtlasSucks.onDraw = (b) -> {
+			if (game.persistentUpdate) {
+				if (bloodPool.isAnimAtEnd()) {
+					var val = 0.02 * FlxG.elapsed;
+					bloodPool.scale.x += val;
+					bloodPool.scale.y += val;
 				}
-			}else{
-				picoPlayer.visible = false;
-				PlayState.instance.currentStage.getBoyfriend().visible = true;
-				picoOpponent.visible = false;
-				PlayState.instance.currentStage.getDad().visible = true;
 			}
+			if (bloodPool.visible) bloodPool.draw();
+		}
 
-			hasPlayedCutscene = true;
-			cutsceneMusic.stop();
-        });*/
+		game.insert(game.members.indexOf(pico2), bloodPool);
+		game.insert(game.members.indexOf(pico2), bloodPoolHelperCusAtlasSucks);
+	}
+
+	//game.camGame.zoom = 0.6;
+	//FlxG.sound.play(Paths.sound('cutscenes/pico/picoGasp'));
+
+	var cigSfx = null;
+	var timeline = [
+		[0.3, () -> {
+			FlxG.sound.play(Paths.sound('cutscenes/pico/picoGasp'));
+		}],
+		[3.7, () -> {
+			cigSfx = FlxG.sound.play(Paths.sound('cutscenes/pico/picoCigarette'));
+		}],
+		[4, () -> {
+			game.camFollow.setPosition(oppPos.pos.x, oppPos.pos.y);
+		}],
+		[6.3, () -> {
+			game.camFollow.setPosition(plrPos.pos.x, plrPos.pos.y);
+			FlxG.sound.play(Paths.sound('cutscenes/pico/picoShoot'));
+		}],
+		[8.75, () -> {
+			game.camFollow.setPosition(oppPos.pos.x, oppPos.pos.y);
+			if(explode) {
+				cigSfx.stop();
+				game.gf.playAnim('drop70');
+			}
+		}],
+		[10.33, () -> {
+			FlxG.sound.play(Paths.sound('cutscenes/pico/picoSpin'));
+		}],
+		[11.2, () -> {
+			if (!explode) return;
+
+			bloodPool.active = bloodPool.visible = true;
+		}],
+		[13, () -> {
+			for (o => i in [picoOpponent, picoPlayer]) {
+				if (explode) {
+					if (!shouldBeVisible(o))
+						excludeStuff.push(i);
+				}
+			}
+			close();
+		}]
+	];
+	for (i in timeline) {
+		timelineTimers.push(new FlxTimer().start(i[0], (_) -> {
+			i[1]();
+		}));
+	}
 }
+
+var timelineTimers = [];
+var excludeStuff = [];
 
 function destroy()
 {
-    game.camHUD.visible = game.boyfriend.visible = game.dad.visible = true;
-    for (thing in [picoPlayer, picoOpponent, bloodPool, cigarette, cutsceneMusic]) if (thing != null)
+    game.camHUD.visible = true;
+    for (thing in [picoPlayer, picoOpponent, cigarette, cutsceneMusic]) if (thing != null && excludeStuff.indexOf(thing) == -1)
     {
         if (thing != cutsceneMusic) game.remove(thing);
         thing.destroy();
     }
+	for (t in timelineTimers) {
+		t.cancel();
+	}
+	game.camHUD.alpha = 0;
+	FlxTween.tween(game.camHUD, {alpha: 1}, 0.25);
+
+	for (o in [0, 1]) {
+		for (i in game.strumLines.members[o].characters) {
+			if (shouldBeVisible(o))
+				i.alpha = 1;
+		}
+	}
+
+	if (explode) {
+		if (((game.canDie && !playerShoots) || (game.canDadDie && playerShoots))) {
+			game.endSong();
+			return;
+		}
+		game.scripts.importScript('data/scripts/opponent-no-notes');
+		__explodedChar = playerShoots ? 0 : 1;
+	}
+}
+
+function shouldBeVisible(o) {
+	if (explode) {
+		if (!playerShoots) return o != 1;
+		return o != 0;
+	}
+	return true;
 }

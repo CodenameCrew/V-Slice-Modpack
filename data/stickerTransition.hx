@@ -93,6 +93,7 @@ function regenStickers()
 	var lastStickerPath:String = stickerPack.getRandomStickerPath(true);
     var lastSticker:FlxSprite = new FlxSprite(0, 0);
 	CoolUtil.loadAnimatedGraphic(lastSticker, Paths.image(lastStickerPath));
+	lastSticker.antialiasing = true;
     lastSticker.visible = false;
     lastSticker.updateHitbox();
     lastSticker.angle = 0;

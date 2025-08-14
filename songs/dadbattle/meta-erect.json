@@ -1,0 +1,29 @@
+{
+	"color": "#9271FD",
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"nightmare": 10,
+			"erect": 9
+		},
+		"noteStyle": "funkin",
+		"album": "volume3",
+		"previewEnd": 15000,
+		"artist": "Kawai Sprite",
+		"charter": "Jenny Crowe + fabs + Spazkid"
+	},
+	"instSuffix": "-erect",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"icon": "dad",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "DadBattle Erect",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"vocalsSuffix": "-erect",
+	"bpm": 190
+}

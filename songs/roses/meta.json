@@ -1,12 +1,29 @@
 {
-	"difficulty": 4,
-	"weekNum": 6,
-	"isWeekEnd": false,
-
-	"displayName": "Roses",
-	"bpm": 120.0,
+	"opponentModeAllowed": true,
 	"icon": "senpai",
-	"color": "#FF78BF",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"variants": ["erect", "pico"],
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"customValues": {
+		"ratings": {
+			"easy": 2,
+			"hard": 4,
+			"normal": 3
+		},
+		"previewStart": 0,
+		"album": "volume2",
+		"artist": "Kawai Sprite",
+		"charter": "ninjamuffin99 + MtH + Spazkid",
+		"previewEnd": 15000
+	},
+	"color": "#FF78BF",
+	"stepsPerBeat": 4,
+	"displayName": "Roses",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"bpm": 120
 }

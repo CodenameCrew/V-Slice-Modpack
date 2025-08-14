@@ -1,12 +1,32 @@
 {
-	"difficulty": 1,
-	"weekNum": 1,
-	"isWeekEnd": false,
-
-	"displayName": "Fresh",
-	"bpm": 120.0,
-	"icon": "dad",
+	"customValues": {
+		"ratings": {
+			"easy": 1,
+			"hard": 2,
+			"normal": 1
+		},
+		"charter": "ninjamuffin99 + MtH",
+		"noteStyle": "funkin",
+		"album": "volume1",
+		"artist": "Kawai Sprite"
+	},
 	"color": "#9271FD",
+	"opponentModeAllowed": true,
+	"icon": "dad",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
 	"coopAllowed": true,
-	"opponentModeAllowed": true
+	"stepsPerBeat": 4,
+	"displayName": "Fresh",
+	"needsVoices": false,
+	"beatsPerMeasure": 4,
+	"variants": [
+		"erect",
+		"pico",
+		"fresh-chart-erect"
+	],
+	"bpm": 120
 }
