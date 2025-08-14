@@ -1,6 +1,22 @@
+import funkin.game.PlayState.ComboRating;
+
+public var useCNERating = false;
+
 var columnPressedHolds:Array<Note> = [];
 var columnHoldScores:Array<Int> = [];
 var columnHoldHealths:Array<Float> = [];
+
+function create() {
+	if (!useCNERating) {
+		comboRatings = [
+			new ComboRating(0, "L", 0xFF7393FF),
+			new ComboRating(0.6, "G", 0xFFFAA885),
+			new ComboRating(0.8, "G", 0xFFF0FDFF),
+			new ComboRating(0.9, "E", 0xFFFFFFCB),
+			new ComboRating(1, "P", 0xFFFFFF65/*0xFFFFB6FF*/)
+		];
+	}
+}
 
 function onPlayerHit(e) {
 	var note = e.note;
@@ -30,7 +46,9 @@ function onPlayerHit(e) {
 		}
 
 		e.healthGain = judgeHealth(e.rating);
-		e.accuracy = (e.score = scoreNote(diff)) / scoreNote(0.0);
+		e.score = scoreNote(diff);
+		if (useCNERating) e.accuracy = e.score / scoreNote(0.0);
+		else if (e.rating != 'shit') e.accuracy = 1;
 	}
 }
 
@@ -45,7 +63,8 @@ function onPlayerMiss(e) {
 			return e.cancel();
 	}
 
-	e.accuracy = (e.score = scoreMiss(note == null)) / scoreNote(0.0);
+	e.score = scoreMiss(note == null);
+	e.accuracy = -1;
 }
 
 var strumLine:StrumLine;
@@ -70,9 +89,11 @@ function update(elapsed:Float) {
 			temp = columnHoldHealths[column];
 			strumLine.addHealth((columnHoldHealths[column] = bonusHoldHealth(duration)) - temp);
 
-			temp = (position - previous) / note.sustainLength;
-			accuracyPressedNotes += temp;
-			totalAccuracyAmount += temp;
+			if (useCNERating) {
+				temp = (position - previous) / note.sustainLength;
+				accuracyPressedNotes += temp;
+				totalAccuracyAmount += temp;
+			}
 		}
 
 		if (!strumLine.__pressed[column]) columnPressedHolds[column] = null;
