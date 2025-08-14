@@ -1,0 +1,20 @@
+{
+	"customValues": {},
+	"color": "#A0D1FF",
+	"opponentModeAllowed": true,
+	"icon": "parents-christmas",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Cocoa",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"variants": [
+		"erect"
+	],
+	"bpm": 100
+}

@@ -21,7 +21,7 @@
 	"icon": "dad",
 	"coopAllowed": true,
 	"stepsPerBeat": 4,
-	"displayName": "DadBattle (Erect)",
+	"displayName": "DadBattle Erect",
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
 	"vocalsSuffix": "-erect",

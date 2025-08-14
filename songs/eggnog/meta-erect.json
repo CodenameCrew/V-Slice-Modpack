@@ -1,0 +1,29 @@
+{
+	"color": "#A0D1FF",
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"nightmare": 7,
+			"erect": 6
+		},
+		"noteStyle": "funkin",
+		"album": "expansion1",
+		"previewEnd": 15000,
+		"artist": "Saruky",
+		"charter": "fabs + Spazkid"
+	},
+	"instSuffix": "-erect",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"erect",
+		"nightmare"
+	],
+	"icon": "parents-christmas",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Eggnog Erect",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"vocalsSuffix": "-erect",
+	"bpm": 140
+}

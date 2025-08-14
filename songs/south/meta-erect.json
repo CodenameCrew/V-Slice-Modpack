@@ -10,7 +10,7 @@
 	"name": "south",
 	"coopAllowed": true,
 	"stepsPerBeat": 4,
-	"displayName": "South (Erect)",
+	"displayName": "South Erect",
 	"instSuffix": "-erect",
 	"needsVoices": false,
 	"beatsPerMeasure": 4,
