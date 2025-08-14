@@ -48,20 +48,31 @@ function onPlayerMiss(e) {
 	e.accuracy = (e.score = scoreMiss(note == null)) / scoreNote(0.0);
 }
 
-var strumLine, duration, strumTime, temp;
+var strumLine:StrumLine;
+var position:Float;
+var previous:Float;
+var duration:Float;
+var temp:Float;
 function update(elapsed:Float) {
+	previous = position;
+	position = songPos;
+
 	for (column => note in columnPressedHolds) if (note != null) {
 		strumLine = note.strumLine;
 		if (note.sustainParent.wasGoodHit) {
-			while (songPos > note.strumTime && note.nextSustain != null) columnPressedHolds[column] = note = note.nextSustain;
-			strumTime = (note?.sustainParent ?? note).strumTime;
-			duration = CoolUtil.bound(songPos - strumTime, 0.0, note.sustainLength + note.strumTime - strumTime);
+			while (position > note.strumTime && note.nextSustain != null) columnPressedHolds[column] = note = note.nextSustain;
+			temp = (note?.sustainParent ?? note).strumTime;
+			duration = CoolUtil.bound(position - temp, 0.0, note.sustainLength + note.strumTime - temp);
 
 			temp = columnHoldScores[column];
 			songScore += (columnHoldScores[column] = scoreHold(duration)) - temp;
 
 			temp = columnHoldHealths[column];
 			strumLine.addHealth((columnHoldHealths[column] = bonusHoldHealth(duration)) - temp);
+
+			temp = (position - previous) / note.sustainLength;
+			accuracyPressedNotes += temp;
+			totalAccuracyAmount += temp;
 		}
 
 		if (!strumLine.__pressed[column]) columnPressedHolds[column] = null;
