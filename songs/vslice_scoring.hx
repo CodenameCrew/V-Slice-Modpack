@@ -5,6 +5,7 @@ public var useCNERating = false;
 var columnPressedHolds:Array<Note> = [];
 var columnHoldScores:Array<Int> = [];
 var columnHoldHealths:Array<Float> = [];
+var perfect:Bool = true;
 
 function create() {
 	if (!useCNERating) {
@@ -16,6 +17,13 @@ function create() {
 			new ComboRating(1, "P", 0xFFFFFF65/*0xFFFFB6FF*/)
 		];
 	}
+}
+
+function onRatingUpdate(e) {
+	if (!useCNERating && e.rating?.percent == 1 &&
+		e.rating.color != (e.rating.color = perfect ? 0xFFFFB6FF : 0xFFFFFF65)
+	)
+		accuracyTxt.text = ""; // setting _regen doesnt work for some reason
 }
 
 function onPlayerHit(e) {
@@ -48,7 +56,10 @@ function onPlayerHit(e) {
 		e.healthGain = judgeHealth(e.rating);
 		e.score = scoreNote(diff);
 		if (useCNERating) e.accuracy = e.score / scoreNote(0.0);
-		else if (e.rating != 'shit') e.accuracy = 1;
+		else {
+			if (perfect) perfect = e.rating == "sick";
+			if (e.rating != "shit" && e.rating != "bad") e.accuracy = 1;
+		}
 	}
 }
 
