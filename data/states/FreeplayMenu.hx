@@ -14,6 +14,8 @@ var exitMovers:Map<Array<FlxSprite>, Dynamic> = [];
 
 var backingCard = {};
 
+var overhangStuff:FlxSprite;
+
 var characters = {
 	bf: {
 		texts: [
@@ -124,7 +126,10 @@ function generateDifficultySprite(diff) {
 var curSelected = 1;
 var curDifficulty = 1;
 var difficulties = ["easy", "normal", "hard", "erect", "nightmare"];
-var difficultiesNoErect = ["easy", "normal", "hard"];
+
+var defaultVariant = null;
+
+var variant = null;
 
 var diffSpr = null;
 
@@ -132,10 +137,32 @@ var freeplaySelectorLeft:FlxSprite;
 var freeplaySelectorRight:FlxSprite;
 function changeDifficulty(change, force = false) {
 	if (change == null) change = 0;
+	if (change == 0 && !force) return;
 
-	var hasErect = Assets.exists(Paths.file("songs/" + songs[curSelected].name + "/charts/erect.json"));
 	var oldDiff = curDifficulty;
-	curDifficulty = FlxMath.wrap(curDifficulty + change, 0, (hasErect ? difficulties : difficultiesNoErect).length - 1);
+	curDifficulty = FlxMath.wrap(curDifficulty + change, 0, difficulties.length - 1);
+
+	if(difficulties[curDifficulty] == "erect" || difficulties[curDifficulty] == "nightmare")
+		variant = 'erect';
+	else
+		variant = defaultVariant;
+
+	var songList = new FreeplaySonglist();
+	songList.getSongsFromSource(false, true);
+	songs = songList.songs;
+	for(song in songs){
+		if(!Assets.exists(Paths.file("songs/" + song.name + "/charts/" + (variant != null ? variant + "/" : "") + difficulties[curDifficulty] + ".json"))){
+			songs.remove(song);
+		} else {
+			if(variant != null)
+				song = song.metas.get(variant);
+		}
+	}
+	songs.insert(0, {displayName: "Random", name: "Random"});
+	for (song in songs)
+	trace(song.displayName);
+
+	refreshCapsules();
 
 	if (change > 0)
 	{
@@ -249,8 +276,8 @@ function update(elapsed) {
 		new FlxTimer().start(longTime, (_) -> {
 			for (m in members) {
 				remove(m);
-				m.kill();
-				m.destroy();
+				m?.kill();
+				m?.destroy();
 			}
 
 		    MemoryUtil.clearMajor(); //pretty sure not needed to do that but just incase
@@ -280,18 +307,30 @@ function update(elapsed) {
 	    new FlxTimer().start(0.75, (_) -> {
 			MusicBeatState.skipTransOut = true;
     		MusicBeatState.skipTransIn = true;  
-			PlayState.loadSong(loadSong, difficulties[curDifficulty], false, false);
+			PlayState.loadSong(loadSong, difficulties[curDifficulty], variant, false, false);
 			FlxG.switchState(new PlayState());
 	    });
 	}
 }
 
+var lastSong:Array<Dynamic> = [];
+
 function playThatShittyMusic(path, isRandom)
 {
+	var curSong:Array<Dynamic> = [path, isRandom];
+
+	trace(lastSong);
+	trace(curSong);
+
+
+	if(lastSong != curSong){
 	FlxG.sound.playMusic(path, 0);
 	FlxG.sound.music.fadeIn(2, 0, isRandom ? 0.8 : 0.4);
 	if (!isRandom)
 		FlxG.sound.music.endTime = FlxG.sound.music.length * 0.2;
+	lastSong = curSong;
+	}
+
 }
 
 function changeSelection(change, force = false) {
@@ -305,7 +344,8 @@ function changeSelection(change, force = false) {
 		CoolUtil.playMenuSFX();
 
 	var selCapsule = capsules[curSelected];
-	playThatShittyMusic(curSelected == 0 ? Paths.music("freeplayRandom") : Paths.inst(selCapsule.song, "normal"), curSelected == 0);
+	playThatShittyMusic(curSelected == 0 ? Paths.music("freeplayRandom") : Paths.inst(selCapsule.song, selCapsule.capsuleData?.variant ?? 'normal'), curSelected == 0);
+	trace(selCapsule.capsuleData);
 
 	for (capsule in capsules)
 	{
@@ -334,10 +374,6 @@ function create() {
 	freeplayCam.bgColor = 0x00000000;
     
 	var i = 0;
-	var songList = new FreeplaySonglist();
-	songList.getSongsFromSource(false, true);
-	songs = songList.songs;
-	songs.insert(0, {displayName: "Random", name: "Random"});
 
 	for (song in songs)
 	{
@@ -372,7 +408,7 @@ function create() {
 	for (capsule in capsules)
 		add(capsule);
 
-	var overhangStuff:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, 64, FlxColor.BLACK);
+	overhangStuff = new FlxSprite().makeGraphic(FlxG.width, 64, FlxColor.BLACK);
 	overhangStuff.y -= overhangStuff.height;
 	add(overhangStuff);
 
@@ -385,8 +421,8 @@ function create() {
 	ostName.alignment = "right";
 	add(ostName);
 
-	changeSelection(0, true);
 	changeDifficulty(0, true);
+	changeSelection(0, true);
 
 	freeplaySelectorLeft = new FlxSprite();
 	freeplaySelectorLeft.frames = Paths.getSparrowAtlas("freeplay/freeplaySelector/freeplaySelector");
@@ -543,4 +579,20 @@ function doFunnyTransition(intro:Bool)
 function destroy() {
 	if(FlxG.cameras.list.contains(freeplayCam))
 		FlxG.cameras.remove(freeplayCam);
+}
+
+function refreshCapsules(){
+	for (capsule in capsules)
+		remove(capsule);
+	var i = 0;
+	capsules = [];
+	for (song in songs)
+	{
+		var capsul = new SongMenuItem(0, 0, song.metas?.get(variant) ?? song);
+		capsul.ID = i;
+		capsules.push(capsul);
+		insert(members.indexOf(overhangStuff) ,capsul);
+		i++;
+	}
+	changeSelection(0, true);
 }

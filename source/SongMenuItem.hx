@@ -9,6 +9,8 @@ class SongMenuItem extends FlxObject
     var songText:FlxText;
     var icon:FlxSprite;
 
+    public var capsuleData:Dynamic = null;
+
     var selected:Bool = false;
 
     function updateSelected()
@@ -67,6 +69,7 @@ class SongMenuItem extends FlxObject
         super(x, y, null);
 
         song = data.name;
+        capsuleData = data;
 
         capsule = new FlxSprite();
         capsule.frames = Paths.getSparrowAtlas('freeplay/freeplayCapsule/capsule/freeplayCapsule');
