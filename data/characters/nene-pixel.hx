@@ -345,7 +345,7 @@ function update(elapsed) {
 	abot.x = this.x + 296;
 	abot.y = this.y + 430;
     abot.playAnim(PlayState.instance.gf.animation.curAnim.name);
-
+	abot.animation.curAnim.curFrame = PlayState.instance.gf.animation.curAnim.curFrame;
 	updateFFT();
 	abotViz.update(elapsed);
 	abotViz.x = abot.x - 160;
@@ -359,7 +359,7 @@ function update(elapsed) {
 	abotSpeaker.x = abot.x - 78;
 	abotSpeaker.y = abot.y + 9;
     abotSpeaker.playAnim(PlayState.instance.gf.animation.curAnim.name);
-
+	abotSpeaker.animation.curAnim.curFrame = PlayState.instance.gf.animation.curAnim.curFrame;
 	abotHead.update(elapsed);
 	abotHead.x = abot.x - 325;
 	abotHead.y = abot.y + 72;

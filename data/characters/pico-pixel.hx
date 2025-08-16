@@ -2,49 +2,12 @@
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.effects.FlxFlicker;
 
-var casingFrames = null;
-
-function gamePostCreate() {
-	animation.callback = function(name:String, frameNumber:Int, frameIndex:Int) {
-		if (name == "cock" && frameNumber == 3) {
-			createCasing();
-		}
-	}
-
-	animation.finishCallback = (name:String) -> {
-		if (name == 'shootMISS') {
-			// ERIC: You have to use super instead of this or it breaks.
-			// This is because typeof(this) is PolymodAbstractClass.
-
-			// I FUCKING hate the flicker class, WHY DOES IT RELEASES AFTER AFTER THE FINALCALLBACK   - Nex
-			FlxFlicker.flicker(this, 1, 1 / 30, true, true);
-			new FlxTimer().start(1, function(_) {
-				FlxFlicker.flicker(this, 0.5, 1 / 60, true, true);
-			});
-		}
-	}
-
-	// Precaching  - Nex
-	var arr = PlayState.instance.SONG.noteTypes;
-	if(arr.contains("cockgun")) {
-		loadCasingFrames();
-		FlxG.sound.load(Paths.sound('pico/Gun_Prep'));
-	}
-	if(arr.contains("firegun")) {
-		FlxG.sound.load(Paths.sound('pico/Pico_Bonk'));
-		for (i in 1...4) FlxG.sound.load(Paths.sound('pico/shot' + i));
-	}
-}
-
-function loadCasingFrames() {
-	casingFrames = Paths.getFrames('characters/picoStuff/PicoBullet');
-}
 
 function onGameOver(event) {
 	if (event.character == this && event.deathCharID == 'pico-stabbed') {
 		event.retrySFX = "pico/gameOverEnd";
 		if(getAnimName() == "shootMISS") {
-			event.deathCharID = "pico-explode";
+			event.deathCharID = "pico-pixel";
 			event.gameOverSong = "pico/gameOverStart-explode";
 			event.lossSFX = "pico/fnf_loss_sfx-pico-explode";
 		} else {

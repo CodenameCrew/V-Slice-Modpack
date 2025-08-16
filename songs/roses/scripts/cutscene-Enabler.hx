@@ -1,0 +1,3 @@
+function create() {
+  playCutscenes = true;
+}
