@@ -1,0 +1,29 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="1" folder="stages/school/" startCamPosY="550" startCamPosX="600">
+	<use-extension script="pixel"/>
+    <use-extension script="dropshadow-effect"/>
+
+	<sprite name="bgSky" x="-626" y="-78" sprite="erect/weebSky" antialiasing="false" scale="6" scroll="0.2" updateHitbox="true"/>
+	<sprite name="weebBackTrees" x="-842" y="-80" sprite="erect/weebBackTrees" antialiasing="false" scale="6" scroll="0.5" updateHitbox="true"/>
+	
+	<sprite name="bgSchool" x="-816" y="-38" sprite="erect/weebSchool" antialiasing="false" scale="6" scroll="0.75" updateHitbox="true"/>
+	<sprite name="bgStreet" x="-662" y="6" sprite="erect/weebStreet" antialiasing="false" scale="6" updateHitbox="true"/>
+
+	<sprite name="fgTrees" x="-500" y="6" sprite="erect/weebTreesBack" antialiasing="false" scale="6" updateHitbox="true" type="loop"/>
+	<sprite name="bgTrees" x="-806" y="-1050" sprite="erect/weebTrees" antialiasing="false" scale="6" updateHitbox="true" type="loop"/>
+	<high-memory>
+		<sprite name="treeLeaves" x="-20" y="-40" sprite="erect/petals" antialiasing="false" scale="6" scroll="0.85" updateHitbox="true" type="loop"/>
+	</high-memory>
+
+    <girlfriend x="524" y="90" scroll="1" ds_applyShader="true" ds_brightness="-42" ds_hue="-10" ds_contrast="5" ds_saturation="-25"
+		ds_color="#52351D" ds_antialiasAmt="0" ds_pixelPerfect="true" ds_distance="5" ds_angle="90"
+		ds_applyAltMask="true" ds_altMask="stages/school/erect/masks/nenePixel_mask" ds_maskThreshold="1"/>
+
+	<dad x="90" y="0" ds_applyShader="true" ds_brightness="-66" ds_hue="-10" ds_contrast="24" ds_saturation="-23"
+		ds_color="#52351D" ds_antialiasAmt="0" ds_pixelPerfect="true" ds_distance="5" ds_angle="90"
+		ds_applyAltMask="true" ds_altMask="stages/school/erect/masks/senpai_mask" ds_maskThreshold="1"/>
+
+	<boyfriend x="964" y="80" camxoffset="-125" ds_applyShader="true" ds_brightness="-66" ds_hue="-10" ds_contrast="24" ds_saturation="-23"
+		ds_color="#52351D" ds_antialiasAmt="0" ds_pixelPerfect="true" ds_distance="5" ds_angle="90"
+		ds_applyAltMask="true" ds_altMask="stages/school/erect/masks/picoPixel_mask" ds_maskThreshold="1"/>
+</stage>
