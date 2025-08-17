@@ -1,4 +1,6 @@
 // Took the one inside the BaseGame source as a base  - Nex
+
+// ill cleanup this more later its late - Kolze
 import funkin.backend.utils.AudioAnalyzer;
 import Lambda;
 
@@ -19,38 +21,28 @@ importScript('data/scripts/dropshadow-effect');
 
 var animationFinished:Bool = false;
 function postCreate() {
-    abotSpeaker = new FunkinSprite(0, 0, Paths.image('characters/abotPixel/aBotPixelSpeaker'));
+    abotSpeaker = new FunkinSprite(this.x,this.y, Paths.image('characters/abotPixel/aBotPixelSpeaker'));
     abotSpeaker.scale.set(6, 6);
-    abotSpeaker.origin.x = Math.round(abotSpeaker.origin.x);
-    abotSpeaker.origin.y = Math.round(abotSpeaker.origin.y);
     abotSpeaker.antialiasing = false;
-    abotSpeaker.x = this.x;
-    abotSpeaker.y = this.y;
 	//abotSpeaker.ds_applyShader();
     abotSpeaker.animation.addByPrefix('danceLeft', 'danceLeft', 24, false);
     abotSpeaker.animation.addByPrefix('danceRight', 'danceRight', 24, false);
 
-	abotBack = new FunkinSprite(0, 0, Paths.image('characters/abotPixel/aBotPixelBack'));
+	abotBack = new FunkinSprite(this.x,this.y, Paths.image('characters/abotPixel/aBotPixelBack'));
     abotBack.scale.set(6.1, 6);
     abotBack.antialiasing = false;
-    abotBack.x = this.x;
-    abotBack.y = this.y;
 	//	abot = new FunkinSprite(0, 0, Paths.image('characters/abot/abotSystem'));
 
 
 
-    abot = new FunkinSprite(0,0,Paths.image('characters/abotPixel/aBotPixelBody'));
+    abot = new FunkinSprite(this.x,this.y,Paths.image('characters/abotPixel/aBotPixelBody'));
     abot.scale.set(6, 6);
-    abot.origin.x = Math.round(abot.origin.x);
-    abot.origin.y = Math.round(abot.origin.y);
     abot.antialiasing = false;
-    abot.x = this.x;
-    abot.y = this.y;
     abot.animation.addByPrefix('danceLeft', 'danceLeft', 24, false);
     abot.animation.addByPrefix('danceRight', 'danceRight', 24, false);
     abot.animation.addByPrefix('lowerKnife', 'return', 24, false);
 
-	abotHead = new FunkinSprite(0, 0, Paths.image('characters/abotPixel/abotHead'));
+	abotHead = new FunkinSprite(this.x,this.y, Paths.image('characters/abotPixel/abotHead'));
     abotHead.scale.set(6, 6);
     abotHead.antialiasing = false;
     abotHead.animation.addByPrefix('toleft', 'toleft0', 24, false);
@@ -342,27 +334,22 @@ function update(elapsed) {
 	// }
 
 	abot.update(elapsed);
-	abot.x = this.x + 296;
-	abot.y = this.y + 430;
+	abot.setPosition(globalOffset.x + this.x + 170, globalOffset.y + this.y + 210);
     abot.playAnim(PlayState.instance.gf.animation.curAnim.name);
 	abot.animation.curAnim.curFrame = PlayState.instance.gf.animation.curAnim.curFrame;
 	updateFFT();
 	abotViz.update(elapsed);
-	abotViz.x = abot.x - 160;
-	abotViz.y = abot.y + 13;
+	abotViz.setPosition(abot.x - 160, abot.y + 13);
 
 	abotBack.update(elapsed);
-	abotBack.x = abot.x - 55;
-	abotBack.y = abot.y + 0;
+	abotBack.setPosition(abot.x - 55, abot.y);
 
 	abotSpeaker.update(elapsed);
-	abotSpeaker.x = abot.x - 78;
-	abotSpeaker.y = abot.y + 9;
+	abotSpeaker.setPosition(abot.x - 78, abot.y + 9);
     abotSpeaker.playAnim(PlayState.instance.gf.animation.curAnim.name);
 	abotSpeaker.animation.curAnim.curFrame = PlayState.instance.gf.animation.curAnim.curFrame;
 	abotHead.update(elapsed);
-	abotHead.x = abot.x - 325;
-	abotHead.y = abot.y + 72;
+	abotHead.setPosition(abot.x - 325, abot.y + 72);
 
 	if (shouldTransitionState()) {
 		transitionState();
