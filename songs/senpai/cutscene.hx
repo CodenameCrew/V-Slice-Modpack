@@ -1,7 +1,9 @@
 import funkin.game.PlayState;
 
 function create() {
-  PlayState.instance.startCutscene('pico-');
+  if(PlayState.instance.boyfriend.curCharacter == 'pico-pixel'){
+    PlayState.instance.startCutscene('pico-');
+  }
 }
 function onSongStart(){
   seenCutscene = true; //just makin sure yk?

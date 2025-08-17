@@ -1,3 +1,5 @@
 function create() {
-  playCutscenes = true;
+  if(PlayState.instance.boyfriend.curCharacter == 'pico-pixel'){
+    playCutscenes = true;
+  }
 }
