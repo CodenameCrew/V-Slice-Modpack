@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-character>
+<character x="265" y="470" sprite="picoPixel" scale="6" antialiasing="false" flipX="true" camx="-50" isPlayer="true" icon="pico-pixel" color="#88FF58" gameOverChar="pico-pixel-gameover">
+	<anim name="deathLoop" loop="true" anim="deathLoop"/>
+	<anim name="firstDeath" anim="firstDeath"/>
+	<anim name="deathConfirm" loop="true" anim="deathConfirm"/>
+</character>

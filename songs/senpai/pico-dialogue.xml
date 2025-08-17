@@ -1,0 +1,66 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="hating-simulator">
+	<!-- All characters -->
+	<char name="senpai" char="senpai" position="left" />
+	<char name="senpai-bwuh" char="senpai-bwuh" position="left" />
+
+	<char name="pixelPico" char="pixelPico" position="right" />
+	<char name="pixelPico-peeved" char="pixelPico-peeved" position="right" />
+
+	<char name="pixelNene" char="pixelNene" position="right" />
+	<char name="pixelNene-peeved" char="pixelNene-peeved" position="right" />
+
+	<!-- Lines -->
+	<line char="senpai" changeMusic="pixel/Lunchbox">
+		Ah, another lovely fair maiden has graced m-
+	</line>
+	<line char="senpai-bwuh" changeMusic="">
+		wait
+	</line>
+	<line char="senpai-bwuh">
+		Ew.
+	</line>
+	<line char="senpai-bwuh">
+		Who are you two?
+	</line>
+	<line char="pixelNene">
+		I'm Nene.
+	</line>
+	<line char="pixelNene">
+		He's Pico.
+	</line>
+	<line char="pixelPico">
+		Hey.
+	</line>
+	<line char="senpai" changeMusic="pixel/Lunchbox">
+		My my, such odd clothing...
+		How queer...
+	</line>
+	<line char="pixelNene">
+		Look who's talking.
+	</line>
+	<line char="senpai">
+		And bringing a gun to school? How uncouth!
+	</line>
+	<line char="senpai">
+		You've scared away all the lovely roses who enjoy my performances so...
+	</line>
+	<line char="senpai">
+		Even if it IS fake, you know that's at least 3 days suspension!
+	</line>
+	<line char="pixelNene">
+		No that's real it-
+	</line>
+	<line char="senpai">
+		I'll enjoy informing the principal, right after I teach you what's stronger than bad manners...
+	</line>
+	<line char="senpai">
+		The beauty of SONG!
+	</line>
+	<line char="pixelNene-peeved">
+		...
+	</line>
+	<line char="pixelPico-peeved">
+		...
+	</line>
+</dialogue>

@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character x="245" y="500" sprite="picoPixel" scale="6" antialiasing="false" flipX="true" camx="-50" isPlayer="true" icon="pico-pixel" color="#88FF58" gameOverChar="pico-pixel-gameover">
+	<anim name="idle" anim="idle"/>
+	<anim name="singDOWN" anim="down0"/>
+	<anim name="singRIGHT" anim="right0"/>
+	<anim name="singLEFT" anim="left0"/>
+	<anim name="singUP" anim="up0"/>
+	<anim name="singUPmiss" anim="upmiss"/>
+	<anim name="singLEFTmiss" anim="leftmiss"/>
+	<anim name="singDOWNmiss" anim="downmiss"/>
+	<anim name="singRIGHTmiss" anim="rightmiss"/>
+</character>

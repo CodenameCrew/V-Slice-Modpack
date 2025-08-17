@@ -1,0 +1,5 @@
+<!DOCTYPE codename-engine-dialogue-character>
+<character sprite="pixel/pico-peeved" x="125" y="-25" graphicSizex="346" antialiasing="false" textSound="pixel/pixelText">
+	<anim name="normal-show" anim="portraitEnter" fps="24" />
+	<anim name="normal-talk" anim="portraitEnter" fps="24" />
+</character>

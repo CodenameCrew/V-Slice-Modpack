@@ -1,4 +1,18 @@
 {
+	"color": "#9271FD",
+	"customValues": {
+		"ratings": {
+			"easy": 2,
+			"normal": 3,
+			"hard": 4
+		},
+		"previewStart": 0,
+		"previewEnd": 15000,
+		"charter": "fabs + Spazkid",
+		"album": "expansion2",
+		"artist": "Xploshi (ft. Saruky)"
+	},
+	"instSuffix": "-pico",
 	"opponentModeAllowed": true,
 	"icon": "senpai",
 	"difficulties": [
@@ -7,22 +21,9 @@
 		"hard"
 	],
 	"coopAllowed": true,
-	"customValues": {
-		"ratings": {
-			"easy": 2,
-			"hard": 4,
-			"normal": 3
-		},
-		"previewStart": 0,
-		"album": "expansion2",
-		"artist": "Xploshi (ft. Saruky)",
-		"charter": "fabs + Spazkid",
-		"previewEnd": 15000
-	},
 	"stepsPerBeat": 4,
 	"displayName": "Roses (Pico Mix)",
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
-	"instSuffix": "-pico",
 	"bpm": 120
 }
