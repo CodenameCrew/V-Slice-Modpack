@@ -1,3889 +1,3890 @@
 {
-	"stage": "school-pico",
 	"events": [],
-	"scrollSpeed": 2.6,
 	"codenameChart": true,
+	"stage": "school-pico",
+	"scrollSpeed": 2.6,
+	"chartVersion": "1.6.0",
 	"strumLines": [
 		{
+			"keyCount": 4,
+			"position": "dad",
 			"notes": [
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 4500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 4750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 187.5,
 					"time": 5000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 5375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 5718.75,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 5875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 6125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 6375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 6500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 6625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 6750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 7000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 125,
 					"time": 7062.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 7250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 7500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 187.5,
 					"time": 8000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 9250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 9500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 9750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 187.5,
 					"time": 9875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 10125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 10250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
 					"sLen": 125,
 					"time": 12000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 12250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 12500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 12625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 12750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 12875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 13125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 13250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 13500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 13750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 13875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 13937.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 14093.75,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 14250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 14500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 14750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 14875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 250,
 					"time": 14937.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 15250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 187.5,
 					"time": 15500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 15750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 156.25,
 					"time": 16000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 18000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 125,
 					"time": 18062.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 18750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 437.5,
 					"time": 19000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 19500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 20000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 20500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 20625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 20750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 20875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 125,
 					"time": 21000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 21250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 21375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 21500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 21625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 21750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 21875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 22000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 22250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
 					"sLen": 125,
 					"time": 22375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 22625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 22750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 22875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 23000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 23250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 23500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 125,
 					"time": 23562.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 23750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 187.5,
 					"time": 24000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 28000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 28250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 28375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 28625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 28750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 28875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 29125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 29250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 29375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 29625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 29750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 29875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 30000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 30250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 30375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 30625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 30750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 30875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 31125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 31250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 31375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 31625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 31750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 31875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 32000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 32250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 32625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 33000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 125,
 					"time": 33375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 33625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 33750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 33875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 34125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 34250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 34375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 34625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 34750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 34875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 35125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 35250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 35375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 36000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 36250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 36375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 36500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 36750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 37000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 37250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 37375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 37625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 37750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 38000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 38250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 38375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 187.5,
 					"time": 38500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 38750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 39000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
 					"sLen": 187.5,
 					"time": 39062.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 39250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 39375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 39625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 39750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 125,
 					"time": 39812.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 40250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 187.5,
 					"time": 40625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 40875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 41000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 41125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 41375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 187.5,
 					"time": 41750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 42250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 187.5,
 					"time": 42625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 42875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 43000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 43125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 43375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 43437.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 43750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 44000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 44125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 44250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 44375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 44500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 44625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 44750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 45000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 45250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 45375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 45500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 45625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 45750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 46000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 46250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 46375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
 					"sLen": 125,
 					"time": 46500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 46750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 47000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 47250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 47375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 47625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 47750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 49000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 49125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 49250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 49375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 52000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 52125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 52250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 52375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 52500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 52625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 52750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 52875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 53000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 53125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 53250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 53375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 375,
 					"time": 53500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 54000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 54125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 54250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 54375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 54500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 54625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 54750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 54875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 55000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 55125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 55250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 55375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 375,
 					"time": 55500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 60000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 60125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 60250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 60375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 60500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 60625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 60750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 60875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 61000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 61125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 61250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 61375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 61500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 61625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 61750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 61875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 62000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 62125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 62250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 62375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 62500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 62625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 62750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 62875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 68000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 68500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 68750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 250,
 					"time": 69000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 69375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 69750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 69875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 70125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 70375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 70500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 70625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 70750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 71000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 125,
 					"time": 71062.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 71250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 71375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 71625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 71750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 71875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 76250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 76375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 76500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 76625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 76750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 312.5,
 					"time": 76875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 77250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 77500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 77750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 77875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 250,
 					"time": 77937.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 78250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 78375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 78500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 78750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
 					"sLen": 312.5,
 					"time": 78875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 79250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 187.5,
 					"time": 79500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 79750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 1875,
 					"time": 80000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 82000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 312.5,
 					"time": 82062.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 82500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 83000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 83500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 84000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 84125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 84250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 84375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 84500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 84625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 84750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 84875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 85000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 85250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 312.5,
 					"time": 85375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 85750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 86000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 86125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 86250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 86375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 86500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 86625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 86750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 86875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 87000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 87062.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 87250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 312.5,
 					"time": 87375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 87750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 88000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 88125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 88250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 88375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 88500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 88625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 88750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 88875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 312.5,
 					"time": 89375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 90000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 90125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 90250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 90375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 90500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 90625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 90750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 90875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91437.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 187.5,
 					"time": 92000,
-					"type": null
+					"type": 0
 				}
 			],
-			"position": "dad",
-			"vocalsSuffix": "-senpai-angry-pico",
-			"type": 0,
+			"visible": true,
 			"characters": [
 				"senpai-angry"
-			]
+			],
+			"type": 0,
+			"vocalsSuffix": "-senpai-angry-pico"
 		},
 		{
+			"keyCount": 4,
+			"position": "boyfriend",
 			"notes": [
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 7500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 7750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 8000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 8250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 8500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 8750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 9000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 9000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 9250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 9375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 9500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 9750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 9875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 10125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 10250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 10500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 375,
 					"time": 10500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 10750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 11000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 16000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 16250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 16500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 16625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 16750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
 					"sLen": 312.5,
 					"time": 16875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 17750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 17875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 18000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 18250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 187.5,
 					"time": 18500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 18750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 19000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 19250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 19375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 187.5,
 					"time": 19500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 19750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 20000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 20250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 187.5,
 					"time": 20500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 20750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 24000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 24250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 24750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 25000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 25250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 25375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 25500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 25750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 26000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 26000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 26250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 26500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 26625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 187.5,
 					"time": 26750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 27000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 27250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 27375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 27500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 27750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 28000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 32000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 32250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 32375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 32625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 32750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 33000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 33125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 33250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 33375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 33625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 33750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 34000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 34250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 34375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 34625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 34750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 35000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 35125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 35187.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 35250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 35375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 35625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 35750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 40000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 40125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 40250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 40500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 40750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 40875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 41000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 41250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 41500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 41625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 41750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 42000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 42250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 42375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 42500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 42750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 43000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 43500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 48875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 49000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 49250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 49375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 49500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 49625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 49750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 50000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 50125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 50250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 50500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 50625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 50750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 50812.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 51000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 51125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 51250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 51375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 187.5,
 					"time": 51500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 51750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 53250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 53500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 53750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 54000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 55250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 55500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 55750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 56000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 56250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 56500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 56750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 57000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 57250,
-					"type": null
-				},
-				{
-					"id": 1,
-					"sLen": null,
-					"time": 57500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 375,
 					"time": 57500,
-					"type": null
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 57500,
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 58000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 58250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 58500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 58750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 58875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 59000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 59000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 59250,
-					"type": null
-				},
-				{
-					"id": 1,
-					"sLen": null,
-					"time": 59500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 375,
 					"time": 59500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
+					"time": 59500,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
 					"time": 61250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 61500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 61750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 62000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 63875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 64937.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 65750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66187.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 66937.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 67625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
 					"sLen": 250,
 					"time": 67750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 72000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 72250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 72500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 72750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 72875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 73125,
-					"type": null
-				},
-				{
-					"id": 1,
-					"sLen": null,
-					"time": 73250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 73250,
-					"type": null
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 73250,
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 73500,
-					"type": null
-				},
-				{
-					"id": 1,
-					"sLen": null,
-					"time": 73625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 73625,
-					"type": null
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 73625,
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 73750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 73875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 74125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 74250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 74500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 74750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 74875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 75125,
-					"type": null
-				},
-				{
-					"id": 1,
-					"sLen": null,
-					"time": 75250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 75250,
-					"type": null
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 75250,
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 75500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 75625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 75687.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 75750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 76000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 80250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 80500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 80750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 81000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 81250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 81500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 81750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 81875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 82000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 82250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 82500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 82750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 82875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 83000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 83250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 83500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 83750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 85000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 85125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 85250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 85375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 85500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 85625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 85750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 85875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 87000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 87125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 87250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 87375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 87500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 87625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 87750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89187.5,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 89875,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91000,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91125,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91250,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91375,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 0,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91500,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 2,
-					"sLen": null,
+					"sLen": 0,
 					"time": 91625,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 1,
 					"sLen": 187.5,
 					"time": 91750,
-					"type": null
+					"type": 0
 				},
 				{
 					"id": 3,
 					"sLen": 187.5,
 					"time": 92000,
-					"type": null
+					"type": 0
 				}
 			],
-			"position": "boyfriend",
-			"vocalsSuffix": "-pico-pixel-pico",
-			"type": 1,
+			"visible": true,
 			"characters": [
 				"pico-pixel"
-			]
+			],
+			"type": 1,
+			"vocalsSuffix": "-pico-pixel-pico"
 		},
 		{
-			"notes": [],
-			"visible": false,
+			"keyCount": 4,
 			"position": "girlfriend",
-			"type": 2,
+			"notes": [],
 			"characters": [
 				"nene-pixel"
-			]
+			],
+			"visible": false,
+			"type": 2
 		}
 	],
-	"meta": {
-		"needsVoices": false,
-		"bpm": 120,
-		"name": null
-	},
 	"noteTypes": []
 }
