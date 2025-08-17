@@ -5,11 +5,8 @@
 	<anim name="singRIGHT" anim="right0"/>
 	<anim name="singLEFT" anim="left0"/>
 	<anim name="singUP" anim="up0"/>
-	<anim name="upmiss" anim="upmiss"/>
-	<anim name="leftmiss" anim="leftmiss"/>
-	<anim name="downmiss" anim="downmiss"/>
-	<anim name="deathLoop" anim="deathLoop"/>
-	<anim name="rightmiss" anim="rightmiss"/>
-	<anim name="firstDeath" anim="firstDeath"/>
-	<anim name="deathConfirm" anim="deathConfirm"/>
+	<anim name="singUPmiss" anim="upmiss"/>
+	<anim name="singLEFTmiss" anim="leftmiss"/>
+	<anim name="singDOWNmiss" anim="downmiss"/>
+	<anim name="singRIGHTmiss" anim="rightmiss"/>
 </character>

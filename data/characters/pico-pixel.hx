@@ -4,17 +4,10 @@ import flixel.effects.FlxFlicker;
 
 
 function onGameOver(event) {
-	if (event.character == this && event.deathCharID == 'pico-stabbed') {
-		event.retrySFX = "pico/gameOverEnd";
-		if(getAnimName() == "shootMISS") {
-			event.deathCharID = "pico-pixel";
-			event.gameOverSong = "pico/gameOverStart-explode";
-			event.lossSFX = "pico/fnf_loss_sfx-pico-explode";
-		} else {
-			event.gameOverSong = "pico/gameOver";
-			event.lossSFX = "pico/fnf_loss_sfx-pico";
-		}
-	}
+	event.retrySFX = 'pico/gameOverEnd-pixel-pico';
+	event.lossSFXName = 'pico/fnf_loss_sfx-pixel-pico';
+	event.gameOverSong = 'pico/gameOver-pixel-pico';
+	event.gameOverSongBPM = 90;
 }
 
 function onNoteHit(event)
