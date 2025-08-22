@@ -21,7 +21,7 @@ function create() {
 }
 
 function onRatingUpdate(e) {
-	if (!useCNERating && e.rating?.percent == 1 && e.rating.color != (e.rating.color = perfect ? 0xFFFFB6FF : 0xFFFFFF65) && e.oldRating == e.rating) {
+	if (!useCNERating && e.rating?.percent == 1 && e.rating.color != (e.rating.color = perfect ? 0xFFFFFF65 : 0xFFFFB6FF) && e.oldRating == e.rating) {
 		accuracyTxt.text = "";
 		if (updateRatingStuff != null) updateRatingStuff();
 		// setting _regen doesnt work?
