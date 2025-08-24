@@ -1,12 +1,11 @@
 <!DOCTYPE codename-engine-character>
-<character x="20" icon="nene" y="-30" isGF="true" color="#EB6BA3" isPlayer="false" sprite="dark/nene">
-	<anim x="0" loop="false" y="0" fps="24" anim="Idle0" indices="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14" name="danceLeft"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Idle0" indices="15,16,17,18,19,20,21,22,23,24,25,26,27,28,29" name="danceRight"/>
-	<anim x="-123" loop="false" y="56" fps="24" anim="ComboCheer0" name="combo50"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Laugh0" indices="0,1,2,3,4,5,6,7,8,9,10,11,7,8,9,19,11,7,8,9,10,11" name="drop70"/>
-	<anim x="0" loop="false" y="0" fps="24" anim="Laugh0" indices="0,1,2,3,4,5,6,7,8,9,10,11,7,8,9,10,11,7,8,9,10,11,7,8,9,10,11,7,8,9,10,11,7,8,9,10,11" name="laughCutscene"/>
-	<anim x="-40" loop="false" y="-19" fps="24" anim="ComboFawn0" indices="0,1,2,3,4,5,6,4,5,6,4,5,6,4,5,6" name="combo100"/>
-	<anim x="0" loop="false" y="51.5" fps="24" anim="KnifeRaise0" name="raiseKnife"/>
-	<anim x="-98.5" loop="false" y="51.5" fps="24" anim="KnifeIdle0" name="idleKnife"/>
-	<anim x="134.5" loop="false" y="51" fps="24" anim="KnifeLower0" name="lowerKnife" indices="0,1,2,3,4,5,6,7,8,9" />
+<character y="-30" sprite="dark/nene" camx="-100" camy="100" icon="nene" color="#EB6BA3" isGF="true">
+	<anim name="danceLeft" anim="Idle0" indices="0..15"/>
+	<anim name="danceRight" anim="Idle0" indices="16..30"/>
+	<anim name="combo50" anim="ComboCheer0" x="-123" y="56"/>
+	<anim name="drop70" anim="Laugh0" indices="0..11,7..9,19,11,7..11"/>
+	<anim name="combo200" anim="ComboFawn0" x="-40" y="-19" indices="0..6,4..6,4..6,4..6"/>
+	<anim name="raiseKnife" anim="KnifeRaise0" y="51.5"/>
+	<anim name="idleKnife" anim="KnifeIdle0" x="-98.5" y="51.5"/>
+	<anim name="lowerKnife" anim="KnifeLower0" x="134.5" y="51" indices="0..9"/>
 </character>

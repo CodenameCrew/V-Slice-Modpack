@@ -60,8 +60,10 @@ function onBranchFrame(name, frameNum, frameIndex) {
 }
 
 function onPlayerMiss(event)
-	event.gfSadAnim = false;
-
+	if(gf.curCharacter != 'gf' && gf.curCharacter != 'gf-dark'){
+		event.gfSadAnim = false;
+	}
+	trace(gf.curCharacter);
 function lightningStrikeShit():Void
 {
 	FlxG.sound.play(Paths.soundRandom('thunder_', 1, thunderSFXamount));
