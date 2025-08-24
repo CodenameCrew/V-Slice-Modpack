@@ -1,0 +1,10 @@
+<!DOCTYPE codename-engine-character>
+<character y="200" sprite="SpookyKids" camy="100" icon="spooky" color="#C5995A">
+	<anim name="danceLeft" 	anim="Idle" 	indices="1..8"/>
+	<anim name="danceRight" anim="Idle" 	indices="9..16"/>
+	<anim name="singUP" 	anim="SingUP" 					x="-20" y="26"/>
+	<anim name="singLEFT" 	anim="SingLEFT" 				x="130" y="-10"/>
+	<anim name="singRIGHT" 	anim="SingRIGHT" 				x="-130" y="-14"/>
+	<anim name="singDOWN" 	anim="SingDOWN" 				x="-15" y="-145"/>
+	<anim name="cheer" 		anim="Cheer" 					x="60" y="25"/>
+</character>

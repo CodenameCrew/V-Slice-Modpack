@@ -1,10 +1,10 @@
 <!DOCTYPE codename-engine-character>
 <character isPlayer="false" flipX="false" x="-17" y="200" color="#C5995A" sprite="dark/spooky">
-	<anim name="danceLeft" anim="Idle" x="0" y="0" fps="24" loop="false" indices="0..8"/>
-	<anim name="danceRight" anim="Idle" x="0" y="0" fps="24" loop="false" indices="9..17"/>
-	<anim name="singUP" anim="SingUP" x="-20" y="26" fps="24" loop="false"/>
-	<anim name="singLEFT" anim="SingLEFT" x="119" y="-11" fps="24" loop="false"/>
-	<anim name="singRIGHT" anim="SingRIGHT" x="-150" y="-11" fps="24" loop="false"/>
-	<anim name="singDOWN" anim="SingDOWN" x="-77" y="-136" fps="24" loop="false"/>
-	<anim name="cheer"		anim="Cheer"	 fps="24" loop="false" x="0" y="0"/>
+	<anim name="danceLeft" 	anim="Idle" 	indices="1..8"/>
+	<anim name="danceRight" anim="Idle" 	indices="9..16"/>
+	<anim name="singUP" 	anim="SingUP" 					x="-20" y="26"/>
+	<anim name="singLEFT" 	anim="SingLEFT" 				x="130" y="-10"/>
+	<anim name="singRIGHT" 	anim="SingRIGHT" 				x="-130" y="-14"/>
+	<anim name="singDOWN" 	anim="SingDOWN" 				x="-15" y="-145"/>
+	<anim name="cheer" 		anim="Cheer" 					x="60" y="25"/>
 </character>
