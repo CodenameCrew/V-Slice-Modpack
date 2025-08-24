@@ -5,7 +5,9 @@
 		"erect",
 		"nightmare"
 	],
-	"customValues": {},
+	"customValues": {
+		"stickerPack": "standard-bf"
+	},
 	"color": -14535868,
 	"name": "south",
 	"coopAllowed": true,

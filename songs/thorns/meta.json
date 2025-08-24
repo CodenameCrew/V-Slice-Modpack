@@ -1,5 +1,7 @@
 {
-	"customValues": {},
+	"customValues": {
+		"stickerPack": "standard-bf"
+	},
 	"color": "#FF78BF",
 	"opponentModeAllowed": true,
 	"icon": "spirit",

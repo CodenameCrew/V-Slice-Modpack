@@ -1,6 +1,9 @@
 {
 	"opponentModeAllowed": true,
 	"icon": "parents-christmas",
+	"customValues": {
+		"stickerPack": "standard-bf"
+	},
 	"difficulties": [
 		"easy",
 		"normal",

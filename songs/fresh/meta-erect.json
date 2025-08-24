@@ -10,7 +10,8 @@
 		"album": "volume3",
 		"previewEnd": 15000,
 		"artist": "Kohta Takahashi (feat. Saruky)",
-		"charter": "fabs"
+		"charter": "fabs",
+		"stickerPack": "standard-bf"
 	},
 	"instSuffix": "-erect",
 	"opponentModeAllowed": true,

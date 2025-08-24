@@ -11,7 +11,8 @@
 		"album": "volume4",
 		"previewEnd": 15000,
 		"artist": "Xploshi (ft. Saster)",
-		"charter": "fabs + Spazkid"
+		"charter": "fabs + Spazkid",
+		"stickerPack": "standard-pico"
 	},
 	"instSuffix": "-pico",
 	"opponentModeAllowed": true,

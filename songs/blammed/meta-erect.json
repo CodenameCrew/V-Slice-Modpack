@@ -8,6 +8,7 @@
 	"color": "#941653",
 	"coopAllowed": true,
 	"customValues": {
+		"stickerPack": "standard-bf",
 		"previewStart": 0,
 		"ratings": {
 			"nightmare": 12,

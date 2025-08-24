@@ -16,7 +16,8 @@
 		"album": "volume3",
 		"previewEnd": 15000,
 		"artist": "Kawai Sprite (feat. Saruky)",
-		"charter": "fabs + Spazkid"
+		"charter": "fabs + Spazkid",
+		"stickerPack": "standard-bf"
 	},
 	"stepsPerBeat": 4,
 	"displayName": "Pico Erect",

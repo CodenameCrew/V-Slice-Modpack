@@ -1,5 +1,6 @@
 {
 	"customValues": {
+		"stickerPack": "standard-bf",
 		"ratings": {
 			"easy": 1,
 			"normal": 2,

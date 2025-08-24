@@ -18,7 +18,8 @@
 		"album": "volume2",
 		"artist": "Kawai Sprite",
 		"charter": "ninjamuffin99 + MtH + Spazkid",
-		"previewEnd": 15000
+		"previewEnd": 15000,
+		"stickerPack": "standard-bf"
 	},
 	"color": "#FF78BF",
 	"stepsPerBeat": 4,

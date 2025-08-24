@@ -10,7 +10,8 @@
 		"previewEnd": 15000,
 		"charter": "fabs + Spazkid",
 		"album": "expansion2",
-		"artist": "Xploshi (ft. Saruky)"
+		"artist": "Xploshi (ft. Saruky)",
+		"stickerPack": "standard-pico"
 	},
 	"instSuffix": "-pico",
 	"opponentModeAllowed": true,

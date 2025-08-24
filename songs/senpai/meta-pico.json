@@ -11,7 +11,8 @@
 		"artist": "Tee Lopes (Feat. Saruky)",
 		"previewEnd": 15000,
 		"noteStyle": "pixel",
-		"album": "expansion2"
+		"album": "expansion2",
+		"stickerPack": "standard-pico"
 	},
 	"instSuffix": "-pico",
 	"opponentModeAllowed": true,

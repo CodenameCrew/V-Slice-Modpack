@@ -10,7 +10,8 @@
 	"name": "lit up",
 	"color": -10394881,
 	"customValues": {
-		"album": "expansion2"
+		"album": "expansion2",
+		"stickerPack": "standard-bf"
 	},
 	"stepsPerBeat": 4,
 	"displayName": "Lit Up (BF Mix)",

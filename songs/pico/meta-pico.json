@@ -18,7 +18,8 @@
 		"album": "expansion2",
 		"previewEnd": 15000,
 		"artist": "Metaroom (ft. Saster)",
-		"charter": "fabs"
+		"charter": "fabs",
+		"stickerPack": "standard-pico"
 	},
 	"stepsPerBeat": 4,
 	"displayName": "Pico (Pico Mix)",
