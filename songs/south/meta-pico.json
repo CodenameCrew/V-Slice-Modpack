@@ -1,5 +1,4 @@
 {
-	"color": "#9271FD",
 	"customValues": {
 		"previewStart": 0,
 		"ratings": {
@@ -15,7 +14,7 @@
 	},
 	"instSuffix": "-pico",
 	"opponentModeAllowed": false,
-	"icon": "face",
+	"icon": "spooky",
 	"difficulties": [
 		"easy",
 		"normal",
@@ -26,6 +25,7 @@
 	"displayName": "South (Pico Mix)",
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
+	"color": -14535868,
 	"vocalsSuffix": "-pico",
 	"bpm": 165
 }

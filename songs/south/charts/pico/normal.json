@@ -1,5 +1,5 @@
 {
-	"stage": "spookyMansionErect",
+	"stage": "spooky-erect",
 	"events": [],
 	"scrollSpeed": 2.4,
 	"codenameChart": true,
@@ -1088,10 +1088,10 @@
 				}
 			],
 			"position": "dad",
-			"vocalsSuffix": "-spooky-dark-pico",
+			"vocalsSuffix": "-spooky-pico",
 			"type": 0,
 			"characters": [
-				"spooky-dark"
+				"spooky"
 			]
 		},
 		{
@@ -2358,10 +2358,10 @@
 				}
 			],
 			"position": "boyfriend",
-			"vocalsSuffix": "-pico-dark-pico",
+			"vocalsSuffix": "-pico-pico",
 			"type": 1,
 			"characters": [
-				"pico-dark"
+				"pico"
 			]
 		},
 		{
@@ -2370,7 +2370,7 @@
 			"position": "girlfriend",
 			"type": 2,
 			"characters": [
-				"nene-dark"
+				"nene"
 			]
 		}
 	],
