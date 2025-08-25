@@ -1,6 +1,7 @@
 {
 	"color": "#9271FD",
 	"customValues": {
+		"stickerPack": "standard-pico",
 		"previewStart": 0,
 		"ratings": {
 			"easy": 1,

@@ -10,6 +10,7 @@
 		"hard"
 	],
 	"customValues": {
+		"stickerPack": "standard-bf",
 		"album": "volume4"
 	},
 	"stepsPerBeat": 4,

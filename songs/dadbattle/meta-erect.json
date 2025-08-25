@@ -1,6 +1,7 @@
 {
 	"color": "#9271FD",
 	"customValues": {
+		"stickerPack": "standard-bf",
 		"previewStart": 0,
 		"ratings": {
 			"nightmare": 10,

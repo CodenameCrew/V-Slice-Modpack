@@ -11,6 +11,7 @@
 	"coopAllowed": true,
 	"needsVoices": false,
 	"customValues": {
+		"stickerPack": "standard-bf",
 		"ratings": {
 			"easy": 1,
 			"hard": 2,

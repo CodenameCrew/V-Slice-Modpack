@@ -10,7 +10,8 @@
 		"charter": "Jenny Crowe + fabs",
 		"previewEnd": 15000,
 		"album": "volume3",
-		"noteStyle": "pixel"
+		"noteStyle": "pixel",
+		"stickerPack": "standard-bf"
 	},
 	"instSuffix": "-erect",
 	"opponentModeAllowed": true,

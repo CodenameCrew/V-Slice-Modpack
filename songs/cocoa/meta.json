@@ -1,5 +1,7 @@
 {
-	"customValues": {},
+	"customValues": {
+		"stickerPack": "standard-bf"
+	},
 	"color": "#A0D1FF",
 	"opponentModeAllowed": true,
 	"icon": "parents-christmas",

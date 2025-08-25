@@ -1,7 +1,9 @@
 {
 	"opponentModeAllowed": true,
 	"icon": "spooky",
-	"customValues": {},
+	"customValues": {
+		"stickerPack": "standard-bf"
+	},
 	"color": -14535868,
 	"name": "spookeez",
 	"coopAllowed": true,

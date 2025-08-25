@@ -1,5 +1,7 @@
 {
-	"customValues": {},
+	"customValues": {
+		"stickerPack": "standard-bf"
+	},
 	"color": "#F6B604",
 	"opponentModeAllowed": true,
 	"icon": "tankman",

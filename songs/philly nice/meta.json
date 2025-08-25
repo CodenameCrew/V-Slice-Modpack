@@ -10,7 +10,8 @@
 		"charter": "ninjamuffin99 + MtH + Spazkid",
 		"artist": "Kawai Sprite",
 		"album": "volume1",
-		"noteStyle": "funkin"
+		"noteStyle": "funkin",
+		"stickerPack": "standard-bf"
 	},
 	"color": "#9271FD",
 	"opponentModeAllowed": true,

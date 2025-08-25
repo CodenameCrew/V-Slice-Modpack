@@ -9,6 +9,7 @@
 	"color": "#941653",
 	"coopAllowed": true,
 	"customValues": {
+		"stickerPack": "standard-pico",
 		"previewStart": 0,
 		"ratings": {
 			"easy": 3,

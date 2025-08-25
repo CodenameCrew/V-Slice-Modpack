@@ -1,7 +1,9 @@
 {
 	"opponentModeAllowed": true,
 	"icon": "mom",
-	"customValues": {},
+	"customValues": {
+		"stickerPack": "standard-bf"
+	},
 	"color": -223530,
 	"name": "satin panties",
 	"coopAllowed": true,
