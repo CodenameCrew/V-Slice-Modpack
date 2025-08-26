@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="100" y="300" flipX="true" camx="100" color="#B7D855" gameOverChar="pico-stabbed" isGF="false">
+<character x="100" y="300" flipX="true" camx="100" icon="pico" color="#B7D855" gameOverChar="pico-stabbed" isGF="false">
 	<anim name="idle" anim="Pico Idle Dance"/>
 	<anim name="singLEFT" anim="Pico Note Right0" x="55" y="2"/>
 	<anim name="singDOWN" anim="Pico Down Note0" x="177" y="-85"/>
@@ -16,4 +16,8 @@
 	<anim name="intro1" anim="Pico Gets Pissed0"/>
 	<anim name="cockCutscene" anim="cutscene cock0"/>
 	<anim name="intro2" anim="shoot and return0" x="63" y="231"/>
+	<anim name="singDOWN-censored" anim="pico swear down"/>
+	<anim name="singUP-censored" anim="pico swear up"/>
+	<anim name="singLEFT-censored" anim="pico swear right"/>
+	<anim name="singRIGHT-censored" anim="pico swear left"/>
 </character>

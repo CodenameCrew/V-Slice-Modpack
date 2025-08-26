@@ -59,11 +59,10 @@ function onBranchFrame(name, frameNum, frameIndex) {
 	rainShader.data.uFrameBounds.value = [frame.uv.x, frame.uv.y, frame.uv.width, frame.uv.height];
 }
 
-function onPlayerMiss(event)
-	if(gf.curCharacter != 'gf' && gf.curCharacter != 'gf-dark'){
-		event.gfSadAnim = false;
-	}
-	trace(gf.curCharacter);
+// function onPlayerMiss(event)
+// 	if(gf.curCharacter != 'gf' && gf.curCharacter != 'gf-dark'){
+// 		event.gfSadAnim = false;
+// 	}
 function lightningStrikeShit():Void
 {
 	FlxG.sound.play(Paths.soundRandom('thunder_', 1, thunderSFXamount));
@@ -85,15 +84,32 @@ function lightningStrikeShit():Void
 	strumLines.forEachAlive(function(strum) for (char in strum.characters) {
 		char.playAnim('scared', true, "SING"); // SING so that they dont get indefinitely looped
 		if (StringTools.endsWith(char.curCharacter, "-dark")) {
+			var ablot = null;
+			if(gf.curCharacter == 'nene'){
+				var eyes = gf.scripts.get('eyeWhites');
+				ablot = gf.scripts.get('abotDark');
+				ablot.alpha = 0;
+			}
+
 			char.alpha = 0;
 
 			new FlxTimer().start(0.06, function(_) {
 				char.alpha = 1;
+				if(ablot != null){
+					ablot.alpha = 1;
+					eyeWhites.color = 0xFF6F96CE;
+				}
 			});
 
 			new FlxTimer().start(0.12, function(_) {
 				char.alpha = 0;
 				FlxTween.tween(char, {alpha: 1}, 1.5);
+				if(ablot != null){
+					ablot.alpha = 0;
+					FlxTween.tween(ablot, {alpha: 1}, 1.5);
+					eyes.color = 0xFFFFFFFF;
+					FlxTween.color(eyes, 0xFFFFFFFF, 0xFF6F96CE, 1.5);
+				}
 			});
 		}
 	});

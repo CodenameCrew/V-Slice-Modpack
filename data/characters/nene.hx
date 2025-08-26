@@ -23,11 +23,13 @@ var isSpooky:Bool = PlayState.instance.curStage == "spooky-erect";
 function postCreate() {
 	stereoBG = new FunkinSprite(0, 0, Paths.image('characters/abot/stereoBG'));
 	eyeWhites = new FunkinSprite().makeSolid(160, 60);
+	eyeWhites.color = 0xFF6F96CE;
 	pupil = new FunkinSprite(0, 0, Paths.image("characters/abot/systemEyes"));
 	abot = new FunkinSprite(0, 0, Paths.image('characters/abot/abotSystem'));
-	if(isSpooky){
+
+	if(isSpooky)
 		abotDark = new FunkinSprite(0, 0, Paths.image('characters/abot/dark/abotSystem'));
-	}
+	
 	animation.finishCallback = function (name:String) {
 		switch(currentState) {
 			case STATE_RAISE:
@@ -108,12 +110,6 @@ function onTryDance(event) {
 	}
 }
 
-function onPlayerMiss(e) {
-	if (combo >= 70) {
-		if (this.hasAnim('drop70')) this.playAnim('drop70', true);
-		else if (this.hasAnim('sad')) this.playAnim('sad', true);
-	}
-}
 function checkForEyes(target:Int) {
 	var bf = PlayState.instance.boyfriend; var dad = PlayState.instance.dad;
 	if (target == 1 && (bf.x + bf.globalOffset.x) >= (dad.x + dad.globalOffset.x)) movePupilsRight();
