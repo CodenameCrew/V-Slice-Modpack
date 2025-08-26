@@ -2,7 +2,11 @@
 	"events": [
 		{
 			"params": [
-				2
+				0,
+				true,
+				4,
+				"CLASSIC",
+				"In"
 			],
 			"name": "Camera Movement",
 			"time": 0
@@ -31,21 +35,33 @@
 		},
 		{
 			"params": [
-				2
+				1,
+				true,
+				4,
+				"CLASSIC",
+				"In"
 			],
 			"name": "Camera Movement",
 			"time": 2823.52941176471
 		},
 		{
 			"params": [
-				2
+				0,
+				true,
+				4,
+				"CLASSIC",
+				"In"
 			],
 			"name": "Camera Movement",
 			"time": 5647.05882352941
 		},
 		{
 			"params": [
-				2
+				1,
+				true,
+				4,
+				"CLASSIC",
+				"In"
 			],
 			"name": "Camera Movement",
 			"time": 8470.58823529412
@@ -81,7 +97,11 @@
 		},
 		{
 			"params": [
-				2
+				1,
+				true,
+				4,
+				"CLASSIC",
+				"In"
 			],
 			"name": "Camera Movement",
 			"time": 16941.1764705882

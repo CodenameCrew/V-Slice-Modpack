@@ -156,7 +156,7 @@ class DropShadowShader
     /*
         The color of the drop shadow.
     */
-    public var color:FlxColor;
+    public var color(default, set):FlxColor;
 
     /*
         The angle of the drop shadow.
@@ -167,60 +167,60 @@ class DropShadowShader
         180 = LEFT
         270 = DOWN
     */
-    public var angle:Float;
+    public var angle(default, set):Float;
 
     /*
         The distance or size of the drop shadow, in pixels,
         relative to the texture itself... NOT the camera.
     */
-    public var distance:Float;
+    public var distance(default, set):Float;
 
     /*
         The current zoom of the camera. Needed to figure out how much to multiply the drop shadow size.
     */
-    public var curZoom:Float;
+    public var curZoom(default, set):Float;
 
     /*
         The strength of the drop shadow.
         Effectively just an alpha multiplier.
     */
-    public var strength:Float;
+    public var strength(default, set):Float;
 
     /*
         The brightness threshold for the drop shadow.
         Anything below this number will NOT be affected by the drop shadow shader.
         A value of 0 effectively means theres no threshold, and vice versa.
     */
-    public var threshold:Float;
+    public var threshold(default, set):Float;
 
     /*
         Whether the shader aligns the drop shadow pixels perfectly.
         False by default.
     */
-    public var pixelPerfect:Bool;
+    public var pixelPerfect(default, set):Bool;
 
     /*
         The amount of antialias samples per-pixel,
         used to smooth out any hard edges the brightness thresholding creates.
         Defaults to 2, and 0 will remove any smoothing.
     */
-    public var antialiasAmt:Float;
+    public var antialiasAmt(default, set):Float;
 
     /*
         Whether the drop shadow is flipped horizontally.
     */
-    public var flipX:Bool;
+    public var flipX(default, set):Bool;
 
     /*
         Whether the drop shadow is flipped vertically.
     */
-    public var flipY:Bool;
+    public var flipY(default, set):Bool;
 
     /*
         Whether the shader should try and use the alternate mask.
         False by default.
     */
-    public var useAltMask:Bool;
+    public var useAltMask(default, set):Bool;
 
     /*
         The image for the alternate mask.
@@ -228,40 +228,40 @@ class DropShadowShader
         (its kinda sloppy rn i need to make it work a little nicer)
         TODO: maybe have a sort of "threshold intensity texture" as well? where higher/lower values indicate threshold strength..
     */
-    public var altMaskImage:BitmapData;
+    public var altMaskImage(default, set):BitmapData;
 
     /*
         An alternate brightness threshold for the drop shadow.
         Anything below this number will NOT be affected by the drop shadow shader,
         but ONLY when the pixel is within the mask.
     */
-    public var maskThreshold:Float;
+    public var maskThreshold(default, set):Float;
 
     /*
         The FlxSprite that the shader should get the frame data from.
         Needed to keep the drop shadow shader in the correct bounds and rotation.
     */
-    public var attachedSprite:FlxSprite;
+    public var attachedSprite(default, set):FlxSprite;
 
     /*
         The hue component of the Adjust Color part of the shader.
     */
-    public var baseHue:Float;
+    public var baseHue(default, set):Float;
 
     /*
         The saturation component of the Adjust Color part of the shader.
     */
-    public var baseSaturation:Float;
+    public var baseSaturation(default, set):Float;
 
     /*
         The brightness component of the Adjust Color part of the shader.
     */
-    public var baseBrightness:Float;
+    public var baseBrightness(default, set):Float;
 
     /*
         The contrast component of the Adjust Color part of the shader.
     */
-    public var baseContrast:Float;
+    public var baseContrast(default, set):Float;
 
     /*
         Sets all 4 adjust color values.
@@ -429,8 +429,5 @@ class DropShadowShader
         }
     }
 
-    public function new()
-    {
-        // theres a bug in public hscript that wont make setters/getters be ran in new(), its fixed in dev hscript dw like many other stuff  - Nex
-    }
+    public function new(){}
 }
