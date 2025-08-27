@@ -25,7 +25,7 @@ function gamePostCreate() {
 	}
 
 	// Precaching  - Nex
-	var arr = PlayState.instance.SONG.noteTypes;
+	var arr = PlayState.SONG.noteTypes;
 	if(arr.contains("cockgun")) {
 		loadCasingFrames();
 		FlxG.sound.load(Paths.sound('pico/Gun_Prep'));
