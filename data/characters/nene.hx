@@ -23,7 +23,8 @@ var isSpooky:Bool = PlayState.instance.curStage == "spooky-erect";
 function postCreate() {
 	stereoBG = new FunkinSprite(0, 0, Paths.image('characters/abot/stereoBG'));
 	eyeWhites = new FunkinSprite().makeSolid(160, 60);
-	eyeWhites.color = 0xFF6F96CE;
+	if(isSpooky)
+		eyeWhites.color = 0xFF6F96CE;
 	pupil = new FunkinSprite(0, 0, Paths.image("characters/abot/systemEyes"));
 	abot = new FunkinSprite(0, 0, Paths.image('characters/abot/abotSystem'));
 

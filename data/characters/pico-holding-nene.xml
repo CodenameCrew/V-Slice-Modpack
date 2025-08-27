@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-character>
+<character y="300" sprite="picoAndNene" flipX="true" camx="-10" camy="-10" isPlayer="true" icon="pico" color="#B7D855" gameOverChar="pico&amp;nene-dead">
+	<anim name="idle" anim="Pico Idle Dance" x="-7" y="40" fps="24" loop="false"/>
+	<anim name="singUP" anim="pico Up note0" x="48" y="33" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="Pico Down Note0" x="85" y="-30" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="Pico Note Right0" x="-61" y="19" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="Pico NOTE LEFT0" x="15" y="23" fps="24" loop="false"/>
+	<anim name="knife" anim="pico nene knife toss" x="6" y="67" fps="24" loop="false"/>
+	<anim name="laugh" anim="pico nene laughing full0" x="0" y="47" fps="24" loop="false"/>
+	<anim name="singUPmiss" anim="note miss up piconene" x="48" y="33" fps="24" loop="false"/>
+	<anim name="singLEFTmiss" anim="note miss left pico nene" x="15" y="23" fps="24" loop="false"/>
+	<anim name="singDOWNmiss" anim="note miss down pico nene" x="85" y="-30" fps="24" loop="false"/>
+	<anim name="singRIGHTmiss" anim="note miss right pico nene" x="-61" y="19" fps="24" loop="false"/>
+</character>

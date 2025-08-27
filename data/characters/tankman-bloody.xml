@@ -1,0 +1,10 @@
+<!DOCTYPE codename-engine-character>
+<character x="50" y="120" sprite="tankmanCaptainBloody" flipX="true" camx="-90" camy="100" color="#FFFFFF">
+	<anim name="idle" anim="Tankman Idle bloody"/>
+	<anim name="redheads" anim="redheads anim" x="110" y="70"/>
+	<anim name="singUP" anim="Tankman UP note bloody" x="48" y="114"/>
+	<anim name="singDOWN" anim="Tankman DOWN note bloody" x="76" y="-151"/>
+	<anim name="singLEFT" anim="Tankman Right Note bloody" x="84" y="-34"/>
+	<anim name="singRIGHT" anim="Tankman Note Left bloody" x="-21" y="-31"/>
+	<anim name="hehPrettyGood" anim="pretty good anim" x="1" y="36"/>
+</character>
