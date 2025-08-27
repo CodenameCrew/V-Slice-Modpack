@@ -16,15 +16,20 @@ var abotViz:FlxSpriteGroup;
 var analyzer:AudioAnalyzer;
 var analyzerLevelsCache:Array<Float>;
 var analyzerTimeCache:Float;
+var abotDark:FunkinSprite;
 
 var animationFinished:Bool = false;
-
+var isSpooky:Bool = PlayState.instance.curStage == "spooky-erect";
 function postCreate() {
 	stereoBG = new FunkinSprite(0, 0, Paths.image('characters/abot/stereoBG'));
 	eyeWhites = new FunkinSprite().makeSolid(160, 60);
+	eyeWhites.color = 0xFF6F96CE;
 	pupil = new FunkinSprite(0, 0, Paths.image("characters/abot/systemEyes"));
 	abot = new FunkinSprite(0, 0, Paths.image('characters/abot/abotSystem'));
 
+	if(isSpooky)
+		abotDark = new FunkinSprite(0, 0, Paths.image('characters/abot/dark/abotSystem'));
+	
 	animation.finishCallback = function (name:String) {
 		switch(currentState) {
 			case STATE_RAISE:
@@ -68,79 +73,25 @@ function postCreate() {
 function gamePostCreate()
 	checkForEyes(PlayState.instance.curCameraTarget);
 
-/**
- * At this amount of life, Nene will raise her knife.
- */
 var VULTURE_THRESHOLD = 0.25 * 2;
 
-/**
- * Nene is in her default state. 'danceLeft' or 'danceRight' may be playing right now,
- * or maybe her 'combo' or 'drop' animations are active.
- *
- * Transitions:
- * If player health <= VULTURE_THRESHOLD, transition to STATE_PRE_RAISE.
- */
 var STATE_DEFAULT = 0;
 
-/**
- * Nene has recognized the player is at low health,
- * but has to wait for the appropriate point in the animation to move on.
- *
- * Transitions:
- * If player health > VULTURE_THRESHOLD, transition back to STATE_DEFAULT without changing animation.
- * If current animation is combo or drop, transition when animation completes.
- * If current animation is danceLeft, wait until frame 14 to transition to STATE_RAISE.
- * If current animation is danceRight, wait until danceLeft starts.
- */
 var STATE_PRE_RAISE = 1;
 
-/**
- * Nene is raising her knife.
- * When moving to this state, immediately play the 'raiseKnife' animation.
- *
- * Transitions:
- * Once 'raiseKnife' animation completes, transition to STATE_READY.
- */
 var STATE_RAISE = 2;
 
-/**
- * Nene is holding her knife ready to strike.
- * During this state, hold the animation on the first frame, and play it at random intervals.
- * This makes the blink look less periodic.
- *
- * Transitions:
- * If the player runs out of health, move to the GameOverSubState. No transition needed.
- * If player health > VULTURE_THRESHOLD, transition to STATE_LOWER.
- */
 var STATE_READY = 3;
 
-/**
- * Nene is raising her knife.
- * When moving to this state, immediately play the 'lowerKnife' animation.
- *
- * Transitions:
- * Once 'lowerKnife' animation completes, transition to STATE_DEFAULT.
- */
 var STATE_LOWER = 4;
 
-/**
- * Nene's animations are tracked in a simple state machine.
- * Given the current state and an incoming event, the state changes.
- */
 var currentState:Int = STATE_DEFAULT;
 
-/**
- * Nene blinks every X beats, with X being randomly generated each time.
- * This keeps the animation from looking too periodic.
- */
 var MIN_BLINK_DELAY:Int = 3;
 var MAX_BLINK_DELAY:Int = 7;
 var blinkCountdown:Int = MIN_BLINK_DELAY;
 
-// Then, perform the appropriate animation for the current state.
 function onDance(event) {
-	//abot.playAnim("", forceRestart);
-
 	if(currentState == STATE_PRE_RAISE && danced) {
 		event.cancelled = animationFinished = true;
 		transitionState();
@@ -203,6 +154,7 @@ function draw(_) {
 	eyeWhites.draw();
 	pupil.draw();
 	abot.draw();
+	if(isSpooky) abotDark.draw();
 }
 
 function updateFFT() {
@@ -262,7 +214,17 @@ function update(elapsed) {
 
 	abot.update(elapsed);
 	abot.setPosition(globalOffset.x + this.x - 100, globalOffset.y + this.y + 316);
-
+	if(isSpooky){
+		abotDark.visible = this.visible;
+		abotDark.antialiasing = this.antialiasing;
+		abotDark.scrollFactor = this.scrollFactor;
+		abotDark.flipX = this.flipX;
+		abotDark.scale = this.scale;
+		//if(PlayState.instance.strumLines.members[2].characters[1] != null) abotDark.alpha = PlayState.instance.strumLines.members[2].characters[1].alpha;
+		abotDark.update(elapsed);
+		abotDark.setPosition(abot.x, abot.y);
+		
+	}
 	updateFFT();
 	abotViz.update(elapsed);
 	abotViz.setPosition(abot.x + 200, abot.y + 90);
@@ -335,4 +297,6 @@ function destroy() {
 	pupil.destroy();
 	abot.destroy();
 	abotViz.destroy();
+	abotDark.destroy();
+	if(isSpooky) abotDark.destroy();
 }
