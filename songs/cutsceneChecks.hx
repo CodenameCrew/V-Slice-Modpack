@@ -17,6 +17,7 @@ public function disableGlobalCutscene()
 function create()
 {
     if (boyfriend.curCharacter == "pico" && dad.curCharacter == "pico") globalCutscenePath = "doppleganger-pico";
+    else if(curSong == 'stress' && PlayState.variation =='pico') globalCutscenePath = "startStressPicoCut";
     //else // Add other global cutscenes here!
 }
 

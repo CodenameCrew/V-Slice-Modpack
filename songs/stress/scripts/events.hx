@@ -1,21 +1,26 @@
-function changeTankman(){
-        importScript('data/scripts/dropshadow-effect');
+var preloadTankman:Character;
 
+function postCreate() {
+    preloadTankman = new Character(dad.x,dad.y,"tankman-bloody", false,true);
+    var dropShadow = getDropShadow(preloadTankman);
+	dropShadow.color = 0xDFEF3C; // the color for your drop shadow
+	dropShadow.angle = 135; // the angle for your drop shadow
+    dropShadow.baseBrightness = -46;
+    dropShadow.baseHue = -38;
+    dropShadow.baseContrast = -25;
+    dropShadow.baseSaturation = -20;
+    dropShadow.threshold = 0.3;
+    dropShadow.loadAltMask(Paths.image("stages/tank/erect/masks/tankmanCaptainBloody_mask"));
+}
+
+function changeTankman(){
         var index = members.indexOf(dad);
 
         remove(dad);
-        dad = new Character(dad.x, dad.y, "tankman-bloody", false, true);
+        dad = preloadTankman;
         dad.playAnim('redheads', true);
-        var dropShadow = getDropShadow(dad);
-	    dropShadow.color = 0xDFEF3C; // the color for your drop shadow
-	    dropShadow.angle = 135; // the angle for your drop shadow
-        dropShadow.baseBrightness = -46;
-        dropShadow.baseHue = -38;
-        dropShadow.baseContrast = -25;
-        dropShadow.baseSaturation = -20;
-        dropShadow.threshold = 0.3;
-        dropShadow.loadAltMask(Paths.image("stages/tank/erect/masks/tankmanCaptainBloody_mask"));
         insert(index, dad);
+
 }
 
 function changeIcon()

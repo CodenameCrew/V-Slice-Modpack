@@ -7,7 +7,7 @@ var pupilState:Int = 0;
 var PUPIL_STATE_NORMAL = 0;
 var PUPIL_STATE_LEFT = 1;
 
-var abot:FunkinSprite;
+var abot, abotDark:FunkinSprite;
 var stereoBG:FunkinSprite;
 var eyeWhites:FunkinSprite;
 var pupil:FunkinSprite;
@@ -16,7 +16,6 @@ var abotViz:FlxSpriteGroup;
 var analyzer:AudioAnalyzer;
 var analyzerLevelsCache:Array<Float>;
 var analyzerTimeCache:Float;
-var abotDark:FunkinSprite;
 
 var animationFinished:Bool = false;
 var isSpooky:Bool = PlayState.instance.curStage == "spooky-erect";

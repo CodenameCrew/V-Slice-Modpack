@@ -3,15 +3,15 @@
 	"customValues": {
 		"ratings": {
 			"easy": 4,
-			"normal": 5,
-			"hard": 6
+			"hard": 6,
+			"normal": 5
 		},
 		"previewStart": 0,
-		"charter": "fabs + Spazkid",
-		"previewEnd": 15000,
-		"artist": "Saruky",
+		"album": "expansion2",
 		"noteStyle": "funkin",
-		"album": "expansion2"
+		"artist": "Saruky",
+		"charter": "fabs + Spazkid",
+		"previewEnd": 15000
 	},
 	"instSuffix": "-pico",
 	"opponentModeAllowed": true,
@@ -26,6 +26,6 @@
 	"displayName": "Stress (Pico Mix)",
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
-	"bpm": 178,
-	"vocalsSuffix": "-pico"
+	"vocalsSuffix": "-pico",
+	"bpm": 178
 }
