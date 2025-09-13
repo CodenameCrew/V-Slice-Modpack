@@ -1,0 +1,31 @@
+{
+	"color": "#223344",
+	"customValues": {
+		"previewStart": 0,
+		"ratings": {
+			"easy": 1,
+			"hard": 3,
+			"normal": 2
+		},
+		"noteStyle": "funkin",
+		"album": "volume4",
+		"previewEnd": 15000,
+		"artist": "Six Impala (feat. Saster)",
+		"charter": "fabs + Spazkid"
+	},
+	"instSuffix": "-pico",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"icon": "spooky",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Spookeez (Pico Mix)",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"vocalsSuffix": "-pico",
+	"bpm": 150
+}

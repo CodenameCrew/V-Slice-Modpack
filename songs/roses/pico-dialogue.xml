@@ -1,0 +1,30 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="hating-simulator">
+	<!-- All characters -->
+	<char name="senpai-pico" char="senpai-pico" position="left" defaultAnim="angry"/>
+	<char name="pixelPico" char="pixelPico" position="right" />
+	<char name="pixelNene" char="pixelNene" position="right" />
+
+	<!-- Lines -->
+	<line char="senpai-pico" playSound="pixel/ANGRY_TEXT_BOX" textSound="pixel/ANGRY" bubble="angry">
+		You disgusting orange boy and your awful way of 'singing
+	</line>
+	<line char="senpai-pico" textSound="pixel/ANGRY">
+		You'll ruin the neighborhood acting like that.
+	</line>
+	<line char="senpai-pico" textSound="pixel/ANGRY">
+		Keep at it and I'll knock your teeth out right after I knock your ugly girlfriend up.
+	</line>
+	<line char="pixelPico">
+		She's not my girlfriend, do whatever you want with her.
+	</line>
+	<line char="senpai-pico" textSound="pixel/ANGRY">
+		I'll enjoy watching you both cry like dogs once I tell the authorities you brought a fake gun to school!
+	</line>
+	<line char="pixelNene">
+		Let's kill this guy.
+	</line>
+	<line char="pixelPico">
+		Deal.
+	</line>
+</dialogue>

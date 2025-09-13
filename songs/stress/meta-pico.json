@@ -1,0 +1,31 @@
+{
+	"color": "#F6B604",
+	"customValues": {
+		"ratings": {
+			"easy": 4,
+			"hard": 6,
+			"normal": 5
+		},
+		"previewStart": 0,
+		"album": "expansion2",
+		"noteStyle": "funkin",
+		"artist": "Saruky",
+		"charter": "fabs + Spazkid",
+		"previewEnd": 15000
+	},
+	"instSuffix": "-pico",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"icon": "tankman",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Stress (Pico Mix)",
+	"beatsPerMeasure": 4,
+	"needsVoices": false,
+	"vocalsSuffix": "-pico",
+	"bpm": 178
+}

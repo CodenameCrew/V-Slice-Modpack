@@ -1,10 +1,11 @@
 import funkin.game.PlayState.ComboRating;
+import haxe.ds.ObjectMap;
 
 public var useCNERating = false;
 
-var columnPressedHolds:Array<Note> = [];
-var columnHoldScores:Array<Int> = [];
-var columnHoldHealths:Array<Float> = [];
+// [0 => hold:Note, 1 => score:Int, 2 => health:Float, 3 => accuracy:Float]
+var pressedHoldCaches:ObjectMap<Note, Array<Dynamic>> = new ObjectMap<Note, Array<Dynamic>>();
+var cachePool:Array<Array<Dynamic>> = [];
 var perfect:Bool = true;
 
 function create() {
@@ -20,10 +21,11 @@ function create() {
 }
 
 function onRatingUpdate(e) {
-	if (!useCNERating && e.rating?.percent == 1 &&
-		e.rating.color != (e.rating.color = perfect ? 0xFFFFB6FF : 0xFFFFFF65)
-	)
-		accuracyTxt.text = ""; // setting _regen doesnt work for some reason
+	if (!useCNERating && e.rating?.percent == 1 && e.rating.color != (e.rating.color = perfect ? 0xFFFFFF65 : 0xFFFFB6FF) && e.oldRating == e.rating) {
+		accuracyTxt.text = "";
+		if (updateRatingStuff != null) updateRatingStuff();
+		// setting _regen doesnt work?
+	}
 }
 
 function onPlayerHit(e) {
@@ -31,17 +33,22 @@ function onPlayerHit(e) {
 
 	if (note.isSustainNote) {
 		if (note.sustainParent.wasGoodHit) {
-			if (columnPressedHolds[e.direction]?.sustainParent != note.sustainParent ?? true) {
-				columnHoldScores[e.direction] = 0;
-				columnHoldHealths[e.direction] = 0.0;
+			e.healthGain = e.score = 0.0;
+
+			var cache = pressedHoldCaches.get(note.sustainParent);
+			if (cache == null) {
+				if ((cache = cachePool.pop()) == null) (cache = []).resize(4);
+				pressedHoldCaches.set(note.sustainParent, cache);
 			}
-			columnPressedHolds[e.direction] = note;
-			e.healthGain = 0.0;
+
+			cache[3] = CoolUtil.bound(position - note.sustainParent.strumTime, 0.0, note.sustainLength + note.strumTime - note.sustainParent.strumTime);
+			cache[0] = note;
+			cache[1] = scoreHold(cache[3]);
+			cache[2] = bonusHoldHealth(cache[3]);
 		}
 		else {
 			e.cancel();
-			e.note.wasGoodHit = e.deleteNote = e.enableCamZooming = e.unmuteVocals = false;
-			if (!note.strumLine?.ghostTapping) noteMiss(note.strumLine, null);
+			e.enableCamZooming = e.autoHitLastSustain = e.unmuteVocals = false;
 		}
 	}
 	else {
@@ -78,36 +85,50 @@ function onPlayerMiss(e) {
 	e.accuracy = -1;
 }
 
-var strumLine:StrumLine;
+var hold:Note;
 var position:Float;
 var previous:Float;
 var duration:Float;
 var temp:Float;
+function checkNoteUpdate(note:Note) if (!note.avoid && note.isSustainNote && position > (temp = note.strumTime) && previous < (temp += note.sustainLength)) {
+	accuracyPressedNotes += (CoolUtil.bound(position, note.strumTime, temp) - CoolUtil.bound(previous, note.strumTime, temp)) / note.sustainLength;
+}
+
 function update(elapsed:Float) {
-	previous = position;
 	position = songPos;
 
-	for (column => note in columnPressedHolds) if (note != null) {
-		strumLine = note.strumLine;
-		if (note.sustainParent.wasGoodHit) {
-			while (position > note.strumTime && note.nextSustain != null) columnPressedHolds[column] = note = note.nextSustain;
-			temp = (note?.sustainParent ?? note).strumTime;
-			duration = CoolUtil.bound(position - temp, 0.0, note.sustainLength + note.strumTime - temp);
+	for (note => cache in pressedHoldCaches) {
+		while (position > (hold = cache[0]).strumTime && hold.nextSustain != null) cache[0] = hold.nextSustain;
 
-			temp = columnHoldScores[column];
-			songScore += (columnHoldScores[column] = scoreHold(duration)) - temp;
-
-			temp = columnHoldHealths[column];
-			strumLine.addHealth((columnHoldHealths[column] = bonusHoldHealth(duration)) - temp);
-
-			if (useCNERating) {
-				temp = (position - previous) / note.sustainLength;
-				accuracyPressedNotes += temp;
-				totalAccuracyAmount += temp;
-			}
+		temp = hold.sustainLength + hold.strumTime;
+		if (position > temp || !note.strumLine.__pressed[note.strumID]) {
+			pressedHoldCaches.remove(note);
+			cachePool.push(cache);
 		}
+		if (!note.wasGoodHit) continue;
 
-		if (!strumLine.__pressed[column]) columnPressedHolds[column] = null;
+		duration = CoolUtil.bound(position - note.strumTime, 0.0, temp - note.strumTime);
+
+		temp = cache[1];
+		songScore += (cache[1] = scoreHold(duration)) - temp;
+
+		temp = cache[2];
+		note.strumLine.addHealth((cache[2] = bonusHoldHealth(duration)) - temp);
+
+		if (useCNERating) {
+			totalAccuracyAmount += (duration - cache[3]) / hold.sustainLength;
+			cache[3] = duration;
+		}
+	}
+
+	if (useCNERating) {
+		if (songPos > previous && player != null) player.notes.forEach(checkNoteUpdate);
+		previous = position;
+	}
+
+	if (hold != null) {
+		updateRating();
+		hold = null;
 	}
 }
 

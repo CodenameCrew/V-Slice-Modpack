@@ -1,17 +1,16 @@
 {
+	"color": "#223344",
+	"customValues": {},
+	"instSuffix": "-erect",
 	"opponentModeAllowed": true,
 	"icon": "spooky",
 	"difficulties": [
 		"erect",
 		"nightmare"
 	],
-	"customValues": {},
-	"color": -14535868,
-	"name": "south",
 	"coopAllowed": true,
 	"stepsPerBeat": 4,
 	"displayName": "South Erect",
-	"instSuffix": "-erect",
 	"needsVoices": false,
 	"beatsPerMeasure": 4,
 	"bpm": 177

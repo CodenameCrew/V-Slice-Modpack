@@ -59,7 +59,7 @@ function loadCanSprite() {
 
 function gamePostCreate() {
 	// Precaching  - Nex
-	var arr = PlayState.instance.SONG.noteTypes;
+	var arr = PlayState.SONG.noteTypes;
 	if(arr.contains("Light Can")) FlxG.sound.load(Paths.sound('pico/Darnell_Lighter'));
 	if(arr.contains("Kick Can")) FlxG.sound.load(Paths.sound('pico/Kick_Can_UP'));
 	if(arr.contains("Knee Can")) {

@@ -1,0 +1,6 @@
+<!DOCTYPE codename-engine-character>
+<character y="350" sprite="picoAndNene-DEAD" camx="500" camy="275" flipX="true" icon="pico" color="#B7D855">
+	<anim name="firstDeath" anim="Pico Nene death" x="0" y="0" fps="24" loop="false" indices="0..45"/>
+	<anim name="deathLoop" anim="Pico Nene death" x="0" y="0" fps="24" loop="true" indices="46..67"/>
+	<anim name="deathConfirm" anim="Pico Nene death" x="0" y="0" fps="24" loop="false" indices="68..115"/>
+</character>

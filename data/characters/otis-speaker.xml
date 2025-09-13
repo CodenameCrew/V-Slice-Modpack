@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="180" y="-20" sprite="otisSpeaker" camx="-310" camy="100" icon="pico" color="#B7D855">
+	<anim name="idle" anim="otis idle0" x="3" y="-3" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="shoot back0" x="4" y="10" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="shoot back low0" x="-32" y="18" fps="24" loop="false"/>
+	<anim name="singUP" anim="shoot forward0" x="240" y="93" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="shoot forward low" x="252" y="25" fps="24" loop="false"/>
+</character>

@@ -59,12 +59,12 @@
 		},
 		{
 			"params": [
-				270,
+				170,
 				16,
-				null,
-				null,
-				null,
-				null,
+				true,
+				4,
+				"CLASSIC",
+				"In",
 				true
 			],
 			"name": "Camera Position",
@@ -164,12 +164,12 @@
 		},
 		{
 			"params": [
-				270,
+				170,
 				16,
-				null,
-				null,
-				null,
-				null,
+				true,
+				4,
+				"CLASSIC",
+				"In",
 				true
 			],
 			"name": "Camera Position",
@@ -227,12 +227,12 @@
 		},
 		{
 			"params": [
-				270,
+				170,
 				16,
-				null,
-				null,
-				null,
-				null,
+				true,
+				4,
+				"CLASSIC",
+				"In",
 				true
 			],
 			"name": "Camera Position",
@@ -282,12 +282,12 @@
 		},
 		{
 			"params": [
-				270,
+				170,
 				16,
-				null,
-				null,
-				null,
-				null,
+				true,
+				4,
+				"CLASSIC",
+				"In",
 				true
 			],
 			"name": "Camera Position",
@@ -486,12 +486,12 @@
 		},
 		{
 			"params": [
-				270,
+				170,
 				16,
-				null,
-				null,
-				null,
-				null,
+				true,
+				4,
+				"CLASSIC",
+				"In",
 				true
 			],
 			"name": "Camera Position",
@@ -605,12 +605,12 @@
 		},
 		{
 			"params": [
-				270,
+				170,
 				16,
-				null,
-				null,
-				null,
-				null,
+				true,
+				4,
+				"CLASSIC",
+				"In",
 				true
 			],
 			"name": "Camera Position",
@@ -683,7 +683,7 @@
 		},
 		{
 			"params": [
-				270,
+				170,
 				16,
 				true,
 				16,
@@ -746,7 +746,7 @@
 		},
 		{
 			"params": [
-				270,
+				170,
 				16,
 				true,
 				16,
@@ -809,7 +809,7 @@
 		},
 		{
 			"params": [
-				270,
+				170,
 				16,
 				true,
 				16,
@@ -872,7 +872,7 @@
 		},
 		{
 			"params": [
-				270,
+				170,
 				16,
 				true,
 				16,
