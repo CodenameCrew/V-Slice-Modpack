@@ -128,13 +128,16 @@ var curDifficulty = 1;
 var difficulties = ["easy", "normal", "hard", "erect", "nightmare"];
 
 var defaultVariant = null;
-
 var variant = null;
+var oldVariant = variant;
 
 var diffSpr = null;
 
 var freeplaySelectorLeft:FlxSprite;
 var freeplaySelectorRight:FlxSprite;
+
+var songList = new FreeplaySonglist();
+songList.getSongsFromSource(false, true);
 function changeDifficulty(change, force = false) {
 	if (change == null) change = 0;
 	if (change == 0 && !force) return;
@@ -142,27 +145,27 @@ function changeDifficulty(change, force = false) {
 	var oldDiff = curDifficulty;
 	curDifficulty = FlxMath.wrap(curDifficulty + change, 0, difficulties.length - 1);
 
-	if(difficulties[curDifficulty] == "erect" || difficulties[curDifficulty] == "nightmare")
+	var curDiff = difficulties[curDifficulty];
+	if(curDiff == "erect" || curDiff == "nightmare")
 		variant = 'erect';
 	else
 		variant = defaultVariant;
 
-	var songList = new FreeplaySonglist();
-	songList.getSongsFromSource(false, true);
-	songs = songList.songs;
-	for(song in songs){
-		if(!Assets.exists(Paths.file("songs/" + song.name + "/charts/" + (variant != null ? variant + "/" : "") + difficulties[curDifficulty] + ".json"))){
-			songs.remove(song);
-		} else {
-			if(variant != null)
-				song = song.metas.get(variant);
+	if (oldVariant != variant || force)
+	{
+		songs = songList.songs.copy();
+		for(song in songs){
+			if(variant != null && song.metas != null) {
+				if(song.metas.exists(variant))
+					song = song.metas.get(variant);
+				else
+					songs.remove(song);
+			}
 		}
-	}
-	songs.insert(0, {displayName: "Random", name: "Random"});
-	for (song in songs)
-	trace(song.displayName);
+		songs.insert(0, {displayName: "Random", name: "Random"});
 
-	refreshCapsules();
+		refreshCapsules();
+	}
 
 	if (change > 0)
 	{
@@ -211,6 +214,7 @@ function changeDifficulty(change, force = false) {
 		diffSpr.alpha = 1;
 		diffSpr.offset.y -= 5;
 	});
+	oldVariant = variant;
 }
 
 var capsules:Array<SongMenuItem> = [];
@@ -319,10 +323,6 @@ function playThatShittyMusic(path, isRandom)
 {
 	var curSong:Array<Dynamic> = [path, isRandom];
 
-	trace(lastSong);
-	trace(curSong);
-
-
 	if(lastSong != curSong){
 	FlxG.sound.playMusic(path, 0);
 	FlxG.sound.music.fadeIn(2, 0, isRandom ? 0.8 : 0.4);
@@ -345,7 +345,6 @@ function changeSelection(change, force = false) {
 
 	var selCapsule = capsules[curSelected];
 	playThatShittyMusic(curSelected == 0 ? Paths.music("freeplayRandom") : Paths.inst(selCapsule.song, selCapsule.capsuleData?.variant ?? 'normal'), curSelected == 0);
-	trace(selCapsule.capsuleData);
 
 	for (capsule in capsules)
 	{
@@ -581,18 +580,29 @@ function destroy() {
 		FlxG.cameras.remove(freeplayCam);
 }
 
-function refreshCapsules(){
-	for (capsule in capsules)
-		remove(capsule);
-	var i = 0;
-	capsules = [];
-	for (song in songs)
-	{
-		var capsul = new SongMenuItem(0, 0, song.metas?.get(variant) ?? song);
-		capsul.ID = i;
-		capsules.push(capsul);
-		insert(members.indexOf(overhangStuff) ,capsul);
-		i++;
-	}
-	changeSelection(0, true);
+function refreshCapsules() {
+    var goodCapsules = [];
+    for (i => capsule in capsules) {
+        if (i > songs.length - 1)
+            remove(capsule);
+        else {
+            var song = songs[i];
+            capsule.updateData(song.metas?.get(variant) ?? song);
+			goodCapsules.push(capsule);
+        }
+    }
+
+	capsules = goodCapsules.copy();
+
+    // Add missing capsules
+    for (i in capsules.length...songs.length) {
+        var song = songs[i];
+        var capsul = new SongMenuItem(0, 0, song.metas?.get(variant) ?? song);
+        capsules.push(capsul);
+        capsul.ID = i;
+        insert(members.indexOf(overhangStuff), capsul);
+    }
+
+    // Reset selection
+    changeSelection(0, true);
 }

@@ -138,6 +138,86 @@ class SongMenuItem extends FlxObject
 
         icon = new FlxSprite();
 
+        blurSongText = initText("", Std.int(40 * capsuleScale));
+        blurSongText.offset.set(-(capsule.width * 0.26), -45);
+        add(blurSongText);
+        blurSongText.shader = new CustomShader("gaussianBlur");
+        blurSongText.shader._amount = 1;
+        blurSongText.color = 0xFF00ccff;
+
+        songText = initText("", Std.int(40 * capsuleScale));
+        songText.offset.set(-(capsule.width * 0.26), -45);
+        add(songText);
+
+        updateData(data);
+
+        updateSelected();
+    }
+
+    function updateData(data)
+    {
+        song = data.name;
+        capsuleData = data;
+
+        /*if (Reflect.hasField(data, "bpm"))
+        {
+            var bpmText = new FlxSprite().loadGraphic(Paths.image('freeplay/freeplayCapsule/bpmtext'));
+            bpmText.setGraphicSize(Std.int(bpmText.width * 0.9));
+            bpmText.offset.set(-144, -87);
+            add(bpmText);
+
+            var bpmString = Std.string(data.bpm);
+            var strLen = bpmString.length;
+            switch (strLen)
+            {
+                case 1:
+                    bpmString = "00" + bpmString;
+                case 2:
+                    bpmString = "0" + bpmString;
+            }
+            for (i in 0...3)
+                add(makeCoolNumber((185 + (i * 11)), 88.5, Std.parseInt(bpmString.charAt(i)), true));
+        }
+
+        if (Reflect.hasField(data, "weekNum"))
+        {
+            var isWeekend = Reflect.hasField(data, "isWeekEnd") && data.isWeekEnd;
+            var weekType = new FlxSprite();
+            weekType.frames = Paths.getSparrowAtlas('freeplay/freeplayCapsule/weektypes');
+    
+            weekType.animation.addByPrefix('WEEK', 'WEEK text instance 1', 0, false);
+            weekType.animation.addByPrefix('WEEKEND', 'WEEKEND text instance 1', 0, false);
+
+            weekType.animation.play(isWeekend ? 'WEEKEND' : 'WEEK');
+
+            weekType.setGraphicSize(Std.int(weekType.width * 0.9));
+            weekType.updateHitbox();
+            add(weekType);
+
+            weekType.offset.set(-291, -87);
+
+            add(makeCoolNumber(291 + (isWeekend ? weekType.frameWidth : weekType.frameWidth / 1.65), 88.5, data.weekNum, true));
+        }
+        
+        if (Reflect.hasField(data, "difficulty"))
+        {
+            var difficultyText = new FlxSprite().loadGraphic(Paths.image('freeplay/freeplayCapsule/difficultytext'));
+            difficultyText.setGraphicSize(Std.int(difficultyText.width * 0.9));
+            add(difficultyText);
+            difficultyText.offset.set(-414, -87);
+
+            var diffString = Std.string(data.difficulty);
+            var strLen = diffString.length;
+            switch (strLen)
+            {
+                case 1:
+                    diffString = "0" + diffString;
+            }
+            for (i in 0...2)
+                add(makeCoolNumber(466 + (i * 30), 32, Std.parseInt(diffString.charAt(i)), false));
+        }
+
+        */
         var charIcon = data.icon;
         if (charIcon != "" && charIcon != null)
         {
@@ -156,23 +236,14 @@ class SongMenuItem extends FlxObject
             icon.offset.y = -30;
             switch (charIcon)
             {
-              case 'parents-christmas':
+              case 'parents-christmas' | 'mommy':
                 icon.origin.x = 140;
               default:
                 icon.origin.x = 100;
             }
         }
 
-        blurSongText = initText(data.displayName, Std.int(40 * capsuleScale));
-        blurSongText.offset.set(-(capsule.width * 0.26), -45);
-        add(blurSongText);
-        blurSongText.shader = new CustomShader("gaussianBlur");
-        blurSongText.shader._amount = 1;
-        blurSongText.color = 0xFF00ccff;
-
-        songText = initText(data.displayName, Std.int(40 * capsuleScale));
-        songText.offset.set(-(capsule.width * 0.26), -45);
-        add(songText);
+        blurSongText.text = songText.text = data.displayName;
 
         updateSelected();
     }
