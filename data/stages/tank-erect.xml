@@ -16,7 +16,7 @@
 	<girlfriend scroll="1" x="350" y="135" ds_color="#DFEF3C"
         ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20"/>
 	<dad x="-50" y="125" camxoffset="150"
-        ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20" ds_color="#DFEF3C" ds_angle="45" ds_threshold="0.3"
+        ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20" ds_color="#DFEF3C" ds_angle="25" ds_threshold="0.3"
         ds_altMask="stages/tank/erect/masks/tankmanCaptainBloody_mask"/>
 	<boyfriend x="1125" y="125" camxoffset="-150"
         ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20" ds_color="#DFEF3C" ds_angle="90"/>

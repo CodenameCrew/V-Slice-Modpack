@@ -26,9 +26,14 @@ function postCreate() {
 		eyeWhites.color = 0xFF6F96CE;
 	pupil = new FunkinSprite(0, 0, Paths.image("characters/abot/systemEyes"));
 	abot = new FunkinSprite(0, 0, Paths.image('characters/abot/abotSystem'));
+	abot.addAnim('idle', 'Abot System', 24, false);
+	abot.playAnim('idle', true);
 
-	if(isSpooky)
+	if(isSpooky) {
 		abotDark = new FunkinSprite(0, 0, Paths.image('characters/abot/dark/abotSystem'));
+		abotDark.addAnim('idle', 'Abot System', 24, false);
+		abotDark.playAnim('idle', true);
+	}
 	
 	animation.finishCallback = function (name:String) {
 		switch(currentState) {
@@ -68,6 +73,11 @@ function postCreate() {
 		viz.animation.addByPrefix('VIZ', 'viz' + lol, 0);
 		viz.animation.play('VIZ', false, false, 6);
 	}
+}
+
+function beatHit() {
+	abot.playAnim('idle', true);
+	if (isSpooky) abotDark.playAnim('idle', true);
 }
 
 function gamePostCreate()
@@ -227,7 +237,7 @@ function update(elapsed) {
 	}
 	updateFFT();
 	abotViz.update(elapsed);
-	abotViz.setPosition(abot.x + 200, abot.y + 90);
+	abotViz.setPosition(abot.x + 205, abot.y + 90);
 
 	eyeWhites.update(elapsed);
 	eyeWhites.setPosition(abot.x + 40, abot.y + 250);
@@ -236,7 +246,7 @@ function update(elapsed) {
 	pupil.setPosition(abot.x - 507, abot.y - 492);
 
 	stereoBG.update(elapsed);
-	stereoBG.setPosition(abot.x + 140, abot.y + 30);
+	stereoBG.setPosition(abot.x + 150, abot.y + 30);
 
 	if (shouldTransitionState()) {
 		transitionState();

@@ -1,4 +1,5 @@
 function onPostNoteHit(e) {
+	if (e.note.isSustainNote || !e.countAsCombo) return;
 	for(chars in strumLines.members[2].characters){
 		if (combo == 50) {
 			if (chars.hasAnim('combo50')) chars.playAnim('combo50', true);

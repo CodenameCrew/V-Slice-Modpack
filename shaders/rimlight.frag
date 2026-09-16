@@ -20,6 +20,8 @@ const float TO_RAD = PI/180.0;
 
 uniform vec4 _uFrameBounds;
 uniform float _angOffset;
+uniform bool _flipX;
+uniform bool _flipY;
 
 uniform mat4 matrixA;
 uniform mat4 matrixB;
@@ -33,6 +35,8 @@ uniform bool knockout;
 vec2 getFinalOffset() {
     float ag = distance_angle + _angOffset;
 	vec2 offset = vec2(cos(ag * TO_RAD), sin(ag * TO_RAD)) * distance_offset * TEXTURE_PIXEL_SIZE;
+	if (_flipX) offset.x *= -1;
+	if (_flipY) offset.y *= -1;
     return offset;
 }
 
@@ -42,7 +46,7 @@ bool outside(vec2 uv) {
 
 vec4 texAlpha(sampler2D t, vec2 u) {
     if (outside(u)) return vec4(0.0);
-    return texture2D(t, u).aaaa;
+    return texture2D(t, u, 1.25).aaaa;
 }
 
 float getFuckingValue(float shit, float b) {
@@ -55,17 +59,17 @@ float getFuckingValue(float shit, float b) {
 }
 
 float fuck(sampler2D t, vec2 u, vec2 s, vec2 o) {
-	vec4 tex = texture2D(t, u);
+	vec4 tex = texture2D(t, u, 1.5);
 	float brightness = dot(tex.rgb, luma);
     float b = brightness;
 	float diff = brightness - threshold;
 	if (!smoothing) return clamp(sign(diff), 0.0, 1.0);
-    float blur = sqrt(1.3);
+    float blur = sqrt(1.5);
     brightness = smoothstep(-0.5, 1.0, diff);
-	brightness += getFuckingValue(dot(texture2D(t, u + (s * vec2(+blur, 0))).rgb, luma) - threshold, b);
-	brightness += getFuckingValue(dot(texture2D(t, u + (s * vec2(0, -blur))).rgb, luma) - threshold, b);
-	brightness += getFuckingValue(dot(texture2D(t, u + (s * vec2(-blur, 0))).rgb, luma) - threshold, b);
-	brightness += getFuckingValue(dot(texture2D(t, u + (s * vec2(0, +blur))).rgb, luma) - threshold, b);
+	brightness += getFuckingValue(dot(texture2D(t, u + (s * vec2(+blur, 0)), 1.5).rgb, luma) - threshold, b);
+	brightness += getFuckingValue(dot(texture2D(t, u + (s * vec2(0, -blur)), 1.5).rgb, luma) - threshold, b);
+	brightness += getFuckingValue(dot(texture2D(t, u + (s * vec2(-blur, 0)), 1.5).rgb, luma) - threshold, b);
+	brightness += getFuckingValue(dot(texture2D(t, u + (s * vec2(0, +blur)), 1.5).rgb, luma) - threshold, b);
 	brightness *= 0.2;
 	return smoothstep(0.0, 1.0, clamp(brightness / tex.a, 0.0, 1.0));
 }

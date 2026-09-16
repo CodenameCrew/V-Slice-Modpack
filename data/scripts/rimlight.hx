@@ -44,14 +44,15 @@ public function hueMatrix(v:Float, ?matrix:Array) {
     var cosHue = Math.cos(v * Math.PI / 180);
     var sinHue = Math.sin(v * Math.PI / 180);
 	matrix ??= identity4x4();
-    matrix[0]  = 0.213 + cosHue *  0.787 + sinHue * -0.213;
-    matrix[1]  = 0.715 + cosHue * -0.715 + sinHue * -0.715;
-    matrix[2]  = 0.072 + cosHue * -0.072 + sinHue *  0.928;
-    matrix[4]  = 0.213 + cosHue * -0.213 + sinHue *  0.143;
-    matrix[5]  = 0.715 + cosHue *  0.285 + sinHue *  0.140;
-    matrix[6]  = 0.072 + cosHue * -0.072 + sinHue * -0.283;
-    matrix[8]  = 0.213 + cosHue * -0.213 + sinHue * -0.787;
-    matrix[9]  = 0.715 + cosHue * -0.715 + sinHue *  0.715;
+
+    matrix[ 0] = 0.213 + cosHue *  0.787 + sinHue * -0.213;
+    matrix[ 4] = 0.213 + cosHue * -0.213 + sinHue *  0.143;
+    matrix[ 8] = 0.213 + cosHue * -0.213 + sinHue * -0.787;
+    matrix[ 1] = 0.715 + cosHue * -0.715 + sinHue * -0.715;
+    matrix[ 5] = 0.715 + cosHue *  0.285 + sinHue *  0.140;
+    matrix[ 9] = 0.715 + cosHue * -0.715 + sinHue *  0.715;
+    matrix[ 2] = 0.072 + cosHue * -0.072 + sinHue *  0.928;
+    matrix[ 6] = 0.072 + cosHue * -0.072 + sinHue * -0.283;
     matrix[10] = 0.072 + cosHue *  0.928 + sinHue *  0.072;
     return matrix;
 }
@@ -82,7 +83,46 @@ public function setAddColorMatrix(v:FlxColor, ?matrix:Array, ?add:Bool = false) 
     return matrix;
 }
 
-public function rimlight(i:FlxSprite) {
+public final grayscaleValues = [0.213, 0.715, 0.072];
+public function hsbc(hue:Float, sat:Float, bri:Float, con:Float, ?matrix:Array) {
+	matrix ??= identity4x4();
+	hue ??= 0; sat ??= 0; bri ??= 0; con ??= 0;
+
+	// birghtness
+	for (i in 0...3) {
+		matrix[(i * 4) + 3] += (bri / 255);
+	}
+
+	//hue
+	hueMatrix(hue, matrix);
+
+	// contrast
+	final value = con;
+	value = (1.0 + (value / 100.0)); // bullshit from dropshadow
+	if(value > 1.0) {
+		value = (((0.00852259 * Math.pow(MathUtil.EULER, 4.76454 * (value - 1.0))) * 1.01) - 0.0086078159) * 10.0; //Just roll with it...
+		value += 1.0;
+	}
+	for (i in 0...3) {
+		matrix[(i * 4) + 3] += ((matrix[(i * 4) + 3] - 0.25) * value + 0.25);
+	}
+
+	// saturation
+
+	final satFactor = sat;
+	if (satFactor > 0) satFactor *= 3; // bullshit from dropshadow
+	satFactor = 1 + (satFactor / 100);
+	for (r in 0...4) {
+		for (c in 0...4) {
+			var i = r + (c * 4);
+			if (i >= 3 * 4 || (i + 1) % 4 == 0) continue;
+			
+			matrix[i] = FlxMath.lerp(grayscaleValues[r], matrix[i], satFactor);
+		}
+	}
+}
+
+public function rimlight(i:FlxAnimate) {
 	var shad = new CustomShader('rimlight');
 	shad.matrixA = identity4x4();
 	shad.matrixB = identity4x4();
@@ -92,16 +132,21 @@ public function rimlight(i:FlxSprite) {
 	shad.inner = false;
 	shad.knockout = false;
 	shad.smoothing = true;
+	shad._flipX = false;
+	shad._flipX = false;
 
     var i = i;
     if (i == null) return shad;
-	if (i is FunkinSprite) i.useRenderTexture = true;
+	i.useRenderTexture = true;
     i.shader = shad;
 	function stupidFunc() {
         i.shader._uFrameBounds = [i.frame.uv.x,i.frame.uv.y,i.frame.uv.width,i.frame.uv.height];
         i.shader._angOffset = i.frame.angle * (Math.PI / 180);
+		i.shader._flipX = i.anim.curAnim.flipX;
+		i.shader._flipY = i.anim.curAnim.flipY;
     }
     i.animation.onFrameChange.add(stupidFunc);
+	i.animation.onPlay.add(stupidFunc);
     stupidFunc();
 
 	return shad;

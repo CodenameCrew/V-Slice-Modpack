@@ -6,10 +6,10 @@
 			"normal": 3,
 			"hard": 4
 		},
-		"artist": "tsuyunoshi (ft. Saruky)",
-		"charter": "fabs + Spazkid",
 		"album": "volume4",
-		"noteStyle": "funkin"
+		"noteStyle": "funkin",
+		"artist": "tsuyunoshi (ft. Saruky)",
+		"charter": "fabs + Spazkid"
 	},
 	"instSuffix": "-pico",
 	"opponentModeAllowed": true,
