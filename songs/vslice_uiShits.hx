@@ -1,9 +1,17 @@
 var lerpHealth:Float = 1;
 
+public var comboCam:FlxCamera;
+
+function create() {
+	comboCam = new FlxCamera();
+	comboCam.bgColor = FlxColor.TRANSPARENT;
+	FlxG.cameras.insert(comboCam, FlxG.cameras.list.indexOf(camHUD), false);
+}
+
 function postCreate() {
 	comboGroup.setPosition(560, 290);
 	healthBar.numDivisions = 1000;
-	comboGroup.cameras = [camHUD];
+	comboGroup.cameras = [comboCam];
 }
 
 function onCountdown(e) if (e.scale == 0.6) e.scale = 1;
@@ -22,7 +30,12 @@ function onNoteHit(e) if (e.ratingPrefix == 'game/score/') {
 	e.numScale *= 0.9;
 	e.ratingScale *= 0.9;
 }
-function onPostNoteHit(e) comboGroup.cameras = [camHUD];
+function onPostNoteHit(e) comboGroup.cameras = [comboCam];
+
+function onPostRatingsShown(e) {
+	e.numberSprite.y -= 30;
+	e.numberSprite.x += 48;
+}
 
 function postUpdate(elapsed:Float) {
 	lerpHealth = lerp(lerpHealth, health, 0.15);
