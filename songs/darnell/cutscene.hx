@@ -36,13 +36,15 @@ function startInGameCut(){
 
     game.camHUD.visible = false;
     this.exists = true;
-    canSprite = new FunkinSprite(game.dad.x + 830, game.dad.y + 300);
+    canSprite = new FunkinSprite(580, 292);
 	canSprite.loadSprite(Paths.image("characters/spraycanAtlas"));
 	canSprite.animateAtlas.anim.addBySymbolIndices('Can Start', 'Can with Labels', [0,1,2,3,4,5,6,7], 24, false);
     canSprite.animateAtlas.anim.addBySymbolIndices('Can Knee', 'Can with Labels', [8,9,10,11,12,13,14,15,16,17,18], 24, false);
 	canSprite.animateAtlas.anim.addBySymbolIndices('Can Shot', 'Can with Labels', [26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42], 24, false);
 	canSprite.visible = false;
-	FlxG.state.insert(game.members.indexOf(game.dad), canSprite);
+    canSprite.applyStageMatrix = true;
+    canSprite.postStageMatrixApply = true;
+	FlxG.state.insert(game.members.indexOf(game.dad) + 1, canSprite);
 
     blackThing = new FunkinSprite(0,0).makeGraphic(4000,4000, FlxColor.BLACK);
     blackThing.alpha = 0.7;
