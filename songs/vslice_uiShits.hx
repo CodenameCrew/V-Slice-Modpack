@@ -33,8 +33,10 @@ function onNoteHit(e) if (e.ratingPrefix == 'game/score/') {
 function onPostNoteHit(e) comboGroup.cameras = [comboCam];
 
 function onPostRatingsShown(e) {
-	e.numberSprite.y -= 30;
-	e.numberSprite.x += 48;
+	if (e.numberSprite != null) {
+		e.numberSprite.y -= 30;
+		e.numberSprite.x += 48;
+	}
 }
 
 function postUpdate(elapsed:Float) {
