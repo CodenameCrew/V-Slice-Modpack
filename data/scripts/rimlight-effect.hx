@@ -1,5 +1,4 @@
 import funkin.game.StageCharPos;
-import funkin.backend.utils.MathUtil;
 importScript('data/scripts/rimlight.hx');
 
 var cacheShit = [

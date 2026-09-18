@@ -8,6 +8,7 @@
 	for more controllable colors
 */
 
+import funkin.backend.utils.MathUtil;
 
 // returns an aray of rgb channels (normalized if second arg is true)
 // should automatically support alpha (i hope)
@@ -97,19 +98,21 @@ public function hsbc(hue:Float, sat:Float, bri:Float, con:Float, ?matrix:Array) 
 	hueMatrix(hue, matrix);
 
 	// contrast
-	final value = con;
-	value = (1.0 + (value / 100.0)); // bullshit from dropshadow
-	if(value > 1.0) {
-		value = (((0.00852259 * Math.pow(MathUtil.EULER, 4.76454 * (value - 1.0))) * 1.01) - 0.0086078159) * 10.0; //Just roll with it...
-		value += 1.0;
-	}
-	for (i in 0...3) {
-		matrix[(i * 4) + 3] += ((matrix[(i * 4) + 3] - 0.25) * value + 0.25);
+	var value = con;
+	value = (1.0 + (value / 100.0));
+	for (r in 0...4) {
+		for (c in 0...4) {
+			var i = r + (c * 4);
+			if (i >= 3 * 4 || (i + 1) % 4 == 0) continue;
+			
+			matrix[i] *= value;
+		}
+		if (r < 3) matrix[(r * 4) + 3] += 0.5 * (1 - value);
 	}
 
 	// saturation
 
-	final satFactor = sat;
+	var satFactor = sat;
 	if (satFactor > 0) satFactor *= 3; // bullshit from dropshadow
 	satFactor = 1 + (satFactor / 100);
 	for (r in 0...4) {
