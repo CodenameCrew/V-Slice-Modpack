@@ -2410,10 +2410,5 @@
 			]
 		}
 	],
-	"meta": {
-		"needsVoices": false,
-		"bpm": 180,
-		"name": null
-	},
 	"noteTypes": []
 }

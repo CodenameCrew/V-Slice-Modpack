@@ -4966,11 +4966,6 @@
 			]
 		}
 	],
-	"meta": {
-		"needsVoices": false,
-		"bpm": 162,
-		"name": null
-	},
 	"noteTypes": [
 		"normal"
 	]
