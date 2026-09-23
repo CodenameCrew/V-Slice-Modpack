@@ -83,6 +83,7 @@ function lightningStrikeShit():Void
 	}
 
 	strumLines.forEachAlive(function(strum) for (char in strum.characters) {
+		char.useRenderTexture = true;
 		char.playAnim('scared', true, "SING"); // SING so that they dont get indefinitely looped
 		if (StringTools.endsWith(char.curCharacter, "-dark")) {
 			var ablot = null;

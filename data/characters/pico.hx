@@ -2,6 +2,14 @@
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.effects.FlxFlicker;
 
+function create(){
+	if(!isPlayer)
+		return;
+
+    curCharacter = "pico-playable";
+    xml = Character.getXMLFromCharName("pico-playable");
+}
+
 var casingFrames = null;
 
 function gamePostCreate() {
@@ -153,7 +161,7 @@ function playCockGunAnim() {
 	FlxG.sound.play(Paths.sound('pico/Gun_Prep'));
 
 	if(!visible || alpha == 0) return;
-	var picoFade = new FlxSprite(this.x, this.y + this.globalOffset.y);
+	var picoFade = new FunkinSprite(this.x, this.y + this.globalOffset.y);
 	picoFade.frames = this.frames;
 	picoFade.frame = this.frame;
 	picoFade.updateHitbox();

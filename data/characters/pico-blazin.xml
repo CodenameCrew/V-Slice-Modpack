@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character sprite="picoBlazin" flipX="true" isPlayer="true" icon="pico" color="#B7D855" holdTime="999" isGF="false" gameOverChar="pico-blazin-dead" >
+<character sprite="picoBlazin" flipX="true" isPlayer="true" applyStageMatrix="true" icon="pico" color="#B7D855" holdTime="999" isGF="false" gameOverChar="pico-blazin-dead" >
 	<anim name="idle" anim="Pico Fighting ALL ANIMS" loop="true" indices="0..13"/>
 	<anim name="block" anim="Pico Fighting ALL ANIMS" indices="14..18"/>
 	<anim name="dodge" anim="Pico Fighting ALL ANIMS" indices="19..23"/>

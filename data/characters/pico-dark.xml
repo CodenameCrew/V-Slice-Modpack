@@ -1,15 +1,16 @@
 <!DOCTYPE codename-engine-character>
-<character x="340" y="300" sprite="dark/pico" flipX="true" camx="-900" color="#B7D855" gameOverChar="pico-stabbed" isGF="false">
-	<anim name="idle" anim="Pico Idle Dance"/>
-	<anim name="singLEFT" anim="Pico Note Right0" x="55" y="2"/>
-	<anim name="singDOWN" anim="Pico Down Note0" x="177" y="-85"/>
-	<anim name="singUP" anim="pico Up note0" x="-33" y="23"/>
-	<anim name="singRIGHT" anim="Pico NOTE LEFT0" x="-82" y="-9"/>
-	<anim name="singLEFTmiss" anim="Pico Note Right Miss" x="56" y="46"/>
-	<anim name="singDOWNmiss" anim="Pico Down Note MISS" x="183" y="-43"/>
-	<anim name="singUPmiss" anim="pico Up note miss" x="-18" y="58"/>
-	<anim name="singRIGHTmiss" anim="Pico NOTE LEFT miss" x="-72" y="30"/>
-	<anim name="hey" anim="Pico HEY!!" x="26" y="2"/>
-	<anim name="burpShit" anim="burpshit" x="-10"/>
-	<anim name="burpSmileLong" anim="burpsmile" x="30" y="-1"/>
+<character x="-120" y="225" sprite="dark/pico" flipX="true" camx="-19" camy="275" isPlayer="true" icon="pico-dark" color="#B7D855" gameOverChar="pico-stabbed" applyStageMatrix="false" isGF="false">
+	<anim name="idle" anim="Idle" label="true"/>
+	<anim name="singLEFT" anim="Left" label="true"/>
+	<anim name="singDOWN" anim="Down" label="true"/>
+	<anim name="singUP" anim="Up" label="true"/>
+	<anim name="singRIGHT" anim="Right" label="true"/>
+	<anim name="singLEFTmiss" anim="Left Miss" label="true"/>
+	<anim name="singDOWNmiss" anim="Down Miss" label="true" x="1"/>
+	<anim name="singUPmiss" anim="Up Miss" label="true"/>
+	<anim name="singRIGHTmiss" anim="Right Miss" label="true"/>
+	<anim name="hey" anim="Hey" label="true"/>
+	<anim name="cheer" anim="Cheer" label="true"/>
+	<anim name="burpShit" anim="*BURP* ... Shit" label="true"/>
+	<anim name="burpSmileLong" anim="Burp Smile" label="true"/>
 </character>

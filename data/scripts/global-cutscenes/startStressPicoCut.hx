@@ -8,9 +8,6 @@ var camera = FlxG.camera;
 
 var audio:FlxSound = FlxG.sound.load(Paths.sound('cutscenes/pico/stress_cutscene'));
 
-var shaders:Array<Dynamic> = [];
-var shaderCameras:Array<FlxCamera> = [];
-
 function create(){
 	  var dad = game.dad;
 	  var boyfriend = game.boyfriend;
@@ -24,22 +21,22 @@ function create(){
       game.camHUD.visible = dad.visible = boyfriend.visible = gf.visible = false;
       tankStartCut = new FunkinSprite(dad.x - 50, dad.y + 165, Paths.image('stages/tank/erect/cutscene/stressStart/tankman'));
       tankStartCut.antialiasing = true;
-      tankStartCut.animateAtlas.anim.addBySymbol("tankman cutscene", "tankman cutscene", 0, false);
+      tankStartCut.animateAtlas.anim.addBySymbol("tankman cutscene", "tankman cutscene", 24, false);
       tankStartCut.playAnim("tankman cutscene");
 
       picoStartCut = new FunkinSprite(boyfriend.x - 289, boyfriend.y + 220, Paths.image('stages/tank/erect/cutscene/stressStart/pico'));
       picoStartCut.antialiasing = true;
-      picoStartCut.animateAtlas.anim.addBySymbol("pico cutscene", "pico cutscene", 0, false);
+      picoStartCut.animateAtlas.anim.addBySymbol("pico cutscene", "pico cutscene", 24, false);
       picoStartCut.playAnim("pico cutscene");
 
       speakerStartCut = new FunkinSprite(gf.x - 115, gf.y - 853, Paths.image('stages/tank/erect/cutscene/stressStart/speakers'));
       speakerStartCut.antialiasing = true;
-      speakerStartCut.animateAtlas.anim.addBySymbol("speakers cutscene", "speakers cutscene", 0, false);
+      speakerStartCut.animateAtlas.anim.addBySymbol("speakers cutscene", "speakers cutscene", 24, false);
       speakerStartCut.playAnim("speakers cutscene");
 
 	  for(thing in [tankStartCut, picoStartCut, speakerStartCut]){
-		var dropShadow = getDropShadowScreenspace();
-		var shaderCamera:FlxCamera = new FlxCamera();
+		thing.useRenderTexture = true;
+		var dropShadow = getDropShadow(thing);
 
 		dropShadow.baseBrightness = -46;
     	dropShadow.baseHue = -38;
@@ -55,13 +52,6 @@ function create(){
     		dropShadow.threshold = 0.1;
 			dropShadow.color = 0xDFEF3C;
 		}
-
-			thing.cameras = [shaderCamera];
-			shaders.push(dropShadow);
-			FlxG.cameras.insert(shaderCamera, 1, false);
-    		shaderCamera.bgColor = 0x00FFFFFF;
-			shaderCamera.addShader(dropShadow.shader);
-			shaderCameras.push(shaderCamera);
 	  }
 
       add(speakerStartCut);
@@ -162,17 +152,6 @@ function timer(duration:Float, callBack:Void->Void) {
 	}));
 }
 
-function update(elapsed:Float) {
-	for(rimlightCamera in shaderCameras){
-		if (rimlightCamera != null)
-      	{
-			rimlightCamera.scroll = camera.scroll;
-        	rimlightCamera.zoom = camera.zoom;
-			for(stuff in shaders)
-			stuff.curZoom = camera.zoom;
-      	}
-	}
-}
 function destroy(){
 	for(things in [tankStartCut, picoStartCut, speakerStartCut])
 		things.destroy();
@@ -185,5 +164,4 @@ function destroy(){
 	audio.volume = 0;
 	camera.zoom = game.defaultCamZoom;
 	for(timer in timers) timer.cancel();
-	for(cam in shaderCameras) FlxG.cameras.remove(cam);
 }

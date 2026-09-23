@@ -1,0 +1,29 @@
+<!DOCTYPE codename-engine-character>
+<character x="-100" y="225" flipX="true" camx="-189" camy="32" applyStageMatrix="false" centercam="true" isPlayer="true" icon="pico" color="#B7D855" gameOverChar="pico-stabbed" isGF="false">
+	<spritesheet path="characters/picoAnims/pico-basic-animations"/>
+	<spritesheet path="characters/picoAnims/pico-death"/>
+	<spritesheet path="characters/picoAnims/pico-death-explosion"/>
+	<spritesheet path="characters/picoAnims/pico-playable-animations"/>
+	<spritesheet path="characters/picoAnims/pico-censored"/>
+	<anim name="idle" anim="Idle" label="true"/>
+	<anim name="singLEFT" anim="Left" label="true"/>
+	<anim name="singDOWN" anim="Down" label="true"/>
+	<anim name="singUP" anim="Up" label="true"/>
+	<anim name="singRIGHT" anim="Right" label="true"/>
+	<anim name="singLEFTmiss" anim="Left Miss" label="true" x="138" y="168"/>
+	<anim name="singDOWNmiss" anim="Down Miss" label="true" x="138" y="168"/>
+	<anim name="singUPmiss" anim="Up Miss" label="true" x="138" y="168"/>
+	<anim name="singRIGHTmiss" anim="Right Miss" label="true" x="138" y="168"/>
+	<anim name="hey" anim="Hey" label="true" x="138" y="168"/>
+	<anim name="cock" anim="Gun Reload" label="true" x="138" y="168"/>
+	<anim name="shoot" anim="Shoot" label="true" x="138" y="168"/>
+	<anim name="intro1" anim="Pissed Off" label="true" x="138" y="168"/>
+	<anim name="cheer" anim="Cheer" label="true" x="138" y="168"/>
+	<anim name="intro2" anim="Shoot and Return" label="true" x="138" y="168"/>
+	<anim name="singDOWN-censored" anim="pico swear down" x="-25" y="-149"/>
+	<anim name="singUP-censored" anim="pico swear up" x="-100" y="-37"/>
+	<anim name="singLEFT-censored" anim="pico swear left" x="-25" y="-76"/>
+	<anim name="singRIGHT-censored" anim="pico swear right" x="-169" y="-65"/>
+	<anim name="burpShit" anim="*BURP* ... Shit" label="true" x="138" y="168"/>
+	<anim name="burpSmileLong" anim="Burp Smile" label="true" x="138" y="168"/>
+</character>

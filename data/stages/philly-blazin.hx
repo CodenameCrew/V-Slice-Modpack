@@ -35,10 +35,10 @@ function postCreate()
 
 	if(Options.gameplayShaders)
 	{
-		rainShader = new CustomShader('rainShaderSimple');
+		rainShader = new CustomShader('rainShader');
 		rainShader.uRainColor = getColorVec(rainColor);
 		camGame.addShader(rainShader);
-		rainShader.uScale = FlxG.height / 200;
+		rainShader.uScale = (FlxG.height / FlxG.width) / 200;
 		rainShader.uIntensity = 0.5;
 		rainShader.uTime = 0;
 	}

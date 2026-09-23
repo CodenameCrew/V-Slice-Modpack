@@ -1,25 +1,12 @@
 <!DOCTYPE codename-engine-character>
-<character x="100" y="300" flipX="true" camx="100" color="#B7D855" gameOverChar="pico-stabbed" isGF="false">
-	<anim name="idle" anim="Pico Idle Dance"/>
-	<anim name="singLEFT" anim="Pico Note Right0" x="55" y="2"/>
-	<anim name="singDOWN" anim="Pico Down Note0" x="177" y="-85"/>
-	<anim name="singUP" anim="pico Up note0" x="-33" y="23"/>
-	<anim name="singRIGHT" anim="Pico NOTE LEFT0" x="-82" y="-9"/>
-	<anim name="singLEFTmiss" anim="Pico Note Right Miss" x="56" y="46"/>
-	<anim name="singDOWNmiss" anim="Pico Down Note MISS" x="183" y="-43"/>
-	<anim name="singUPmiss" anim="pico Up note miss" x="-18" y="58"/>
-	<anim name="singRIGHTmiss" anim="Pico NOTE LEFT miss" x="-72" y="30"/>
-	<anim name="hey" anim="Pico HEY!!" x="26" y="2"/>
-	<anim name="shootMISS" anim="Pico Hit Can" x="117" y="-8"/>
-	<anim name="cock" anim="Pico Reload" x="34" y="-7"/>
-	<anim name="shoot" anim="Pico Shoot Hip Full" x="60" y="232"/>
-	<anim name="intro1" anim="Pico Gets Pissed0"/>
-	<anim name="cockCutscene" anim="cutscene cock0"/>
-	<anim name="intro2" anim="shoot and return0" x="63" y="231"/>
-	<anim name="singDOWN-censored" anim="pico swear down" x="177" y="-86"/>
-	<anim name="singUP-censored" anim="pico swear up" x="-39" y="29"/>
-	<anim name="singLEFT-censored" anim="pico swear right" x="54" y="2"/>
-	<anim name="singRIGHT-censored" anim="pico swear left" x="-82" y="-11"/>
-	<anim name="burpShit" anim="burpshit" x="-10"/>
-	<anim name="burpSmileLong" anim="burpsmile" x="30" y="-1"/>
+<character x="100" y="300" sprite="pico" flipX="true" camx="-100" icon="pico" color="#B7D855">
+	<anim name="idle" anim="Pico Idle Dance" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="Pico Note Right0" x="56" y="1" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="Pico Down Note0" x="193" y="-82" fps="24" loop="false"/>
+	<anim name="singUP" anim="pico Up note0" x="-31" y="30" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="Pico NOTE LEFT0" x="-83" y="-11" fps="24" loop="false"/>
+	<anim name="singLEFTmiss" anim="Pico Note Right Miss" x="57" y="47" fps="24" loop="false"/>
+	<anim name="singDOWNmiss" anim="Pico Down Note MISS" x="193" y="-40" fps="24" loop="false"/>
+	<anim name="singUPmiss" anim="pico Up note miss" x="-19" y="67" fps="24" loop="false"/>
+	<anim name="singRIGHTmiss" anim="Pico NOTE LEFT miss" x="-77" y="25" fps="24" loop="false"/>
 </character>

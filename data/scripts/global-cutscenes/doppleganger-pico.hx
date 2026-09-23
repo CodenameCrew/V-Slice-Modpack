@@ -1,4 +1,4 @@
-//
+//TODO: Rewrite ts tf is going on here (also fix the offsets but im too lazy to do that rn)
 var picoPlayer:FunkinSprite;
 var picoOpponent:FunkinSprite;
 var bloodPool:FunkinSprite;
@@ -21,18 +21,18 @@ function create()
 	}
 
     // 50/50 chance for who shoots
-    playerShoots = FlxG.random.bool(50);
+	playerShoots = FlxG.random.bool(50);
     explode = FlxG.random.bool(8);
 
-    game.insert(game.members.indexOf(playerShoots ? game.boyfriend : game.dad) + 1, picoOpponent = new FunkinSprite(game.dad.x + game.dad.globalOffset.x + 87, game.dad.y + game.dad.globalOffset.y + 395));
-    game.insert(game.members.indexOf(playerShoots ? game.dad : game.boyfriend) + 1, picoPlayer = new FunkinSprite(game.boyfriend.x + game.boyfriend.globalOffset.x + 244, game.boyfriend.y + game.boyfriend.globalOffset.y + 395));
+    game.insert(game.members.indexOf(playerShoots ? game.boyfriend : game.dad) + 1, picoOpponent = new FunkinSprite(game.dad.x + game.dad.globalOffset.x + 87, game.dad.y + game.dad.globalOffset.y + 385));
+    game.insert(game.members.indexOf(playerShoots ? game.dad : game.boyfriend) + 1, picoPlayer = new FunkinSprite(game.boyfriend.x + game.boyfriend.globalOffset.x + 244, game.boyfriend.y + game.boyfriend.globalOffset.y + 455));
 
     picoOpponent.scrollFactor.set(game.dad.scrollFactor.x, game.dad.scrollFactor.y); picoPlayer.scrollFactor.set(game.boyfriend.scrollFactor.x, game.boyfriend.scrollFactor.y);
     picoOpponent.scale.set(game.dad.scale.x, game.dad.scale.y); picoPlayer.scale.set(game.boyfriend.scale.x, game.boyfriend.scale.y);
     picoOpponent.shader = game.dad.shader; picoPlayer.shader = game.boyfriend.shader;
 
 	var awesomeOffset = (a) -> {
-		return (a ? -210 : 378);
+		return (a ? 350 : -240);
 	}
     for (char in [picoOpponent, picoPlayer])
     {
@@ -44,12 +44,12 @@ function create()
 		char.addAnim('shoot', 'compressed/picoShoot', 24, false, true, null, awesomeOffset(!playerShoots), 205);
 
 		// i think these 2 are flipped?
-		char.addAnim('explode', 'compressed/picoExplode', 24, false, true, null, awesomeOffset(playerShoots), 205);
-		char.addAnim('explode-loop', 'compressed/picoExplode', 12, true, true, [268, 270, 272, 274], awesomeOffset(playerShoots), 205);
+		char.addAnim('explode', 'compressed/picoExplode', 24, false, true, null, awesomeOffset(playerShoots) + 320, 205);
+		char.addAnim('explode-loop', 'compressed/picoExplode', 12, true, true, [268, 270, 272, 274], awesomeOffset(playerShoots) + 320, 205);
 		char.addAnim('cigarette', 'compressed/picoCigarette', 24, false, true, null, awesomeOffset(playerShoots), 205);
 		char.flipX = playerShoots; // ???
 
-		char.x += 170 * (!playerShoots ? 1 : 0);
+		char.x += 740 * (!playerShoots ? 1 : 0);
     }
 
 	var pico1 = playerShoots ? picoPlayer : picoOpponent;
@@ -60,6 +60,9 @@ function create()
 	var off = 222 * (playerShoots ? 1 : -1);
 	pico1.x -= off;
 	pico2.x += off;
+
+	if(!playerShoots)
+		pico2.x -= explode ? 670 : 950;
 
 	//trace(playerShoots);
 

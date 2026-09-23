@@ -12,9 +12,8 @@ function create() {
     cutsceneCam.bgColor = 0x00000000;
 
 	video = new FlxVideoSprite();
-    video.load(Paths.file('songs/' + game.SONG.meta.name + '/end-cutscene.' + Flags.VIDEO_EXT));
+    video.load(Paths.file('songs/' + PlayState.SONG.meta.name + '/end-cutscene.' + Flags.VIDEO_EXT));
 	video.antialiasing = true;
-	video.autoPause = false;
 	video.visible = false;
 	video.cameras = [cutsceneCam];
 	video.bitmap.onEndReached.add(close);

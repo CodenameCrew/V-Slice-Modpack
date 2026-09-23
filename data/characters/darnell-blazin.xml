@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character sprite="darnellBlazin" icon="darnell" color="#715EAE" holdTime="999" isGF="false">
+<character sprite="darnellBlazin" applyStageMatrix="true"  icon="darnell" color="#715EAE" holdTime="999" isGF="false">
 	<anim name="idle" anim="Darnell Fighting ALL ANIMS" loop="true" indices="0..13"/>
 	<anim name="pissed" anim="Darnell Fighting ALL ANIMS" indices="74..78"/>
 	<anim name="cringe" anim="Darnell Fighting ALL ANIMS" indices="67..70"/>
