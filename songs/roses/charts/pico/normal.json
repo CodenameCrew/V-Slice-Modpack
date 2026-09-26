@@ -3766,10 +3766,5 @@
 			]
 		}
 	],
-	"meta": {
-		"needsVoices": false,
-		"bpm": 120,
-		"name": null
-	},
 	"noteTypes": []
 }

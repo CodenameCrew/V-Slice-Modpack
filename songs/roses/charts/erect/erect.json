@@ -4354,10 +4354,5 @@
 			]
 		}
 	],
-	"meta": {
-		"needsVoices": false,
-		"bpm": 128,
-		"name": null
-	},
 	"noteTypes": []
 }

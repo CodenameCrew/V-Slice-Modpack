@@ -778,10 +778,5 @@
 			]
 		}
 	],
-	"meta": {
-		"needsVoices": false,
-		"bpm": 100,
-		"name": null
-	},
 	"noteTypes": []
 }
