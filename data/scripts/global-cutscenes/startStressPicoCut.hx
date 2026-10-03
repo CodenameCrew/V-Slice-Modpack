@@ -15,13 +15,14 @@ function create(){
 
 	  camera.followEnabled = false;
 
-	  camera.scroll.set(gf.x - 150, gf.y - 50);
+	  camera.scroll.set(gf.x - 180, gf.y + 20);
 	  camera.zoom = 0.65;
 
       game.camHUD.visible = dad.visible = boyfriend.visible = gf.visible = false;
       tankStartCut = new FunkinSprite(dad.x - 50, dad.y + 165, Paths.image('stages/tank/erect/cutscene/stressStart/tankman'));
       tankStartCut.antialiasing = true;
-      tankStartCut.animateAtlas.anim.addBySymbol("tankman cutscene", "tankman cutscene", 24, false);
+      tankStartCut.animateAtlas.anim.addBySymbol("tankman cutscene", "tankman cutscene", 24, false, true);
+	  tankStartCut.flipX = true; // so that the shader atually flips
       tankStartCut.playAnim("tankman cutscene");
 
       picoStartCut = new FunkinSprite(boyfriend.x - 289, boyfriend.y + 220, Paths.image('stages/tank/erect/cutscene/stressStart/pico'));
@@ -34,23 +35,14 @@ function create(){
       speakerStartCut.animateAtlas.anim.addBySymbol("speakers cutscene", "speakers cutscene", 24, false);
       speakerStartCut.playAnim("speakers cutscene");
 
-	  for(thing in [tankStartCut, picoStartCut, speakerStartCut]){
-		thing.useRenderTexture = true;
-		var dropShadow = getDropShadow(thing);
-
-		dropShadow.baseBrightness = -46;
-    	dropShadow.baseHue = -38;
-    	dropShadow.baseContrast = -25;
-    	dropShadow.baseSaturation = -20;
-
-		if(thing == tankStartCut){
-    		dropShadow.angle = 45;
-    		dropShadow.threshold = 0.3;
-			dropShadow.color = 0xDFEF3C;
-		} else if (thing == picoStartCut){
-    		dropShadow.angle = 90;
-    		dropShadow.threshold = 0.1;
-			dropShadow.color = 0xDFEF3C;
+	  //importScript('data/scripts/rimlight');
+	  for(thing in [
+			[tankStartCut, dad], [picoStartCut, boyfriend], [speakerStartCut, gf]
+		]){
+		thing[0].useRenderTexture = true;
+		var rim = copyRimlightTo(thing[1].shader, thing[0]);
+		if (thing[1] == gf) {
+			rim.distance_offset = 0;
 		}
 	  }
 
