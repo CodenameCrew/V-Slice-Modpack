@@ -1,11 +1,12 @@
-import Date;
+if(PlayState.variation != 'erect')
+    return;
+
 import funkin.savedata.FunkinSave;
 
 var timers:Array<FlxTimer> = [];
 var santaDies, dadShoots:FunkinSprite;
 
 function onSongEnd(e){
-if(PlayState.instance.variation == 'erect'){
     e.cancel();
 
     var camera = FlxG.camera;
@@ -23,7 +24,7 @@ if(PlayState.instance.variation == 'erect'){
     santaDies.shader = originalSanta.shader;
 	santaDies.antialiasing = true;
 	santaDies.loadSprite(Paths.image('stages/mall/erect/santa_speaks_assets'));
-	santaDies.animateAtlas.anim.addBySymbol("santa whole scene", "santa whole scene", 0, false);
+	santaDies.animateAtlas.anim.addBySymbol("santa whole scene", "santa whole scene", 24, false);
     santaDies.playAnim("santa whole scene");
     insert(members.indexOf(originalSanta), santaDies);
 
@@ -31,7 +32,7 @@ if(PlayState.instance.variation == 'erect'){
     dadShoots.shader = dad.shader;
 	dadShoots.antialiasing = true;
 	dadShoots.loadSprite(Paths.image('stages/mall/erect/parents_shoot_assets'));
-	dadShoots.animateAtlas.anim.addBySymbol("parents whole scene", "parents whole scene", 0, false);
+	dadShoots.animateAtlas.anim.addBySymbol("parents whole scene", "parents whole scene", 24, false);
     dadShoots.playAnim("parents whole scene");
     insert(members.indexOf(dad), dadShoots);
 
@@ -42,13 +43,13 @@ if(PlayState.instance.variation == 'erect'){
 
     if (validScore) {
 		#if !switch
-			FunkinSave.setSongHighscore(SONG.meta.name, PlayState.instance.difficulty, PlayState.instance.variation, {
+			FunkinSave.setSongHighscore(SONG.meta.name, PlayState.difficulty, PlayState.variation, {
 				score: songScore,
 				misses: misses,
 				accuracy: accuracy,
 				hits: [],
 				date: Date.now().toString()
-			}, PlayState.instance.getSongChanges());
+			}, PlayState.getSongChanges());
 		#end
 	}
 
@@ -81,7 +82,6 @@ if(PlayState.instance.variation == 'erect'){
         camHUD.fade(0xFF000000, 0.5, true, null, true);
         startCutscene("end-", endCutscene, nextSong, false, false);
     });
-}
 }
 
 function timer(duration:Float, callBack:Void->Void) {
