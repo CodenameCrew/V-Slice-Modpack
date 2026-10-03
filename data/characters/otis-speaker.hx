@@ -23,6 +23,8 @@ function postCreate() {
 	eyeWhites = new FunkinSprite().makeSolid(160, 60);
 	pupil = new FunkinSprite(0, 0, Paths.image("characters/abot/systemEyes"));
 	abot = new FunkinSprite(0, 0, Paths.image('characters/abot/abotSystem'));
+	abot.addAnim('idle', 'Abot System', 24, false);
+	abot.playAnim('idle', true);
 	
 	animation.finishCallback = function (name:String) {
 		switch(currentState) {
@@ -64,10 +66,18 @@ function postCreate() {
 	}
 }
 
+function beatHit() {
+	abot.playAnim('idle', true);
+}
+
 function gamePostCreate(){
 	checkForEyes(PlayState.instance.curCameraTarget);
 
-	abot.shader = this.shader;
+	if (this.shader != null && this.shader.matrixA != null) {
+		importScript('data/scripts/rimlight');
+		var rim = copyRimlightTo(this.shader, abot);
+		rim.distance_offset = 0;
+	}
 }
 
 var VULTURE_THRESHOLD = 0.25 * 2;
@@ -213,7 +223,7 @@ function update(elapsed) {
 
 	updateFFT();
 	abotViz.update(elapsed);
-	abotViz.setPosition(abot.x + 200, abot.y + 90);
+	abotViz.setPosition(abot.x + 205, abot.y + 90);
 
 	eyeWhites.update(elapsed);
 	eyeWhites.setPosition(abot.x + 40, abot.y + 250);
@@ -222,7 +232,7 @@ function update(elapsed) {
 	pupil.setPosition(abot.x - 507, abot.y - 492);
 
 	stereoBG.update(elapsed);
-	stereoBG.setPosition(abot.x + 140, abot.y + 30);
+	stereoBG.setPosition(abot.x + 150, abot.y + 30);
 
 	if (shouldTransitionState()) {
 		transitionState();

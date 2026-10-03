@@ -91,7 +91,7 @@ public function hsbc(hue:Float, sat:Float, bri:Float, con:Float, ?matrix:Array) 
 
 	// birghtness
 	for (i in 0...3) {
-		matrix[(i * 4) + 3] += (bri / 255);
+		matrix[(i * 4) + 3] = (bri / 255);
 	}
 
 	//hue
@@ -125,7 +125,17 @@ public function hsbc(hue:Float, sat:Float, bri:Float, con:Float, ?matrix:Array) 
 	}
 }
 
-public function rimlight(i:FlxAnimate) {
+public function copyRimlightTo(rim, target:FlxSprite) {
+	var tim = rimlight(target);
+	tim.distance_offset = rim.distance_offset;
+	tim.distance_angle = rim.distance_angle;
+	tim.threshold = rim.threshold;
+	tim.matrixA = rim.matrixA.copy();
+	tim.matrixB = rim.matrixB.copy();
+	return tim;
+}
+
+public function rimlight(?i:FlxSprite) {
 	var shad = new CustomShader('rimlight');
 	shad.matrixA = identity4x4();
 	shad.matrixB = identity4x4();
@@ -137,16 +147,25 @@ public function rimlight(i:FlxAnimate) {
 	shad.smoothing = true;
 	shad._flipX = false;
 	shad._flipX = false;
+	shad._angOffset = 0;
+	shad._uFrameBounds = [0, 0, 1, 1];
 
     var i = i;
     if (i == null) return shad;
-	i.useRenderTexture = true;
+	var anim = i.animation;
+	if (i is FlxAnimate) {
+		i.useRenderTexture = true;
+		anim = i.anim;
+	}
     i.shader = shad;
 	function stupidFunc() {
-        i.shader._uFrameBounds = [i.frame.uv.x,i.frame.uv.y,i.frame.uv.width,i.frame.uv.height];
+        i.shader._uFrameBounds[0] = i.frame.uv.x;
+		i.shader._uFrameBounds[1] = i.frame.uv.y;
+		i.shader._uFrameBounds[2] = i.frame.uv.width;
+		i.shader._uFrameBounds[3] = i.frame.uv.height;
         i.shader._angOffset = i.frame.angle * (Math.PI / 180);
-		i.shader._flipX = i.anim.curAnim.flipX;
-		i.shader._flipY = i.anim.curAnim.flipY;
+		i.shader._flipX = anim?.curAnim?.flipX ?? false;
+		i.shader._flipY = anim?.curAnim?.flipY ?? false;
     }
     i.animation.onFrameChange.add(stupidFunc);
 	i.animation.onPlay.add(stupidFunc);

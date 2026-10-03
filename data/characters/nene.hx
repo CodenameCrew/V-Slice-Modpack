@@ -80,8 +80,15 @@ function beatHit() {
 	if (isSpooky) abotDark.playAnim('idle', true);
 }
 
-function gamePostCreate()
+function gamePostCreate() {
 	checkForEyes(PlayState.instance.curCameraTarget);
+	
+	if (this.shader != null && this.shader.matrixA != null) {
+		importScript('data/scripts/rimlight');
+		var rim = copyRimlightTo(this.shader, abot);
+		rim.distance_offset = 0;
+	}
+}
 
 var VULTURE_THRESHOLD = 0.25 * 2;
 

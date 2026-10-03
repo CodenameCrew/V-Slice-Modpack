@@ -1,6 +1,6 @@
 import flixel.FlxSprite;
 
-importScript('data/scripts/dropshadow-effect');
+importScript('data/scripts/rimlight');
 
 var tankmanRun:Array<TankmenBG> = [];
 var grpTankmanRun:FlxTypedGroup<FlxSprite> = [];
@@ -18,11 +18,9 @@ function recycleTankman() {
 
 function getTankman(data:Array<Float>) {
 	var tankman:TankmenBG = recycleTankman();
-    var dropShadow1 = getDropShadow(tankman.sprite);
-    dropShadow1.baseBrightness = -46;
-    dropShadow1.baseHue = -38;
-    dropShadow1.baseContrast = -25;
-    dropShadow1.baseSaturation = -20;
+    var dropShadow1 = rimlight(tankman.sprite);
+	dropShadow1.distance_offset = 0; // distance_offset 0 prevents matrixB and outlines from being calculated so it can act like regular adjust color !
+	hsbc(-38, -20, -46, -25, dropShadow1.matrixA);
 	tankman.strumTime = data[0];
 	tankman.resetShit(500, 320, data[1] < 2);
 	return tankman;

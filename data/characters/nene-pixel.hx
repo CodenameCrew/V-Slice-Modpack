@@ -17,7 +17,6 @@ var abotViz:FlxSpriteGroup;
 var analyzer:AudioAnalyzer;
 var analyzerLevelsCache:Array<Float>;
 var analyzerTimeCache:Float;
-importScript('data/scripts/dropshadow-effect');
 
 var animationFinished:Bool = false;
 function postCreate() {
@@ -101,43 +100,21 @@ function postCreate() {
 		viz.animation.addByPrefix('VIZ', 'viz' + lol, 0);
 		viz.animation.play('VIZ', false, false, 6);
 	}
-
-	/*    abot.shader = noRimShader;
-    abotBack.shader = noRimShader;
-    abotHead.shader = noRimShader;
-    abotViz.shader = noRimShader;
-    abotSpeaker.shader = abotSpeakerShader;*/
-	for(i in [abotHead, abotBack, abot]){
-		var dropShadow = getDropShadow(i);
-		dropShadow.setAdjustColor(-66, -10, 24, -23); // brightness, hue, contrast, saturation
-		dropShadow.color = 0xFF52351d; // the color for your drop shadow
-		dropShadow.angle = 90; // the angle for your drop shadow
-		dropShadow.distance = 5; // the distance for your drop shadow
-		dropShadow.threshold = 1; // the brightness for your drop shadow
-		dropShadow.antialiasAmt = 0; // the amount of antialias for your drop shadow
-		dropShadow.pixelPerfect = true; // whether the pixels are aligned perfectly
-	}
-
-	var abotSpeakerShader = getDropShadow(abotSpeaker);
-	abotSpeakerShader.setAdjustColor(-66, -10, 24, -23); // brightness, hue, contrast, saturation
-	abotSpeakerShader.altMaskImage = Paths.image('stages/school/erect/masks/aBotPixelSpeaker_mask');
-	abotSpeakerShader.useAltMask = true;
-	abotSpeakerShader.maskThreshold = 0;
-	abotSpeakerShader.color = 0xFF52351d; // the color for your drop shadow
-	abotSpeakerShader.angle = 90; // the angle for your drop shadow
-	abotSpeakerShader.distance = 1; // the distance for your drop shadow
-	abotSpeakerShader.threshold = 1; // the brightness for your drop shadow
-	abotSpeakerShader.antialiasAmt = 0; // the amount of antialias for your drop shadow
-	abotSpeakerShader.pixelPerfect = true; // whether the pixels are aligned perfectly
-	abotSpeakerShader.attachedSprite = abotSpeaker;
-    abotSpeaker.animation.onFrameChange.add(function() {
-      abotSpeakerShader.updateFrameInfo(abotSpeaker.frame);
-    });
-	//for(i in abotViz) i.shader = abotHead.shader;
 }
 
-function gamePostCreate()
+function gamePostCreate() {
 	checkForEyes(PlayState.instance.curCameraTarget);
+
+	if (this.shader != null && this.shader.matrixA != null) {
+		importScript('data/scripts/rimlight');
+		for(i in [abotHead, abotBack, abot, abotSpeaker]) {
+			var rim = rimlight(i);
+			rim.distance_offset = 0;
+			rim.smoothing = false;
+			hsbc(-10, -23, -66, 24, rim.matrixA);
+		}
+	}
+}
 
 /**
  * At this amount of life, Nene will raise her knife.
@@ -272,9 +249,9 @@ function onNoteMiss(event) moveByNoteKind(event.noteType);
 function draw(_) {
 	abotSpeaker.draw();
 	abotBack.draw();
+	abotHead.draw();
 	abotViz.draw();
 	abot.draw();
-	abotHead.draw();
 	//pupil.draw();
 }
 
@@ -349,7 +326,7 @@ function update(elapsed) {
     abotSpeaker.playAnim(PlayState.instance.gf.animation.curAnim.name);
 	abotSpeaker.animation.curAnim.curFrame = PlayState.instance.gf.animation.curAnim.curFrame;
 	abotHead.update(elapsed);
-	abotHead.setPosition(abot.x - 325, abot.y + 72);
+	abotHead.setPosition(abot.x - 323, abot.y + 66);
 
 	if (shouldTransitionState()) {
 		transitionState();
