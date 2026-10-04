@@ -1,13 +1,12 @@
 {
-	"opponentModeAllowed": true,
+	"opponentModeAllowed": false,
 	"difficulties": [
 		"easy",
 		"normal",
 		"hard"
 	],
 	"icon": "darnell",
-	"coopAllowed": true,
-	"name": "blazin",
+	"coopAllowed": false,
 	"color": -10394881,
 	"customValues": {
 		"stickerPack": "bonus-weekend1",
@@ -15,7 +14,7 @@
 	},
 	"stepsPerBeat": 4,
 	"displayName": "Blazin'",
-	"needsVoices": true,
+	"needsVoices": false,
 	"beatsPerMeasure": 4,
 	"bpm": 180
 }
