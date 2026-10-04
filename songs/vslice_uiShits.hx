@@ -26,13 +26,13 @@ function onPostCountdown(e) {
 		if (info.field == "y") e.spriteTween._propertyInfos.remove(info);
 }
 
-function onNoteHit(e) if (e.ratingPrefix == 'game/score/') {
-	e.numScale *= 0.9;
-	e.ratingScale *= 0.9;
-}
 function onPostNoteHit(e) comboGroup.cameras = [comboCam];
 
 function onPostRatingsShown(e) {
+	if (e.ratingPrefix == 'game/score/') {
+		e.numScale *= 0.9;
+		e.ratingScale *= 0.9;
+	}
 	if (e.numberSprite != null) {
 		e.numberSprite.y -= 30;
 		e.numberSprite.x += 48;
@@ -42,4 +42,6 @@ function onPostRatingsShown(e) {
 function postUpdate(elapsed:Float) {
 	lerpHealth = lerp(lerpHealth, health, 0.15);
 	healthBar.value = FlxMath.roundDecimal(lerpHealth, 3);
+	comboCam.zoom = camHUD.zoom;
+	comboCam.zoomMultiplier = camHUD.zoomMultiplier;
 }
