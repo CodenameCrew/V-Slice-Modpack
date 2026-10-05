@@ -1,5 +1,5 @@
 <!DOCTYPE codename-engine-character>
-<character x="100" y="300" sprite="pico" flipX="true" camx="-100" icon="pico" color="#B7D855">
+<character x="100" y="300" sprite="pico" flipX="true" camx="-100" camy="32" icon="pico" color="#B7D855">
 	<anim name="idle" anim="Pico Idle Dance" x="0" y="0" fps="24" loop="false"/>
 	<anim name="singLEFT" anim="Pico Note Right0" x="56" y="1" fps="24" loop="false"/>
 	<anim name="singDOWN" anim="Pico Down Note0" x="193" y="-82" fps="24" loop="false"/>

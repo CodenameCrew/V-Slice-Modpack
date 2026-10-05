@@ -3,13 +3,13 @@
 	"customValues": {
 		"ratings": {
 			"easy": 2,
-			"normal": 3,
-			"hard": 4
+			"hard": 4,
+			"normal": 3
 		},
-		"album": "volume4",
 		"noteStyle": "funkin",
 		"artist": "tsuyunoshi (ft. Saruky)",
-		"charter": "fabs + Spazkid"
+		"charter": "fabs + Spazkid",
+		"album": "volume4"
 	},
 	"instSuffix": "-pico",
 	"opponentModeAllowed": true,
@@ -24,6 +24,6 @@
 	"displayName": "Ugh (Pico Mix)",
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
-	"bpm": 160,
-	"vocalsSuffix": "-pico"
+	"vocalsSuffix": "-pico",
+	"bpm": 160
 }

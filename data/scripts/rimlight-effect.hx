@@ -37,10 +37,10 @@ function postCreate() {
 
             for (matrix in [rim.matrixA, rim.matrixB]) {
                 hsbc(
-                    Std.parseFloat(n.get('ds_hue')),
-                    Std.parseFloat(n.get('ds_saturation')),
-                    Std.parseFloat(n.get('ds_brightness')),
-                    Std.parseFloat(n.get('ds_contrast')),
+                    Std.parseFloat(n.get('ds_hue')        ?? n.get('hue') ?? 0),
+                    Std.parseFloat(n.get('ds_saturation') ?? n.get('saturation') ?? 0),
+                    Std.parseFloat(n.get('ds_brightness') ?? n.get('brightness') ?? 0),
+                    Std.parseFloat(n.get('ds_contrast')   ?? n.get('contrast') ?? 0),
                     matrix
                 );
             }
