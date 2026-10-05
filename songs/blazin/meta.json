@@ -16,5 +16,6 @@
 	"displayName": "Blazin'",
 	"needsVoices": false,
 	"beatsPerMeasure": 4,
-	"bpm": 180
+	"bpm": 180,
+	"player": "pico"
 }

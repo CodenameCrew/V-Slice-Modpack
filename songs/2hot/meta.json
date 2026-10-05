@@ -17,5 +17,6 @@
 	"customValues": {
 		"stickerPack": "bonus-weekend1",
 		"album": "volume4"
-	}
+	},
+	"player": "pico"
 }

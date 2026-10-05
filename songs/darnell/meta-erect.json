@@ -17,5 +17,6 @@
 	"beatsPerMeasure": 4,
 	"bpm": 155,
 	"instSuffix": "-erect",
-	"needsVoices": false
+	"needsVoices": false,
+	"player": "pico"
 }

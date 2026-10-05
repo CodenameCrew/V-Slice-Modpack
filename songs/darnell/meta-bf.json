@@ -17,5 +17,6 @@
 	"beatsPerMeasure": 4,
 	"bpm": 155,
 	"instSuffix": "-bf",
-	"needsVoices": false
+	"needsVoices": false,
+	"player": "bf"
 }
