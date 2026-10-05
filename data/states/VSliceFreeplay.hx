@@ -7,6 +7,7 @@ import funkin.backend.system.Control;
 import funkin.backend.TurboControls;
 import funkin.backend.TurboBasic;
 import flixel.math.FlxRect;
+import funkin.backend.system.framerate.Framerate;
 
 class Capsule extends FunkinSprite {
     public var text:FunkinText;
@@ -183,10 +184,36 @@ var fpList = FreeplaySonglist.get();
 var swList = StoryWeeklist.get(null, false);
 var fpMap = ['' => 'hi im a map'];
 var character = 'bf';
+var validCharVariations = ['bf', 'pico'];
+var bg = new FunkinSprite();
+var fgBar = new FunkinSprite();
+var freeplayName = new FunkinText(8, 8, FlxG.width - 16, 'FREEPLAY', 48); // ik its static but this is nicer ok
+var ostName = new FunkinText(8, 8, FlxG.width - 16, 'OFFICIAL OST', 48);
+function create() {
+    CoolUtil.playMusic(Paths.music('freeplayRandom'));
+    bg.loadGraphic(Paths.image('menus/freeplay/freeplayBGweek1-' + character));
+    CoolUtil.setUnstretchedGraphicSize(bg, FlxG.width, FlxG.height);
+    bg.updateHitbox();
+    bg.screenCenter();
+    bg.antialiasing = true;
+    bg.scrollFactor.set();
+    add(bg);
+
+    add(capsuleGroup);
+    
+    fgBar.scrollFactor.set();
+    fgBar.makeGraphic(FlxG.width, 65, -1);
+    fgBar.color = FlxColor.BLACK;
+    add(fgBar);
+
+    freeplayName.scrollFactor.set();
+    add(freeplayName);
+    ostName.scrollFactor.set();
+    ostName.alignment = 'right';
+    add(ostName);
+}
 
 function postCreate() {
-    add(capsuleGroup);
-
     fpList.songs.insert(0, null); // random
     var stupid = 0;
     while (stupid < fpList.songs.length) {
@@ -200,8 +227,8 @@ function postCreate() {
         var foundAlt = false;
         if ((i?.player ?? 'bf') != character) {
             // scan all variations (for example darnell bf mix)
-            for (vm in i.metas) {
-                if ((vm?.player ?? 'bf') == character) {
+            for (vn => vm in i.metas) {
+                if ((vm?.player ?? (validCharVariations.contains(vn) ? vn : 'bf')) == character) {
                     fpMap.set(i.name.toLowerCase(), vm);
                     foundAlt = true;
                     break;
@@ -239,6 +266,8 @@ function postCreate() {
     capsuleGroup.setPosition(FlxG.width * 0.5 - 250, FlxG.height * 0.5 - 80);
 
     changeSelection(0);
+
+    Framerate.offset.y = 65;
 }
 var curSelected = 0;
 var lerpSelected = 0;
@@ -260,6 +289,7 @@ function update(elapsed) {
 }
 function destroy() {
 	for (basic in turboBasics) basic.destroy();
+    Framerate.offset.y = 0;
 }
 function changeSelection(ch) {
     var pastSelected = curSelected;
@@ -270,4 +300,6 @@ function changeSelection(ch) {
 
     if (capsuleGroup.members[curSelected] != null)
         capsuleGroup.members[curSelected].select();
+
+    CoolUtil.playMenuSFX(0);
 }
