@@ -8,6 +8,7 @@ import funkin.backend.TurboControls;
 import funkin.backend.TurboBasic;
 import flixel.math.FlxRect;
 import funkin.backend.system.framerate.Framerate;
+import funkin.savedata.FunkinSave;
 
 class Capsule extends FunkinSprite {
     public var text:FunkinText;
@@ -112,11 +113,13 @@ class Capsule extends FunkinSprite {
 
     public function loadData(meta:Dynamic) {
         // random capsule
+        name = null;
         if (meta == null) {
             icon.visible = bpmText.visible = weekText.visible = diffStaticText.visible = diffText.visible = false;
             text.text = 'Random';
             return;
         }
+        name = meta.name;
         var imagePath = Paths.image('menus/freeplay/icons/${meta.icon ?? 'face'}pixel'); // DIEEEEE FNF NAMING CONVENTIONSSSS
         if (Assets.exists(imagePath)) {
             icon.visible = true;
@@ -173,9 +176,57 @@ class Capsule extends FunkinSprite {
     }
 }
 
+class ScoreCounter extends FunkinSprite {
+    var numbers = [];
+    var numberString = ['ZERO', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE'];
+    public function new() {
+        super();
+        for (i in 0...10) {
+            var num = new FunkinSprite(i * 60, 0, Paths.image('menus/freeplay/digital_numbers'));
+            for (x => j in numberString) {
+                num.addAnim(Std.string(x), j + ' DIGITAL', 24, false, null, null, 
+                    x == 1 ? -62 : 0 // ?????????????
+                );
+            }
+            num.playAnim('0', true);
+            num.scale.set(0.4, 0.4);
+            num.antialiasing = true;
+            num.updateHitbox();
+            numbers.push(num);
+        }
+    }
+    override public function update(elapsed) {
+        if (!active || !exists) return;
+        for (i in numbers) {
+            if (i.active && i.exists) {
+                i.update(elapsed);
+            }
+        }
+    }
+    override public function draw() {
+        if (!visible || !exists) return;
+        for (x => i in numbers) {
+            if (i.visible && i.exists) {
+                i.setPosition(this.x + 41 * x, this.y);
+                i.draw();
+            }
+        }
+    }
+
+    public var value(default, set):Int = 0;
+    public function set_value(v:Int) {
+        value = v;
+        for (x => i in numbers) {
+            final targetAnim = Std.string(Std.int(value / Math.pow(10, numbers.length - x - 1)) % 10);
+            if (i.getAnimName() != targetAnim) i.playAnim(targetAnim, true);
+        }
+        return value;
+    }
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// turbo controls, used in options menu, useful for rpeating keys
+// turbo controls, used in options menu, useful for repeating keys
 var upTurboControl = new TurboControls([Control.UP]);
 var downTurboControl = new TurboControls([Control.DOWN]);
 var turboBasics = [upTurboControl, downTurboControl];
@@ -185,18 +236,20 @@ var swList = StoryWeeklist.get(null, false);
 var fpMap = ['' => 'hi im a map'];
 var character = 'bf';
 var validCharVariations = ['bf', 'pico'];
-var bg = new FunkinSprite();
+
+// visuals
+importScript('data/backcards/bf');
+var bg = getBackground();
 var fgBar = new FunkinSprite();
-var freeplayName = new FunkinText(8, 8, FlxG.width - 16, 'FREEPLAY', 48); // ik its static but this is nicer ok
 var ostName = new FunkinText(8, 8, FlxG.width - 16, 'OFFICIAL OST', 48);
+var highscoreTxt = new FunkinSprite(0, 73, Paths.image('menus/freeplay/highscore'));
+var highscoreAnimTimerForNoReason:Float = 0;
+var clearBox = new FunkinSprite(0, 70, Paths.image('menus/freeplay/clearBox'));
+var clearPercent = new Alphabet(0, 90, '100', 'freeplay-clear');
+var scoreCounter = new ScoreCounter();
+
 function create() {
     CoolUtil.playMusic(Paths.music('freeplayRandom'));
-    bg.loadGraphic(Paths.image('menus/freeplay/freeplayBGweek1-' + character));
-    CoolUtil.setUnstretchedGraphicSize(bg, FlxG.width, FlxG.height);
-    bg.updateHitbox();
-    bg.screenCenter();
-    bg.antialiasing = true;
-    bg.scrollFactor.set();
     add(bg);
 
     add(capsuleGroup);
@@ -206,11 +259,29 @@ function create() {
     fgBar.color = FlxColor.BLACK;
     add(fgBar);
 
+    var freeplayName = new FunkinText(8, 8, FlxG.width - 16, 'FREEPLAY', 48); // ik its static but this is nicer ok
     freeplayName.scrollFactor.set();
     add(freeplayName);
+
     ostName.scrollFactor.set();
     ostName.alignment = 'right';
     add(ostName);
+
+    highscoreTxt.addAnim('idle', '', 24, false);
+    highscoreTxt.playAnim('idle', true);
+    highscoreTxt.updateHitbox();
+    add(highscoreTxt);
+
+    clearBox.x = FlxG.width - 20 - clearBox.width;
+    highscoreTxt.x = clearBox.x - 20 - highscoreTxt.width;
+    add(clearBox);
+
+    // positioning is done in postUpdate
+    add(clearPercent);
+
+    scoreCounter.x = FlxG.width - 440;
+    scoreCounter.y = 120;
+    add(scoreCounter);
 }
 
 function postCreate() {
@@ -271,20 +342,49 @@ function postCreate() {
 }
 var curSelected = 0;
 var lerpSelected = 0;
+var intendedScore = 0;
+var lerpScore = 0;
+var intendedAccuracy = 0;
+var lerpAccuracy = 0;
+var enableControls = true;
 function update(elapsed) {
-    for (basic in turboBasics) {
-        basic.update(elapsed);
-    }
+    if (enableControls) {
+        for (basic in turboBasics) {
+            basic.update(elapsed);
+        }
 
-    if (upTurboControl.activated || FlxG.mouse.wheel == 1) changeSelection(-1);
-    if (downTurboControl.activated || FlxG.mouse.wheel == -1) changeSelection(1);
+        if (upTurboControl.activated || FlxG.mouse.wheel == 1) changeSelection(-1);
+        if (downTurboControl.activated || FlxG.mouse.wheel == -1) changeSelection(1);
+        if (FlxG.keys.justPressed.HOME) {
+            changeSelection(-curSelected);
+        }
+        if (FlxG.keys.justPressed.END) {
+            changeSelection(capsuleGroup.members.length - 1 - curSelected);
+        }
+
+        if (controls.ACCEPT) {
+            selectSong(curSelected);
+        }
+
+        if (controls.BACK || FlxG.mouse.justPressedRight) {
+            enableControls = false;
+            FlxG.sound.music.stop();
+            CoolUtil.playMenuSFX(2).persist = true;
+            FlxG.switchState(new MainMenuState());
+        }
+    }
 
     lerpSelected = lerp(lerpSelected, curSelected, 0.25);
 
     capsuleGroup.forEach((c) -> {
+        if (enableControls && CoolUtil.mouseOverlaps(c) && FlxG.mouse.justPressed) {
+            if (curSelected == c.ID) {
+                selectSong(c.ID);
+            } else changeSelection(c.ID - curSelected);
+        }
         var diff = c.ID - lerpSelected;
         c.x = capsuleGroup.x + Math.pow(diff, 2) * -12 + diff * 20;
-        c.y = capsuleGroup.y + (diff + Math.min(diff, -1) + 1) * 130;
+        c.y = capsuleGroup.y + (diff + Math.min((diff-1*0.5)+1, -1) + 1) * 130;
     });
 }
 function destroy() {
@@ -293,7 +393,7 @@ function destroy() {
 }
 function changeSelection(ch) {
     var pastSelected = curSelected;
-    curSelected = FlxMath.wrap(curSelected + ch, 0, fpList.songs.length - 1);
+    curSelected = FlxMath.wrap(curSelected + ch, 0, capsuleGroup.members.length - 1);
 
     if (capsuleGroup.members[pastSelected] != null)
         capsuleGroup.members[pastSelected].deselect();
@@ -301,5 +401,45 @@ function changeSelection(ch) {
     if (capsuleGroup.members[curSelected] != null)
         capsuleGroup.members[curSelected].select();
 
-    CoolUtil.playMenuSFX(0);
+    if (ch != 0) CoolUtil.playMenuSFX(0);
+
+    final name = capsuleGroup.members[curSelected].name;
+    final save = name != null ? (FunkinSave.getSongHighscore(
+        name,
+        CoolUtil.last(fpMap[name].difficulties), // add difficulties later
+        fpMap[name].variant
+    )) : null;
+
+    intendedScore = save?.score ?? 0;
+    intendedAccuracy = save?.accuracy ?? 0;
+}
+function selectSong(id) {
+    enableControls = false;
+    if (id == 0) {
+        changeSelection(id = FlxG.random.int(1, capsuleGroup.members.length - 1));
+        new FlxTimer().start(0.4, (_) -> { selectSong(curSelected); });
+        return;
+    }
+    if (capsuleGroup.members[id] != null) {
+        CoolUtil.playMenuSFX(1);
+        var c = capsuleGroup.members[id];
+        if (c.icon.visible) c.icon.playAnim('confirm', true);
+
+        bg.select();
+    }
+}
+// cosmetic related, regular update is selection code
+function postUpdate(elapsed) {
+    highscoreAnimTimerForNoReason -= elapsed;
+    if (highscoreAnimTimerForNoReason <= 0) {
+        highscoreAnimTimerForNoReason = 5;
+        highscoreTxt.playAnim('idle', true);
+    }
+
+    lerpScore = lerp(lerpScore, intendedScore, 0.3);
+    scoreCounter.value = Math.round(lerpScore);
+
+    lerpAccuracy = lerp(lerpAccuracy, intendedAccuracy, 0.3);
+    clearPercent.text = Math.round(lerpAccuracy * 100);
+    clearPercent.x = clearBox.x + clearBox.width - 30 - clearPercent.textWidth;
 }

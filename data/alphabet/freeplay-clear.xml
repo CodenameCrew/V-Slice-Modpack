@@ -1,0 +1,9 @@
+<!--
+	the original text uses AtlasText in vslice which Alphabet uses too
+	so using an alphabet font would be super accurate?? i think
+-->
+<!DOCTYPE codename-engine-alphabet-font>
+<alphabetFont fps="6" advance="40" lineGap="25" forceCasing="lower" colorMode="offsets" antialiasing="true">
+	<spritesheet>menus/freeplay/freeplay-clear</spritesheet>
+	<defaultAnim>LETTER0</defaultAnim>
+</alphabetFont>
