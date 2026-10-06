@@ -4,10 +4,9 @@
 	"difficulties": [
 		"easy",
 		"normal",
-		"hard",
-		"erect",
-		"nightmare"
+		"hard"
 	],
+	"variants": ["erect"],
 	"customValues": {},
 	"color": -223530,
 	"name": "high",

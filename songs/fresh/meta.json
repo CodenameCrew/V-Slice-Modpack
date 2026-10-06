@@ -25,8 +25,7 @@
 	"beatsPerMeasure": 4,
 	"variants": [
 		"erect",
-		"pico",
-		"fresh-chart-erect"
+		"pico"
 	],
 	"bpm": 120
 }

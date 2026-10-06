@@ -6,7 +6,10 @@
 	"name": "high",
 	"coopAllowed": true,
 	"stepsPerBeat": 4,
-	"displayName": "High (Erect)",
+	"displayName": "High Erect",
+	"difficulties": [
+		"erect", "nightmare"
+	],
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
 	"bpm": 125,

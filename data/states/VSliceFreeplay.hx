@@ -1,5 +1,3 @@
-import openfl.filters.BlurFilter;
-import openfl.filters.GlowFilter;
 import funkin.backend.chart.Chart;
 import funkin.menus.FreeplaySonglist;
 import funkin.menus.StoryWeeklist;
@@ -9,252 +7,10 @@ import funkin.backend.TurboBasic;
 import flixel.math.FlxRect;
 import funkin.backend.system.framerate.Framerate;
 import funkin.savedata.FunkinSave;
+import flixel.graphics.frames.FlxAtlasFrames;
 
-// no support for inner glow filter so this will do
-var HANG_FUNKIN_CREW_BY_JUMPER_CABLES = new FunkinShader('
-#pragma header
-
-void main() {
-    vec2 uv = openfl_TextureCoordv;
-    gl_FragColor = flixel_texture2D(bitmap, uv);
-    float blur = 0.0;
-    vec2 size = vec2(0.02);
-    blur += texture2D(bitmap, uv + size * vec2(0.0,  1.0)).a;
-    blur += texture2D(bitmap, uv + size * vec2(0.0, -1.0)).a;
-    blur += texture2D(bitmap, uv + size * vec2( 1.0, 0.0)).a;
-    blur += texture2D(bitmap, uv + size * vec2(-1.0, 0.0)).a;
-    blur += texture2D(bitmap, uv + size * vec2(0.0,  2.0)).a * 2.0;
-    blur += texture2D(bitmap, uv + size * vec2(0.0, -2.0)).a * 2.0;
-    blur += texture2D(bitmap, uv + size * vec2( 2.0, 0.0)).a * 2.0;
-    blur += texture2D(bitmap, uv + size * vec2(-2.0, 0.0)).a * 2.0;
-    blur /= 18.0;
-	gl_FragColor *= smoothstep(0.0, 0.6, 1.0 - blur);
-}
-');
-
-class Capsule extends FunkinSprite {
-    public var text:FunkinText;
-    public var weekText:FunkinText;
-    public var bpmText:FunkinText;
-    public var diffStaticText:FunkinText;
-    public var diffText:FunkinText; // numbers
-    public var icon:FunkinSprite;
-    public var glowColor:Int = 0x00ccff;
-    public var clipWidth:Int = 255;
-    public var selected:Int = false;
-    public var coolFilters = [
-        new GlowFilter(0xffffff, 1, 2, 1, 150),
-        new GlowFilter(glowColor, 1, 10, 10, 0, 0),
-    ];
-    public var notCoolFilters = [
-        new GlowFilter(0xffffff, 0.6, 2, 2, 210),
-        new GlowFilter(glowColor, 1, 6, 6, 0, 0),
-    ];
-    public function new() {
-        super();
-
-        final realScaled = 0.8;
-
-        antialiasing = true;
-        loadSprite(Paths.image('menus/freeplay/freeplayCapsule'));
-        addAnim('idle', 'mp3 capsule w backing NOT SELECTED', 24, true);
-        addAnim('select', 'mp3 capsule w backing0', 24, true);
-        playAnim('idle', true);
-        scale.set(realScaled, realScaled);
-        updateHitbox();
-
-        text = new FunkinText(0, 0, -1, 'Bro', Math.floor(40 * realScaled));
-        text.font = Paths.font('5by7.ttf');
-        text.borderSize = text.borderColor = 0;
-        text.textField.filters = coolFilters;
-        text.clipRect = new FlxRect(0, 0, text.width, text.height);
-
-        weekText = new FunkinText(0, 0, 300, 'Week 8');
-        bpmText = new FunkinText(0, 0, 300, 'BPM 190');
-        diffStaticText = new FunkinText(0, 0, -1, 'Difficulty');
-        diffText = new FunkinText(0, 0, -1, '21');
-        /*
-        var capsuleOuterFilter = [
-            new GlowFilter(0x21242E, 2, 4, 4, 210, true, true),
-        ];;
-        */
-
-        for (i in [weekText, bpmText, diffStaticText, diffText]) {
-            i.font = Paths.font("YoureGone-Regular.otf");
-            i.size = 18;
-            i.antialiasing = true;
-            i.borderSize = i.borderColor = 0;
-            /*
-            // use this when GlowFilter.inner works
-            weekText.color = 0x413d4b;
-            weekText.textField.filters = capsuleOuterFilter
-            */
-            // for now use this
-            i.shader = HANG_FUNKIN_CREW_BY_JUMPER_CABLES;
-            i.color = 0x21242E;
-        }
-
-        diffText.size = 46;
-        diffText.letterSpacing = -1;
-
-        icon = new FunkinSprite();
-        icon.visible = false;
-    }
-    override public function destroy() {
-        for (i in [text, weekText, bpmText, diffStaticText, diffText]) {
-            i.destroy();
-        }
-        super.destroy();
-    }
-    override public function draw() {
-        super.draw();
-
-        function drawThing(s:FlxSprite, _x:Float, _y:Float) {
-            if (s.visible && s.exists) {
-                s.setPosition(x + _x, y + _y);
-                s.draw();
-            }
-        }
-
-        var clipTransTimer:Float = FlxEase.sineInOut(FlxMath.bound((0.5 - Math.abs(FlxMath.mod(clipTimer * 0.4, 2) - 1)) * 1.3 + 0.5, 0, 1));
-        text.clipRect = text.clipRect.set(
-            clipTransTimer * -Math.min(0, clipWidth - text.width),
-            0, Math.min(text.width, clipWidth), text.height);
-
-        drawThing(text, 92 + clipTransTimer * Math.min(0, clipWidth - text.width), 32);
-        drawThing(weekText, 228, 76);
-        drawThing(bpmText, 76, 76);
-        drawThing(diffStaticText, 455 - diffStaticText.width, 76);
-        drawThing(diffText, 433 - (diffText.width * 0.5), 18);
-        drawThing(icon, -2, icon.height * -0.5 + 48);
-    }
-    public var clipTimer:Float = 0;
-    override public function update(elapsed) {
-        super.update(elapsed);
-        icon.update(elapsed);
-        if (icon.getAnimName('confirm') && icon.isAnimAtEnd()) {
-            icon.playAnim('confirm-hold');
-        }
-
-        if (selected) clipTimer += elapsed;
-    }
-
-    public function loadData(meta:Dynamic) {
-        // random capsule
-        name = null;
-        if (meta == null) {
-            icon.visible = bpmText.visible = weekText.visible = diffStaticText.visible = diffText.visible = false;
-            text.text = 'Random';
-            return;
-        }
-        name = meta.name;
-        var imagePath = Paths.image('menus/freeplay/icons/${meta.icon ?? 'face'}pixel'); // DIEEEEE FNF NAMING CONVENTIONSSSS
-        if (Assets.exists(imagePath)) {
-            icon.visible = true;
-            icon.loadSprite(imagePath);
-            icon.addAnim('idle', 'idle', 12, true);
-            icon.addAnim('confirm', 'confirm0', 12, false);
-            icon.addAnim('confirm-hold', 'confirm-hold', 12, true);
-            icon.playAnim('idle', true);
-            icon.scale.set(2, 2);
-            icon.updateHitbox();
-        } else {
-            icon.visible = false;
-        }
-
-        text.text = meta.displayName ?? meta.name;
-        bpmText.text = 'BPM ' + CoolUtil.addZeros(meta.bpm ?? 0, 3);
-        weekText.text = getLevelIDClean(meta?.week ?? '');
-        diffText.text = '00';
-    }
-    public function getLevelIDClean(id:String) {
-        if (id.length < 1) return id;
-
-        // no support for 'a'.code
-        function code(a:String) return a.charCodeAt(0);
-        var res = id.split('');
-        var i = 0;
-        var isNumber = FlxMath.inBounds(code(res[0]), 48, 57);
-        // strings are immutable :( (whatever that means)
-        while (i < res.length) {
-            var a = res[i++];
-            var thisIsNumber = FlxMath.inBounds(code(a), 48, 57);
-            if (isNumber != thisIsNumber) {
-                isNumber = thisIsNumber;
-                res.insert(i - 1, ' ');
-            }
-        }
-        return res.join('');
-    }
-    public function select() {
-        playAnim('select', true);
-        centerOffsets(false);
-        text.alpha = 1;
-        selected = true;
-        clipTimer = 0;
-        text.textField.filters = coolFilters;
-        text._regen = true; // this sucks
-    }
-    public function deselect() {
-        playAnim('idle', true);
-        centerOffsets(false);
-        text.alpha = 0.5;
-        selected = false;
-        clipTimer = 0;
-        text.textField.filters = notCoolFilters;
-        text._regen = true; // i need to find smth better (maybe shader????)
-    }
-}
-
-class ScoreCounter extends FunkinSprite {
-    var numbers = [];
-    var numberString = ['ZERO', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE'];
-    public function new() {
-        super();
-        for (i in 0...7) {
-            var num = new FunkinSprite(i * 60, 0, Paths.image('menus/freeplay/digital_numbers'));
-            for (x => j in numberString) {
-                num.addAnim(Std.string(x), j + ' DIGITAL', 24, false, null, null, 
-                    x == 1 ? -62 : 0 // ?????????????
-                );
-            }
-            num.playAnim('0', true);
-            num.scale.set(0.398, 0.398);
-            num.antialiasing = true;
-            num.updateHitbox();
-            numbers.push(num);
-        }
-    }
-    override public function update(elapsed) {
-        if (!active || !exists) return;
-        for (i in numbers) {
-            if (i.active && i.exists) {
-                i.update(elapsed);
-            }
-        }
-    }
-    override public function draw() {
-        if (!visible || !exists) return;
-        for (x => i in numbers) {
-            if (i.visible && i.exists) {
-                i.setPosition(this.x + 45 * x, this.y);
-                i.draw();
-            }
-        }
-    }
-
-    public var value(default, set):Int = 0;
-    public function set_value(v:Int) {
-        value = v;
-        for (x => i in numbers) {
-            final targetAnim = Std.string(Std.int(value / Math.pow(10, numbers.length - x - 1)) % 10);
-            if (i.getAnimName() != targetAnim) i.playAnim(targetAnim, true);
-        }
-        return value;
-    }
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import Capsule;
+import ScoreCounter;
 
 // turbo controls, used in options menu, useful for repeating keys
 var upTurboControl = new TurboControls([Control.UP]);
@@ -267,9 +23,30 @@ var fpMap = ['' => 'hi im a map'];
 var character = 'bf';
 var validCharVariations = ['bf', 'pico'];
 
+// maybe make these more flexible in the future
+var allDifficulties = ['easy', 'normal', 'hard', 'erect', 'nightmare'];
+var allVariations = ['erect', null, character]; // sorted like this to help with looking up difficulties
+
 // visuals
 importScript('data/backcards/bf');
+var stupidDadBG = new FunkinSprite();
+stupidDadBG.loadGraphic(Paths.image('menus/freeplay/freeplayBGweek1-' + character));
+stupidDadBG.setGraphicSize(null, FlxG.height);
+stupidDadBG.antialiasing = true;
+stupidDadBG.updateHitbox();
+stupidDadBG.screenCenter();
+stupidDadBG.x += FlxG.width * 0.25;
+stupidDadBG.x = Std.int(stupidDadBG.x);
+stupidDadBG.shader = new FunkinShader('
+#pragma header
+void main() {
+    vec2 uv = openfl_TextureCoordv;
+    float slice = 0.109;
+    gl_FragColor = flixel_texture2D(bitmap, uv) * smoothstep(slice, slice + 0.0016, uv.x + ((1.0 - uv.y) * slice));
+}
+');
 var bg = getBackground();
+bg.bg = stupidDadBG;
 var fgBar = new FunkinSprite();
 var ostName = new FunkinText(8, 8, FlxG.width - 16, 'OFFICIAL OST', 48);
 var highscoreTxt = new FunkinSprite(0, 70, Paths.image('menus/freeplay/highscore'));
@@ -277,6 +54,7 @@ var highscoreAnimTimerForNoReason:Float = 0;
 var clearBox = new FunkinSprite(0, 65, Paths.image('menus/freeplay/clearBox'));
 var clearPercent = new Alphabet(0, 86, '100', 'freeplay-clear');
 var scoreCounter = new ScoreCounter();
+var diffSprite = new FunkinSprite(0, 67);
 
 function makeArrow() {
     var arrow = new FunkinSprite(0, 0, Paths.image('menus/freeplay/freeplaySelector'));
@@ -288,19 +66,23 @@ function makeArrow() {
 var leftArrow = makeArrow();
 var rightArrow = makeArrow();
 rightArrow.flipX = true;
+var diffAnchorX = FlxG.width * 0.154;
 
 function create() {
     CoolUtil.playMusic(Paths.music('freeplayRandom'));
     FlxG.mouse.visible = true;
     add(bg);
     
+    add(diffSprite);
     for (i in [leftArrow, rightArrow]) {
-        i.setPosition(FlxG.width * 0.154 - i.width * 0.5, 70);
+        i.setPosition(diffAnchorX - i.width * 0.5, 70);
     }
     leftArrow.x  -= 152.5;
     rightArrow.x += 152.5;
     add(leftArrow);
     add(rightArrow);
+
+    add(stupidDadBG);
 
     add(capsuleGroup);
     
@@ -364,6 +146,19 @@ function postCreate() {
         if (fpMap[i.name.toLowerCase()] == null) {
             fpMap.set(i.name.toLowerCase(), i);
         }
+
+        /*
+        var newStuff = fpMap[i.name.toLowerCase()];
+        for (d in newStuff.difficulties) {
+            if (!allDifficulties.contains(d))
+                allDifficulties.push(d.toLowerCase());
+        }
+
+        for (v in newStuff.variants) {
+            if (!allVariations.contains(v))
+                allVariations.push(v.toLowerCase());
+        }
+        */
     }
     //trace(fpMap);
     for (i in swList.weeks) {
@@ -387,11 +182,16 @@ function postCreate() {
     capsuleGroup.setPosition(FlxG.width * 0.5 - 245, FlxG.height * 0.5 - 111);
 
     curSelected = lerpSelected = Math.min(capsuleGroup.length, 1);
-    changeSelection(0);
+    curSelectedDiff = allDifficulties.indexOf(Options.freeplayLastDifficulty.toLowerCase());
+    if (curSelectedDiff < 0) {
+        curSelectedDiff = allDifficulties.indexOf(Options.freeplayLastDifficulty = 'normal');
+    }
+    changeDifficulty(0); // it also calls changeSelection
 
     Framerate.offset.y = 65;
 }
 var curSelected = 0;
+var curSelectedDiff = -1;
 var lerpSelected = 0;
 var intendedScore = 0;
 var lerpScore = 0;
@@ -406,6 +206,10 @@ function update(elapsed) {
 
         if (upTurboControl.activated || FlxG.mouse.wheel == 1) changeSelection(-1);
         if (downTurboControl.activated || FlxG.mouse.wheel == -1) changeSelection(1);
+
+        if (controls.LEFT_P) changeDifficulty(-1);
+        if (controls.RIGHT_P) changeDifficulty(1);
+
         if (FlxG.keys.justPressed.HOME) {
             changeSelection(-curSelected);
         }
@@ -459,18 +263,48 @@ function changeSelection(ch) {
     final name = capsuleGroup.members[curSelected].name;
     final save = name != null ? (FunkinSave.getSongHighscore(
         name,
-        CoolUtil.last(fpMap[name].difficulties), // add difficulties later
+        allDifficulties[curSelectedDiff],
         fpMap[name].variant
     )) : null;
 
     intendedScore = save?.score ?? 0;
     intendedAccuracy = save?.accuracy ?? 0;
 }
+function changeDifficulty(ch) {
+    var pastSelectedDiff = curSelectedDiff;
+    curSelectedDiff = FlxMath.wrap(curSelectedDiff + ch, 0, allDifficulties.length - 1);
+    if (ch != 0) CoolUtil.playMenuSFX(0);
+
+    final diff = allDifficulties[curSelectedDiff];
+    diffSprite.loadSprite(Paths.image('menus/freeplay/difficulties/' + diff));
+    if (diffSprite.frames is FlxAtlasFrames) {
+        diffSprite.addAnim('idle', 'idle0', 24, true);
+        diffSprite.playAnim('idle', true);
+    }
+    diffSprite.updateHitbox();
+    diffSprite.setPosition(diffAnchorX, 116);
+    diffSprite.x -= diffSprite.width * 0.5;
+    diffSprite.y -= diffSprite.height * 0.5;
+
+    final displacement = FlxMath.signOf(ch) * 400;
+    if (displacement != 0) {
+        diffSprite.x += displacement;
+        FlxTween.cancelTweensOf(diffSprite, ['x']);
+        FlxTween.tween(diffSprite, {x: diffSprite.x - displacement}, 0.2, {ease: FlxEase.circInOut});
+    }
+
+
+    changeSelection(0);
+}
 function selectSong(id) {
     enableControls = false;
     if (id == 0) {
-        changeSelection(id = FlxG.random.int(1, capsuleGroup.members.length - 1));
-        new FlxTimer().start(0.4, (_) -> { selectSong(curSelected); });
+        // no songs
+        if (capsuleGroup.members.length > 1) {
+            changeSelection(id = FlxG.random.int(1, capsuleGroup.members.length - 1));
+            new FlxTimer().start(0.4, (_) -> { selectSong(curSelected); });
+        }
+        else CoolUtil.playMenuSFX(2);
         return;
     }
     if (capsuleGroup.members[id] != null) {
@@ -485,7 +319,7 @@ function selectSong(id) {
 function postUpdate(elapsed) {
     highscoreAnimTimerForNoReason -= elapsed;
     if (highscoreAnimTimerForNoReason <= 0) {
-        highscoreAnimTimerForNoReason = 5;
+        highscoreAnimTimerForNoReason = FlxG.random.float(20, 60);
         highscoreTxt.playAnim('idle', true);
     }
 
