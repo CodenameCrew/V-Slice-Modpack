@@ -384,7 +384,9 @@ function update(elapsed) {
         }
         var diff = c.ID - lerpSelected;
         c.x = capsuleGroup.x + Math.pow(diff, 2) * -12 + diff * 20;
-        c.y = capsuleGroup.y + (diff + Math.min((diff-1*0.5)+1, -1) + 1) * 130;
+        c.y = capsuleGroup.y + (diff + Math.min((diff - 1) * 0.87 + 1, -1) + 1) * 130;
+                                                // so u can click on the bar to
+                                                // select the song behind it
     });
 }
 function destroy() {
