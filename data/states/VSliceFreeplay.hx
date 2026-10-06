@@ -10,6 +10,28 @@ import flixel.math.FlxRect;
 import funkin.backend.system.framerate.Framerate;
 import funkin.savedata.FunkinSave;
 
+// no support for inner glow filter so this will do
+var HANG_FUNKIN_CREW_BY_JUMPER_CABLES = new FunkinShader('
+#pragma header
+
+void main() {
+    vec2 uv = openfl_TextureCoordv;
+    gl_FragColor = flixel_texture2D(bitmap, uv);
+    float blur = 0.0;
+    vec2 size = vec2(0.02);
+    blur += texture2D(bitmap, uv + size * vec2(0.0,  1.0)).a;
+    blur += texture2D(bitmap, uv + size * vec2(0.0, -1.0)).a;
+    blur += texture2D(bitmap, uv + size * vec2( 1.0, 0.0)).a;
+    blur += texture2D(bitmap, uv + size * vec2(-1.0, 0.0)).a;
+    blur += texture2D(bitmap, uv + size * vec2(0.0,  2.0)).a * 2.0;
+    blur += texture2D(bitmap, uv + size * vec2(0.0, -2.0)).a * 2.0;
+    blur += texture2D(bitmap, uv + size * vec2( 2.0, 0.0)).a * 2.0;
+    blur += texture2D(bitmap, uv + size * vec2(-2.0, 0.0)).a * 2.0;
+    blur /= 18.0;
+	gl_FragColor *= smoothstep(0.0, 0.6, 1.0 - blur);
+}
+');
+
 class Capsule extends FunkinSprite {
     public var text:FunkinText;
     public var weekText:FunkinText;
@@ -21,17 +43,19 @@ class Capsule extends FunkinSprite {
     public var clipWidth:Int = 255;
     public var selected:Int = false;
     public var coolFilters = [
-        new GlowFilter(glowColor, 1, 4, 4, 255),
-        new GlowFilter(0xffffff, 1, 2, 2, 210),
+        new GlowFilter(0xffffff, 1, 2, 1, 150),
+        new GlowFilter(glowColor, 1, 10, 10, 0, 0),
     ];
     public var notCoolFilters = [
-        new GlowFilter(0xffffff, 1, 2, 2, 210),
+        new GlowFilter(0xffffff, 0.6, 2, 2, 210),
+        new GlowFilter(glowColor, 1, 6, 6, 0, 0),
     ];
     public function new() {
         super();
 
         final realScaled = 0.8;
 
+        antialiasing = true;
         loadSprite(Paths.image('menus/freeplay/freeplayCapsule'));
         addAnim('idle', 'mp3 capsule w backing NOT SELECTED', 24, true);
         addAnim('select', 'mp3 capsule w backing0', 24, true);
@@ -39,14 +63,14 @@ class Capsule extends FunkinSprite {
         scale.set(realScaled, realScaled);
         updateHitbox();
 
-        text = new FunkinText(0, 0, -1, 'Bro', Std.int(40 * realScaled));
+        text = new FunkinText(0, 0, -1, 'Bro', Math.floor(40 * realScaled));
         text.font = Paths.font('5by7.ttf');
         text.borderSize = text.borderColor = 0;
         text.textField.filters = coolFilters;
         text.clipRect = new FlxRect(0, 0, text.width, text.height);
 
-        weekText = new FunkinText(0, 0, 200, 'Week 8');
-        bpmText = new FunkinText(0, 0, 200, 'BPM 190');
+        weekText = new FunkinText(0, 0, 300, 'Week 8');
+        bpmText = new FunkinText(0, 0, 300, 'BPM 190');
         diffStaticText = new FunkinText(0, 0, -1, 'Difficulty');
         diffText = new FunkinText(0, 0, -1, '21');
         /*
@@ -57,17 +81,21 @@ class Capsule extends FunkinSprite {
 
         for (i in [weekText, bpmText, diffStaticText, diffText]) {
             i.font = Paths.font("YoureGone-Regular.otf");
-            i.size = 20;
+            i.size = 18;
+            i.antialiasing = true;
             i.borderSize = i.borderColor = 0;
             /*
             // use this when GlowFilter.inner works
             weekText.color = 0x413d4b;
             weekText.textField.filters = capsuleOuterFilter
             */
+            // for now use this
+            i.shader = HANG_FUNKIN_CREW_BY_JUMPER_CABLES;
             i.color = 0x21242E;
         }
 
-        diffText.size = 48;
+        diffText.size = 46;
+        diffText.letterSpacing = -1;
 
         icon = new FunkinSprite();
         icon.visible = false;
@@ -93,12 +121,12 @@ class Capsule extends FunkinSprite {
             clipTransTimer * -Math.min(0, clipWidth - text.width),
             0, Math.min(text.width, clipWidth), text.height);
 
-        drawThing(text, 95 + clipTransTimer * Math.min(0, clipWidth - text.width), 34);
-        drawThing(weekText, 220, 74);
-        drawThing(bpmText, 82, 74);
-        drawThing(diffStaticText, 465 - diffStaticText.width, 74);
-        drawThing(diffText, 438 - (diffText.width * 0.5), 20);
-        drawThing(icon, icon.width * -0.5 + 40, icon.height * -0.5 + 40);
+        drawThing(text, 92 + clipTransTimer * Math.min(0, clipWidth - text.width), 32);
+        drawThing(weekText, 228, 76);
+        drawThing(bpmText, 76, 76);
+        drawThing(diffStaticText, 455 - diffStaticText.width, 76);
+        drawThing(diffText, 433 - (diffText.width * 0.5), 18);
+        drawThing(icon, -2, icon.height * -0.5 + 48);
     }
     public var clipTimer:Float = 0;
     override public function update(elapsed) {
@@ -137,7 +165,7 @@ class Capsule extends FunkinSprite {
         text.text = meta.displayName ?? meta.name;
         bpmText.text = 'BPM ' + CoolUtil.addZeros(meta.bpm ?? 0, 3);
         weekText.text = getLevelIDClean(meta?.week ?? '');
-        diffText.text = '??';
+        diffText.text = '00';
     }
     public function getLevelIDClean(id:String) {
         if (id.length < 1) return id;
@@ -160,6 +188,7 @@ class Capsule extends FunkinSprite {
     }
     public function select() {
         playAnim('select', true);
+        centerOffsets(false);
         text.alpha = 1;
         selected = true;
         clipTimer = 0;
@@ -168,6 +197,7 @@ class Capsule extends FunkinSprite {
     }
     public function deselect() {
         playAnim('idle', true);
+        centerOffsets(false);
         text.alpha = 0.5;
         selected = false;
         clipTimer = 0;
@@ -181,7 +211,7 @@ class ScoreCounter extends FunkinSprite {
     var numberString = ['ZERO', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE'];
     public function new() {
         super();
-        for (i in 0...10) {
+        for (i in 0...7) {
             var num = new FunkinSprite(i * 60, 0, Paths.image('menus/freeplay/digital_numbers'));
             for (x => j in numberString) {
                 num.addAnim(Std.string(x), j + ' DIGITAL', 24, false, null, null, 
@@ -189,7 +219,7 @@ class ScoreCounter extends FunkinSprite {
                 );
             }
             num.playAnim('0', true);
-            num.scale.set(0.4, 0.4);
+            num.scale.set(0.398, 0.398);
             num.antialiasing = true;
             num.updateHitbox();
             numbers.push(num);
@@ -207,7 +237,7 @@ class ScoreCounter extends FunkinSprite {
         if (!visible || !exists) return;
         for (x => i in numbers) {
             if (i.visible && i.exists) {
-                i.setPosition(this.x + 41 * x, this.y);
+                i.setPosition(this.x + 45 * x, this.y);
                 i.draw();
             }
         }
@@ -242,20 +272,40 @@ importScript('data/backcards/bf');
 var bg = getBackground();
 var fgBar = new FunkinSprite();
 var ostName = new FunkinText(8, 8, FlxG.width - 16, 'OFFICIAL OST', 48);
-var highscoreTxt = new FunkinSprite(0, 73, Paths.image('menus/freeplay/highscore'));
+var highscoreTxt = new FunkinSprite(0, 70, Paths.image('menus/freeplay/highscore'));
 var highscoreAnimTimerForNoReason:Float = 0;
-var clearBox = new FunkinSprite(0, 70, Paths.image('menus/freeplay/clearBox'));
-var clearPercent = new Alphabet(0, 90, '100', 'freeplay-clear');
+var clearBox = new FunkinSprite(0, 65, Paths.image('menus/freeplay/clearBox'));
+var clearPercent = new Alphabet(0, 86, '100', 'freeplay-clear');
 var scoreCounter = new ScoreCounter();
+
+function makeArrow() {
+    var arrow = new FunkinSprite(0, 0, Paths.image('menus/freeplay/freeplaySelector'));
+    arrow.addAnim('idle', 'arrow pointer loop', 24, true);
+    arrow.playAnim('idle', true);
+    arrow.updateHitbox();
+    return arrow;
+}
+var leftArrow = makeArrow();
+var rightArrow = makeArrow();
+rightArrow.flipX = true;
 
 function create() {
     CoolUtil.playMusic(Paths.music('freeplayRandom'));
+    FlxG.mouse.visible = true;
     add(bg);
+    
+    for (i in [leftArrow, rightArrow]) {
+        i.setPosition(FlxG.width * 0.154 - i.width * 0.5, 70);
+    }
+    leftArrow.x  -= 152.5;
+    rightArrow.x += 152.5;
+    add(leftArrow);
+    add(rightArrow);
 
     add(capsuleGroup);
     
     fgBar.scrollFactor.set();
-    fgBar.makeGraphic(FlxG.width, 65, -1);
+    fgBar.makeGraphic(FlxG.width, 64, -1);
     fgBar.color = FlxColor.BLACK;
     add(fgBar);
 
@@ -272,14 +322,14 @@ function create() {
     highscoreTxt.updateHitbox();
     add(highscoreTxt);
 
-    clearBox.x = FlxG.width - 20 - clearBox.width;
-    highscoreTxt.x = clearBox.x - 20 - highscoreTxt.width;
+    clearBox.x = FlxG.width - 12 - clearBox.width;
+    highscoreTxt.x = clearBox.x - 16 - highscoreTxt.width;
     add(clearBox);
 
     // positioning is done in postUpdate
     add(clearPercent);
 
-    scoreCounter.x = FlxG.width - 440;
+    scoreCounter.x = FlxG.width - 353;
     scoreCounter.y = 120;
     add(scoreCounter);
 }
@@ -334,8 +384,9 @@ function postCreate() {
         c.deselect();
     }
 
-    capsuleGroup.setPosition(FlxG.width * 0.5 - 250, FlxG.height * 0.5 - 80);
+    capsuleGroup.setPosition(FlxG.width * 0.5 - 245, FlxG.height * 0.5 - 111);
 
+    curSelected = lerpSelected = Math.min(capsuleGroup.length, 1);
     changeSelection(0);
 
     Framerate.offset.y = 65;
@@ -383,8 +434,8 @@ function update(elapsed) {
             } else changeSelection(c.ID - curSelected);
         }
         var diff = c.ID - lerpSelected;
-        c.x = capsuleGroup.x + Math.pow(diff, 2) * -12 + diff * 20;
-        c.y = capsuleGroup.y + (diff + Math.min((diff - 1) * 0.87 + 1, -1) + 1) * 130;
+        c.x = capsuleGroup.x + Math.sin(diff + 0.98) * 60 - 60;
+        c.y = capsuleGroup.y + (diff + Math.min((diff - 1) * 0.9 + 1, -1) + 1) * 115.5;
                                                 // so u can click on the bar to
                                                 // select the song behind it
     });
@@ -443,5 +494,5 @@ function postUpdate(elapsed) {
 
     lerpAccuracy = lerp(lerpAccuracy, intendedAccuracy, 0.3);
     clearPercent.text = Math.round(lerpAccuracy * 100);
-    clearPercent.x = clearBox.x + clearBox.width - 30 - clearPercent.textWidth;
+    clearPercent.x = clearBox.x + clearBox.width - 34 - clearPercent.textWidth;
 }
