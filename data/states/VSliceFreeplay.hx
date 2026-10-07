@@ -22,6 +22,7 @@ var swList = StoryWeeklist.get(null, false);
 var fpMap = ['' => 'hi im a map'];
 var character = 'bf';
 var validCharVariations = ['bf', 'pico'];
+var curVariation = 'dummy value so it refreshes instantly';
 
 // maybe make these more flexible in the future
 var allDifficulties = ['easy', 'normal', 'hard', 'erect', 'nightmare'];
@@ -172,9 +173,10 @@ function postCreate() {
         var c = new Capsule();
         c.x = FlxG.width;
         c.y = x * 140;
-        c.ID = x;
+        c.ID = c.displayID = x;
         capsuleGroup.add(c);
 
+        c.meta = i;
         c.loadData(i == null ? null : fpMap.get(i.name));
         c.deselect();
     }
@@ -186,13 +188,15 @@ function postCreate() {
     if (curSelectedDiff < 0) {
         curSelectedDiff = allDifficulties.indexOf(Options.freeplayLastDifficulty = 'normal');
     }
-    changeDifficulty(0); // it also calls changeSelection
+    changeDifficulty(0, true); // it also calls changeSelection
 
     Framerate.offset.y = 65;
 }
-var curSelected = 0;
 var curSelectedDiff = -1;
+var curSelected = 0;
 var lerpSelected = 0;
+var curDisplaySelected = 0;
+var lerpDisplaySelected = 0;
 var intendedScore = 0;
 var lerpScore = 0;
 var intendedAccuracy = 0;
@@ -230,37 +234,62 @@ function update(elapsed) {
     }
 
     lerpSelected = lerp(lerpSelected, curSelected, 0.25);
+    lerpDisplaySelected = lerp(lerpDisplaySelected, curDisplaySelected, 0.25);
 
     capsuleGroup.forEach((c) -> {
         if (enableControls && CoolUtil.mouseOverlaps(c) && FlxG.mouse.justPressed) {
-            if (curSelected == c.ID) {
+            if (curDisplaySelected == c.displayID) {
                 selectSong(c.ID);
             } else changeSelection(c.ID - curSelected);
         }
-        var diff = c.ID - lerpSelected;
+        var diff = c.displayID - lerpDisplaySelected;
         c.x = capsuleGroup.x + Math.sin(diff + 0.98) * 60 - 60;
         c.y = capsuleGroup.y + (diff + Math.min((diff - 1) * 0.9 + 1, -1) + 1) * 115.5;
-                                                // so u can click on the bar to
-                                                // select the song behind it
     });
 }
 function destroy() {
 	for (basic in turboBasics) basic.destroy();
     Framerate.offset.y = 0;
 }
-function changeSelection(ch) {
+function changeSelection(ch, ?silent) {
+    silent ??= false;
     var pastSelected = curSelected;
-    curSelected = FlxMath.wrap(curSelected + ch, 0, capsuleGroup.members.length - 1);
-
-    if (capsuleGroup.members[pastSelected] != null)
+    var firstCheck = true;
+    while (firstCheck || invalidSongs.contains(fpList.songs[curSelected]?.name)) {
+        curSelected = FlxMath.wrap(curSelected + ch, 0, capsuleGroup.members.length - 1);
+        firstCheck = false;
+    }
+    if (capsuleGroup.members[pastSelected] != null) {
         capsuleGroup.members[pastSelected].deselect();
+        if (!silent) capsuleGroup.members[pastSelected].clipTimer = 0;
+    }
 
-    if (capsuleGroup.members[curSelected] != null)
+    if (capsuleGroup.members[curSelected] != null) {
         capsuleGroup.members[curSelected].select();
+        if (!silent) capsuleGroup.members[curSelected].clipTimer = 0;
+    }
 
-    if (ch != 0) CoolUtil.playMenuSFX(0);
+    if (!silent) CoolUtil.playMenuSFX(0);
 
-    final name = capsuleGroup.members[curSelected].name;
+    final cap = capsuleGroup.members[curSelected];
+    curDisplaySelected = cap.displayID;
+    final name = cap.name;
+    if (name != null) {
+        for (i in allVariations) {
+            if ((cap?.meta?.metas[i] ?? fpMap[name])?.difficulties?.contains(allDifficulties[curSelectedDiff])) {
+                cap.loadData((cap?.meta?.metas[i] ?? fpMap[name]));
+                curVariation = cap.curMeta.variant;
+                refreshVariationShit(curVariation);
+                break;
+            }
+        }
+    } else {
+        if (curSelectedDiff > 2) {
+            refreshVariationShit(curVariation = 'erect');
+        } else {
+            refreshVariationShit(curVariation = null);
+        }
+    }
     final save = name != null ? (FunkinSave.getSongHighscore(
         name,
         allDifficulties[curSelectedDiff],
@@ -270,10 +299,11 @@ function changeSelection(ch) {
     intendedScore = save?.score ?? 0;
     intendedAccuracy = save?.accuracy ?? 0;
 }
-function changeDifficulty(ch) {
+function changeDifficulty(ch, ?silent) {
+    silent ??= false;
     var pastSelectedDiff = curSelectedDiff;
     curSelectedDiff = FlxMath.wrap(curSelectedDiff + ch, 0, allDifficulties.length - 1);
-    if (ch != 0) CoolUtil.playMenuSFX(0);
+    if (!silent) CoolUtil.playMenuSFX(0);
 
     final diff = allDifficulties[curSelectedDiff];
     diffSprite.loadSprite(Paths.image('menus/freeplay/difficulties/' + diff));
@@ -293,15 +323,22 @@ function changeDifficulty(ch) {
         FlxTween.tween(diffSprite, {x: diffSprite.x - displacement}, 0.2, {ease: FlxEase.circInOut});
     }
 
+    changeSelection(0, true);
 
-    changeSelection(0);
+    final cap = capsuleGroup.members[curSelected];
+    cap.setDifficultyText(Reflect.field(cap.curMeta?.customValues?.ratings, diff) ?? 0);
 }
 function selectSong(id) {
     enableControls = false;
     if (id == 0) {
         // no songs
         if (capsuleGroup.members.length > 1) {
-            changeSelection(id = FlxG.random.int(1, capsuleGroup.members.length - 1));
+            var firstCheck = true;
+            while (firstCheck || invalidSongs.contains(capsuleGroup.members[id].name)) {
+                id = FlxG.random.int(1, capsuleGroup.members.length - 1);
+                firstCheck = false;
+            }
+            changeSelection(id);
             new FlxTimer().start(0.4, (_) -> { selectSong(curSelected); });
         }
         else CoolUtil.playMenuSFX(2);
@@ -313,6 +350,30 @@ function selectSong(id) {
         if (c.icon.visible) c.icon.playAnim('confirm', true);
 
         bg.select();
+    }
+}
+var invalidSongs = [];
+function refreshVariationShit(vari) {
+    invalidSongs.resize(0);
+    var x = 0;
+    var i = 0;
+    while (x < capsuleGroup.members.length) {
+        var cap = capsuleGroup.members[x++];
+        cap.visible = true;
+        var name = cap.name;
+        if (name == null) {
+            i++;
+            continue;
+        }
+        var candidate = (cap?.meta?.metas[vari] ?? fpMap[name]);
+        if (candidate?.difficulties?.contains(allDifficulties[curSelectedDiff]) && (candidate.player ?? 'bf') == character) {
+            cap.loadData(candidate);
+            cap.setDifficultyText(Reflect.field(cap.curMeta?.customValues?.ratings, allDifficulties[curSelectedDiff]) ?? 0);
+            cap.displayID = i++;
+        } else {
+            cap.visible = false;
+            invalidSongs.push(cap.name);
+        }
     }
 }
 // cosmetic related, regular update is selection code

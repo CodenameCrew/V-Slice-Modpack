@@ -29,8 +29,12 @@ void main() {
 
 class Capsule extends FunkinSprite {
     // TODO: make everything revolve around this
+    // this is the default meta.json
     public var meta:Dynamic;
 
+    // this can be any meta
+    public var curMeta:Dynamic;
+    public var displayID:Int = 0;
     public var text:FunkinText;
     public var weekText:FunkinText;
     public var bpmText:FunkinText;
@@ -71,7 +75,7 @@ class Capsule extends FunkinSprite {
         weekText = new FunkinText(0, 0, 300, 'Week 8');
         bpmText = new FunkinText(0, 0, 300, 'BPM 190');
         diffStaticText = new FunkinText(0, 0, -1, 'Difficulty');
-        diffText = new FunkinText(0, 0, -1, '21');
+        diffText = new FunkinText(0, 0, -1, '00');
         /*
         var capsuleOuterFilter = [
             new GlowFilter(0x21242E, 2, 4, 4, 210, true, true),
@@ -117,10 +121,10 @@ class Capsule extends FunkinSprite {
 
         var clipTransTimer:Float = FlxEase.sineInOut(FlxMath.bound((0.5 - Math.abs(FlxMath.mod(clipTimer * 0.4, 2) - 1)) * 1.3 + 0.5, 0, 1));
         text.clipRect = text.clipRect.set(
-            clipTransTimer * -Math.min(0, clipWidth - text.width),
+            Math.floor(clipTransTimer * -Math.min(0, clipWidth - text.width)),
             0, Math.min(text.width, clipWidth), text.height);
 
-        drawThing(text, 92 + clipTransTimer * Math.min(0, clipWidth - text.width), 32);
+        drawThing(text, 92 + Math.ceil(clipTransTimer * Math.min(0, clipWidth - text.width)), 32);
         drawThing(weekText, 228, 76);
         drawThing(bpmText, 76, 76);
         drawThing(diffStaticText, 455 - diffStaticText.width, 76);
@@ -139,7 +143,9 @@ class Capsule extends FunkinSprite {
     }
 
     public function loadData(meta:Dynamic) {
-        this.meta = meta;
+        var hasChanged = (curMeta != meta);
+        curMeta = meta;
+
         // random capsule
         name = null;
         if (meta == null) {
@@ -169,10 +175,13 @@ class Capsule extends FunkinSprite {
             icon.visible = false;
         }
 
+        if (hasChanged) clipTimer = 0;
         text.text = meta.displayName ?? meta.name;
         bpmText.text = 'BPM ' + CoolUtil.addZeros(meta.bpm ?? 0, 3);
-        weekText.text = getLevelIDClean(meta?.week ?? '');
-        diffText.text = '00';
+        weekText.text = getLevelIDClean(this.meta?.week ?? '');
+    }
+    public function setDifficultyText(?num:Int = 0) {
+        diffText.text = CoolUtil.addZeros(num, 2);
     }
     public function getLevelIDClean(id:String) {
         if (id.length < 1) return id;
@@ -198,7 +207,6 @@ class Capsule extends FunkinSprite {
         centerOffsets(false);
         text.alpha = 1;
         selected = true;
-        clipTimer = 0;
         text.textField.filters = coolFilters;
         text._regen = true; // this sucks
     }
@@ -207,7 +215,6 @@ class Capsule extends FunkinSprite {
         centerOffsets(false);
         text.alpha = 0.5;
         selected = false;
-        clipTimer = 0;
         text.textField.filters = notCoolFilters;
         text._regen = true; // i need to find smth better (maybe shader????)
     }
