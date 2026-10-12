@@ -22,7 +22,12 @@ vec3 applyHSBCEffect(vec3 color)
 	color = clamp((color - 0.5) * (1.0 + ((contrast) / 255.0)) + 0.5, 0.0, 1.0);
 
 	vec3 intensity = vec3(dot(color, vec3(0.30980392156, 0.60784313725, 0.08235294117)));
-	color = clamp(mix(intensity, color, (1.0 + (saturation / 100.0))), 0.0, 1.0);
+
+	float sat = saturation;
+	if(sat > 0)
+		sat *= 3;
+
+	color = clamp(mix(intensity, color, (1.0 + (sat / 100.0))), 0.0, 1.0);
 
 	return color;
 }
