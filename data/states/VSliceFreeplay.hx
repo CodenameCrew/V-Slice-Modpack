@@ -55,9 +55,11 @@ var clearBox = new FunkinSprite(0, 65, Paths.image('menus/freeplay/clearBox'));
 var clearPercent = new Alphabet(0, 86, '100', 'freeplay-clear');
 var scoreCounter = new ScoreCounter();
 var diffSprite = new FunkinSprite(0, 67);
+var diffDots = new FunkinSprite(FlxG.width * 0.15, 170, Paths.image('menus/freeplay/separator'));
 
 function makeArrow() {
     var arrow = new FunkinSprite(0, 0, Paths.image('menus/freeplay/freeplaySelector'));
+    arrow.antialiasing = true;
     arrow.addAnim('idle', 'arrow pointer loop', 24, true);
     arrow.playAnim('idle', true);
     arrow.updateHitbox();
@@ -79,8 +81,39 @@ function create() {
     }
     leftArrow.x  -= 152.5;
     rightArrow.x += 152.5;
+    leftArrow.x  = Std.int(leftArrow.x);
+    rightArrow.x = Std.int(rightArrow.x);
     add(leftArrow);
     add(rightArrow);
+
+    function existsInCurDiffs(a:String) {
+        var i = 0;
+        while (i < curDiffList.length) {
+            if (curDiffList[i++].name == a) {
+                return true;
+            }
+        }
+        return false;
+    }
+    var normalColors = [0xFF484848, 0xFFFAFAFA, 0xFF919191, 0xFFC9C9C9];
+    var nightColors = [0xFF34296A, 0xFFC28AFF, 0xFF8A58D0, 0xFFFFB1DC];
+    diffDots.antialiasing = true;
+    add(diffDots);
+    diffDots.onDraw = (dot) -> {
+        if (allGlobalDiffs.length < 1) return;
+        var ogX = dot.x;
+        dot.x -= Std.int((dot.width + 10) * allGlobalDiffs.length * 0.5);
+        dot.x += Std.int(dot.width * 0.5);
+        for (z => i in allGlobalDiffs) {
+            var colArray = (i.variation == 'erect') ? nightColors : normalColors;
+            dot.color = colArray[(curSelectedDiffData.name == i.name) ? 1 : 0];
+            dot.alpha = existsInCurDiffs(i.name) ? 1 : 0.4;
+            dot.draw();
+            dot.x += (dot.width + 10);
+        }
+        dot.x = ogX;
+        dot.color = -1;
+    };
 
     add(stupidDadBG);
 
