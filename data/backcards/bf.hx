@@ -64,7 +64,7 @@ class BackingCard extends CustomGroup {
             text2,
             text1
         ]) {
-            var backdrop = makeTextBackdrop(i.text + ' ', x % 2 == 0, (x % 2 == 1) ? 60 : 43);
+            var backdrop = makeTextBackdrop(i.text + ' ', x % 2 == 0, (x % 2 == 1) ? 61 : 43);
             backdrop.color = i.color;
             backdrop.screenCenter();
             backdrop.y = startY;

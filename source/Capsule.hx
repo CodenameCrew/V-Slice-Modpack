@@ -30,28 +30,24 @@ void main() {
 class Capsule extends FunkinSprite {
     // TODO: make everything revolve around this
     // this is the default meta.json
+    // future betty here: ok so i kinda lied
     public var meta:Dynamic;
 
     // this can be any meta
     public var curMeta:Dynamic;
+
     public var displayID:Int = 0;
     public var text:FunkinText;
+    public var textBlur:FunkinText;
     public var weekText:FunkinText;
     public var bpmText:FunkinText;
     public var diffStaticText:FunkinText;
     public var diffText:FunkinText; // numbers
     public var icon:FunkinSprite;
     public var glowColor:Int = 0x00ccff;
-    public var clipWidth:Int = 255;
+    public var glowColor2:Int = 0x00ccff; // for when styles are implemented
+    public var clipWidth:Int = 292; // 255 with rank
     public var selected:Int = false;
-    public var coolFilters = [
-        new GlowFilter(0xffffff, 1, 2, 1, 150),
-        new GlowFilter(glowColor, 1, 11, 9, 0, 1),
-    ];
-    public var notCoolFilters = [
-        new GlowFilter(0xffffff, 0.6, 2, 2, 210),
-        new GlowFilter(glowColor, 1, 8, 8, 0, 0),
-    ];
     public function new() {
         super();
 
@@ -59,8 +55,8 @@ class Capsule extends FunkinSprite {
 
         antialiasing = true;
         loadSprite(Paths.image('menus/freeplay/freeplayCapsule'));
-        addAnim('idle', 'mp3 capsule w backing NOT SELECTED', 24, true);
-        addAnim('select', 'mp3 capsule w backing0', 24, true);
+        addAnim('idle', 'mp3 capsule w backing NOT SELECTED', 24, Options.flashingMenu);
+        addAnim('select', 'mp3 capsule w backing0', 24, Options.flashingMenu);
         playAnim('idle', true);
         scale.set(realScaled, realScaled);
         updateHitbox();
@@ -68,9 +64,20 @@ class Capsule extends FunkinSprite {
         text = new FunkinText(0, 0, -1, 'Bro', Math.floor(40 * realScaled));
         text.font = Paths.font('5by7.ttf');
         text.borderSize = text.borderColor = 0;
-        text.textField.filters = coolFilters;
         text.clipRect = new FlxRect(0, 0, text.width, text.height);
         text.antialiasing = true;
+        text.textField.filters = [
+            new GlowFilter(glowColor, 1, 5, 5, 210, 1)
+        ];
+
+        textBlur = new FunkinText(0, 0, -1, 'Bro', Math.floor(40 * realScaled));
+        textBlur.font = Paths.font('5by7.ttf');
+        textBlur.borderSize = textBlur.borderColor = 0;
+        textBlur.shader = FunkinShader.fromFile('gaussian-blur');
+        textBlur.shader._amount = 1;
+        textBlur.clipRect = new FlxRect(0, 0, textBlur.width, textBlur.height);
+        textBlur.antialiasing = true;
+        textBlur.color = glowColor;
 
         weekText = new FunkinText(0, 0, 300, 'Week 8');
         bpmText = new FunkinText(0, 0, 300, 'BPM 190');
@@ -104,7 +111,7 @@ class Capsule extends FunkinSprite {
         icon.visible = false;
     }
     override public function destroy() {
-        for (i in [text, weekText, bpmText, diffStaticText, diffText]) {
+        for (i in [text, textBlur, weekText, bpmText, diffStaticText, diffText]) {
             i.destroy();
         }
         super.destroy();
@@ -124,6 +131,9 @@ class Capsule extends FunkinSprite {
             Math.floor(clipTransTimer * -Math.min(0, clipWidth - text.width)),
             0, Math.min(text.width, clipWidth), text.height);
 
+        textBlur.clipRect = textBlur.clipRect.set(text.clipRect.x, text.clipRect.y, text.clipRect.width, text.clipRect.height);
+
+        drawThing(textBlur, 92 + Math.ceil(clipTransTimer * Math.min(0, clipWidth - textBlur.width)), 32);
         drawThing(text, 92 + Math.ceil(clipTransTimer * Math.min(0, clipWidth - text.width)), 32);
         drawThing(weekText, 228, 76);
         drawThing(bpmText, 76, 76);
@@ -150,11 +160,11 @@ class Capsule extends FunkinSprite {
         name = null;
         if (meta == null) {
             icon.visible = bpmText.visible = weekText.visible = diffStaticText.visible = diffText.visible = false;
-            text.text = 'Random';
+            textBlur.text = text.text = 'Random';
             return;
         }
         name = meta.name;
-        var imagePath = Paths.image('menus/freeplay/icons/${meta.icon ?? 'face'}pixel'); // DIEEEEE FNF NAMING CONVENTIONSSSS
+        var imagePath = Paths.image('menus/freeplay/icons/${meta.icon ?? 'face'}');
         if (Assets.exists(imagePath)) {
             icon.visible = true;
             icon.loadSprite(imagePath);
@@ -176,10 +186,18 @@ class Capsule extends FunkinSprite {
         }
 
         if (hasChanged) clipTimer = 0;
-        text.text = meta.displayName ?? meta.name;
+        textBlur.text = text.text = meta.displayName ?? meta.name;
         bpmText.text = 'BPM ' + CoolUtil.addZeros(meta.bpm ?? 0, 3);
-        weekText.text = getLevelIDClean(this.meta?.week ?? '');
+
+        // KILL FUNKIN CREW
+        var finalWeekText = this.meta?.week;
+        if (Reflect.hasField(this.meta, 'parent')) {
+            finalWeekText = this.meta.parent.week;
+        }
+
+        weekText.text = getLevelIDClean(finalWeekText ?? '');
     }
+    var __nullCoalescingHatesMe = [];
     public function setDifficultyText(?num:Int = 0) {
         diffText.text = CoolUtil.addZeros(num, 2);
     }
@@ -205,17 +223,14 @@ class Capsule extends FunkinSprite {
     public function select() {
         playAnim('select', true);
         centerOffsets(false);
-        text.alpha = 1;
+        textBlur.alpha = text.alpha = 1;
         selected = true;
-        text.textField.filters = coolFilters;
-        text._regen = true; // this sucks
     }
     public function deselect() {
         playAnim('idle', true);
         centerOffsets(false);
         text.alpha = 0.5;
+        textBlur.alpha = 0;
         selected = false;
-        text.textField.filters = notCoolFilters;
-        text._regen = true; // i need to find smth better (maybe shader????)
     }
 }
