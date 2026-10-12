@@ -82,7 +82,12 @@ class BackingCard extends CustomGroup {
         confirmAtlas.antialiasing = true;
         confirmAtlas.setGraphicSize(FlxG.width * 0.61, null);
         confirmAtlas.updateHitbox();
+        confirmAtlas.scrollFactor.set();
         // add(confirmAtlas);
+
+        for (i in members) {
+            i.scrollFactor.set();
+        }
     }
 
     public function select() {

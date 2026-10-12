@@ -109,14 +109,20 @@ class Capsule extends FunkinSprite {
 
         icon = new FunkinSprite();
         icon.visible = false;
+
+        tsMembers = [text, textBlur, weekText, bpmText, diffStaticText, diffText, icon];
     }
+    var tsMembers;
     override public function destroy() {
-        for (i in [text, textBlur, weekText, bpmText, diffStaticText, diffText]) {
+        for (i in tsMembers) {
             i.destroy();
         }
         super.destroy();
     }
     override public function draw() {
+        for (i in tsMembers) {
+            i.scrollFactor.copyFrom(this.scrollFactor);
+        }
         super.draw();
 
         function drawThing(s:FlxSprite, _x:Float, _y:Float) {

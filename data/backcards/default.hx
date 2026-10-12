@@ -84,6 +84,10 @@ class BackingCard extends CustomGroup {
         confirmText.y -= confirmText.height * 0.5;
         confirmText.visible = false;
         add(confirmText);
+
+        for (i in members) {
+            i.scrollFactor.set();
+        }
     }
 
     public function select() {

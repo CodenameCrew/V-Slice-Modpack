@@ -73,6 +73,7 @@ var diffAnchorX = FlxG.width * 0.154;
 function create() {
     regenSongRegistry();
 
+    stupidDadBG.scrollFactor.set();
     add(bg);
     
     add(diffSprite);
@@ -119,16 +120,17 @@ function create() {
 
     add(capsuleGroup);
     
-    fgBar.scrollFactor.set();
-    fgBar.makeGraphic(FlxG.width, 64, -1);
+    fgBar.scrollFactor.set(0, 1.2);
+    fgBar.makeGraphic(FlxG.width, 256, -1);
     fgBar.color = FlxColor.BLACK;
+    fgBar.y = -fgBar.height + 64;
     add(fgBar);
 
     var freeplayName = new FunkinText(8, 8, FlxG.width - 16, 'FREEPLAY', 48); // ik its static but this is nicer ok
-    freeplayName.scrollFactor.set();
+    freeplayName.scrollFactor.set(0, 1.2);
     add(freeplayName);
 
-    ostName.scrollFactor.set();
+    ostName.scrollFactor.set(0, 1.2);
     ostName.alignment = 'right';
     add(ostName);
 
@@ -147,6 +149,13 @@ function create() {
     scoreCounter.x = FlxG.width - 353;
     scoreCounter.y = 120;
     add(scoreCounter);
+
+    for (i in [highscoreTxt, bg, clearBox, clearPercent, leftArrow, rightArrow, diffSprite, diffDots]) {
+        i.scrollFactor.set(0, 1.2);
+    }
+    for (i in scoreCounter.numbers) {
+        i.scrollFactor.set(0, 1.2);
+    }
 }
 
 function postCreate() {
@@ -180,8 +189,38 @@ var lerpAccuracy = 0;
 var enableControls = true;
 function update(elapsed) {
     if (enableControls) {
-        for (basic in turboBasics) {
-            basic.update(elapsed);
+        for (basic in turboBasics) basic.update(elapsed);
+
+        if (controls.CHANGE_MODE) {
+            enableControls = false;
+            CoolUtil.playMenuSFX(1).persist = true;
+            FlxG.sound.music.fadeOut(1);
+
+            // this looks so awful
+            bg.switch();
+
+            FlxTween.tween(FlxG.camera.scroll, {y: 222}, 1, {startDelay: 0.4, ease: FlxEase.backIn});
+
+            var overlay = new FunkinSprite();
+            add(overlay);
+            overlay.makeSolid(FlxG.width, FlxG.height, -1);
+            overlay.screenCenter();
+            overlay.scrollFactor.set();
+            overlay.blend = BlendMode.SUBTRACT;
+            overlay.color = 0x666600;
+            overlay.alpha = 0;
+            FlxTween.tween(overlay, {alpha: 1}, 0.15, {startDelay: 0.85}).then(
+                FlxTween.tween(overlay.colorTransform, {
+                    redMultiplier: 1,
+                    greenMultiplier: 1,
+                    blueMultiplier: 1
+                }, 0.3, {
+                    onComplete: (_) -> {
+                        // not done yet
+                        FlxG.switchState(new MainMenuState());
+                    }
+                })
+            );
         }
 
         if (upTurboControl.activated || FlxG.mouse.wheel == 1) changeSelection(-1);
@@ -219,7 +258,8 @@ function update(elapsed) {
         }
         var diff = c.ID - lerpSelected;
         c.x = capsuleGroup.x + Math.sin(diff + 0.98) * 60 - 60;
-        c.y = capsuleGroup.y + (diff + Math.min((diff - 1) * 0.9 + 1, -1) + 1) * 115.5;
+        c.y = capsuleGroup.y + (diff + Math.min(diff, -1) + 1) * 115.5;
+        c.scrollFactor.set(0, 0.6);
     });
 }
 function destroy() {
@@ -322,8 +362,13 @@ function updateAllDiffs() {
     var diff = curSelectedDiffData;
     //trace(diff);
     if (diff == null) return;
-    if (curTrackedVariation != diff.variation) {
-        curTrackedVariation = diff.variation;
+    var targetVariation = diff.variation;
+    // KILL FUNKIN CREW
+    if ((diff.variation == 'bf') && (character == 'bf')) {
+        targetVariation = null;
+    }
+    if (curTrackedVariation != targetVariation) {
+        curTrackedVariation = targetVariation;
         // implement letter sorting later?
         regenSongRegistry(null, diff.variation);
         regenSongList();
@@ -362,6 +407,7 @@ function selectSong(id) {
             add(overlay);
             overlay.makeSolid(FlxG.width, FlxG.height, -1);
             overlay.screenCenter();
+            overlay.scrollFactor.set();
             overlay.blend = BlendMode.SUBTRACT;
             overlay.alpha = 0;
             FlxG.sound.music.stop();
