@@ -9,5 +9,8 @@ function onPlayAnim(event)
 
 function create()
 {
-	FlxG.camera.zoom = 1;
+	FlxTween.tween(FlxG.camera, {zoom: 0.7}, 1, {ease: FlxEase.elasticOut, startDelay: 0.4});
+	new FlxTimer().start(0.6, (_) -> {
+		GameOverSubstate.instance.camFollow.y += 400;
+	});
 }
