@@ -1,3 +1,5 @@
+import FunkinGroup;
+import CustomGroup;
 import openfl.filters.BlurFilter;
 import openfl.filters.GlowFilter;
 
@@ -27,7 +29,7 @@ void main() {
 }
 ');
 
-class Capsule extends FunkinSprite {
+class Capsule extends FunkinGroup {
     // TODO: make everything revolve around this
     // this is the default meta.json
     // future betty here: ok so i kinda lied
@@ -36,7 +38,7 @@ class Capsule extends FunkinSprite {
     // this can be any meta
     public var curMeta:Dynamic;
 
-    public var displayID:Int = 0;
+    public var capsule:FunkinSprite;
     public var text:FunkinText;
     public var textBlur:FunkinText;
     public var weekText:FunkinText;
@@ -54,17 +56,18 @@ class Capsule extends FunkinSprite {
         final realScaled = 0.8;
 
         antialiasing = true;
-        loadSprite(Paths.image('menus/freeplay/freeplayCapsule'));
-        addAnim('idle', 'mp3 capsule w backing NOT SELECTED', 24, Options.flashingMenu);
-        addAnim('select', 'mp3 capsule w backing0', 24, Options.flashingMenu);
-        playAnim('idle', true);
-        scale.set(realScaled, realScaled);
-        updateHitbox();
+        capsule = new FunkinSprite(0, 0, Paths.image('menus/freeplay/freeplayCapsule'));
+        capsule.addAnim('idle', 'mp3 capsule w backing NOT SELECTED', 24, Options.flashingMenu);
+        capsule.addAnim('select', 'mp3 capsule w backing0', 24, Options.flashingMenu);
+        capsule.playAnim('idle', true);
+        capsule.scale.set(realScaled, realScaled);
+        capsule.updateHitbox();
+        capsule.antialiasing = true;
 
         text = new FunkinText(0, 0, -1, 'Bro', Math.floor(40 * realScaled));
         text.font = Paths.font('5by7.ttf');
         text.borderSize = text.borderColor = 0;
-        text.clipRect = new FlxRect(0, 0, text.width, text.height);
+        text.rawClipRect = new FlxRect(0, 0, text.width, text.height);
         text.antialiasing = true;
         text.textField.filters = [
             new GlowFilter(glowColor, 1, 5, 5, 210, 1)
@@ -75,7 +78,7 @@ class Capsule extends FunkinSprite {
         textBlur.borderSize = textBlur.borderColor = 0;
         textBlur.shader = FunkinShader.fromFile('gaussian-blur');
         textBlur.shader._amount = 1;
-        textBlur.clipRect = new FlxRect(0, 0, textBlur.width, textBlur.height);
+        textBlur.rawClipRect = new FlxRect(0, 0, textBlur.width, textBlur.height);
         textBlur.antialiasing = true;
         textBlur.color = glowColor;
 
@@ -110,47 +113,34 @@ class Capsule extends FunkinSprite {
         icon = new FunkinSprite();
         icon.visible = false;
 
-        tsMembers = [text, textBlur, weekText, bpmText, diffStaticText, diffText, icon];
-    }
-    var tsMembers;
-    override public function destroy() {
-        for (i in tsMembers) {
-            i.destroy();
+        for (i in [capsule, weekText, bpmText, diffStaticText, diffText, textBlur, text, icon]) {
+            add(i);
         }
-        super.destroy();
     }
     override public function draw() {
-        for (i in tsMembers) {
-            i.scrollFactor.copyFrom(this.scrollFactor);
-        }
-        super.draw();
-
-        function drawThing(s:FlxSprite, _x:Float, _y:Float) {
-            if (s.visible && s.exists) {
-                s.setPosition(x + _x, y + _y);
-                s.draw();
-            }
-        }
-
         var clipTransTimer:Float = FlxEase.sineInOut(FlxMath.bound((0.5 - Math.abs(FlxMath.mod(clipTimer * 0.4, 2) - 1)) * 1.3 + 0.5, 0, 1));
-        text.clipRect = text.clipRect.set(
+        text.rawClipRect = text.rawClipRect.set(
             Math.floor(clipTransTimer * -Math.min(0, clipWidth - text.width)),
             0, Math.min(text.width, clipWidth), text.height);
 
-        textBlur.clipRect = textBlur.clipRect.set(text.clipRect.x, text.clipRect.y, text.clipRect.width, text.clipRect.height);
+        textBlur.rawClipRect = textBlur.rawClipRect.set(text.rawClipRect.x, text.rawClipRect.y, text.rawClipRect.width, text.rawClipRect.height);
+        
+        textBlur.setPosition(92/* + clipTransTimer * Math.min(0, clipWidth - textBlur.width)*/, 32);
+        text.setPosition(92/* + clipTransTimer * Math.min(0, clipWidth - text.width)*/, 32);
+        weekText.setPosition(228, 76);
+        bpmText.setPosition(76, 76);
+        diffStaticText.setPosition(355, 76);
+        diffText.setPosition(400, 18);
+        icon.setPosition(-2, icon.height * -0.5 + 48);
 
-        drawThing(textBlur, 92 + Math.ceil(clipTransTimer * Math.min(0, clipWidth - textBlur.width)), 32);
-        drawThing(text, 92 + Math.ceil(clipTransTimer * Math.min(0, clipWidth - text.width)), 32);
-        drawThing(weekText, 228, 76);
-        drawThing(bpmText, 76, 76);
-        drawThing(diffStaticText, 455 - diffStaticText.width, 76);
-        drawThing(diffText, 433 - (diffText.width * 0.5), 18);
-        drawThing(icon, -2, icon.height * -0.5 + 48);
+        setSize(capsule.width, capsule.height);
+
+        super.draw();
     }
     public var clipTimer:Float = 0;
     override public function update(elapsed) {
         super.update(elapsed);
-        icon.update(elapsed);
+
         if (icon.getAnimName('confirm') && icon.isAnimAtEnd()) {
             icon.playAnim('confirm-hold');
         }
@@ -227,14 +217,14 @@ class Capsule extends FunkinSprite {
         return res.join('');
     }
     public function select() {
-        playAnim('select', true);
-        centerOffsets(false);
+        capsule.playAnim('select', true);
+        capsule.centerOffsets(false);
         textBlur.alpha = text.alpha = 1;
         selected = true;
     }
     public function deselect() {
-        playAnim('idle', true);
-        centerOffsets(false);
+        capsule.playAnim('idle', true);
+        capsule.centerOffsets(false);
         text.alpha = 0.5;
         textBlur.alpha = 0;
         selected = false;

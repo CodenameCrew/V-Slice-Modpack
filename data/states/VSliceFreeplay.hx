@@ -20,7 +20,7 @@ var turboBasics = [upTurboControl, downTurboControl];
 var capsuleGroup = new FlxSpriteGroup();
 var fpList = FreeplaySonglist.get();
 var swList = StoryWeeklist.get(null, false);
-var character = 'bf';
+var character = freeplayCurCharacter;
 var finalSongList = [];
 
 // visuals
@@ -61,8 +61,23 @@ function makeArrow() {
     var arrow = new FunkinSprite(0, 0, Paths.image('menus/freeplay/freeplaySelector'));
     arrow.antialiasing = true;
     arrow.addAnim('idle', 'arrow pointer loop', 24, true);
+    arrow.addAnim('select', 'arrow pointer loop', 6, false, null, [0]); // i dont want to use manual timers
     arrow.playAnim('idle', true);
     arrow.updateHitbox();
+    arrow.animation.onFinish.add((a) -> {
+        if (a == 'select') {
+            arrow.playAnim('idle', true);
+        }
+    });
+    arrow.animation.onPlay.add((a) -> {
+        if (a == 'select') {
+            arrow.scale.set(0.6, 0.6);
+            arrow.colorTransform.color = 0xffffff;
+        } else {
+            arrow.scale.set(1, 1);
+            arrow.setColorTransform();
+        }
+    });
     return arrow;
 }
 var leftArrow = makeArrow();
@@ -191,7 +206,7 @@ function update(elapsed) {
     if (enableControls) {
         for (basic in turboBasics) basic.update(elapsed);
 
-        if (controls.CHANGE_MODE) {
+        if (controls.CHANGE_MODE || (FlxG.mouse.justPressed && (FlxG.mouse.x < FlxG.width * 0.25) && (FlxG.mouse.y > 260))) {
             enableControls = false;
             CoolUtil.playMenuSFX(1).persist = true;
             FlxG.sound.music.fadeOut(1);
@@ -199,7 +214,14 @@ function update(elapsed) {
             // this looks so awful
             bg.switch();
 
-            FlxTween.tween(FlxG.camera.scroll, {y: 222}, 1, {startDelay: 0.4, ease: FlxEase.backIn});
+            final scrollStartDelay = 0.45;
+
+            FlxTween.tween(FlxG.camera.scroll, {y: 222}, 0.9, {startDelay: scrollStartDelay, ease: FlxEase.backIn});
+            FlxTween.tween(Framerate.offset, {y: 0}, 0.8, {startDelay: scrollStartDelay, ease: FlxEase.backIn});
+
+            Options.freeplayLastSong = lastSong;
+            Options.freeplayLastDifficulty = curSelectedDiffData.name;
+            Options.freeplayLastVariation = curSelectedDiffData.variation; // this isnt used in this state but on the base one instead
 
             var overlay = new FunkinSprite();
             add(overlay);
@@ -209,7 +231,7 @@ function update(elapsed) {
             overlay.blend = BlendMode.SUBTRACT;
             overlay.color = 0x666600;
             overlay.alpha = 0;
-            FlxTween.tween(overlay, {alpha: 1}, 0.15, {startDelay: 0.85}).then(
+            FlxTween.tween(overlay, {alpha: 1}, 0.15, {startDelay: scrollStartDelay + 0.4}).then(
                 FlxTween.tween(overlay.colorTransform, {
                     redMultiplier: 1,
                     greenMultiplier: 1,
@@ -217,7 +239,7 @@ function update(elapsed) {
                 }, 0.3, {
                     onComplete: (_) -> {
                         // not done yet
-                        FlxG.switchState(new MainMenuState());
+                        FlxG.switchState(new ModState('CharacterSelectState'));
                     }
                 })
             );
@@ -226,8 +248,14 @@ function update(elapsed) {
         if (upTurboControl.activated || FlxG.mouse.wheel == 1) changeSelection(-1);
         if (downTurboControl.activated || FlxG.mouse.wheel == -1) changeSelection(1);
 
-        if (controls.LEFT_P) changeDifficulty(-1);
-        if (controls.RIGHT_P) changeDifficulty(1);
+        if (controls.LEFT_P || (CoolUtil.mouseOverlaps(leftArrow) && FlxG.mouse.justPressed)) {
+            changeDifficulty(-1);
+            leftArrow.playAnim('select', true);
+        }
+        if (controls.RIGHT_P || (CoolUtil.mouseOverlaps(rightArrow) && FlxG.mouse.justPressed)) {
+            changeDifficulty(1);
+            rightArrow.playAnim('select', true);
+        }
 
         if (FlxG.keys.justPressed.HOME) {
             changeSelection(-curSelected);
@@ -278,6 +306,7 @@ function changeSelection(ch, ?silent) {
     if (capsuleGroup.members[curSelected] != null) {
         capsuleGroup.members[curSelected].select();
         if (!silent) capsuleGroup.members[curSelected].clipTimer = 0;
+        trace(capsuleGroup.members[curSelected].text.clipRect);
     }
 
     if (!silent) CoolUtil.playMenuSFX(0);
@@ -411,6 +440,7 @@ function selectSong(id) {
             overlay.blend = BlendMode.SUBTRACT;
             overlay.alpha = 0;
             FlxG.sound.music.stop();
+            FlxTween.tween(Framerate.offset, {y: 0}, 0.2, {ease: FlxEase.sineOut});
             FlxTween.tween(overlay, {alpha: 1}, 0.2, {
                 ease: FlxEase.sineIn,
                 onComplete: (_) -> {

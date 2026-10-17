@@ -63,3 +63,5 @@ function postUpdate() {
 		MusicBeatState.ALLOW_DEV_RELOAD = GlobalScript._lastAllow_Reload;
 	}
 }
+
+public static var freeplayCurCharacter = 'bf';
