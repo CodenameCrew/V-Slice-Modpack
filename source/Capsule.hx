@@ -112,6 +112,7 @@ class Capsule extends FunkinGroup {
 
         icon = new FunkinSprite();
         icon.visible = false;
+        icon.pixelPerfectRender = true;
 
         for (i in [capsule, weekText, bpmText, diffStaticText, diffText, textBlur, text, icon]) {
             add(i);

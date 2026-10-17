@@ -371,16 +371,19 @@ function changeDifficulty(ch, ?silent) {
         diffSprite.addAnim('idle', 'idle0', 24, true);
         if (Options.flashingMenu) diffSprite.playAnim('idle', true);
     }
-    diffSprite.updateHitbox();
-    diffSprite.setPosition(diffAnchorX, 116);
-    diffSprite.x -= diffSprite.width * 0.5;
-    diffSprite.y -= diffSprite.height * 0.5;
 
-    final displacement = FlxMath.signOf(ch) * 400;
-    if (displacement != 0) {
-        diffSprite.x += displacement;
-        FlxTween.cancelTweensOf(diffSprite, ['x']);
-        FlxTween.tween(diffSprite, {x: diffSprite.x - displacement}, 0.2, {ease: FlxEase.circInOut});
+    if (ch != 0) {
+        diffSprite.updateHitbox();
+        diffSprite.setPosition(diffAnchorX, 116);
+        diffSprite.x -= diffSprite.width * 0.5;
+        diffSprite.y -= diffSprite.height * 0.5;
+
+        final displacement = FlxMath.signOf(ch) * 400;
+        if (displacement != 0) {
+            diffSprite.x += displacement;
+            FlxTween.cancelTweensOf(diffSprite, ['x']);
+            FlxTween.tween(diffSprite, {x: diffSprite.x - displacement}, 0.2, {ease: FlxEase.circInOut});
+        }
     }
 
     updateAllDiffs();

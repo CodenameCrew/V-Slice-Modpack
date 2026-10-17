@@ -135,6 +135,11 @@ class FunkinGroup extends FunkinSprite {
                             -ogX * child.scrollFactor.x * scrollFactor.x,
                             -ogY * child.scrollFactor.y * scrollFactor.y
                         );
+                        if (child.pixelPerfectRender ?? camera.pixelPerfectRender)
+                        {
+                            input.tx = Math.floor(input.tx);
+                            input.ty = Math.floor(input.ty);
+                        }
                         if (child.frame != null) {
                             (layer ?? camera).drawPixels(
                                 // TODO: dont do this, it fucks up positioning
