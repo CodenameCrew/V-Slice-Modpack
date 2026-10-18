@@ -1,4 +1,4 @@
-var characters = ['bf', 'pico'];
+var characters = ['bf', 'pico'/*, 'gf'*/];
 var curSelected = 0;
 var text = new FunkinText(500, 500, 500);
 var icon = new HealthIcon();
@@ -20,6 +20,7 @@ function create() {
 function update(elapsed) {
     if (controls.BACK) {
         CoolUtil.playMenuSFX(2).persist = true;
+        FlxG.sound.music.stop();
         FlxG.switchState(new FreeplayState());
         return;
     }
@@ -28,6 +29,7 @@ function update(elapsed) {
 
     if (controls.ACCEPT) {
         CoolUtil.playMenuSFX(1).persist = true;
+        FlxG.sound.music.stop();
         freeplayCurCharacter = characters[curSelected];
         FlxG.switchState(new FreeplayState());
     }

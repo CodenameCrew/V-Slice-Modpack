@@ -29,6 +29,35 @@ function preStateSwitch() {
 	checkInitialize();
 }
 
+public static var freeplayCurCharacter = 'bf';
+
+/*
+ * gets all addon overrides of a file (idk how 2 explain it)
+ * rn only meant for text/data files
+ * please credit if used outside of this project ok thx
+ */
+import funkin.backend.assets.ModsFolder;
+public static function getAddonFileContents(path:String, ?options) {
+	options ??= {baseFirst: true};
+	var contents = [];
+	var array = ModsFolder.getLoadedMods();
+	if (options.noBase || options.baseFirst) {
+		array.remove(ModsFolder.currentModFolder, true);
+		if (options.baseFirst) array.insert(0, ModsFolder.currentModFolder);
+	}
+	if (options.reverse) array.reverse();
+	for (i in array) {
+		var p = Path.withoutExtension(path);
+		var e = Path.extension(path);
+		var libPath = p + '/LIB_' + i + (e.length > 0 ? ('.' + e) : '');
+		if (Assets.exists(libPath)) {
+			//trace('exists', libPath);
+			contents.push(Assets.getText(libPath));
+		}
+	}
+	return contents;
+}
+
 function destroy() {
 	modInitialized = false;
 }
@@ -64,4 +93,3 @@ function postUpdate() {
 	}
 }
 
-public static var freeplayCurCharacter = 'bf';

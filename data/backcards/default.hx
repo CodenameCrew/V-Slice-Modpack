@@ -49,7 +49,7 @@ class BackingCard extends CustomGroup {
 
         var startY = (FlxG.height * 0.5) - 180;
         var text2 = { color: 0xFFfff383, text: 'NO BACKING CARD DETECTED !' };
-        var text3 = { color: 0xFFffffff, text: 'PLACE YOURS IN /data/backcards/ !!!' };
+        var text3 = { color: 0xFFffffff, text: 'PLACE YOURS IN /data/backcards/$freeplayCurCharacter.hx !!!' };
         for (x => i in [
             text2,
             text3,

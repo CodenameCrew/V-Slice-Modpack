@@ -19,6 +19,26 @@ var downTurboControl = new TurboControls([Control.DOWN]);
 var turboBasics = [upTurboControl, downTurboControl];
 var capsuleGroup = new FlxSpriteGroup();
 var fpList = FreeplaySonglist.get();
+
+function coolTextFile(content:String) {
+    var trim:String;
+	return [for(line in content.split("\n")) if ((trim = StringTools.trim(line)) != "" && !StringTools.startsWith(line, "#")) trim];
+}
+
+fpList.songs.resize(0);
+var songsFound = [];
+var contents = getAddonFileContents(Paths.txt('config/freeplaySonglist'));
+for (i in contents) {
+    var __songsFound = coolTextFile(i);
+    for (i in __songsFound) {
+        if (!songsFound.contains(i)) songsFound.push(i);
+        else continue;
+    }
+}
+for (s in songsFound) {
+    fpList.songs.push(Chart.loadChartMeta(s));
+}
+
 var swList = StoryWeeklist.get(null, false);
 var character = freeplayCurCharacter;
 var finalSongList = [];
@@ -30,7 +50,11 @@ if (Assets.exists('data/backcards/' + character + '.hx')) {
     importScript('data/backcards/default.hx');
 }
 var stupidDadBG = new FunkinSprite();
-stupidDadBG.loadGraphic(Paths.image('menus/freeplay/freeplayBGweek1-' + character));
+var imagePath = Paths.image('menus/freeplay/week1BG/' + character);
+if (!Assets.exists(imagePath)) {
+    imagePath = Paths.image('menus/freeplay/week1BG/bf');
+}
+stupidDadBG.loadGraphic(imagePath);
 stupidDadBG.setGraphicSize(null, FlxG.height);
 stupidDadBG.antialiasing = true;
 stupidDadBG.updateHitbox();
@@ -102,15 +126,6 @@ function create() {
     add(leftArrow);
     add(rightArrow);
 
-    function existsInCurDiffs(a:String) {
-        var i = 0;
-        while (i < curDiffList.length) {
-            if (curDiffList[i++].name == a) {
-                return true;
-            }
-        }
-        return false;
-    }
     var normalColors = [0xFF484848, 0xFFFAFAFA, 0xFF919191, 0xFFC9C9C9];
     var nightColors = [0xFF34296A, 0xFFC28AFF, 0xFF8A58D0, 0xFFFFB1DC];
     diffDots.antialiasing = true;
@@ -188,7 +203,7 @@ function postCreate() {
         }
     }
 
-    changeDifficulty(Math.abs(stupidDiffIndex), true);
+    changeDifficulty(Math.abs(stupidDiffIndex), true, null, true);
 
     Framerate.offset.y = 65;
 
@@ -261,7 +276,7 @@ function update(elapsed) {
             changeSelection(-curSelected);
         }
         if (FlxG.keys.justPressed.END) {
-            changeSelection(capsuleGroup.members.length - 1 - curSelected);
+            changeSelection(finalSongList.length - 1 - curSelected);
         }
 
         if (controls.ACCEPT) {
@@ -288,6 +303,7 @@ function update(elapsed) {
         c.x = capsuleGroup.x + Math.sin(diff + 0.98) * 60 - 60;
         c.y = capsuleGroup.y + (diff + Math.min(diff, -1) + 1) * 115.5;
         c.scrollFactor.set(0, 0.6);
+        c.exists = (diff > -2) && (diff < 4); // this holds everything together
     });
 }
 function destroy() {
@@ -296,6 +312,9 @@ function destroy() {
 }
 function changeSelection(ch, ?silent) {
     silent ??= false;
+
+    var pastDiff = curSelectedDiffData?.name ?? null;
+
     var pastSelected = curSelected;
     curSelected = FlxMath.wrap(curSelected + ch, 0, finalSongList.length - 1);
     if (capsuleGroup.members[pastSelected] != null) {
@@ -306,10 +325,24 @@ function changeSelection(ch, ?silent) {
     if (capsuleGroup.members[curSelected] != null) {
         capsuleGroup.members[curSelected].select();
         if (!silent) capsuleGroup.members[curSelected].clipTimer = 0;
-        trace(capsuleGroup.members[curSelected].text.clipRect);
     }
 
     if (!silent) CoolUtil.playMenuSFX(0);
+
+    function getCurDiffID(a:String) {
+        var i = 0;
+        while (i < curDiffList.length) {
+            if (curDiffList[i++].name == a) {
+                return i - 1;
+            }
+        }
+        return -1;
+    }
+
+    refreshCSDD();
+    var diffID = getCurDiffID(pastDiff);
+    curSelectedDiff = diffID;
+    changeDifficulty(0, true, false);
 
     final cap = capsuleGroup.members[curSelected];
     final save = (cap.name != null && curSelectedDiffData != null) ? (FunkinSave.getSongHighscore(
@@ -322,8 +355,7 @@ function changeSelection(ch, ?silent) {
     intendedAccuracy = save?.accuracy ?? 0;
 
     lastSong = cap.name;
-
-    refreshCSDD();
+    detectedDiffShit = false;
 }
 var allGlobalDiffs = [];
 var curSelectedDiff = 0;
@@ -354,8 +386,10 @@ function refreshCSDD() {
     curSelectedDiff = FlxMath.wrap(curSelectedDiff, 0, curDiffList.length - 1);
     curSelectedDiffData = curDiffList[curSelectedDiff];
 }
-function changeDifficulty(ch, ?silent) {
+function changeDifficulty(ch, ?silent, ?sel, ?forceAnim) {
     silent ??= false;
+    sel ??= true;
+    forceAnim ??= false;
 
     var pastSelectedDiff = curSelectedDiff;
     curSelectedDiff += ch;
@@ -367,16 +401,17 @@ function changeDifficulty(ch, ?silent) {
 
     final diff = curSelectedDiffData.name;
     diffSprite.loadSprite(Paths.image('menus/freeplay/difficulties/' + diff));
+    diffSprite.antialiasing = true;
     if (diffSprite.frames is FlxAtlasFrames) {
         diffSprite.addAnim('idle', 'idle0', 24, true);
         if (Options.flashingMenu) diffSprite.playAnim('idle', true);
     }
 
-    if (ch != 0) {
+    if (forceAnim || ch != 0) {
         diffSprite.updateHitbox();
         diffSprite.setPosition(diffAnchorX, 116);
-        diffSprite.x -= diffSprite.width * 0.5;
-        diffSprite.y -= diffSprite.height * 0.5;
+        diffSprite.x = Std.int(diffSprite.x - diffSprite.width * 0.5);
+        diffSprite.y = Std.int(diffSprite.y - diffSprite.height * 0.5);
 
         final displacement = FlxMath.signOf(ch) * 400;
         if (displacement != 0) {
@@ -386,17 +421,21 @@ function changeDifficulty(ch, ?silent) {
         }
     }
 
-    updateAllDiffs();
-    changeSelection(0, true);
+    if (sel) {
+        updateAllDiffs();
+        changeSelection(0, true);
+    }
 }
+var detectedDiffShit = false;
 var curTrackedVariation = (character == 'bf') ? null : character;
+var curTrackedDiff = null;
 function updateAllDiffs() {
     var diff = curSelectedDiffData;
-    //trace(diff);
     if (diff == null) return;
     var targetVariation = diff.variation;
+    var targetDiff = diff.name;
     // KILL FUNKIN CREW
-    if ((diff.variation == 'bf') && (character == 'bf')) {
+    if (diff.variation == character) {
         targetVariation = null;
     }
     if (curTrackedVariation != targetVariation) {
@@ -404,6 +443,26 @@ function updateAllDiffs() {
         // implement letter sorting later?
         regenSongRegistry(null, diff.variation);
         regenSongList();
+    }
+    if (curTrackedDiff != targetDiff) {
+        curTrackedDiff = targetDiff;
+        
+        // KILL FUNKIN CREW
+        var dipshit = false;
+        for (i in capsuleGroup.members) {
+            if (i.curMeta == null) continue;
+            if (!existsInCurDiffs(diff.name, i.curMeta.allDifficulties)) {
+                dipshit = true;
+                // implement letter sorting later?
+                regenSongRegistry(null, curTrackedVariation, diff.name);
+                regenSongList(true);
+                break;
+            }
+        }
+        if (!dipshit) {
+            regenSongRegistry(null, curTrackedVariation, diff.name);
+            regenSongList();
+        }
     }
     capsuleGroup.forEachAlive((cap) -> {
         if (cap.name == null) return;
@@ -414,14 +473,21 @@ function selectSong(id) {
     enableControls = false;
     if (id == 0) {
         // no songs
-        if (capsuleGroup.members.length > 1) {
+        if (finalSongList.length > 1) {
             while (id == 0) {
-                id = FlxG.random.int(1, capsuleGroup.members.length - 1);
+                id = FlxG.random.int(1, finalSongList.length - 1);
             }
             changeSelection(id);
             new FlxTimer().start(0.4, (_) -> { selectSong(curSelected); });
         }
-        else CoolUtil.playMenuSFX(2);
+        else {
+            var c = capsuleGroup.members[id];
+            FlxTween.cancelTweensOf(c.frameOffset);
+            c.frameOffset.y = -6;
+            FlxTween.tween(c.frameOffset, {y: 0}, 0.7, {ease: FlxEase.elasticOut, framerate: 15});
+            CoolUtil.playMenuSFX(2);
+            enableControls = true;
+        }
         return;
     }
     if (capsuleGroup.members[id] != null) {
@@ -478,7 +544,7 @@ function postUpdate(elapsed) {
 //region super backend
 /////////////////////////////////////////////////////////////////
 
-function regenSongRegistry(?extraSort, ?forcedVari) {
+function regenSongRegistry(?extraSort, ?forcedVari, ?forcedDiff) {
     finalSongList.resize(0);
     var stupid = 0;
     while (stupid < fpList.songs.length) {
@@ -601,6 +667,10 @@ function regenSongRegistry(?extraSort, ?forcedVari) {
             Reflect.setField(i, 'parent', og);
         }
 
+        if ((i != null) && (forcedDiff != null)) {
+            if (!existsInCurDiffs(forcedDiff.toLowerCase(), i.allDifficulties)) continue;
+        }
+
         finalSongList.push(i);
     }
 
@@ -610,11 +680,13 @@ function regenSongRegistry(?extraSort, ?forcedVari) {
     finalSongList.insert(0, null); // random
 }
 var lastSong = Options.freeplayLastSong;
-function regenSongList() {
+function regenSongList(?noUpdate) {
+    noUpdate ??= false;
     var lastSongID = -1;
     if (lastSong == null) {
         lastSongID = 0;
     } else {
+        lastSongID = 0;
         for (x => i in finalSongList) {
             if ((i != null) && (lastSong != null) && (lastSong.toLowerCase() == i.name.toLowerCase())) {
                 lastSongID = x;
@@ -652,5 +724,16 @@ function regenSongList() {
     }
 
     curSelected = lastSongID;
-    changeDifficulty(0, true);
+    changeDifficulty(0, true, !noUpdate);
+    if (noUpdate) changeSelection(0, true);
+}
+function existsInCurDiffs(a:String, ?array) {
+    array ??= curDiffList;
+    var i = 0;
+    while (i < array.length) {
+        if ((array[i++].name.toLowerCase()) == (a.toLowerCase())) {
+            return true;
+        }
+    }
+    return false;
 }
