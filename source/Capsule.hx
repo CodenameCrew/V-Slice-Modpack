@@ -45,7 +45,7 @@ class Capsule extends FunkinGroup {
     public var goldSparkle:FunkinSprite;
     public var glowColor:Int = 0x00ccff;
     public var glowColor2:Int = 0x00ccff; // for when styles are implemented
-    public var clipWidth:Int = 292; // 245 with rank
+    public var clipWidth:Int = 290; // 245 with rank
     public var selected:Int = false;
     public function new() {
         super();
@@ -164,11 +164,18 @@ class Capsule extends FunkinGroup {
         
         text.setPosition(92/* + clipTransTimer * Math.min(0, clipWidth - text.width)*/, 32);
         textBlur.setPosition(text.x, text.y);
-        weekText.setPosition(232, 76);
+        weekText.setPosition(228, 76);
         bpmStaticText.setPosition(79, 76);
         bpmText.setPosition(123, 76);
         diffStaticText.setPosition(354, 76);
         diffText.setPosition(400, 18);
+        // looks stupid i know but ehhh
+        if (diffText.text.substr(0, 1) == '1') {
+            diffText.x += 3;
+            diffText.letterSpacing = 6;
+        } else {
+            diffText.letterSpacing = -1;
+        }
         rankBadge.setPosition(354, 28);
         rankBadgeBlur.setPosition(rankBadge.x, rankBadge.y);
         rankBadgeBlur.visible = rankBadge.visible;
@@ -258,7 +265,7 @@ class Capsule extends FunkinGroup {
     public function setRankFromHighscore(hi:Dynamic) {
         var wasVisible = rankBadge.visible;
         rankBadge.visible = (hi != null) && (hi.accuracy > 0);
-        clipWidth = 292;
+        clipWidth = 290;
         rank = null;
         if (!rankBadge.visible) return;
 

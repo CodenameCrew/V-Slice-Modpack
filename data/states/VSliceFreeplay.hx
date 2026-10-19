@@ -43,6 +43,30 @@ var swList = StoryWeeklist.get(null, false);
 var character = freeplayCurCharacter;
 var finalSongList = [];
 
+var albumDatas = [
+    '__placeholder__' => {
+        image: 'menus/freeplay/album-placeholder',
+        text: 'menus/freeplay/albums/volume1-text',
+        data: {
+            albumTitleOffsets: [8, 0]
+        }
+    }
+];
+for (i in Paths.getFolderContent('images/menus/freeplay/albums/')) {
+    if (!StringTools.endsWith(i, '.json')) continue;
+    var json = CoolUtil.parseJson('assets/images/menus/freeplay/albums/' + i);
+    final key = i.substr(0, i.length - 5);
+
+    // albumArtAsset and albumTitleAsset currently go unused
+    albumDatas.set(key, {
+        image: 'menus/freeplay/albums/' + key,
+        text: 'menus/freeplay/albums/' + key + '-text',
+        data: json
+    });
+}
+var curAlbum = null;
+
+
 // visuals
 if (Assets.exists('data/backcards/' + character + '.hx')) {
     importScript('data/backcards/' + character + '.hx');
@@ -72,7 +96,10 @@ void main() {
 var bg = getBackground();
 bg.bg = stupidDadBG;
 var fgBar = new FunkinSprite();
-var album = new FunkinSprite(0, 0, Paths.image('menus/freeplay/albums/placeholder'));
+var album = new FunkinSprite(0, 0, Paths.image('menus/freeplay/album-placeholder'));
+var albumName = new FunkinSprite(0, 0, Paths.image('menus/freeplay/albums/volume1-text'));
+var albumStars = new FlxSpriteGroup();
+var albumFlames = new FlxSpriteGroup();
 var ostName = new FunkinText(8, 8, FlxG.width - 16, 'OFFICIAL OST', 48);
 var highscoreTxt = new FunkinSprite(0, 70, Paths.image('menus/freeplay/highscore'));
 var highscoreAnimTimerForNoReason:Float = 0;
@@ -151,12 +178,11 @@ function create() {
     add(stupidDadBG);
 
     album.antialiasing = true;
-    album.setGraphicSize(256, 256);
     album.setPosition(
-        Std.int(FlxG.width * 0.75),
-        Std.int(FlxG.height * 0.5) - 60
+        Std.int(FlxG.width * 0.75) - 18,
+        Std.int(FlxG.height * 0.5) - 86
     );
-    album.angle = 7;
+    album.angle = 10.26;
 
     // look funkin crew !!!!!!!!! no texture atlas !!!!!!!!
     var startX = album.x;
@@ -167,6 +193,58 @@ function create() {
         FlxTween.tween(album, {x: startX, angle: startAngle}, 0.6, {framerate: 12, ease: FlxEase.expoOut})
     );
     add(album);
+    albumName.antialiasing = true;
+    albumName.setPosition(
+        Std.int(FlxG.width * 0.75) - 35,
+        Std.int(FlxG.height * 0.5) + 140
+    );
+    add(albumName);
+
+    // this should be the corner position of the album
+    albumFlames.setPosition(
+        Std.int(FlxG.width * 0.75) + 8,
+        Std.int(FlxG.height * 0.5) - 107
+    );
+    albumStars.setPosition(
+        Std.int(FlxG.width * 0.75) + 8,
+        Std.int(FlxG.height * 0.5) - 107
+    );
+
+    add(albumFlames);
+    add(albumStars);
+
+    final TO_RAD = 0.017453292519943295; // FlxAngle.TO_RAD is null in hscript (pls fix ???)
+    for (i in 0...10) {
+        final xx = i * Math.cos(startAngle * TO_RAD) * 28.2;
+        final yy = i * Math.sin(startAngle * TO_RAD) * 25.6; // off on purpose (thanks dave)
+
+        var star = new FunkinSprite(xx, yy, Paths.image('menus/freeplay/freeplay-stars'));
+        star.addAnim('star', 'difficulty stars', 24, true, null, null, 20, 36);
+        star.addAnim('star-lit', 'difficulty stars', 6, true, null, [65], 20, 36);
+        star.addAnim('dot', 'diffuculty dot' /* David Brown. */, 24, true, null, null, 5, 5);
+        star.playAnim('dot', true);
+        star.updateHitbox();
+        star.antialiasing = true;
+        albumStars.add(star);
+
+        var flame = new FunkinSprite(xx, yy, Paths.image('menus/freeplay/freeplay-flame'));
+        flame.addAnim('idle', 'fire loop full instance 1', 24, false, null,                   [0, 1], 55, 150);
+        flame.addAnim('idle-loop', 'fire loop full instance 1', 24, true, null, [for (i in 2...9) i], 55, 150);
+        flame.playAnim('idle', true);
+        flame.updateHitbox();
+        flame.antialiasing = true;
+        // im lazy
+        flame.extra['animTimer'] = new FlxTimer();
+        flame.extra['animTimer'].onComplete = (_) -> {
+            flame.exists = true;
+        };
+        albumFlames.add(flame);
+    }
+
+    albumStars.exists = albumFlames.exists = albumName.exists = false;
+    new FlxTimer().start(1, (_) -> {
+        albumStars.exists = albumFlames.exists = albumName.exists = true;
+    });
 
     add(capsuleGroup);
     
@@ -202,10 +280,9 @@ function create() {
 }
 
 function postCreate() {
-    capsuleGroup.setPosition(FlxG.width * 0.5 - 243, FlxG.height * 0.5 - 111);
+    capsuleGroup.setPosition(Std.int(FlxG.width * 0.5 - 243), Std.int(FlxG.height * 0.5 - 111));
 
     regenSongList();
-    lerpSelected = curSelected;
 
     // KILL FUNKIN CREW
     var stupidDiffIndex = -1;
@@ -217,6 +294,7 @@ function postCreate() {
     }
 
     changeDifficulty(Math.abs(stupidDiffIndex), true, null, true);
+    lerpSelected = curSelected;
 
     Framerate.offset.y = 65;
 
@@ -586,7 +664,62 @@ function changeSelection(ch, ?silent) {
     intendedAccuracy = save?.accuracy ?? 0;
 
     lastSong = cap.name;
-    detectedDiffShit = false;
+
+    albumStars.visible = albumFlames.visible = albumName.visible = album.visible = (cap.name != null);
+    if (cap.name == null) {
+        changeAlbum(curAlbum = albumDatas['__placeholder__']);
+        updateStars(0);
+        return;
+    }
+    final meta = cap?.curMeta ?? cap?.curMeta?.parent;
+    var newAlbum = (meta?.customValues?.album) ?? '__placeholder__';
+    if (curAlbum != newAlbum) {
+        curAlbum = newAlbum;
+        changeAlbum(albumDatas[newAlbum]);
+    }
+    updateStars(Reflect.field(meta?.customValues?.ratings, curSelectedDiffData.name) ?? 0);
+}
+function updateStars(count:Int) {
+    for (x => i in albumStars.members) {
+        var isStar = Math.min(albumStars.members.length, count - 1) >= x;
+        i.playAnim(isStar ? 'star' : 'dot', true);
+        if (isStar) {
+            i.globalCurFrame = (albumStars.members.length - x) * 2;
+            if ((count - albumStars.members.length) > x) {
+                i.playAnim('star-lit', true);
+            }
+        }
+    }
+    var lastFlamesVisible = albumFlames.visible;
+    albumFlames.visible = count > albumFlames.members.length;
+    if (!albumFlames.visible) return;
+    for (x => i in albumFlames.members) {
+        var isStar = Math.min(albumFlames.members.length, count - albumStars.members.length - 1) >= x;
+        i.exists = false;
+        i.playAnim('idle', true);
+        if (!isStar) continue;
+        i.extra['animTimer'].start((x + 1) * 0.1 + FlxG.random.float(-0.05, 0.05), i.extra['animTimer'].onComplete);
+    }
+}
+var stupidAssTimer = new FlxTimer();
+function changeAlbum(al) {
+    album.loadGraphic(Paths.image(al?.image ?? 'menus/freeplay/albums/volume1'));
+    album.setGraphicSize(262, 262);
+    album.updateHitbox();
+
+    final bump = 10;
+    album.offset.y -= bump;
+    if (stupidAssTimer != null) stupidAssTimer.cancel();
+    stupidAssTimer.start(2 / 24, (_) -> {
+        album.offset.y += bump;
+    });
+
+    // cheating here for a bit cus i dont like the anim names
+    albumName.loadSprite(Paths.image(al?.text ?? 'menus/freeplay/albums/volume1-text'));
+    albumName.addAnim('idle', 'switch',   24, false, null, null, (al?.data?.albumTitleOffsets[0] ?? 0) * -1, (al?.data?.albumTitleOffsets[1] ?? 0) * -1);
+    albumName.addAnim('idle-loop', 'idle', 24, true, null, null, (al?.data?.albumTitleOffsets[0] ?? 0) * -1, (al?.data?.albumTitleOffsets[1] ?? 0) * -1);
+    albumName.playAnim('idle', true);
+    albumName.updateHitbox();
 }
 var allGlobalDiffs = [];
 var curSelectedDiff = 0;
@@ -657,7 +790,6 @@ function changeDifficulty(ch, ?silent, ?sel, ?forceAnim) {
         changeSelection(0, true);
     }
 }
-var detectedDiffShit = false;
 var curTrackedVariation = (character == 'bf') ? null : character;
 var curTrackedDiff = null;
 function updateAllDiffs() {
