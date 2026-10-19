@@ -72,6 +72,7 @@ void main() {
 var bg = getBackground();
 bg.bg = stupidDadBG;
 var fgBar = new FunkinSprite();
+var album = new FunkinSprite(0, 0, Paths.image('menus/freeplay/albums/placeholder'));
 var ostName = new FunkinText(8, 8, FlxG.width - 16, 'OFFICIAL OST', 48);
 var highscoreTxt = new FunkinSprite(0, 70, Paths.image('menus/freeplay/highscore'));
 var highscoreAnimTimerForNoReason:Float = 0;
@@ -149,6 +150,24 @@ function create() {
 
     add(stupidDadBG);
 
+    album.antialiasing = true;
+    album.setGraphicSize(256, 256);
+    album.setPosition(
+        Std.int(FlxG.width * 0.75),
+        Std.int(FlxG.height * 0.5) - 60
+    );
+    album.angle = 7;
+
+    // look funkin crew !!!!!!!!! no texture atlas !!!!!!!!
+    var startX = album.x;
+    var startAngle = album.angle;
+    album.x += 400;
+    album.angle += 200;
+    FlxTween.tween(album, {x: startX - 20, angle: startAngle - 10}, 0.3, {framerate: 12}).then(
+        FlxTween.tween(album, {x: startX, angle: startAngle}, 0.6, {framerate: 12, ease: FlxEase.expoOut})
+    );
+    add(album);
+
     add(capsuleGroup);
     
     fgBar.scrollFactor.set(0, 1.2);
@@ -180,17 +199,10 @@ function create() {
     scoreCounter.x = FlxG.width - 353;
     scoreCounter.y = 120;
     add(scoreCounter);
-
-    for (i in [highscoreTxt, bg, clearBox, clearPercent, leftArrow, rightArrow, diffSprite, diffDots]) {
-        i.scrollFactor.set(0, 1.2);
-    }
-    for (i in scoreCounter.numbers) {
-        i.scrollFactor.set(0, 1.2);
-    }
 }
 
 function postCreate() {
-    capsuleGroup.setPosition(FlxG.width * 0.5 - 245, FlxG.height * 0.5 - 111);
+    capsuleGroup.setPosition(FlxG.width * 0.5 - 243, FlxG.height * 0.5 - 111);
 
     regenSongList();
     lerpSelected = curSelected;
@@ -308,6 +320,9 @@ function postCreate() {
             displayCap.setRankFromHighscore(curSelectedDiffData.highscore);
             displayCap.rankBadge.scale.set(20, 20);
             FlxTween.tween(displayCap.rankBadge.scale, {x: 0.9, y: 0.9}, 0.1);
+
+            displayCap.rankBadgeBlur.scale.set(20, 20);
+            FlxTween.tween(displayCap.rankBadgeBlur.scale, {x: 0.9, y: 0.9}, 0.1);
 
             var rankSound = switch (displayCap.rank) {
                 case 'loss': 'bad';
@@ -457,7 +472,7 @@ function update(elapsed) {
 
             final scrollStartDelay = 0.45;
 
-            FlxTween.tween(FlxG.camera.scroll, {y: 222}, 0.9, {startDelay: scrollStartDelay, ease: FlxEase.backIn});
+            FlxTween.tween(FlxG.camera.scroll, {y: 250}, 0.9, {startDelay: scrollStartDelay, ease: FlxEase.backIn});
             FlxTween.tween(Framerate.offset, {y: 0}, 0.8, {startDelay: scrollStartDelay, ease: FlxEase.backIn});
 
             Options.freeplayLastSong = lastSong;
@@ -522,15 +537,17 @@ function update(elapsed) {
     lerpSelected = lerp(lerpSelected, curSelected, 0.25);
 
     capsuleGroup.forEach((c) -> {
+        // cant use forEachAlive cus im setting exists
+        if (!c.alive) return;
         if (enableControls && !pressedDiff && CoolUtil.mouseOverlaps(c) && FlxG.mouse.justPressed) {
             if (curSelected == c.ID) {
                 selectSong(c.ID);
             } else changeSelection(c.ID - curSelected);
         }
         var diff = c.ID - lerpSelected;
-        c.x = capsuleGroup.x + Math.sin(diff + 0.98) * 60 - 60;
+        c.x = capsuleGroup.x + Math.sin(diff + 1) * 60.5 - 60.5;
         c.y = capsuleGroup.y + (diff + Math.min(diff, -1) + 1) * 115.5;
-        c.scrollFactor.set(0, 0.6);
+        c.scrollFactor.set(0, 0.4);
         c.exists = (diff > -2) && (diff < 4); // this holds everything together
     });
 }

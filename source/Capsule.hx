@@ -11,23 +11,16 @@ void main() {
     vec2 uv = openfl_TextureCoordv;
     gl_FragColor = flixel_texture2D(bitmap, uv);
     float blur = 0.0;
-    vec2 size = vec2(0.02);
-    blur += texture2D(bitmap, uv + size * vec2(0.0,  1.0)).a;
-    blur += texture2D(bitmap, uv + size * vec2(0.0, -1.0)).a;
-    blur += texture2D(bitmap, uv + size * vec2( 1.0, 0.0)).a;
-    blur += texture2D(bitmap, uv + size * vec2(-1.0, 0.0)).a;
-    blur += texture2D(bitmap, uv + size * vec2(0.0,  2.0)).a * 2.0;
-    blur += texture2D(bitmap, uv + size * vec2(0.0, -2.0)).a * 2.0;
-    blur += texture2D(bitmap, uv + size * vec2( 2.0, 0.0)).a * 2.0;
-    blur += texture2D(bitmap, uv + size * vec2(-2.0, 0.0)).a * 2.0;
-    blur += texture2D(bitmap, uv + size * vec2(0.0,  3.0)).a * 0.5;
-    blur += texture2D(bitmap, uv + size * vec2(0.0, -3.0)).a * 0.5;
-    blur += texture2D(bitmap, uv + size * vec2( 3.0, 0.0)).a * 0.5;
-    blur += texture2D(bitmap, uv + size * vec2(-3.0, 0.0)).a * 0.5;
-    blur /= 18.0;
-	gl_FragColor *= smoothstep(0.0, 0.6, 1.0 - blur);
+    blur += texture2D(bitmap, uv, 1.0).a;
+    blur += texture2D(bitmap, uv, 1.5).a;
+    blur += texture2D(bitmap, uv, 2.5).a;
+    blur *= 0.25;
+	gl_FragColor *= pow(smoothstep(0.125, 0.9, (1.0 - blur) * 2.0), 3.0);
 }
 ');
+HANG_FUNKIN_CREW_BY_JUMPER_CABLES.data.bitmap.mipFilter = 0;
+var whySoManyDetailOMFG = FunkinShader.fromFile('gaussian-blur');
+whySoManyDetailOMFG._amount = 1;
 
 class Capsule extends FunkinGroup {
     // TODO: make everything revolve around this
@@ -43,14 +36,16 @@ class Capsule extends FunkinGroup {
     public var textBlur:FunkinText;
     public var weekText:FunkinText;
     public var bpmText:FunkinText;
+    public var bpmStaticText:FunkinText;
     public var diffStaticText:FunkinText;
     public var diffText:FunkinText; // numbers
     public var icon:FunkinSprite;
     public var rankBadge:FunkinSprite;
+    public var rankBadgeBlur:FunkinSprite; // KILL FUNKIN CREW
     public var goldSparkle:FunkinSprite;
     public var glowColor:Int = 0x00ccff;
     public var glowColor2:Int = 0x00ccff; // for when styles are implemented
-    public var clipWidth:Int = 292; // 255 with rank
+    public var clipWidth:Int = 292; // 245 with rank
     public var selected:Int = false;
     public function new() {
         super();
@@ -67,16 +62,20 @@ class Capsule extends FunkinGroup {
         capsule.antialiasing = true;
 
         rankBadge = new FunkinSprite(0, 0, Paths.image('menus/freeplay/rankbadges'));
-        for (i in ['perfect', 'excellent', 'great', 'good', 'loss']) {
-            rankBadge.addAnim(i, i.toUpperCase() + ' rank0', 24, false);
+        rankBadgeBlur = new FunkinSprite(0, 0, Paths.image('menus/freeplay/rankbadges'));
+        rankBadgeBlur.shader = whySoManyDetailOMFG;
+        for (j in [rankBadge, rankBadgeBlur]) {
+            for (i in ['perfect', 'excellent', 'great', 'good', 'loss']) {
+                j.addAnim(i, i.toUpperCase() + ' rank0', 24, false);
+            }
+            j.addAnim('perfect-gold', 'PERFECT rank GOLD', 24, false);
+            j.playAnim('perfect-gold', true);
+            j.scale.set(0.9, 0.9);
+            j.updateHitbox();
+            j.blend = BlendMode.ADD;
+            j.antialiasing = true;
+            j.visible = false;
         }
-        rankBadge.addAnim('perfect-gold', 'PERFECT rank GOLD', 24, false);
-        rankBadge.playAnim('perfect-gold', true);
-        rankBadge.scale.set(0.9, 0.9);
-        rankBadge.updateHitbox();
-        rankBadge.blend = BlendMode.ADD;
-        rankBadge.antialiasing = true;
-        rankBadge.visible = false;
 
         goldSparkle = new FunkinSprite(0, 0, Paths.image('menus/freeplay/sparkle'));
         goldSparkle.addAnim('idle', 'sparkle Export', 24, false);
@@ -92,52 +91,66 @@ class Capsule extends FunkinGroup {
         text.borderSize = text.borderColor = 0;
         text.rawClipRect = new FlxRect(0, 0, text.width, text.height);
         text.antialiasing = true;
-        text.textField.filters = [
-            new GlowFilter(glowColor, 1, 5, 5, 210, 1)
-        ];
+        text.blend = BlendMode.ADD;
 
         textBlur = new FunkinText(0, 0, -1, 'Bro', Math.floor(40 * realScaled));
         textBlur.font = Paths.font('5by7.ttf');
         textBlur.borderSize = textBlur.borderColor = 0;
-        textBlur.shader = FunkinShader.fromFile('gaussian-blur');
-        textBlur.shader._amount = 1;
+        textBlur.shader = whySoManyDetailOMFG;
         textBlur.rawClipRect = new FlxRect(0, 0, textBlur.width, textBlur.height);
         textBlur.antialiasing = true;
         textBlur.color = glowColor;
 
-        weekText = new FunkinText(0, 0, 300, 'Week 8');
-        bpmText = new FunkinText(0, 0, 300, 'BPM 190');
-        diffStaticText = new FunkinText(0, 0, -1, 'Difficulty');
+        weekText = new FunkinText(0, 0, 300, 'week 8');
+        bpmStaticText = new FunkinText(0, 0, 100, 'bpm'); // the M is fucky and is only accurate is theres nothing after it (im guessing ligatures)
+        bpmText = new FunkinText(0, 0, 300, '190');
+        diffStaticText = new FunkinText(0, 0, -1, 'difficulty');
         diffText = new FunkinText(0, 0, -1, '00');
-        /*
-        var capsuleOuterFilter = [
-            new GlowFilter(0x21242E, 2, 4, 4, 210, true, true),
-        ];;
-        */
+        
+        /*var capsuleOuterFilter = [
+            // 0x1A1C24
+            new GlowFilter(0xffffff, 1, 5, 5, 3.13, 1),
+        ];*/
 
-        for (i in [weekText, bpmText, diffStaticText, diffText]) {
+        for (i in [weekText, bpmText, bpmStaticText, diffStaticText, diffText]) {
             i.font = Paths.font("YoureGone-Regular.otf");
-            i.size = 18;
+            i.size = 20;
             i.antialiasing = true;
             i.borderSize = i.borderColor = 0;
-            /*
+            i.scale.set(0.9, 0.9);
+            i.updateHitbox();
+            
             // use this when GlowFilter.inner works
-            weekText.color = 0x413d4b;
-            weekText.textField.filters = capsuleOuterFilter
-            */
+            /*capsuleOuterFilter[0].inner = true;
+
+            i.color = 0x413d4b;
+            i.textField.filters = capsuleOuterFilter;*/
             // for now use this
             i.shader = HANG_FUNKIN_CREW_BY_JUMPER_CABLES;
-            i.color = 0x161920;
+            i.color = 0x1A1C24;
         }
 
+        text.textField.filters = [
+            new GlowFilter(glowColor, 1, 5, 5, 210, 1)
+        ];
+
         diffText.size = 46;
+        diffText.scale.set(1, 1);
+        diffText.updateHitbox();
         diffText.letterSpacing = -1;
 
         icon = new FunkinSprite();
         icon.visible = false;
         icon.pixelPerfectRender = true;
 
-        for (i in [capsule, weekText, bpmText, diffStaticText, diffText, textBlur, text, rankBadge, icon]) {
+        // KILL FUNKIN CREW
+        for (i in [
+            capsule, weekText,
+            bpmStaticText, bpmText,
+            diffStaticText, diffText, 
+            textBlur, text, rankBadgeBlur,
+            rankBadge, icon
+        ]) {
             add(i);
         }
     }
@@ -149,14 +162,17 @@ class Capsule extends FunkinGroup {
 
         textBlur.rawClipRect = textBlur.rawClipRect.set(text.rawClipRect.x, text.rawClipRect.y, text.rawClipRect.width, text.rawClipRect.height);
         
-        textBlur.setPosition(92/* + clipTransTimer * Math.min(0, clipWidth - textBlur.width)*/, 32);
         text.setPosition(92/* + clipTransTimer * Math.min(0, clipWidth - text.width)*/, 32);
-        weekText.setPosition(228, 76);
-        bpmText.setPosition(76, 76);
-        diffStaticText.setPosition(355, 76);
+        textBlur.setPosition(text.x, text.y);
+        weekText.setPosition(232, 76);
+        bpmStaticText.setPosition(79, 76);
+        bpmText.setPosition(123, 76);
+        diffStaticText.setPosition(354, 76);
         diffText.setPosition(400, 18);
-        rankBadge.setPosition(350, 28);
-        icon.setPosition(-2, icon.height * -0.5 + 48);
+        rankBadge.setPosition(354, 28);
+        rankBadgeBlur.setPosition(rankBadge.x, rankBadge.y);
+        rankBadgeBlur.visible = rankBadge.visible;
+        icon.setPosition(94, 22);
 
         setSize(capsule.width, capsule.height);
 
@@ -191,7 +207,9 @@ class Capsule extends FunkinGroup {
         // random capsule
         name = null;
         if (meta == null) {
-            icon.visible = bpmText.visible = weekText.visible = diffStaticText.visible = diffText.visible = false;
+            for (i in [icon, bpmText, bpmStaticText, weekText, diffStaticText, diffText]) {
+                i.visible = false;
+            }
             textBlur.text = text.text = 'Random';
             return;
         }
@@ -205,13 +223,15 @@ class Capsule extends FunkinGroup {
             icon.addAnim('confirm-hold', 'confirm-hold', 12, true);
             icon.playAnim('idle', true);
             icon.scale.set(2, 2);
-            icon.updateHitbox();
+            //icon.updateHitbox();
 
             switch (meta.icon ?? 'face') {
                 case 'parents-christmas':
-                    icon.offset.x += 45;
+                    icon.origin.x = 140;
                 case 'sserafim-kazuha': // not coming but idc
-                    icon.offset.x += 100;
+                    icon.origin.x = 195;
+                default:
+                    icon.origin.x = 100;
             }
         } else {
             icon.visible = false;
@@ -219,7 +239,7 @@ class Capsule extends FunkinGroup {
 
         if (hasChanged) clipTimer = 0;
         textBlur.text = text.text = meta.displayName ?? meta.name;
-        bpmText.text = 'BPM ' + CoolUtil.addZeros(meta.bpm ?? 0, 3);
+        bpmText.text = CoolUtil.addZeros(meta.bpm ?? 0, 3);
 
         // KILL FUNKIN CREW
         var finalWeekText = this.meta?.week;
@@ -242,7 +262,7 @@ class Capsule extends FunkinGroup {
         rank = null;
         if (!rankBadge.visible) return;
 
-        clipWidth = 255;
+        clipWidth = 245;
         if (hi.accuracy >= 1) {
             rank = 'perfect-gold';
             if (hi.hits['good'] > 0)
@@ -259,7 +279,8 @@ class Capsule extends FunkinGroup {
         } else {
             rank = 'loss';
         }
-        rankBadge.playAnim(rank, wasVisible != rankBadge.visible);
+        rankBadge.playAnim(rank, true);
+        rankBadgeBlur.playAnim(rank, true);
     }
     public function getLevelIDClean(id:String) {
         if (id.length < 1) return id;
@@ -285,14 +306,17 @@ class Capsule extends FunkinGroup {
         capsule.centerOffsets(false);
         textBlur.alpha = text.alpha = 1;
         selected = true;
-        rankBadge.color = -1;
+        rankBadge.color = rankBadgeBlur.color = -1;
+        text.blend = null;
     }
     public function deselect() {
         capsule.playAnim('idle', true);
         capsule.centerOffsets(false);
-        text.alpha = 0.5;
+        text.alpha = 0.6;
         textBlur.alpha = 0;
         selected = false;
         rankBadge.color = 0xaaaaaa;
+        rankBadgeBlur.color = 0xdddddd;
+        text.blend = BlendMode.ADD;
     }
 }
