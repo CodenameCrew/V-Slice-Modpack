@@ -67,7 +67,7 @@ class BackingCard extends CustomGroup {
             var backdrop = makeTextBackdrop(i.text + ' ', x % 2 == 0, (x % 2 == 1) ? 61 : 43);
             backdrop.color = i.color;
             backdrop.screenCenter();
-            backdrop.y = startY;
+            backdrop.y = Std.int(startY);
             backdrop.velocity.x = 200 * ((x % 2 == 0) ? -1 : 1) * ((x % 4 == 0) ? 2 : 1);
             backdrop.repeatAxes = 0x01;
             add(backdrop);

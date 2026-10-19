@@ -79,7 +79,7 @@ var clearBox = new FunkinSprite(0, 65, Paths.image('menus/freeplay/clearBox'));
 var clearPercent = new Alphabet(0, 86, '100', 'freeplay-clear');
 var scoreCounter = new ScoreCounter();
 var diffSprite = new FunkinSprite(0, 67);
-var diffDots = new FunkinSprite(FlxG.width * 0.15, 170, Paths.image('menus/freeplay/separator'));
+var diffDots = new FunkinSprite(Std.int(FlxG.width * 0.156), 170, Paths.image('menus/freeplay/separator'));
 
 function makeArrow() {
     var arrow = new FunkinSprite(0, 0, Paths.image('menus/freeplay/freeplaySelector'));
@@ -133,14 +133,15 @@ function create() {
     diffDots.onDraw = (dot) -> {
         if (allGlobalDiffs.length < 1) return;
         var ogX = dot.x;
-        dot.x -= Std.int((dot.width + 10) * allGlobalDiffs.length * 0.5);
+        var distance = (13 * allGlobalDiffs.length) * 0.5;
+        dot.x -= Std.int(distance * allGlobalDiffs.length * 0.5);
         dot.x += Std.int(dot.width * 0.5);
         for (z => i in allGlobalDiffs) {
             var colArray = (i.variation == 'erect') ? nightColors : normalColors;
             dot.color = colArray[(curSelectedDiffData.name == i.name) ? 1 : 0];
             dot.alpha = existsInCurDiffs(i.name) ? 1 : 0.4;
             dot.draw();
-            dot.x += (dot.width + 10);
+            dot.x += distance;
         }
         dot.x = ogX;
         dot.color = -1;
@@ -209,6 +210,230 @@ function postCreate() {
 
     CoolUtil.playMusic(Paths.music('freeplayRandom'));
     FlxG.mouse.visible = true;
+
+    var doOpeningRank = false;
+
+    // watch what happens when i enable a bool i dont know !!!!
+    // doOpeningRank = true;
+
+    if (doOpeningRank) {
+        var cap = capsuleGroup.members[curSelected];
+
+        if (cap.rank == null) {
+            FlxG.log.warn('lets not actually do anything..............new rank is null so');
+            return;
+        }
+        FlxG.camera.zoom = 1.15;
+        FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.6, {ease: FlxEase.sineIn});
+
+        FlxG.sound.music.volume = 0;
+
+        enableControls = false;
+        cap.visible = cap.active = false;
+
+        // dummy, pls replace when adding results screen
+        var oldHighscore = {
+            score: 0,
+            accuracy: 0,
+            hits: []
+        };
+
+        var rankColor = switch (cap.rank) {
+            case 'good':
+                0xFFEF8764;
+            case 'great':
+                0xFFEAF6FF;
+            case 'excellent':
+                0xFFFDCB42;
+            case 'perfect':
+                0xFFFF58B4;
+            case 'perfect-gold':
+                0xFFFFB619;
+            default:
+                0xFF6044FF;
+        }
+    
+        var overlay = new FunkinSprite();
+        add(overlay);
+        overlay.makeSolid(FlxG.width, FlxG.height, -1);
+        overlay.screenCenter();
+        overlay.scrollFactor.set();
+        overlay.color = 0x000000;
+        overlay.alpha = 0.75;
+
+        var displayCap = new Capsule();
+        displayCap.meta = cap.meta;
+        displayCap.loadData(cap.curMeta);
+        displayCap.setDifficultyText(Std.parseInt(cap.diffText.text));
+        displayCap.setRankFromHighscore(oldHighscore);
+        displayCap.zoomFactor = 0;
+        displayCap.scale.set(2.07, 2.07);
+        FlxTween.tween(displayCap.scale, {x: 2, y: 2}, 0.6, {ease: FlxEase.sineIn});
+        displayCap.select();
+        displayCap.selected = false; // no text scrolling
+        add(displayCap);
+
+        var vignette = new FunkinSprite(0, 0, Paths.image('menus/freeplay/rank-vignette'));
+        add(vignette);
+        vignette.setGraphicSize(FlxG.width, FlxG.height);
+        vignette.updateHitbox();
+        vignette.screenCenter();
+        vignette.antialiasing = true;
+        vignette.blend = BlendMode.ADD;
+        vignette.alpha = 0;
+        vignette.color = rankColor;
+
+        var sparks = new FunkinSprite();
+        sparks.loadSprite(Paths.image('menus/freeplay/sparks'));
+        sparks.addAnim('sparks', 'sparks', 24, false);
+        sparks.playAnim('sparks', true);
+        sparks.updateHitbox();
+        sparks.antialiasing = true;
+
+        var sparksAdd = new FunkinSprite();
+        sparksAdd.loadSprite(Paths.image('menus/freeplay/sparks-add'));
+        sparksAdd.addAnim('sparks', 'sparks', 24, false, null, null, 17, 17);
+        sparksAdd.playAnim('sparks', true);
+        sparksAdd.updateHitbox();
+        sparksAdd.antialiasing = true;
+
+        // no proper way of getting width and height for now
+        displayCap.setPosition(
+            (FlxG.width  * 0.5) - 230,
+            (FlxG.height * 0.5) - 60
+        );
+        displayCap.origin.set(230, 60);
+
+        new FlxTimer().start(0.6, (_) -> {
+            displayCap.setRankFromHighscore(curSelectedDiffData.highscore);
+            displayCap.rankBadge.scale.set(20, 20);
+            FlxTween.tween(displayCap.rankBadge.scale, {x: 0.9, y: 0.9}, 0.1);
+
+            var rankSound = switch (displayCap.rank) {
+                case 'loss': 'bad';
+                case 'perfect' | 'perfect-gold': 'perfect';
+                default: 'normal';
+            };
+            new FlxTimer().start(0.1, (_) -> {
+                FlxG.sound.play(Paths.sound('ranks/in/' + rankSound));
+                displayCap.scale.set(1.95, 1.95);
+                FlxTween.tween(displayCap.scale, {x: 2, y: 2}, 0.5, {ease: FlxEase.backOut});
+                new FlxTimer().start(1 / 30, (_) ->{
+                    displayCap.frameOffset.set(FlxG.random.float(-3, 3), FlxG.random.float(-3, 3));
+                    if (_.loopsLeft == 0) {
+                        displayCap.frameOffset.set();
+                    }
+                }, 8);
+
+                FlxTween.tween(FlxG.camera, {zoom: 1.05}, 0.3, {ease: FlxEase.elasticOut});
+
+                add(sparksAdd);
+                add(sparks);
+
+                // destroyingin these crashes the game
+                sparks.animation.onFinish.add((a) -> { remove(sparks, true); });
+                sparksAdd.animation.onFinish.add((a) -> { remove(sparksAdd, true); });
+
+                for (i in [sparks, sparksAdd]) {
+                    i.x += displayCap.rankBadge.x * 2 - 50;
+                    i.y += displayCap.rankBadge.y * 2 + 120;
+                }
+                sparksAdd.color = rankColor;
+            });
+
+            // pre slam
+            new FlxTimer().start(0.4, (_) -> {
+                FlxTween.tween(FlxG.camera, {zoom: 1}, 0.8, {ease: FlxEase.sineIn});
+            });
+
+            // slam
+            new FlxTimer().start(0.6, (_) -> {
+                FlxG.sound.play(Paths.sound('ranks/slam/' + ((displayCap.rank == 'perfect-gold') ? 'perfect' : displayCap.rank)));
+                FlxTween.tween(displayCap, {x: capsuleGroup.x, y: capsuleGroup.y, zoomFactor: 1}, 0.5, {ease: FlxEase.linear});
+                FlxTween.tween(displayCap.scale, {x: 1, y: 1}, 0.5, {ease: FlxEase.quartIn});
+                FlxTween.tween(overlay, {alpha: 0}, 0.45, {ease: FlxEase.quartIn});
+                new FlxTimer().start(0.5, (_) -> {
+                    remove(overlay, true);
+                    overlay.destroy();
+
+                    remove(displayCap, true);
+                    displayCap.destroy();
+
+                    sparksAdd.destroy();
+                    sparks.destroy();
+
+                    cap.visible = cap.active = true;
+                    FlxG.camera.zoom = 0.96;
+                    FlxTween.cancelTweensOf(FlxG.camera, ['zoom']);
+                    FlxTween.tween(FlxG.camera, {zoom: 1}, 0.8, {ease: FlxEase.elasticOut});
+                    FlxG.camera.shake(0.0045, 0.35);
+
+                    import flixel.addons.effects.FlxTrail;
+                    var impactThing = new FunkinSprite(capsuleGroup.x, capsuleGroup.y);
+                    impactThing.frames = cap.capsule.frames;
+                    impactThing.frame = cap.capsule.frame;
+                    impactThing.updateHitbox(); // funkin crew is dumb and gay
+                    impactThing.origin.copyFrom(cap.capsule.origin);
+                    impactThing.offset.copyFrom(cap.capsule.offset);
+                    impactThing.alpha = 0;
+                    add(impactThing);
+                    FlxTween.tween(impactThing.scale, {x: 2.5, y: 2.5}, 0.5);
+                    // FlxTween.tween(impactThing, {alpha: 0}, 0.5);
+
+                    evilTrail = new FlxTrail(impactThing, null, 15, 0.03, 0.01, 0.069);
+                    evilTrail.blend = BlendMode.ADD;
+                    evilTrail.color = rankColor;
+                    FlxTween.tween(evilTrail, {alpha: 0}, 0.6, {
+                        ease: FlxEase.quadOut,
+                        onComplete: function(_)
+                        {
+                            _.cancel();
+                            remove(evilTrail, true);
+                            evilTrail.destroy();
+                        }
+                    });
+                    add(evilTrail);
+
+                    vignette.alpha = 1;
+                    FlxTween.tween(vignette, {alpha: 0}, 0.6, {ease: FlxEase.expoOut,
+                        onComplete: (_) ->{
+                            _.cancel();
+                            remove(vignette, true);
+                            vignette.destroy();
+                        }
+                    });
+
+                    var distance = 5;
+                    for (i in -distance...(distance + 1)) {
+                        var target = capsuleGroup.members[cap.ID + i];
+                        if (target == null) continue;
+                        new FlxTimer().start(Math.abs(i) * 0.05, (_) -> {
+                            if (i != 0) {
+                                target.angle = 10 * FlxG.random.float(-1, 1) / Math.abs(i);
+                                FlxTween.tween(target, {angle: 0}, 0.5, {ease: FlxEase.backOut});
+                            }
+                            new FlxTimer().start(1 / 30, (_) ->{
+                                // this is not an int
+                                var int = 15 * (1 - FlxEase.quadOut((_.loops - _.loopsLeft) / _.loops));
+                                target.frameOffset.set(FlxG.random.float(-int, int), FlxG.random.float(-int, int));
+                                if (_.loopsLeft == 0) {
+                                    target.frameOffset.set();
+                                }
+                            }, 18);
+                        });
+                    }
+
+                    new FlxTimer().start(0.6, (_) -> {
+                        enableControls = true;
+                        new FlxTimer().start(1.4, (_) -> {
+                            FlxG.sound.music.time = 0;
+                            FlxG.sound.music.fadeIn(2);
+                        });
+                    });
+                });
+            });
+        });
+    }
 }
 var curSelected = 0;
 var lerpSelected = 0;
@@ -218,6 +443,7 @@ var intendedAccuracy = 0;
 var lerpAccuracy = 0;
 var enableControls = true;
 function update(elapsed) {
+    var pressedDiff = false;
     if (enableControls) {
         for (basic in turboBasics) basic.update(elapsed);
 
@@ -266,10 +492,12 @@ function update(elapsed) {
         if (controls.LEFT_P || (CoolUtil.mouseOverlaps(leftArrow) && FlxG.mouse.justPressed)) {
             changeDifficulty(-1);
             leftArrow.playAnim('select', true);
+            pressedDiff = true;
         }
         if (controls.RIGHT_P || (CoolUtil.mouseOverlaps(rightArrow) && FlxG.mouse.justPressed)) {
             changeDifficulty(1);
             rightArrow.playAnim('select', true);
+            pressedDiff = true;
         }
 
         if (FlxG.keys.justPressed.HOME) {
@@ -294,7 +522,7 @@ function update(elapsed) {
     lerpSelected = lerp(lerpSelected, curSelected, 0.25);
 
     capsuleGroup.forEach((c) -> {
-        if (enableControls && CoolUtil.mouseOverlaps(c) && FlxG.mouse.justPressed) {
+        if (enableControls && !pressedDiff && CoolUtil.mouseOverlaps(c) && FlxG.mouse.justPressed) {
             if (curSelected == c.ID) {
                 selectSong(c.ID);
             } else changeSelection(c.ID - curSelected);
@@ -329,27 +557,13 @@ function changeSelection(ch, ?silent) {
 
     if (!silent) CoolUtil.playMenuSFX(0);
 
-    function getCurDiffID(a:String) {
-        var i = 0;
-        while (i < curDiffList.length) {
-            if (curDiffList[i++].name == a) {
-                return i - 1;
-            }
-        }
-        return -1;
-    }
-
     refreshCSDD();
-    var diffID = getCurDiffID(pastDiff);
+    var diffID = getCurDiffID(pastDiff, curDiffList);
     curSelectedDiff = diffID;
     changeDifficulty(0, true, false);
 
     final cap = capsuleGroup.members[curSelected];
-    final save = (cap.name != null && curSelectedDiffData != null) ? (FunkinSave.getSongHighscore(
-        cap.name,
-        curSelectedDiffData.name,
-        curSelectedDiffData.variation
-    )) : null;
+    final save = (cap.name != null && curSelectedDiffData != null) ? (curSelectedDiffData.highscore) : null;
 
     intendedScore = save?.score ?? 0;
     intendedAccuracy = save?.accuracy ?? 0;
@@ -464,9 +678,14 @@ function updateAllDiffs() {
             regenSongList();
         }
     }
-    capsuleGroup.forEachAlive((cap) -> {
+    capsuleGroup.forEach((cap) -> {
         if (cap.name == null) return;
         cap.setDifficultyText(Reflect.field(cap.curMeta?.customValues?.ratings, diff.name) ?? 0);
+
+        var allDiffs = cap.curMeta?.parent?.allDifficulties ?? cap?.curMeta?.allDifficulties;
+        if (allDiffs == null) return;
+        var poop = allDiffs[getCurDiffID(diff.name, allDiffs)];
+        cap.setRankFromHighscore(poop?.highscore);
     });
 }
 function selectSong(id) {
@@ -571,7 +790,12 @@ function regenSongRegistry(?extraSort, ?forcedVari, ?forcedDiff) {
         if (!Reflect.hasField(i, 'allDifficulties')) {
             Reflect.setField(i, 'allDifficulties', i.difficulties.copy().map((a) -> {
                 name: a.toLowerCase(),
-                variation: null
+                variation: null,
+                highscore: FunkinSave.getSongHighscore(
+                    i.name,
+                    a,
+                    null
+                )
             }));
             for (fuck in i.difficulties) {
                 var foid = fuck.toLowerCase();
@@ -587,7 +811,12 @@ function regenSongRegistry(?extraSort, ?forcedVari, ?forcedDiff) {
                 if (noid) continue;
                 allGlobalDiffs.push({
                     name: foid,
-                    variation: null
+                    variation: null,
+                    highscore: {
+                        score: 0,
+                        accuracy: 0,
+                        hits: []
+                    }
                 });
             }
 
@@ -609,7 +838,12 @@ function regenSongRegistry(?extraSort, ?forcedVari, ?forcedDiff) {
                         if (noid) continue;
                         i.allDifficulties.push({
                             name: foid,
-                            variation: n
+                            variation: n,
+                            highscore: FunkinSave.getSongHighscore(
+                                i.name,
+                                foid,
+                                n
+                            )
                         });
 
                         moid = 0;
@@ -624,7 +858,12 @@ function regenSongRegistry(?extraSort, ?forcedVari, ?forcedDiff) {
                         if (noid) continue;
                         allGlobalDiffs.push({
                             name: foid,
-                            variation: n
+                            variation: n,
+                            highscore: {
+                                score: 0,
+                                accuracy: 0,
+                                hits: []
+                            }
                         });
                     }
                 }
@@ -644,6 +883,11 @@ function regenSongRegistry(?extraSort, ?forcedVari, ?forcedDiff) {
                         for (p in q) {
                             if (p.variation == null) {
                                 p.variation = n;
+                                p.highscore = FunkinSave.getSongHighscore(
+                                    m.name,
+                                    p.name,
+                                    n
+                                );
                             }
                         }
                     }
@@ -736,4 +980,15 @@ function existsInCurDiffs(a:String, ?array) {
         }
     }
     return false;
+}
+
+function getCurDiffID(a:String, ?array) {
+    array ??= curDiffList;
+    var i = 0;
+    while (i < array.length) {
+        if ((array[i++].name.toLowerCase()) == (a.toLowerCase())) {
+            return i - 1;
+        }
+    }
+    return -1;
 }

@@ -46,6 +46,8 @@ class Capsule extends FunkinGroup {
     public var diffStaticText:FunkinText;
     public var diffText:FunkinText; // numbers
     public var icon:FunkinSprite;
+    public var rankBadge:FunkinSprite;
+    public var goldSparkle:FunkinSprite;
     public var glowColor:Int = 0x00ccff;
     public var glowColor2:Int = 0x00ccff; // for when styles are implemented
     public var clipWidth:Int = 292; // 255 with rank
@@ -63,6 +65,27 @@ class Capsule extends FunkinGroup {
         capsule.scale.set(realScaled, realScaled);
         capsule.updateHitbox();
         capsule.antialiasing = true;
+
+        rankBadge = new FunkinSprite(0, 0, Paths.image('menus/freeplay/rankbadges'));
+        for (i in ['perfect', 'excellent', 'great', 'good', 'loss']) {
+            rankBadge.addAnim(i, i.toUpperCase() + ' rank0', 24, false);
+        }
+        rankBadge.addAnim('perfect-gold', 'PERFECT rank GOLD', 24, false);
+        rankBadge.playAnim('perfect-gold', true);
+        rankBadge.scale.set(0.9, 0.9);
+        rankBadge.updateHitbox();
+        rankBadge.blend = BlendMode.ADD;
+        rankBadge.antialiasing = true;
+        rankBadge.visible = false;
+
+        goldSparkle = new FunkinSprite(0, 0, Paths.image('menus/freeplay/sparkle'));
+        goldSparkle.addAnim('idle', 'sparkle Export', 24, false);
+        goldSparkle.playAnim('idle', true);
+        goldSparkle.scale.set(0.8, 0.8);
+        goldSparkle.updateHitbox();
+        goldSparkle.blend = BlendMode.ADD;
+        goldSparkle.antialiasing = true;
+        goldSparkle.alpha = 0.7;
 
         text = new FunkinText(0, 0, -1, 'Bro', Math.floor(40 * realScaled));
         text.font = Paths.font('5by7.ttf');
@@ -114,7 +137,7 @@ class Capsule extends FunkinGroup {
         icon.visible = false;
         icon.pixelPerfectRender = true;
 
-        for (i in [capsule, weekText, bpmText, diffStaticText, diffText, textBlur, text, icon]) {
+        for (i in [capsule, weekText, bpmText, diffStaticText, diffText, textBlur, text, rankBadge, icon]) {
             add(i);
         }
     }
@@ -132,6 +155,7 @@ class Capsule extends FunkinGroup {
         bpmText.setPosition(76, 76);
         diffStaticText.setPosition(355, 76);
         diffText.setPosition(400, 18);
+        rankBadge.setPosition(350, 28);
         icon.setPosition(-2, icon.height * -0.5 + 48);
 
         setSize(capsule.width, capsule.height);
@@ -147,6 +171,17 @@ class Capsule extends FunkinGroup {
         }
 
         if (selected) clipTimer += elapsed;
+
+        if (rank == 'perfect-gold') {
+            goldRankTimer -= elapsed;
+            if (goldRankTimer <= 0) {
+                goldRankTimer = FlxG.random.float(1.2, 4.5);
+
+                goldSparkle.x = rankBadge.x + FlxG.random.float(-20, 3);
+                goldSparkle.y = rankBadge.y + FlxG.random.float(-29, 4);
+                goldSparkle.playAnim('idle', true);
+            }
+        }
     }
 
     public function loadData(meta:Dynamic) {
@@ -198,6 +233,34 @@ class Capsule extends FunkinGroup {
     public function setDifficultyText(?num:Int = 0) {
         diffText.text = CoolUtil.addZeros(num, 2);
     }
+    public var rank:String = null;
+    public var goldRankTimer:Float = 0;
+    public function setRankFromHighscore(hi:Dynamic) {
+        var wasVisible = rankBadge.visible;
+        rankBadge.visible = (hi != null) && (hi.accuracy > 0);
+        clipWidth = 292;
+        rank = null;
+        if (!rankBadge.visible) return;
+
+        clipWidth = 255;
+        if (hi.accuracy >= 1) {
+            rank = 'perfect-gold';
+            if (hi.hits['good'] > 0)
+                rank = 'perfect';
+            else {
+                if (members.indexOf(goldSparkle) == -1) add(goldSparkle);
+            }
+        } else if (hi.accuracy >= 0.9) {
+            rank = 'excellent';
+        } else if (hi.accuracy >= 0.8) {
+            rank = 'great';
+        } else if (hi.accuracy >= 0.69) {
+            rank = 'good';
+        } else {
+            rank = 'loss';
+        }
+        rankBadge.playAnim(rank, wasVisible != rankBadge.visible);
+    }
     public function getLevelIDClean(id:String) {
         if (id.length < 1) return id;
 
@@ -222,6 +285,7 @@ class Capsule extends FunkinGroup {
         capsule.centerOffsets(false);
         textBlur.alpha = text.alpha = 1;
         selected = true;
+        rankBadge.color = -1;
     }
     public function deselect() {
         capsule.playAnim('idle', true);
@@ -229,5 +293,6 @@ class Capsule extends FunkinGroup {
         text.alpha = 0.5;
         textBlur.alpha = 0;
         selected = false;
+        rankBadge.color = 0xaaaaaa;
     }
 }
