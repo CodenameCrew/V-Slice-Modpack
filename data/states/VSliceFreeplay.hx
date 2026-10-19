@@ -820,6 +820,13 @@ function changeDifficulty(ch, ?silent, ?sel, ?forceAnim) {
 }
 var curTrackedVariation = (character == 'bf') ? null : character;
 var curTrackedDiff = null;
+var curSort = null; /*(a) -> {
+    a.sort((a, b) -> {
+        var nameA = a.name.toLowerCase();
+        var nameB = b.name.toLowerCase();
+        return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
+    });
+}*/
 function updateAllDiffs() {
     var diff = curSelectedDiffData;
     if (diff == null) return;
@@ -832,7 +839,7 @@ function updateAllDiffs() {
     if (curTrackedVariation != targetVariation) {
         curTrackedVariation = targetVariation;
         // implement letter sorting later?
-        regenSongRegistry(null, diff.variation);
+        regenSongRegistry(curSort, diff.variation);
         regenSongList();
     }
     if (curTrackedDiff != targetDiff) {
@@ -845,13 +852,13 @@ function updateAllDiffs() {
             if (!existsInCurDiffs(diff.name, i.curMeta.allDifficulties)) {
                 dipshit = true;
                 // implement letter sorting later?
-                regenSongRegistry(null, curTrackedVariation, diff.name);
+                regenSongRegistry(curSort, curTrackedVariation, diff.name);
                 regenSongList(true);
                 break;
             }
         }
         if (!dipshit) {
-            regenSongRegistry(null, curTrackedVariation, diff.name);
+            regenSongRegistry(curSort, curTrackedVariation, diff.name);
             regenSongList();
         }
     }

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sorts.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="ALL0000" x="111" y="2" width="56" height="49" frameX="-1" frameY="-2" frameWidth="57" frameHeight="54"/>
+	<SubTexture name="ab0000" x="2" y="2" width="53" height="54" frameX="-2" frameY="0" frameWidth="57" frameHeight="54"/>
+	<SubTexture name="cd0000" x="114" y="53" width="52" height="52" frameX="-2" frameY="-2" frameWidth="57" frameHeight="54"/>
+	<SubTexture name="eh0000" x="221" y="54" width="51" height="50" frameX="-2" frameY="-2" frameWidth="57" frameHeight="54"/>
+	<SubTexture name="il0000" x="57" y="2" width="52" height="53" frameX="-2" frameY="0" frameWidth="57" frameHeight="54"/>
+	<SubTexture name="mn0000" x="57" y="57" width="55" height="50" frameX="0" frameY="-3" frameWidth="57" frameHeight="54"/>
+	<SubTexture name="or0000" x="2" y="58" width="52" height="48" frameX="-3" frameY="-4" frameWidth="57" frameHeight="54"/>
+	<SubTexture name="s0000" x="276" y="2" width="45" height="48" frameX="-5" frameY="-3" frameWidth="57" frameHeight="54"/>
+	<SubTexture name="t0000" x="169" y="2" width="48" height="45" frameX="-5" frameY="-5" frameWidth="57" frameHeight="54"/>
+	<SubTexture name="uz0000" x="221" y="2" width="53" height="50" frameX="-2" frameY="-3" frameWidth="57" frameHeight="54"/>
+	<SubTexture name="number0000" x="168" y="53" width="51" height="52" frameX="-2" frameY="-2" frameWidth="57" frameHeight="54"/>
+	<SubTexture name="favorite0000" x="274" y="54" width="51" height="46" frameX="-3" frameY="-4" frameWidth="57" frameHeight="54"/>
+</TextureAtlas>
