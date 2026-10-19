@@ -1,3 +1,4 @@
+import funkin.backend.MusicBeatState;
 import funkin.backend.chart.Chart;
 import funkin.menus.FreeplaySonglist;
 import funkin.menus.StoryWeeklist;
@@ -411,10 +412,14 @@ function postCreate() {
                 FlxG.sound.play(Paths.sound('ranks/in/' + rankSound));
                 displayCap.scale.set(1.95, 1.95);
                 FlxTween.tween(displayCap.scale, {x: 2, y: 2}, 0.5, {ease: FlxEase.backOut});
-                new FlxTimer().start(1 / 30, (_) ->{
+                new FlxTimer().start(1 / 30, (_) -> {
+                    // this is not an int
+                    var int = 5 * (1 - FlxEase.quadOut((_.loops - _.loopsLeft) / _.loops));
                     displayCap.frameOffset.set(FlxG.random.float(-3, 3), FlxG.random.float(-3, 3));
+                    displayCap.angle = FlxG.random.float(-int, int * 0.5);
                     if (_.loopsLeft == 0) {
                         displayCap.frameOffset.set();
+                        displayCap.angle = 0;
                     }
                 }, 8);
 
@@ -526,6 +531,29 @@ function postCreate() {
                 });
             });
         });
+    }
+
+    // this is separated because other stuff (switching characters) uses it too
+    var doOpeningFade = false;
+    // doOpeningFade = true;
+
+    if (doOpeningFade) {
+        // for some reason this works
+        MusicBeatState.skipTransIn = true;
+        var overlay = new FunkinSprite();
+        add(overlay);
+        overlay.makeSolid(FlxG.width, FlxG.height, -1);
+        overlay.screenCenter();
+        overlay.scrollFactor.set();
+        overlay.color = 0xffffff;
+        overlay.blend = BlendMode.SUBTRACT;
+        overlay.alpha = 1;
+
+        FlxTween.tween(overlay, {alpha: 0}, 0.4, {ease: FlxEase.sineOut, onComplete: (_) -> {
+            _.cancel();
+            remove(overlay);
+            overlay.destroy();
+        }});
     }
 }
 var curSelected = 0;
