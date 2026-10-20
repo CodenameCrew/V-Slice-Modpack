@@ -10,6 +10,7 @@ import funkin.backend.system.framerate.Framerate;
 import funkin.savedata.FunkinSave;
 import flixel.graphics.frames.FlxAtlasFrames;
 import haxe.ds.StringMap;
+import openfl.filters.GlowFilter;
 
 import Capsule;
 import ScoreCounter;
@@ -67,6 +68,62 @@ for (i in Paths.getFolderContent('images/menus/freeplay/albums/')) {
 }
 var curAlbum = null;
 
+var curSelectedSort = 0;
+var sortList = [
+    {
+        anim: 'ALL',
+        sort: null
+    },
+    {
+        anim: 'AB',
+        sort: (a) -> { finalSongList = getRange(a, 97, 98); }
+    },
+    {
+        anim: 'CD',
+        sort: (a) -> { finalSongList = getRange(a, 99, 100); }
+    },
+    {
+        anim: 'EH',
+        sort: (a) -> { finalSongList = getRange(a, 101, 104); }
+    },
+    {
+        anim: 'IL',
+        sort: (a) -> { finalSongList = getRange(a, 105, 109); }
+    },
+    {
+        anim: 'MN',
+        sort: (a) -> { finalSongList = getRange(a, 110, 111); }
+    },
+    {
+        anim: 'OR',
+        sort: (a) -> { finalSongList = getRange(a, 112, 115); }
+    },
+    {
+        anim: 'S',
+        sort: (a) -> { finalSongList = getRange(a, 116, 116); }
+    },
+    {
+        anim: 'T',
+        sort: (a) -> { finalSongList = getRange(a, 117, 117); }
+    },
+    {
+        anim: 'UZ',
+        sort: (a) -> { finalSongList = getRange(a, 118, 123); }
+    },
+    {
+        anim: 'num',
+        sort: (a) -> {
+            // not sure if it should be from 0 (48) or from space symbol
+            finalSongList = getRange(a, 32, 57);
+        }
+    },
+    /*
+    {
+        anim: 'fav',
+        sort: (a) -> { trace("i'm not adding this lmfao"); }
+    }
+    */
+];
 
 // visuals
 if (Assets.exists('data/backcards/' + character + '.hx')) {
@@ -109,6 +166,30 @@ var clearPercent = new Alphabet(0, 86, '100', 'freeplay-clear');
 var scoreCounter = new ScoreCounter();
 var diffSprite = new FunkinSprite(0, 67);
 var diffDots = new FunkinSprite(Std.int(FlxG.width * 0.156), 170, Paths.image('menus/freeplay/separator'));
+
+// shared capsule stuff
+var glowColor = 0x00ccff;
+var textFilters = [
+    new GlowFilter(glowColor, 1, 5, 5, 210, 1)
+];
+// no support for inner glow filter so this will do
+var HANG_FUNKIN_CREW_BY_JUMPER_CABLES = new FunkinShader('
+#pragma header
+
+void main() {
+    vec2 uv = openfl_TextureCoordv;
+    gl_FragColor = flixel_texture2D(bitmap, uv);
+    float blur = 0.0;
+    blur += texture2D(bitmap, uv, 1.0).a;
+    blur += texture2D(bitmap, uv, 1.5).a;
+    blur += texture2D(bitmap, uv, 2.5).a;
+    blur *= 0.25;
+	gl_FragColor *= pow(smoothstep(0.125, 0.9, (1.0 - blur) * 2.0), 3.0);
+}
+');
+HANG_FUNKIN_CREW_BY_JUMPER_CABLES.data.bitmap.mipFilter = 0;
+var whySoManyDetailOMFG = FunkinShader.fromFile('gaussian-blur');
+whySoManyDetailOMFG._amount = 1;
 
 function makeArrow() {
     var arrow = new FunkinSprite(0, 0, Paths.image('menus/freeplay/freeplaySelector'));
@@ -295,6 +376,7 @@ function postCreate() {
     }
 
     changeDifficulty(Math.abs(stupidDiffIndex), true, null, true);
+    changeSort(0, true);
     lerpSelected = curSelected;
 
     Framerate.offset.y = 65;
@@ -305,7 +387,7 @@ function postCreate() {
     var doOpeningRank = false;
 
     // watch what happens when i enable a bool i dont know !!!!
-    // doOpeningRank = true;
+    doOpeningRank = true;
 
     if (doOpeningRank) {
         var cap = capsuleGroup.members[curSelected];
@@ -357,6 +439,7 @@ function postCreate() {
         displayCap.loadData(cap.curMeta);
         displayCap.setDifficultyText(Std.parseInt(cap.diffText.text));
         displayCap.setRankFromHighscore(oldHighscore);
+        addSharedCapsuleShit(displayCap);
         displayCap.zoomFactor = 0;
         displayCap.scale.set(2.07, 2.07);
         FlxTween.tween(displayCap.scale, {x: 2, y: 2}, 0.6, {ease: FlxEase.sineIn});
@@ -556,6 +639,20 @@ function postCreate() {
         }});
     }
 }
+function addSharedCapsuleShit(cap) {
+    cap.glowColor = glowColor;
+    cap.text.textField.filters = textFilters;
+
+    if (!Options.lowMemoryMode) {
+        cap.rankBadgeBlur.shader = whySoManyDetailOMFG;
+        for (i in [cap.weekText, cap.bpmText, cap.bpmStaticText, cap.diffStaticText, cap.diffText]) {
+            i.shader = HANG_FUNKIN_CREW_BY_JUMPER_CABLES;
+        }
+        // has to be a new shader instance due to varying texture sizes (lame)
+        cap.textBlur.shader = FunkinShader.fromFile('gaussian-blur');
+        cap.textBlur.shader._amount = 1;
+    }
+}
 var curSelected = 0;
 var lerpSelected = 0;
 var intendedScore = 0;
@@ -610,6 +707,9 @@ function update(elapsed) {
         if (upTurboControl.activated || FlxG.mouse.wheel == 1) changeSelection(-1);
         if (downTurboControl.activated || FlxG.mouse.wheel == -1) changeSelection(1);
 
+        if (FlxG.keys.justPressed.Q) changeSort(-1);
+        if (FlxG.keys.justPressed.E) changeSort(1);
+
         if (controls.LEFT_P || (CoolUtil.mouseOverlaps(leftArrow) && FlxG.mouse.justPressed)) {
             changeDifficulty(-1);
             leftArrow.playAnim('select', true);
@@ -660,6 +760,15 @@ function update(elapsed) {
 function destroy() {
 	for (basic in turboBasics) basic.destroy();
     Framerate.offset.y = 0;
+}
+function changeSort(ch, ?silent) {
+    silent ??= false;
+    curSelectedSort = FlxMath.wrap(curSelectedSort + ch, 0, sortList.length - 1);
+    curSort = sortList[curSelectedSort].sort;
+    regenSongRegistry(curSort, curTrackedVariation, curTrackedDiff);
+    regenSongList();
+
+    if (!silent) CoolUtil.playMenuSFX(0);
 }
 function changeSelection(ch, ?silent) {
     silent ??= false;
@@ -748,6 +857,8 @@ function changeAlbum(al) {
     albumName.addAnim('idle-loop', 'idle', 24, true, null, null, (al?.data?.albumTitleOffsets[0] ?? 0) * -1, (al?.data?.albumTitleOffsets[1] ?? 0) * -1);
     albumName.playAnim('idle', true);
     albumName.updateHitbox();
+
+    ostName.text = (al?.data?.albumOSTName != null) ? (al?.data?.albumOSTName) : 'OFFICIAL OST';
 }
 var allGlobalDiffs = [];
 var curSelectedDiff = 0;
@@ -820,13 +931,25 @@ function changeDifficulty(ch, ?silent, ?sel, ?forceAnim) {
 }
 var curTrackedVariation = (character == 'bf') ? null : character;
 var curTrackedDiff = null;
-var curSort = null; /*(a) -> {
-    a.sort((a, b) -> {
+function sortAlphabetical(x) {
+    x.sort((a, b) -> {
         var nameA = a.name.toLowerCase();
         var nameB = b.name.toLowerCase();
         return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
     });
-}*/
+    return x;
+}
+function getRange(a, min, max) {
+    var min = min;
+    var max = max;
+    return sortAlphabetical(a).filter((x) -> {
+        var letter = StringTools.trim(x.name.toLowerCase()).charCodeAt(0);
+        return (letter >= min) && (letter <= max);
+    });
+}
+// a = 97 , z = 123, 0 = 48, 9 = 57
+var curSelectedSort = 0;
+var curSort = null;
 function updateAllDiffs() {
     var diff = curSelectedDiffData;
     if (diff == null) return;
@@ -1134,6 +1257,7 @@ function regenSongList(?noUpdate) {
             c.x = FlxG.width;
             c.y = i * 140;
             c.ID = i;
+            addSharedCapsuleShit(c);
             capsuleGroup.add(c);
             cap = c;
         }

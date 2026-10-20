@@ -3,25 +3,6 @@ import CustomGroup;
 import openfl.filters.BlurFilter;
 import openfl.filters.GlowFilter;
 
-// no support for inner glow filter so this will do
-var HANG_FUNKIN_CREW_BY_JUMPER_CABLES = new FunkinShader('
-#pragma header
-
-void main() {
-    vec2 uv = openfl_TextureCoordv;
-    gl_FragColor = flixel_texture2D(bitmap, uv);
-    float blur = 0.0;
-    blur += texture2D(bitmap, uv, 1.0).a;
-    blur += texture2D(bitmap, uv, 1.5).a;
-    blur += texture2D(bitmap, uv, 2.5).a;
-    blur *= 0.25;
-	gl_FragColor *= pow(smoothstep(0.125, 0.9, (1.0 - blur) * 2.0), 3.0);
-}
-');
-HANG_FUNKIN_CREW_BY_JUMPER_CABLES.data.bitmap.mipFilter = 0;
-var whySoManyDetailOMFG = FunkinShader.fromFile('gaussian-blur');
-whySoManyDetailOMFG._amount = 1;
-
 class Capsule extends FunkinGroup {
     // TODO: make everything revolve around this
     // this is the default meta.json
@@ -63,7 +44,7 @@ class Capsule extends FunkinGroup {
 
         rankBadge = new FunkinSprite(0, 0, Paths.image('menus/freeplay/rankbadges'));
         rankBadgeBlur = new FunkinSprite(0, 0, Paths.image('menus/freeplay/rankbadges'));
-        rankBadgeBlur.shader = whySoManyDetailOMFG;
+        //rankBadgeBlur.shader = whySoManyDetailOMFG;
         for (j in [rankBadge, rankBadgeBlur]) {
             for (i in ['perfect', 'excellent', 'great', 'good', 'loss']) {
                 j.addAnim(i, i.toUpperCase() + ' rank0', 24, false);
@@ -96,10 +77,8 @@ class Capsule extends FunkinGroup {
         textBlur = new FunkinText(0, 0, -1, 'Bro', Math.floor(40 * realScaled));
         textBlur.font = Paths.font('5by7.ttf');
         textBlur.borderSize = textBlur.borderColor = 0;
-        textBlur.shader = whySoManyDetailOMFG;
         textBlur.rawClipRect = new FlxRect(0, 0, textBlur.width, textBlur.height);
         textBlur.antialiasing = true;
-        textBlur.color = glowColor;
 
         weekText = new FunkinText(0, 0, 300, 'week 8');
         bpmStaticText = new FunkinText(0, 0, 100, 'bpm'); // the M is fucky and is only accurate is theres nothing after it (im guessing ligatures)
@@ -126,13 +105,9 @@ class Capsule extends FunkinGroup {
             i.color = 0x413d4b;
             i.textField.filters = capsuleOuterFilter;*/
             // for now use this
-            i.shader = HANG_FUNKIN_CREW_BY_JUMPER_CABLES;
+            //i.shader = HANG_FUNKIN_CREW_BY_JUMPER_CABLES;
             i.color = 0x1A1C24;
         }
-
-        text.textField.filters = [
-            new GlowFilter(glowColor, 1, 5, 5, 210, 1)
-        ];
 
         diffText.size = 46;
         diffText.scale.set(1, 1);
