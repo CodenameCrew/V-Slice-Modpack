@@ -132,12 +132,12 @@ class Capsule extends FunkinGroup {
     override public function draw() {
         var clipTransTimer:Float = FlxEase.sineInOut(FlxMath.bound((0.5 - Math.abs(FlxMath.mod(clipTimer * 0.4, 2) - 1)) * 1.3 + 0.5, 0, 1));
         text.rawClipRect = text.rawClipRect.set(
-            Math.floor(clipTransTimer * -Math.min(0, clipWidth - text.width)),
-            0, Math.min(text.width, clipWidth), text.height);
-
+            clipTransTimer * -Math.min(0, clipWidth - text.width),
+            0, Math.min(text.width, clipWidth), text.height
+        );
         textBlur.rawClipRect = textBlur.rawClipRect.set(text.rawClipRect.x, text.rawClipRect.y, text.rawClipRect.width, text.rawClipRect.height);
         
-        text.setPosition(92/* + clipTransTimer * Math.min(0, clipWidth - text.width)*/, 32);
+        text.setPosition(92 - text.rawClipRect.x, 32);
         textBlur.setPosition(text.x, text.y);
         weekText.setPosition(228, 76);
         bpmStaticText.setPosition(79, 76);

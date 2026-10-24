@@ -140,18 +140,31 @@ class FunkinGroup extends FunkinSprite {
                             input.tx = Math.floor(input.tx);
                             input.ty = Math.floor(input.ty);
                         }
-                        if (child.frame != null) {
-                            (layer ?? camera).drawPixels(
-                                // TODO: dont do this, it fucks up positioning
-                                (child.clipRect != null) ? (child.frame.clipTo(child.clipRect)) : (child.frame),
-                                child.framePixels,
-                                input,
-                                dumpCT,
-                                child.blend ?? blend,
-                                antialiasing && child.antialiasing,
-                                child.shaderEnabled ? child.shader : null,
-                                child.wrapMode
-                            );
+                        if (child._frame != null) {
+                            if (layer != null) {
+                                layer.drawPixels(
+                                    child, camera,
+                                    child._frame,
+                                    child.framePixels,
+                                    input,
+                                    dumpCT,
+                                    child.blend ?? blend,
+                                    antialiasing && child.antialiasing,
+                                    child.shaderEnabled ? child.shader : null,
+                                    child.wrapMode
+                                );
+                            } else {
+                                camera.drawPixels(
+                                    child._frame,
+                                    child.framePixels,
+                                    input,
+                                    dumpCT,
+                                    child.blend ?? blend,
+                                    antialiasing && child.antialiasing,
+                                    child.shaderEnabled ? child.shader : null,
+                                    child.wrapMode
+                                );
+                            }
                         }
                     }
                 //}
@@ -184,7 +197,7 @@ class FunkinGroup extends FunkinSprite {
         }
         final TO_RAD = 0.017453292519943295; // FlxAngle.TO_RAD is null in hscript (pls fix ???)
 
-        child.frame.prepareMatrix(matrix, 0, child.checkFlipX(), child.checkFlipY());
+        child._frame.prepareMatrix(matrix, 0, child.checkFlipX(), child.checkFlipY());
 
         matrix.translate(-child.origin.x, -child.origin.y);
 

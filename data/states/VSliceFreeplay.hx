@@ -67,8 +67,9 @@ for (i in Paths.getFolderContent('images/menus/freeplay/albums/')) {
     });
 }
 var curAlbum = null;
-
 var curSelectedSort = 0;
+
+// a = 97 , z = 122, 0 = 48, 9 = 57
 var sortList = [
     {
         anim: 'ALL',
@@ -96,19 +97,19 @@ var sortList = [
     },
     {
         anim: 'OR',
-        sort: (a) -> { finalSongList = getRange(a, 112, 115); }
+        sort: (a) -> { finalSongList = getRange(a, 112, 114); }
     },
     {
         anim: 'S',
-        sort: (a) -> { finalSongList = getRange(a, 116, 116); }
+        sort: (a) -> { finalSongList = getRange(a, 115, 115); }
     },
     {
         anim: 'T',
-        sort: (a) -> { finalSongList = getRange(a, 117, 117); }
+        sort: (a) -> { finalSongList = getRange(a, 116, 116); }
     },
     {
         anim: 'UZ',
-        sort: (a) -> { finalSongList = getRange(a, 118, 123); }
+        sort: (a) -> { finalSongList = getRange(a, 117, 122); }
     },
     {
         anim: 'num',
@@ -188,8 +189,6 @@ void main() {
 }
 ');
 HANG_FUNKIN_CREW_BY_JUMPER_CABLES.data.bitmap.mipFilter = 0;
-var whySoManyDetailOMFG = FunkinShader.fromFile('gaussian-blur');
-whySoManyDetailOMFG._amount = 1;
 
 function makeArrow() {
     var arrow = new FunkinSprite(0, 0, Paths.image('menus/freeplay/freeplaySelector'));
@@ -639,18 +638,45 @@ function postCreate() {
         }});
     }
 }
+var blurShader;
+// experimenting
+if (false) {
+    blurShader = new FunkinShader('
+#pragma header
+
+void main() {
+    vec2 uv = openfl_TextureCoordv;
+    gl_FragColor = flixel_texture2D(bitmap, uv);
+    gl_FragColor += texture2D(bitmap, uv, 1.25);
+    gl_FragColor += texture2D(bitmap, uv + vec2(1.0 / openfl_TextureSize.x, 0.0), 1.57);
+    gl_FragColor += texture2D(bitmap, uv - vec2(1.0 / openfl_TextureSize.x, 0.0), 1.57);
+    gl_FragColor *= 0.25;
+
+    if (gl_FragColor.a <= 0.0) return;
+
+    float tsAlpha = gl_FragColor.a;
+    gl_FragColor /= tsAlpha;
+    gl_FragColor *= 1.0 - pow(1.0 - tsAlpha, 2.0);
+
+}
+    ');
+    blurShader.data.bitmap.mipFilter = 0;
+} else {
+    blurShader = FunkinShader.fromFile('gaussian-blur');
+    blurShader._amount = 1;
+}
 function addSharedCapsuleShit(cap) {
     cap.glowColor = glowColor;
     cap.text.textField.filters = textFilters;
 
     if (!Options.lowMemoryMode) {
-        cap.rankBadgeBlur.shader = whySoManyDetailOMFG;
+        cap.rankBadgeBlur.shader = blurShader;
         for (i in [cap.weekText, cap.bpmText, cap.bpmStaticText, cap.diffStaticText, cap.diffText]) {
             i.shader = HANG_FUNKIN_CREW_BY_JUMPER_CABLES;
         }
         // has to be a new shader instance due to varying texture sizes (lame)
-        cap.textBlur.shader = FunkinShader.fromFile('gaussian-blur');
-        cap.textBlur.shader._amount = 1;
+        // NOT ANYMORE !!!!!!!!!!!!!!!! thank u ralty
+        cap.textBlur.shader = blurShader;
     }
 }
 var curSelected = 0;
@@ -754,7 +780,7 @@ function update(elapsed) {
         c.x = capsuleGroup.x + Math.sin(diff + 1) * 60.5 - 60.5;
         c.y = capsuleGroup.y + (diff + Math.min(diff, -1) + 1) * 115.5;
         c.scrollFactor.set(0, 0.4);
-        c.exists = (diff > -2) && (diff < 4); // this holds everything together
+        c.exists = (diff > -1.6) && (diff < 4); // this holds everything together
     });
 }
 function destroy() {
@@ -933,8 +959,8 @@ var curTrackedVariation = (character == 'bf') ? null : character;
 var curTrackedDiff = null;
 function sortAlphabetical(x) {
     x.sort((a, b) -> {
-        var nameA = a.name.toLowerCase();
-        var nameB = b.name.toLowerCase();
+        var nameA = (a?.displayName ?? a.name).toLowerCase();
+        var nameB = (b?.displayName ?? b.name).toLowerCase();
         return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
     });
     return x;
@@ -947,7 +973,7 @@ function getRange(a, min, max) {
         return (letter >= min) && (letter <= max);
     });
 }
-// a = 97 , z = 123, 0 = 48, 9 = 57
+
 var curSelectedSort = 0;
 var curSort = null;
 function updateAllDiffs() {
