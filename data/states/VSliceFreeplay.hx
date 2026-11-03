@@ -27,20 +27,6 @@ function coolTextFile(content:String) {
 	return [for(line in content.split("\n")) if ((trim = StringTools.trim(line)) != "" && !StringTools.startsWith(line, "#")) trim];
 }
 
-fpList.songs.resize(0);
-var songsFound = [];
-var contents = getAddonFileContents(Paths.txt('config/freeplaySonglist'));
-for (i in contents) {
-    var __songsFound = coolTextFile(i);
-    for (i in __songsFound) {
-        if (!songsFound.contains(i)) songsFound.push(i);
-        else continue;
-    }
-}
-for (s in songsFound) {
-    fpList.songs.push(Chart.loadChartMeta(s));
-}
-
 var swList = StoryWeeklist.get(null, false);
 var character = freeplayCurCharacter;
 var finalSongList = [];
