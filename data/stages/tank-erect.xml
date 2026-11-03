@@ -12,11 +12,14 @@
         <anim name="idle" anim="BLTank2 instance 1" type="onbeat"/>
     </sprite>
 
-	<girlfriend scroll="1" x="350" y="135" ds_color="#DFEF3C"
-        ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20"/>
+	<girlfriend scroll="1" x="500" y="160" ds_color="#DFEF3C"
+        ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20" ds_alt_threshold="0.4"/>
+
+    <sprite name="bricks" sprite="bricks-ground" x="465" y="760" scale="1.15" updateHitbox="true" flipX="true"/>
+
 	<dad x="-50" y="125" camxoffset="150"
-        ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20" ds_color="#DFEF3C" ds_angle="25" ds_threshold="0.3"
+        ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20" ds_color="#DFEF3C" ds_angle="25" ds_threshold="0.3" ds_alt_threshold="0.4"
         ds_altMask="stages/tank/erect/masks/tankmanCaptainBloody_mask"/>
 	<boyfriend x="1125" y="125" camxoffset="-150"
-        ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20" ds_color="#DFEF3C" ds_angle="90"/>
+        ds_applyShader="true" ds_brightness="-46" ds_hue="-38" ds_contrast="-25" ds_saturation="-20" ds_color="#DFEF3C" ds_angle="90" ds_alt_threshold="0.4"/>
 </stage>

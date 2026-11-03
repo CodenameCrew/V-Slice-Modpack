@@ -28,6 +28,8 @@ function postCreate() {
         for (char in i.characters) {
             var rim = rimlight(char);
             if (n.get('ds_threshold') != null) rim.threshold = Std.parseFloat(n.get('ds_threshold'));
+            if (n.get('ds_alt_threshold') != null) rim.alt_threshold = Std.parseFloat(n.get('ds_alt_threshold'));
+            else rim.alt_threshold = rim.threshold;
             if (n.get('ds_distance') != null) rim.distance_offset = Std.parseFloat(n.get('ds_distance'));
             if (n.get('ds_angle') != null) rim.distance_angle = Std.parseFloat(n.get('ds_angle'));
 

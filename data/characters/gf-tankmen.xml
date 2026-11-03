@@ -1,0 +1,7 @@
+<!DOCTYPE codename-engine-character>
+<character x="-155" y="-30" sprite="gf-tankmen-sparrow" icon="gf" color="#A5004D" altMask="characters/__masks/gf-tankmen">
+	<anim name="danceLeft" anim="GF Dancing at Gunpoint" indices="0..14"/>
+	<anim name="danceRight" anim="GF Dancing at Gunpoint" indices="15..30"/>
+	<anim name="dance-cutscene" anim="GF Dancing at Gunpoint" loop="true"/>
+	<anim name="sad" anim="GF Crying at Gunpoint" y="-18" loop="true" indices="0..12"/>
+</character>
