@@ -14,6 +14,7 @@ import openfl.filters.GlowFilter;
 
 import Capsule;
 import ScoreCounter;
+import LetterSort;
 
 // turbo controls, used in options menu, useful for repeating keys
 var upTurboControl = new TurboControls([Control.UP]);
@@ -153,7 +154,8 @@ var clearPercent = new Alphabet(0, 86, '100', 'freeplay-clear');
 var scoreCounter = new ScoreCounter();
 var diffSprite = new FunkinSprite(0, 67);
 var diffDots = new FunkinSprite(Std.int(FlxG.width * 0.156), 170, Paths.image('menus/freeplay/separator'));
-
+var letterSort:LetterSort;
+var hintText = new FunkinText(0, 18, Std.int(FlxG.width * 0.5), 'Press [ LOL ] to instantly die', 32);
 // shared capsule stuff
 var glowColor = 0x00ccff;
 var textFilters = [
@@ -211,6 +213,9 @@ function create() {
     add(bg);
     
     add(diffSprite);
+    add(stupidDadBG);
+    add(capsuleGroup);
+
     for (i in [leftArrow, rightArrow]) {
         i.setPosition(diffAnchorX - i.width * 0.5, 70);
     }
@@ -242,7 +247,10 @@ function create() {
         dot.color = -1;
     };
 
-    add(stupidDadBG);
+
+    letterSort = new LetterSort(sortList);
+    add(letterSort);
+    letterSort.setPosition(Std.int(FlxG.width * 0.5) - 260, 90);
 
     album.antialiasing = true;
     album.setPosition(
@@ -312,14 +320,22 @@ function create() {
     new FlxTimer().start(1, (_) -> {
         albumStars.exists = albumFlames.exists = albumName.exists = true;
     });
-
-    add(capsuleGroup);
     
     fgBar.scrollFactor.set(0, 1.2);
     fgBar.makeGraphic(FlxG.width, 256, -1);
     fgBar.color = FlxColor.BLACK;
     fgBar.y = -fgBar.height + 64;
     add(fgBar);
+
+    hintText.text = translate('freeplay.charHint', [CoolUtil.keyToString(Options.P1_CHANGE_MODE[0])]);
+    hintText.alignment = 'center';
+    hintText.font = Paths.font('5by7.ttf');
+    hintText.color = 0x5F5F5F;
+    hintText.screenCenter(0x01);
+    hintText.x -= 47;
+    hintText.y -= 100;
+    FlxTween.tween(hintText, {y: 18}, 0.8, {ease: FlxEase.quartOut});
+    add(hintText);
 
     var freeplayName = new FunkinText(8, 8, FlxG.width - 16, 'FREEPLAY', 48); // ik its static but this is nicer ok
     freeplayName.scrollFactor.set(0, 1.2);
@@ -362,6 +378,7 @@ function postCreate() {
 
     changeDifficulty(Math.abs(stupidDiffIndex), true, null, true);
     changeSort(0, true);
+    letterSort.__animTimer = 1;
     lerpSelected = curSelected;
 
     Framerate.offset.y = 65;
@@ -372,7 +389,7 @@ function postCreate() {
     var doOpeningRank = false;
 
     // watch what happens when i enable a bool i dont know !!!!
-    doOpeningRank = true;
+    // doOpeningRank = true;
 
     if (doOpeningRank) {
         var cap = capsuleGroup.members[curSelected];
@@ -624,33 +641,8 @@ function postCreate() {
         }});
     }
 }
-var blurShader;
-// experimenting
-if (false) {
-    blurShader = new FunkinShader('
-#pragma header
-
-void main() {
-    vec2 uv = openfl_TextureCoordv;
-    gl_FragColor = flixel_texture2D(bitmap, uv);
-    gl_FragColor += texture2D(bitmap, uv, 1.25);
-    gl_FragColor += texture2D(bitmap, uv + vec2(1.0 / openfl_TextureSize.x, 0.0), 1.57);
-    gl_FragColor += texture2D(bitmap, uv - vec2(1.0 / openfl_TextureSize.x, 0.0), 1.57);
-    gl_FragColor *= 0.25;
-
-    if (gl_FragColor.a <= 0.0) return;
-
-    float tsAlpha = gl_FragColor.a;
-    gl_FragColor /= tsAlpha;
-    gl_FragColor *= 1.0 - pow(1.0 - tsAlpha, 2.0);
-
-}
-    ');
-    blurShader.data.bitmap.mipFilter = 0;
-} else {
-    blurShader = FunkinShader.fromFile('gaussian-blur');
-    blurShader._amount = 1;
-}
+var blurShader = FunkinShader.fromFile('gaussian-blur');
+blurShader._amount = 1;
 function addSharedCapsuleShit(cap) {
     cap.glowColor = glowColor;
     cap.text.textField.filters = textFilters;
@@ -779,6 +771,9 @@ function changeSort(ch, ?silent) {
     curSort = sortList[curSelectedSort].sort;
     regenSongRegistry(curSort, curTrackedVariation, curTrackedDiff);
     regenSongList();
+    letterSort.sortReference.curSelected = curSelectedSort;
+    letterSort.__animTimer = 0; // super accuracy
+    letterSort.__animMult = FlxMath.signOf(ch);
 
     if (!silent) CoolUtil.playMenuSFX(0);
 }
@@ -1063,6 +1058,7 @@ function selectSong(id) {
     }
 }
 // cosmetic related, regular update is selection code
+var hintTimer = 0;
 function postUpdate(elapsed) {
     highscoreAnimTimerForNoReason -= elapsed;
     if (highscoreAnimTimerForNoReason <= 0) {
@@ -1076,6 +1072,10 @@ function postUpdate(elapsed) {
     lerpAccuracy = lerp(lerpAccuracy, intendedAccuracy, 0.3);
     clearPercent.text = Math.round(lerpAccuracy * 100);
     clearPercent.x = clearBox.x + clearBox.width - 34 - clearPercent.textWidth;
+
+    hintTimer += elapsed * 2;
+    var targetAmt:Float = (Math.sin(hintTimer) + 1) / 2;
+    hintText.alpha = FlxMath.lerp(0.3, 0.9, targetAmt);
 }
 
 /////////////////////////////////////////////////////////////////

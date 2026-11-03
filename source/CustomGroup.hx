@@ -7,19 +7,34 @@ class CustomGroup extends flixel.FlxSprite {
     public var memberRemoved:FlxSignal1 = new FlxSignal1();
 
 	public var members = [];
-	public function add(a)       { members.push(a); a.ID = length - 1; memberAdded.dispatch(a);   }
-	public function insert(x, a) {                                     memberRemoved.dispatch(a);               members.insert(x, a); }
-	public function remove(a, s) {                                     memberRemoved.dispatch(a);               members.remove(a, s); }
+	public function add(a)       { members.push(a); memberAdded.dispatch(a);   }
+	public function insert(x, a) { members.insert(x, a); }
+	public function remove(a, s) { memberRemoved.dispatch(a); members.remove(a, s); }
 	public function new() {
 		super();
 	}
+	// set_x and set_y no workie
+	public var __lastX:Float = 0;
+	public var __lastY:Float = 0;
 	public override function update(elapsed) {
-		var elapsed = elapsed;
-		super.update(elapsed);
-		forEachAlive((bleh) -> { bleh.update(elapsed); });
+		var __deltaX = x - __lastX, __deltaY = y - __lastY;
+		for (bleh in members) {
+			if (bleh != null) {
+				bleh.x += __deltaX;
+				bleh.y += __deltaY;
+			}
+
+			if (bleh == null || !bleh.active || !bleh.alive || !bleh.exists) continue;
+			bleh.update(elapsed); 
+		}
+		__lastX = x;
+		__lastY = y;
 	}
 	public override function draw() {
-		forEachAlive((bleh) -> { if (bleh.visible) bleh.draw(); });
+		for (bleh in members) {
+			if (bleh == null || !bleh.visible || !bleh.alive || !bleh.exists) continue;
+			bleh.draw(); 
+		}
 	}
 
 	public function forEach(f) {
@@ -33,22 +48,8 @@ class CustomGroup extends flixel.FlxSprite {
 			f(i);
 		}
 	}
-    public override function set_x(v:Float):Float {
-        var d = v - x;
-        forEachAlive((a) -> {a.x += d;});
-        return x = v;
-    }
-    public override function set_y(v:Float):Float {
-        var d = v - y;
-        forEachAlive((a) -> {a.y += d;});
-        return y = v;
-    }
     override function destroy() {
-		while (members.length > 0) {
-			members[0].kill();
-			members[0].destroy();
-			members.remove(members[0], true);
-		}
+		while (members.length > 0) members.shift().destroy();
 		super.destroy();
 	}
 }

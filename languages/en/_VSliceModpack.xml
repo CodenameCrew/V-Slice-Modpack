@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<language>
+    <group name="Freeplay">
+        <str id="freeplay.charHint">Press [ {0} ] to change characters</str>
+    </group>
+</language>
