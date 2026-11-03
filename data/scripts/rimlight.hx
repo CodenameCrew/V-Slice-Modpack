@@ -145,6 +145,8 @@ public function rimlight(?i:FlxSprite) {
 	shad.inner = false;
 	shad.knockout = false;
 	shad.smoothing = true;
+	shad.use_alt_mask = false;
+	shad.alt_threshold = 0;
 	shad._flipX = false;
 	shad._flipX = false;
 	shad._angOffset = 0;
@@ -156,6 +158,22 @@ public function rimlight(?i:FlxSprite) {
 	if (i is FlxAnimate) {
 		i.useRenderTexture = true;
 		anim = i.anim;
+	}
+	if (i is Character) {
+		var char:Character = cast i;
+		if (char.extra['altMask'] != null) {
+			// trace(char.curCharacter + ' has mask..');
+			var bitmap = Assets.getBitmapData(Paths.image(char.extra['altMask']));
+			if (bitmap != null) {
+				var alt_mask = shad.data.alt_mask;
+				alt_mask.input = bitmap;
+				alt_mask.filter = 0; // linear
+
+				shad.use_alt_mask = true;
+			} else {
+				funkin.backend.system.Logs.error('[RIMLIGHT] There is no asset with an ID of "${Paths.image(char.extra['altMask'])}". Skipping alt mask...');
+			}
+		}
 	}
     i.shader = shad;
 	function stupidFunc() {
