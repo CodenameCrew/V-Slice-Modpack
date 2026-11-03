@@ -178,6 +178,21 @@ void main() {
 ');
 HANG_FUNKIN_CREW_BY_JUMPER_CABLES.data.bitmap.mipFilter = 0;
 
+var i_like_pizza___i_like_burger = new FunkinShader('
+#pragma header
+
+void main() {
+    vec2 uv = openfl_TextureCoordv;
+    vec4 ogColor = flixel_texture2D(bitmap, uv);
+    float blur = 0.0;
+    float offset = 2.0 / openfl_TextureSize.x;
+    blur += texture2D(bitmap, uv - vec2(offset, 0.0)).a;
+    blur += texture2D(bitmap, uv + vec2(offset, 0.0)).a;
+    blur = clamp(blur, 0.0, 1.0);
+	gl_FragColor = mix(vec4(blur), ogColor, ogColor.a);
+}
+');
+
 function makeArrow() {
     var arrow = new FunkinSprite(0, 0, Paths.image('menus/freeplay/freeplaySelector'));
     arrow.antialiasing = true;
@@ -851,12 +866,7 @@ function changeAlbum(al) {
     album.setGraphicSize(262, 262);
     album.updateHitbox();
 
-    final bump = 10;
-    album.offset.y -= bump;
-    if (stupidAssTimer != null) stupidAssTimer.cancel();
-    stupidAssTimer.start(2 / 24, (_) -> {
-        album.offset.y += bump;
-    });
+    
 
     // cheating here for a bit cus i dont like the anim names
     albumName.loadSprite(Paths.image(al?.text ?? 'menus/freeplay/albums/volume1-text'));
@@ -865,7 +875,19 @@ function changeAlbum(al) {
     albumName.playAnim('idle', true);
     albumName.updateHitbox();
 
-    ostName.text = (al?.data?.albumOSTName != null) ? (al?.data?.albumOSTName) : 'OFFICIAL OST';
+    var targetText = (al?.data?.albumOSTName != null) ? (al?.data?.albumOSTName) : 'OFFICIAL OST';
+    if (ostName.text != targetText) {
+        ostName.shader = i_like_pizza___i_like_burger;
+        ostName.text = targetText;
+    }
+
+    final bump = 10;
+    album.offset.y -= bump;
+    if (stupidAssTimer != null) stupidAssTimer.cancel();
+    stupidAssTimer.start(2 / 24, (_) -> {
+        album.offset.y += bump;
+        ostName.shader = null;
+    });
 }
 var allGlobalDiffs = [];
 var curSelectedDiff = 0;
@@ -1027,6 +1049,32 @@ function selectSong(id) {
         CoolUtil.playMenuSFX(1);
         var c = capsuleGroup.members[id];
         if (c.icon.visible) c.icon.playAnim('confirm', true);
+        var flickerState = false;
+        // because it was using a shared array i have to do this now
+        c.text.textField.filters = [
+            new GlowFilter(0xffffff, 1, 5, 5, 210, 1)
+        ];
+        new FlxTimer().start(1 / 24, (_) -> {
+            flickerState = !flickerState;
+            c.text.textField.filters[0].color = flickerState ? 0xffffff : 0xdddddd;
+            c.text.color = flickerState ? 0xffffff : 0xdddddd;
+            c.textBlur.color = flickerState ? 0xffffff : c.glowColor;
+        }, 19);
+        c.text.blend = c.textBlur.blend = BlendMode.ADD;
+
+        c.text.scale.set(1.7, 0.2);
+        c.textBlur.scale.set(1.7, 0.2);
+        new FlxTimer().start(1 / 24, function(_)
+        {
+            c.text.scale.set(0.4, 1.4);
+            c.textBlur.scale.set(0.4, 1.4);
+            new FlxTimer().start(2 / 24, function(_)
+            {
+                c.text.scale.set(1, 1);
+                c.textBlur.scale.set(1, 1);
+            });
+        });
+
         Options.freeplayLastSong = c.name;
         Options.freeplayLastDifficulty = curSelectedDiffData.name;
         Options.freeplayLastVariation = curSelectedDiffData.variation;
