@@ -21,7 +21,7 @@ function create() {
 		final width = video.bitmap.bitmapData.width;
 		final height = video.bitmap.bitmapData.height;
 		final scale:Float = Math.min(FlxG.width / width, FlxG.height / height);
-		video.setGraphicSize(Std.int(width * scale), Std.int(height * scale));
+		video.setGraphicSize(width * scale, height * scale);
 		video.updateHitbox();
 		video.screenCenter();
 		startCut();
@@ -30,7 +30,7 @@ function create() {
 
 	game.camHUD.visible = false;
 
-    new FlxTimer().start(0.001, video.play);
+    FlxTimer.wait(0.001, video.play);
 }
 
 function startCut(){
