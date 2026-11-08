@@ -177,6 +177,7 @@ public function rimlight(?i:FlxSprite) {
 	}
     i.shader = shad;
 	function stupidFunc() {
+		if (i.shader == null) return;
         i.shader._uFrameBounds[0] = i.frame.uv.x;
 		i.shader._uFrameBounds[1] = i.frame.uv.y;
 		i.shader._uFrameBounds[2] = i.frame.uv.width;

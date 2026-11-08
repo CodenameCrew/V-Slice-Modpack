@@ -9,12 +9,15 @@ import funkin.options.PlayerSettings;
 var controls = PlayerSettings.solo.controls;
 
 function initialize() {
+	/*
+	// this freezes the game for me :(
 	// Initialize Handle of hxvlc so it doesn't crash on loading the videos.
 	try {
 		import hxvlc.util.Handle;
 		Handle.init([]);
 	}
 	catch(e:Any) {trace(e);}
+	*/
 }
 
 function checkInitialize() {

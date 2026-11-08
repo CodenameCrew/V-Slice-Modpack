@@ -329,11 +329,13 @@ function create() {
             flame.exists = true;
         };
         albumFlames.add(flame);
+		flame.exists = false;
     }
 
     albumStars.exists = albumFlames.exists = albumName.exists = false;
     new FlxTimer().start(1, (_) -> {
         albumStars.exists = albumFlames.exists = albumName.exists = true;
+		updateStars(curStars);
     });
     
     fgBar.scrollFactor.set(0, 1.2);
@@ -838,7 +840,9 @@ function changeSelection(ch, ?silent) {
     }
     updateStars(Reflect.field(meta?.customValues?.ratings, curSelectedDiffData.name) ?? 0);
 }
+var curStars = 0;
 function updateStars(count:Int) {
+	curStars = count;
     for (x => i in albumStars.members) {
         var isStar = Math.min(albumStars.members.length, count - 1) >= x;
         i.playAnim(isStar ? 'star' : 'dot', true);
