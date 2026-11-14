@@ -6,15 +6,6 @@ public var thunderSFXamount:Int = 2;
 var rainShader:CustomShader;
 var rainShaderTarget:FlxSprite;
 
-function onPostStageCreation(_) for (strum in PlayState.SONG.strumLines) {
-	var copy = strum?.characters.copy();
-	for (char in copy) {
-		var dark = char + "-dark";
-		if (Assets.exists(Paths.xml("characters/" + dark)))
-			strum.characters.insert(strum.characters.indexOf(char) + 1, dark);
-	}
-}
-
 function getColorVec(color:Int):Array<Float> {
 	return [
 		(color >> 16 & 0xFF) / 255,
@@ -26,12 +17,6 @@ function getColorVec(color:Int):Array<Float> {
 function create() {
 	for(i in 1...thunderSFXamount+1)
 		FlxG.sound.load(Paths.sound('thunder_' + Std.string(i)));
-
-	for (strum in PlayState.SONG.strumLines) {
-		var copy = strum?.characters.copy();
-		for (char in copy) if (StringTools.endsWith(char, "-dark"))
-			strum.characters.remove(char);
-	}
 }
 
 function postCreate() {

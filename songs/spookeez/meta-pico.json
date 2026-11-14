@@ -4,14 +4,14 @@
 		"previewStart": 0,
 		"ratings": {
 			"easy": 1,
-			"hard": 3,
-			"normal": 2
+			"normal": 2,
+			"hard": 3
 		},
-		"noteStyle": "funkin",
-		"album": "volume4",
-		"previewEnd": 15000,
+		"charter": "fabs + Spazkid",
 		"artist": "Six Impala (feat. Saster)",
-		"charter": "fabs + Spazkid"
+		"previewEnd": 15000,
+		"noteStyle": "funkin",
+		"album": "volume4"
 	},
 	"instSuffix": "-pico",
 	"opponentModeAllowed": true,
@@ -26,6 +26,6 @@
 	"displayName": "Spookeez (Pico Mix)",
 	"beatsPerMeasure": 4,
 	"needsVoices": false,
-	"vocalsSuffix": "-pico",
-	"bpm": 150
+	"bpm": 150,
+	"vocalsSuffix": "-pico"
 }

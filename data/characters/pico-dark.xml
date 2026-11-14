@@ -1,5 +1,7 @@
 <!DOCTYPE codename-engine-character>
-<character x="-120" y="225" sprite="dark/pico" flipX="true" camx="-19" camy="275" isPlayer="true" icon="pico-dark" color="#B7D855" gameOverChar="pico-stabbed" applyStageMatrix="false" isGF="false">
+<character x="-100" y="224" sprite="dark/pico" flipX="true" camx="260" camy="320" isPlayer="true" color="#B7D855" icon="pico" gameOverChar="pico-stabbed" applyStageMatrix="false" isGF="false" normal="pico-playable">
+	<ext script="spooky-dark-character"/>
+	
 	<anim name="idle" anim="Idle" label="true"/>
 	<anim name="singLEFT" anim="Left" label="true"/>
 	<anim name="singDOWN" anim="Down" label="true"/>

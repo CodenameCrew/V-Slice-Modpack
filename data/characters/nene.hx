@@ -22,8 +22,10 @@ var isSpooky:Bool = PlayState.instance.curStage == "spooky-erect";
 function postCreate() {
 	stereoBG = new FunkinSprite(0, 0, Paths.image('characters/abot/stereoBG'));
 	eyeWhites = new FunkinSprite().makeSolid(160, 60);
-	if(isSpooky)
+	if(isSpooky) {
 		eyeWhites.color = 0xFF6F96CE;
+		stereoBG.color = 0xFF616785;
+	}
 	pupil = new FunkinSprite(0, 0, Paths.image("characters/abot/systemEyes"));
 	abot = new FunkinSprite(0, 0, Paths.image('characters/abot/abotSystem'));
 	abot.addAnim('idle', 'Abot System', 24, false);
@@ -133,8 +135,10 @@ function checkForEyes(target:Int) {
 	else movePupilsLeft();
 }
 
-function onEvent(e)
+function onEvent(e) {
+	//trace('hello', e.event);
 	if (PlayState.instance.strumLines != null && e.event.name == "Camera Movement") checkForEyes(e.event.params[0]);
+}
 
 function movePupilsLeft() {
 	//pupil.stopAnimation();
@@ -231,17 +235,6 @@ function update(elapsed) {
 
 	abot.update(elapsed);
 	abot.setPosition(globalOffset.x + this.x - 100, globalOffset.y + this.y + 316);
-	if(isSpooky){
-		abotDark.visible = this.visible;
-		abotDark.antialiasing = this.antialiasing;
-		abotDark.scrollFactor = this.scrollFactor;
-		abotDark.flipX = this.flipX;
-		abotDark.scale = this.scale;
-		//if(PlayState.instance.strumLines.members[2].characters[1] != null) abotDark.alpha = PlayState.instance.strumLines.members[2].characters[1].alpha;
-		abotDark.update(elapsed);
-		abotDark.setPosition(abot.x, abot.y);
-		
-	}
 	updateFFT();
 	abotViz.update(elapsed);
 	abotViz.setPosition(abot.x + 205, abot.y + 90);
@@ -254,6 +247,16 @@ function update(elapsed) {
 
 	stereoBG.update(elapsed);
 	stereoBG.setPosition(abot.x + 150, abot.y + 30);
+
+	if(isSpooky) {
+		abotDark.visible = this.visible;
+		abotDark.antialiasing = this.antialiasing;
+		abotDark.scrollFactor = this.scrollFactor;
+		abotDark.flipX = this.flipX;
+		abotDark.scale = this.scale;
+		abotDark.update(elapsed);
+		abotDark.setPosition(abot.x, abot.y);
+	}
 
 	if (shouldTransitionState()) {
 		transitionState();
