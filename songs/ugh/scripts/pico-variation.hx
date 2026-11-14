@@ -1,23 +1,17 @@
-import funkin.backend.utils.XMLUtil;
-import animate.FlxAnimateFrames;
 if (PlayState.variation != 'pico') return disableScript();
 
-function create() {
+import funkin.backend.utils.XMLUtil;
+import animate.FlxAnimateFrames;
+
+function postCreate() {
     if (dad.curCharacter == 'tankman') {
-        dad.frames = FlxAnimateFrames._combineAtlas(dad.frames, Paths.getFrames('characters/tankman/extra-animations'));
-        // readd anims (maybe make this an util function later???)
+        // have to do this (make whole new frames) otherwise it crashes on restart song
+        dad.frames = Paths.getMultiFrames([
+            'characters/tankman',
+            'characters/tankman/extra-animations'
+        ], false, true); // readd anims (maybe make this an util function later???)
         for(node in dad.xml.elements()) {
 			if (node.nodeName == 'anim') {
-                if (dad.defaultAimFPS != 24){
-                    if (node.get("fps") == null) {
-                        node.set('fps', Std.string(dad.defaultAimFPS));
-                    } 
-                    
-                }
-                if (node.get("isAnimate") == null) {
-                    node.set('isAnimate', 'false');
-                }
-
                 XMLUtil.addXMLAnimation(dad, node);
 			}
 		}

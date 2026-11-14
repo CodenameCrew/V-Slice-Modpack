@@ -64,9 +64,9 @@ function onBranchFrame(name, frameNum, frameIndex) {
 // 	if(gf.curCharacter != 'gf' && gf.curCharacter != 'gf-dark'){
 // 		event.gfSadAnim = false;
 // 	}
-function lightningStrikeShit():Void
+public function lightningStrikeShit(?silent:Bool = false)
 {
-	FlxG.sound.play(Paths.soundRandom('thunder_', 1, thunderSFXamount));
+	if (!!silent == false) FlxG.sound.play(Paths.soundRandom('thunder_', 1, thunderSFXamount));
 
 	for (bg in [bgLight, stairsLight])
 	{
