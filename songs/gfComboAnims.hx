@@ -1,5 +1,5 @@
 function onPostNoteHit(e) {
-	if (e.note.isSustainNote || !e.countAsCombo) return;
+	if (e.note.isSustainNote || !e.countAsCombo || strumLines.members[2]) return;
 	for(chars in strumLines.members[2].characters){
 		if (combo == 50) {
 			if (chars.hasAnim('combo50')) chars.playAnim('combo50', true);
@@ -13,7 +13,9 @@ function onPostNoteHit(e) {
 }
 
 function onPlayerMiss(e) {
-	for(chars in strumLines.members[2].characters){
+	e.gfSad = false;
+	if (strumLines.members[2]) return;
+	for(chars in strumLines.members[2].characters) {
 		if (combo >= 70) {
 			if (chars.hasAnim('drop70')) chars.playAnim('drop70', true);
 			else if (chars.hasAnim('sad')) chars.playAnim('sad', true);

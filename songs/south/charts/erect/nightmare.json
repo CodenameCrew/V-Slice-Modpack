@@ -2170,7 +2170,7 @@
 			"strumLinePos": 0.25,
 			"type": 0,
 			"characters": [
-				"spooky"
+				"spooky-dark"
 			]
 		},
 		{
@@ -5345,7 +5345,7 @@
 			"strumLinePos": 0.75,
 			"type": 1,
 			"characters": [
-				"bf"
+				"bf-dark"
 			]
 		},
 		{
@@ -5363,7 +5363,7 @@
 			"strumLinePos": 0.25,
 			"type": 2,
 			"characters": [
-				"gf"
+				"gf-dark"
 			]
 		}
 	],

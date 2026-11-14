@@ -1,8 +1,10 @@
 <!DOCTYPE codename-engine-character>
-<character x="-70" y="-30" sprite="dark/gf" camx="-160" icon="gf" color="#A5004D" isGF="true">
+<character x="103" y="278" sprite="dark/gf" camx="50" camy="80" icon="gf" color="#A5004D" applyStageMatrix="true" isGF="true">
+	<ext script="spooky-dark-character"/>
+
 	<anim name="cheer" anim="GF Cheer"/>
 	<anim name="danceLeft" anim="GF Dancing Beat" indices="0..14"/>
 	<anim name="danceRight" anim="GF Dancing Beat" indices="15..30"/>
-	<anim name="scared" anim="GF FEAR" x="-2" y="-8" loop="true"/>
-	<anim name="sad" anim="gf sad" x="-2" y="-12" loop="true" indices="0..12"/>
+	<anim name="scared" anim="GF FEAR " loop="true"/>
+	<anim name="sad" anim="gf sad" x="-51" y="316" indices="0..12"/>
 </character>

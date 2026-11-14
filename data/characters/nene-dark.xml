@@ -1,11 +1,13 @@
 <!DOCTYPE codename-engine-character>
-<character y="-30" sprite="dark/nene" camx="-100" camy="100" icon="nene" color="#EB6BA3" isGF="true">
-	<anim name="danceLeft" anim="Idle0" indices="0..15"/>
-	<anim name="danceRight" anim="Idle0" indices="16..30"/>
-	<anim name="combo50" anim="ComboCheer0" x="-123" y="56"/>
-	<anim name="drop70" anim="Laugh0" indices="0..11,7..9,19,11,7..11"/>
-	<anim name="combo200" anim="ComboFawn0" x="-40" y="-19" indices="0..6,4..6,4..6,4..6"/>
-	<anim name="raiseKnife" anim="KnifeRaise0" y="51.5"/>
-	<anim name="idleKnife" anim="KnifeIdle0" x="-98.5" y="51.5"/>
-	<anim name="lowerKnife" anim="KnifeLower0" x="134.5" y="51" indices="0..9"/>
+<character x="20" y="-150" sprite="dark/nene" camx="-100" camy="100" icon="nene" color="#EB6BA3" applyStageMatrix="false" isGF="true" forceDrawNormal="true" offX="9" offY="-51">
+	<ext script="spooky-dark-character"/>
+
+	<anim name="danceLeft" 	label="true" anim="Idle" indices="0..14"/>
+	<anim name="danceRight" label="true" anim="Idle" indices="15..30"/>
+	<anim name="combo50" 	label="true" anim="ComboCheer" x="-123" y="56"/>
+	<anim name="drop70" 	label="true" anim="Laugh" indices="0..11,7..9,19,11,7..11"/>
+	<anim name="combo200" 	label="true" anim="ComboFawn" x="-40" y="-19" indices="0..6,4..6,4..6,4..6"/>
+	<anim name="raiseKnife" label="true" anim="KnifeRaise" y="51.5"/>
+	<anim name="idleKnife" 	label="true" anim="KnifeIdle" x="-98.5" y="51.5"/>
+	<anim name="lowerKnife" label="true" anim="KnifeLower" x="134.5" y="51" indices="0..9"/>
 </character>

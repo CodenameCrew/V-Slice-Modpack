@@ -69,8 +69,8 @@ function create()
     cutsceneMusic = FlxG.sound.load(Paths.music("pico/" + (!explode ? "cutscene" : "cutscene2")), 1, false);
     cutsceneMusic.play(false);
 
-	var oppPos = game.getStrumlineCamPos(playerShoots ? 0 : 1, null, false);
-	var plrPos = game.getStrumlineCamPos(playerShoots ? 1 : 0, null, false);
+	var oppPos = game.getStrumlineCamPos(playerShoots ? 0 : 1);
+	var plrPos = game.getStrumlineCamPos(playerShoots ? 1 : 0);
 
 	game.camFollow.setPosition(FlxMath.lerp(oppPos.pos.x, plrPos.pos.x, 0.5), FlxMath.lerp(oppPos.pos.y, plrPos.pos.y, 0.5));
 

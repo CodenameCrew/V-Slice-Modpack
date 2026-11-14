@@ -2170,7 +2170,7 @@
 			"strumLinePos": 0.2,
 			"type": 0,
 			"characters": [
-				"spooky"
+				"spooky-dark"
 			]
 		},
 		{
@@ -5321,7 +5321,7 @@
 			"strumLinePos": 0.7,
 			"type": 1,
 			"characters": [
-				"bf"
+				"bf-dark"
 			]
 		},
 		{
@@ -5330,7 +5330,7 @@
 			"position": "girlfriend",
 			"notes": [],
 			"characters": [
-				"gf"
+				"gf-dark"
 			],
 			"type": 2,
 			"visible": false,

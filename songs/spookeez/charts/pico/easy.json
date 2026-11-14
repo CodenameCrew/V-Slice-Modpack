@@ -1271,7 +1271,7 @@
 			"vocalsSuffix": "-spooky-pico",
 			"type": 0,
 			"characters": [
-				"spooky"
+				"spooky-dark"
 			]
 		},
 		{
@@ -2445,7 +2445,7 @@
 			"vocalsSuffix": "-pico-pico",
 			"type": 1,
 			"characters": [
-				"pico"
+				"pico-dark"
 			]
 		},
 		{
@@ -2454,7 +2454,7 @@
 			"position": "girlfriend",
 			"type": 2,
 			"characters": [
-				"nene"
+				"nene-dark"
 			]
 		}
 	],

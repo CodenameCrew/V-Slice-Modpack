@@ -1,0 +1,28 @@
+{
+	"customValues": {
+		"ratings": {
+			"easy": 3,
+			"hard": 5,
+			"normal": 4
+		},
+		"noteStyle": "funkin",
+		"artist": "tsuyunoshi (ft. Saruky)",
+		"charter": "fabs + Spazkid",
+		"album": "volume4"
+	},
+	"color": "#F6B604",
+	"instSuffix": "-pico",
+	"opponentModeAllowed": true,
+	"icon": "tankman",
+	"difficulties": [
+		"easy",
+		"normal",
+		"hard"
+	],
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "Guns (Pico Mix)",
+	"needsVoices": false,
+	"beatsPerMeasure": 4,
+	"bpm": 185
+}

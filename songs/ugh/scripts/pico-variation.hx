@@ -1,10 +1,11 @@
+if (PlayState.variation != 'pico') return disableScript();
+
 import funkin.backend.utils.XMLUtil;
 import animate.FlxAnimateFrames;
-if (PlayState.variation != 'pico') return disableScript();
 
 function postCreate() {
     if (dad.curCharacter == 'tankman') {
-		// have to do this (make whole new frames) otherwise it crashes on restart song
+        // have to do this (make whole new frames) otherwise it crashes on restart song
         dad.frames = Paths.getMultiFrames([
             'characters/tankman',
             'characters/tankman/extra-animations'
