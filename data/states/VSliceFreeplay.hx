@@ -22,12 +22,6 @@ var downTurboControl = new TurboControls([Control.DOWN]);
 var turboBasics = [upTurboControl, downTurboControl];
 var capsuleGroup = new FlxSpriteGroup();
 var fpList = FreeplaySonglist.get();
-
-function coolTextFile(content:String) {
-    var trim:String;
-	return [for(line in content.split("\n")) if ((trim = StringTools.trim(line)) != "" && !StringTools.startsWith(line, "#")) trim];
-}
-
 var swList = StoryWeeklist.get(null, false);
 var character = freeplayCurCharacter;
 var finalSongList = [];
@@ -76,15 +70,15 @@ var sortList = [
     },
     {
         anim: 'IL',
-        sort: (a) -> { finalSongList = getRange(a, 105, 109); }
+        sort: (a) -> { finalSongList = getRange(a, 105, 108); }
     },
     {
         anim: 'MN',
-        sort: (a) -> { finalSongList = getRange(a, 110, 111); }
+        sort: (a) -> { finalSongList = getRange(a, 109, 110); }
     },
     {
         anim: 'OR',
-        sort: (a) -> { finalSongList = getRange(a, 112, 114); }
+        sort: (a) -> { finalSongList = getRange(a, 111, 114); }
     },
     {
         anim: 'S',
